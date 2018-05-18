@@ -144,6 +144,46 @@ nav.navcus1 a.labelcus:hover{
     left: 350px
 }
 
+/* Modules page */
+
+.modulecusarea{
+    background-color: #8166F9;
+}
+
+.modulescard{
+    padding: 5px;
+}
+
+.modulescard .card{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    height: 100%;
+}
+
+.modulescard .card img{
+    height: 75px;
+    width: 100px;
+    float: right;
+    margin-left: 15px;
+}
+
+.modulescard .card h5{
+    padding-left: 10px;
+    line-height: 150%;
+}
+
+.modulescard .card p{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.moduletitle{
+    margin-top: 15px;
+    margin-top: 15px;
+    padding-top: 15px;
+    color: #8166F9;
+}
+
 /* Override BS4 Sheet */
 .form-control:focus{
     border-color: #FF6632;
