@@ -150,6 +150,10 @@ nav.navcus1 a.labelcus:hover{
     background-color: #8166F9;
 }
 
+.modulepage{
+    background-color: white;
+}
+
 .modulescard{
     padding: 5px;
 }
@@ -184,6 +188,27 @@ nav.navcus1 a.labelcus:hover{
     color: #8166F9;
 }
 
+.activecus, .activecus2{
+    background-color: rgb(227,227,227);
+}
+
+/* Sub-Page of Modules */
+.modulehighlight{
+    color: white;
+    background-color: #8166F9;
+}
+
+.modulepage .list-group-item{
+    border-left: 0px solid transparent;
+    border-right: 0px solid transparent;
+    border-top: 1px solid lightgray;
+    border-radius: 0px;
+}
+
+.modulepage .modulescard .cardcus h5{
+    line-height: 3;
+}
+
 /* Override BS4 Sheet */
 .form-control:focus{
     border-color: #FF6632;
@@ -197,6 +222,14 @@ nav.navcus1 a.labelcus:hover{
 a:link, a:visited, a:hover, a:active{
     text-decoration: none;
     color: black;
+}
+
+.invisiblecus{
+    display: none !important;
+}
+
+.visiblecus{
+    display: flex !important;
 }
 
 
