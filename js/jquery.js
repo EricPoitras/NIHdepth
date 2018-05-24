@@ -83,4 +83,9 @@ $(document).ready(function(){
          $(this).addClass("activecus2");
     });
     
+    // Module Step Page
+    $(".toolbarbutton").click(function(){
+        $(".toolbararea").fadeToggle(1000);
+    });
+    
 });

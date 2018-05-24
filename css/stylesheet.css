@@ -209,6 +209,70 @@ nav.navcus1 a.labelcus:hover{
     line-height: 3;
 }
 
+/* Module Steps */
+
+.modulestep{
+    height: 100vh;
+    background-color: rgb(227,227,227);
+}
+
+.modulestep .headerarea{
+    position: fixed;
+    top: 0px;
+    z-index: 999;
+}
+
+.modulestep .footerarea{
+    position: fixed;
+    bottom: 0px;
+    z-index: 999;
+    background-color: white;
+    padding: 10px;
+}
+
+.modulestep .toolbararea{
+    height: 100vh;
+    background-color: white;
+    padding-top: 58px !important;
+}
+
+.modulestep .contentarea{
+    padding: 58px;
+}
+
+.modulestep .contentarea{
+    height: 100vh;
+}
+
+.modulestep .toolbarbutton{
+    position: fixed;
+    z-index: 999;
+    bottom: 12px;
+    left: 15px;
+    font-size: 1.5em;
+    color: #FF6632;
+    background-color: white;
+    border: 2px solid #FF6632;
+    padding-top: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 1px;
+    border-radius: 5px;
+}
+
+.modulestep .toolbarlabel{
+    position: fixed;
+    bottom: 12px;
+    left: 70px;
+    color: #FF6632;
+}
+
+.modulestep .toolbarhighlight{
+    background-color: rgb(220,220,220);
+    color: #FF6632;
+}
+
+
 /* Override BS4 Sheet */
 .form-control:focus{
     border-color: #FF6632;
