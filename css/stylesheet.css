@@ -272,6 +272,25 @@ nav.navcus1 a.labelcus:hover{
     color: #FF6632;
 }
 
+#responsearea{
+    width: 60%;
+}
+
+/* Video Control */
+
+#play-pause, #mute, #full-screen{
+    color: #FF6632;
+    font-size: 2em;
+    background-color: transparent;
+    border: 0px solid transparent;
+    padding: 5px;
+}
+
+#seek-bar, #volume-bar{
+    color: #FF6632;
+    background-color: #FF6632;
+}
+
 
 /* Override BS4 Sheet */
 .form-control:focus{
