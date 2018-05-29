@@ -286,10 +286,10 @@ nav.navcus1 a.labelcus:hover{
     padding: 5px;
 }
 
-#seek-bar, #volume-bar{
+/*#seek-bar, #volume-bar{
     color: #FF6632;
     background-color: #FF6632;
-}
+}*/
 
 
 /* Override BS4 Sheet */

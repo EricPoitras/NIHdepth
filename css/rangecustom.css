@@ -1,12 +1,9 @@
 /* Unstyle Range Inputs */
 input[type=range] {
   -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
-  width: 30%; /* Specific width is required for Firefox. */
+  appearance: none;
   background: transparent; /* Otherwise white in Chrome */
-}
-
-input[type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none;
+  outline: none;
 }
 
 input[type=range]:focus {
@@ -14,19 +11,30 @@ input[type=range]:focus {
 }
 
 input[type=range]::-ms-track {
-  width: 30%;
   cursor: pointer;
-
   /* Hides the slider so custom styles can be added */
   background: transparent; 
   border-color: transparent;
   color: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+#volume-bar{
+    width: 10%;
+    height: 5px !important;
+}
+
+#seek-bar{
+    width: 50%;
+    height: 5px !important;
 }
 
 /* Style Thumb */ 
 /* Special styling for WebKit/Blink */
 input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
+  appearance: none;
   border: 1px solid #FF6632;
   height: 18px;
   width: 8px;
@@ -35,10 +43,13 @@ input[type=range]::-webkit-slider-thumb {
   cursor: pointer;
   margin-top: -7px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /* Add cool effects to your sliders! */
+  cursor: pointer;
 }
 
 /* All the same stuff for Firefox */
 input[type=range]::-moz-range-thumb {
+  -webkit-appearance: none;
+  appearance: none;
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
   border: 1px solid #FF6632;
   height: 18px;
@@ -55,14 +66,15 @@ input[type=range]::-ms-thumb {
   height: 18px;
   width: 8px;
   border-radius: 5px;
-  background: #FF6632;
+  background-color: none;
   cursor: pointer;
+ -webkit-appearance: none;
+  appearance: none;
 }
 
 /* Styling the Track */
 
 input[type=range]::-webkit-slider-runnable-track {
-  width: 30%;
   height: 8.4px;
   cursor: pointer;
   /*box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;*/
@@ -76,7 +88,8 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 }
 
 input[type=range]::-moz-range-track {
-  width: 30%;
+  -webkit-appearance: none;
+  appearance: none;
   height: 8.4px;
   cursor: pointer;
   /*box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;*/
@@ -86,30 +99,26 @@ input[type=range]::-moz-range-track {
 }
 
 input[type=range]::-ms-track {
-  width: 30%;
-  height: 8.4px;
+  height: 8px;
   cursor: pointer;
-  background: transparent;
+  background-color: transparent !important;
   border-color: transparent;
-  border-width: 8px 0;
+  border-width: 2px 0;
   color: transparent;
+   -webkit-appearance: none;
+  appearance: none;
 }
+
 input[type=range]::-ms-fill-lower {
-  background: #2a6495;
-  border: 0.2px solid #010101;
-  border-radius: 2.6px;
-  /*box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;*/
+  background-color: #FF6632 !important;
 }
 input[type=range]:focus::-ms-fill-lower {
-  background: #FF6632;
+  background-color: #FF6632 !important;
 }
 input[type=range]::-ms-fill-upper {
-  background: #FF6632;
-  border: 0.2px solid #010101;
-  border-radius: 2.6px;
-  /*box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;*/
+  background-color: #FF6632 !important;
 }
 input[type=range]:focus::-ms-fill-upper {
-  background: #FF6632;
+  background-color: #FF6632 !important;
 }
 
