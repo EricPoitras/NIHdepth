@@ -371,8 +371,4 @@ a:link, a:visited, a:hover, a:active{
 .visiblecus{
     display: flex !important;
 }
-
-body{
-    overflow: hidden;
-}
     
