@@ -291,6 +291,63 @@ nav.navcus1 a.labelcus:hover{
     background-color: #FF6632;
 }*/
 
+/* Avatar Talk Turn */
+.contentarea{
+    overflow: auto;
+    margin-top: 58px;
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 0px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 0px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+.contentarea #discussion{
+    margin-bottom: 50px;
+    height: 80vh;
+}
+
+.contentarea #discussion .client{
+    margin-right: 10vw;
+}
+
+.contentarea #discussion .therapist{
+    margin-left: 10vw;
+}
+
+.contentarea #discussion .card{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.contentarea #discussion .userpic img{
+    height: 50px;
+    position: absolute;
+    left: -25px;
+    top: -25px;
+}
+
+.contentarea #discussion .comment{
+    position: relative;
+    padding: 25px;
+}
+
+.contentarea #discussion .comment p{
+    margin-left: 10px;
+}
+
+.contentarea #discussion .discussionend{
+    height: 100px;
+}
 
 /* Override BS4 Sheet */
 .form-control:focus{
@@ -315,5 +372,7 @@ a:link, a:visited, a:hover, a:active{
     display: flex !important;
 }
 
-
+body{
+    overflow: hidden;
+}
     

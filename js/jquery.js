@@ -87,7 +87,7 @@ $(document).ready(function(){
     $(".toolbarbutton").click(function(){
         $(".toolbararea").fadeToggle(1000);
     });
-    
+    /*
     //Video Control Events
     // Video
       var video = document.getElementById("video");
@@ -192,7 +192,7 @@ $(document).ready(function(){
         $("#responsearea").delay("slow").removeClass("invisiblecus");
         $("#responsearea").addClass("visiblecus");
     }
-    
+    */
     $("#responsesubmit").click(function(){
         if (document.getElementById('ResponseTextarea').value=="" || document.getElementById('ResponseTextarea').value==undefined){
             //alert ("Please Enter a File Name");
