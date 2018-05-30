@@ -13,7 +13,7 @@ $(document).ready(function(){
     
     
     // Modules page 
-    $("#vasercard").hover(function(){
+    $("#vasercard, #micard").hover(function(){
         $(this).css("background-color", "rgb(248, 248, 248)");
     },function(){
         $(this).css("background-color", "white");
@@ -21,6 +21,10 @@ $(document).ready(function(){
     
     $("#vasercard").click(function(){
         window.open("modules/vase-r.html","_blank"); 
+    });
+    
+    $("#micard").click(function(){
+        window.open("modules/mi.html","_blank"); 
     });
     
     // Sub-module page
