@@ -43,45 +43,32 @@
               <!-- Toolbar -->
               <div class="col-3 p-0 toolbararea">
                 <h5 class="p-3 toolbarhighlight">Instructions</h5>
-                <p class="p-3 text-justify">Identify whether the following questions are open or closed.</p>
+                <p class="p-3 text-justify">Make a tally of how many reflections or open questions you heard </p>
                 <div class="px-3">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                      <label class="form-check-label" for="exampleRadios1">
-                        Open Question
-                      </label>
-                    </div>
-                    <div class="form-check mt-1">
-                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                      <label class="form-check-label" for="exampleRadios2">
-                        Closed Question
-                      </label>
+                    <div class="form-group">
+                        <label for="FormControlTextarea1">Response</label>
+                        <textarea class="form-control" id="FormControlTextarea1" rows="4"> </textarea>
                     </div>
                     <a id="responsesubmit" role="button" href="#" class="btn buttoncus primarycolcus text-white mt-3">Submit</a> 
                 </div>
                 <div class="p-3" id="feedbackarea">
                     <div class="alert alert-success" role="alert">
-                      Your selection is correct. 
+                      You have correctly tallied the reflections or open questions. 
                     </div>
                     <div class="alert alert-danger" role="alert">
-                      Your selection is incorrect.
+                      You have incorrectly tallied the reflections or open questions.
                     </div>
                 </div>
               </div>
               
               <!-- Content -->
               <div class="col contentarea">
-                     <div class="d-flex h-100 justify-content-left">
+                     <div class="d-flex flex-column h-100 justify-content-center align-items-center">
                         
-                        <div id="discussion">
-                            <div class="card client">
-                                <div class="comment">
-                                    <div class="userpic"><img src="../../assets/avatar2.png"></div>
-                                    <p class="response"><em>Counselor: </em>Are you going to start taking your insulin?</p>
-                                </div>
-                            </div>
+                        <div id="video-container">
+                          <!-- Video -->
+                          <iframe width="560" height="315" src="https://www.youtube.com/embed/SZ-IH-V7oJ4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                         </div>
-                         
                     </div>
               </div>
           </div>          
@@ -93,10 +80,10 @@
                         <i class="fas fa-bars"></i>
                     </button>
                   
-                    <h5 class="toolbarlabel">Open or Close Questions</h5>
+                    <h5 class="toolbarlabel">Reflective Listening</h5>
                     <div class="justify-content-around d-flex">
-                        <a role="button" href="introoars.html" class="btn buttoncus primarycolcus text-white">Previous</a>
-                        <a role="button" href="openorclose2.html" class="btn buttoncus primarycolcus text-white">Next</a>
+                        <a role="button" href="createstem2.html" class="btn buttoncus primarycolcus text-white">Previous</a>
+                        <a role="button" href="../../modules/oars.html" class="btn buttoncus primarycolcus text-white">Next</a>
                     </div>
               </div>
           </div>
