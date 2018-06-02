@@ -13,7 +13,7 @@ $(document).ready(function(){
     
     
     // Modules page 
-    $("#vasercard, #micard").hover(function(){
+    $("#vasercard, #micard, #oarscard").hover(function(){
         $(this).css("background-color", "rgb(248, 248, 248)");
     },function(){
         $(this).css("background-color", "white");
@@ -25,6 +25,10 @@ $(document).ready(function(){
     
     $("#micard").click(function(){
         window.open("modules/mi.html","_blank"); 
+    });
+    
+    $("#oarscard").click(function(){
+        window.open("modules/oars.html","_blank"); 
     });
     
     // Sub-module page
