@@ -13,7 +13,7 @@ $(document).ready(function(){
     
     
     // Modules page 
-    $("#vasercard, #micard, #oarscard, #focusingcard").hover(function(){
+    $("#vasercard, #micard, #oarscard, #focusingcard, #evokingcard").hover(function(){
         $(this).css("background-color", "rgb(248, 248, 248)");
     },function(){
         $(this).css("background-color", "white");
@@ -33,6 +33,10 @@ $(document).ready(function(){
     
     $("#focusingcard").click(function(){
         window.open("modules/focusing.html","_blank"); 
+    });
+    
+    $("#evokingcard").click(function(){
+        window.open("modules/evoking.html","_blank"); 
     });
     
     // Sub-module page
