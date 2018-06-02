@@ -294,7 +294,7 @@ nav.navcus1 a.labelcus:hover{
 /* Avatar Talk Turn */
 .contentarea{
     overflow: auto;
-    margin-top: 58px;
+    /*margin-top: 58px;*/
 }
 
 ::-webkit-scrollbar {
