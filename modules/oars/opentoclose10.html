@@ -44,13 +44,7 @@
               <div class="col-3 p-0 toolbararea">
                 <h5 class="p-3 toolbarhighlight">Instructions</h5>
                 <p class="p-3 text-justify">Rewrite these closed questions into open questions.</p>
-                <div class="px-3">
-                    <div class="form-group">
-                        <label for="FormControlTextarea1">Response</label>
-                        <textarea class="form-control" id="FormControlTextarea1" rows="4"> </textarea>
-                    </div>
-                    <a id="responsesubmit" role="button" href="#" class="btn buttoncus primarycolcus text-white mt-3">Submit</a> 
-                </div>
+                <h5 class="p-3 toolbarhighlight">Feedback</h5>
                 <div class="p-3" id="feedbackarea">
                     <div class="alert alert-success" role="alert">
                       You have correctly re-phrased this as an open question. 
@@ -70,6 +64,21 @@
                                 <div class="comment">
                                     <div class="userpic"><img src="../../assets/avatar3.png"></div>
                                     <p class="response"><em>Counselor: </em>When are you going to stop?</p>
+                                </div>
+                            </div>
+                            <div id="responsedisplayarea" class="card therapist">
+                                <div class="comment">
+                                    <div class="userpic"><img src="../../assets/avatar6.png"></div>
+                                    <p class="responsecounsel"><em>Counselor: </em>Answer appears here.</p>
+                                </div>
+                            </div>
+                            <div id="responsewritearea" class="card therapist">
+                                <div class="comment">
+                                        <div class="form-group">
+                                            <label for="FormControlTextarea1">Response</label>
+                                            <textarea class="form-control" id="message" placeholder="Write text here..." rows="4">Write text here...</textarea>
+                                        </div>
+                                        <a id="responsesubmitb" role="button" href="#" class="btn buttoncus primarycolcus text-white mt-3">Submit</a> 
                                 </div>
                             </div>
                         </div>
@@ -104,6 +113,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     <!-- Script reference to your jquery code appears here -->
     <script src="../../js/jquery.js"></script>  
-    
+    <script src="../../js/feedbackresponse.js"></script>
   </body>
 </html>
