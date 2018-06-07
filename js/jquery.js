@@ -13,7 +13,7 @@ $(document).ready(function(){
     
     
     // Modules page 
-    $("#vasercard, #micard, #oarscard, #focusingcard, #evokingcard").hover(function(){
+    $("#vasercard, #micard, #oarscard, #focusingcard, #evokingcard, #changecard, #planningcard, #cliniccard, #fullmicard").hover(function(){
         $(this).css("background-color", "rgb(248, 248, 248)");
     },function(){
         $(this).css("background-color", "white");
@@ -37,6 +37,22 @@ $(document).ready(function(){
     
     $("#evokingcard").click(function(){
         window.open("modules/evoking.html","_blank"); 
+    });
+    
+     $("#changecard").click(function(){
+        window.open("modules/changetalk.html","_blank"); 
+    });
+    
+     $("#planningcard").click(function(){
+        window.open("modules/planning.html","_blank"); 
+    });
+    
+     $("#cliniccard").click(function(){
+        window.open("modules/clinic.html","_blank"); 
+    });
+    
+     $("#fullmicard").click(function(){
+        window.open("modules/mipractice.html","_blank"); 
     });
     
     // Sub-module page
