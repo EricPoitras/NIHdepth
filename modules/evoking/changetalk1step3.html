@@ -44,38 +44,8 @@
               <div class="col-3 p-0 toolbararea">
                 <h5 class="p-3 toolbarhighlight">Instructions</h5>
                 <p class="p-3 text-justify">Review the following client statement related to the behavior change goal of having a more stable mood. You try to identify which statements you think are change talk. Then, respond to the change statement using EARS/OARS.</p>
-                <div class="px-3">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                      <label class="form-check-label" for="exampleRadios1">
-                        Yes, the statement is change talk
-                      </label>
-                    </div>
-                    <div class="form-check mt-1">
-                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                      <label class="form-check-label" for="exampleRadios2">
-                        No, the statement is not change talk
-                      </label>
-                    </div>
-                    <div class="form-group mt-1">
-                        <label for="SelectChangeTalk">Identify the type of change talk</label>
-                        <select class="form-control" id="SelectChangeTalk">
-                          <option>Desire</option>
-                          <option>Ability</option>
-                          <option>Reasons</option>
-                          <option>Need</option>
-                          <option>Commitment</option>
-                          <option>Action</option>
-                          <option>Taking Steps</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group mt-1">
-                        <label for="FormControlTextarea1">Response</label>
-                        <textarea class="form-control" id="FormControlTextarea1" rows="4"> </textarea>
-                    </div>
-                    <a id="responsesubmit" role="button" href="#" class="btn buttoncus primarycolcus text-white mt-3">Submit</a> 
-                </div>
+                
+                  <h5 class="p-3 toolbarhighlight">Feedback</h5>
                 <div class="p-3" id="feedbackarea">
                     <div class="alert alert-success" role="alert">
                       Your selection is correct. 
@@ -95,6 +65,45 @@
                                 <div class="comment">
                                     <div class="userpic"><img src="../../assets/avatar3.png"></div>
                                     <p class="response"><em>Client: </em>I know my psychiatrist wants me to take an antidepressant.</p>
+                                </div>
+                            </div>
+                            <div id="responsedisplayarea" class="card therapist">
+                                <div class="comment">
+                                    <div class="userpic"><img src="../../assets/avatar2.png"></div>
+                                    <p class="responsecounsel"><em>Counselor: </em>Answer appears here.</p>
+                                </div>
+                            </div>
+                            <div id="responsewritearea" class="card therapist">
+                                <div class="comment">
+                                        <div class="form-check">
+                                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                      <label class="form-check-label" for="exampleRadios1">
+                                        Yes, the statement is change talk
+                                      </label>
+                                    </div>
+                                    <div class="form-check mt-1">
+                                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                                      <label class="form-check-label" for="exampleRadios2">
+                                        No, the statement is not change talk
+                                      </label>
+                                    </div>
+                                    <div class="form-group mt-1">
+                                        <label for="SelectChangeTalk">Identify the type of change talk</label>
+                                        <select class="form-control" id="SelectChangeTalk">
+                                          <option>Desire</option>
+                                          <option>Ability</option>
+                                          <option>Reasons</option>
+                                          <option>Need</option>
+                                          <option>Commitment</option>
+                                          <option>Action</option>
+                                          <option>Taking Steps</option>
+                                        </select>
+                                    </div>
+                                        <div class="form-group">
+                                            <label for="FormControlTextarea1">Response</label>
+                                            <textarea class="form-control" id="message" placeholder="Write text here..." rows="4">Write text here...</textarea>
+                                        </div>
+                                        <a id="responsesubmitb" role="button" href="#" class="btn buttoncus primarycolcus text-white mt-3">Submit</a> 
                                 </div>
                             </div>
                         </div>
@@ -129,6 +138,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     <!-- Script reference to your jquery code appears here -->
     <script src="../../js/jquery.js"></script>  
+      <script src="../../js/feedbackresponse.js"></script>
     
   </body>
 </html>
