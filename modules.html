@@ -30,7 +30,8 @@
                         <img src="assets/Logov2.png" width="30" height="30" class="d-inline-block align-top" alt="">
                         NIH DEPTH: MI Training
                         </a>
-                        <a href="modules.html" class="float-right pt-2 labelcus">Modules</a>
+                        <a href="modules.html" class="float-right pt-2 ml-3 labelcus">Modules</a>
+                        <a id="help" href="#" class="float-right pt-2 mr-3 labelcus">Help</a>
                     </div>
                   </nav>
               </div>  
@@ -117,6 +118,46 @@
           </div>
       </div>
       
+      <!-- Welcome Modal -->
+        <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="ModalLabel">Welcome to Training in Motivational Interviewing!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>You will progress through a web-based training beginning with a baseline assessment of your therapy skills. Once you have completed the assessment (the VASE-R) you can begin the training modules. The assessment should be completed independently and do not require video recording. The training modules should be completed in an office with recording equipment and a partner.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn buttoncus primarycolcus" data-dismiss="modal">I'M READY TO START</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+      <!-- Help Modal -->
+        <div class="modal fade" id="ModalHelp" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="ModalLabel">Help</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>If you are having technical difficulties, please contact Zac (zeimel@gmail.com) or Jake (jake.vanepps@utah.edu). If you have a clinical question or would like to learn more about a particular MI skill, contact Grin (grintherapy@gmail.com). They will respond within 24 hours. </p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn buttoncus primarycolcus" data-dismiss="modal">CLOSE</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <!--
@@ -127,6 +168,16 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     <!-- Script reference to your jquery code appears here -->
     <script src="js/jquery.js"></script>  
+      
+    <script>
+        $('#Modal').modal("show");
+        
+        $(document).ready(function(){
+           $("#help").click(function(){
+               $('#ModalHelp').modal("show");
+           }) 
+        });
+    </script>
     
   </body>
 </html>
