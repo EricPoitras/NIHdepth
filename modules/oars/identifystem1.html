@@ -43,15 +43,20 @@
               <!-- Toolbar -->
               <div class="col-3 p-0 toolbararea">
                 <h5 class="p-3 toolbarhighlight">Instructions</h5>
-                <p class="p-3 text-justify">Rewrite these closed questions into open questions.</p>
+                <p class="p-3 text-justify">The following question stems are the beginning of open and closed questions. Identify which stems lead to an open question and which lead to a closed question.</p>
                 <h5 class="p-3 toolbarhighlight">Feedback</h5>
                 <div class="p-3" id="feedbackarea">
                     <div class="alert alert-success" role="alert">
-                      You have correctly re-phrased this as an open question. 
+                      Your selection is correct. 
                     </div>
                     <div class="alert alert-danger" role="alert">
-                      You have incorrectly re-phased this as an open question.
+                      Your selection is incorrect.
                     </div>
+                </div>
+                <div class="p-3" id="hintarea">
+                    <div class="alert alert-warning" role="alert">
+                      Imagine that you complete the statement with a particular behavior or verb such as drinking or exercising. Do you exercise? Do you drink? 
+                    </div>  
                 </div>
               </div>
               
@@ -62,23 +67,28 @@
                         <div id="discussion">
                             <div class="card client">
                                 <div class="comment">
-                                    <div class="userpic"><img src="../../assets/avatar3.png"></div>
-                                    <p class="response"><em>Counselor: </em>When are you going to stop?</p>
-                                </div>
-                            </div>
-                            <div id="responsedisplayarea" class="card therapist">
-                                <div class="comment">
-                                    <div class="userpic"><img src="../../assets/avatar6.png"></div>
-                                    <p class="responsecounsel"><em>Response: </em>Answer appears here.</p>
+                                    <div class="userpic"><img src="../../assets/avatar2.png"></div>
+                                    <p class="response"><em>Counselor: </em>Do you?</p>
                                 </div>
                             </div>
                             <div id="responsewritearea" class="card therapist">
                                 <div class="comment">
                                         <div class="form-group">
-                                            <label for="FormControlTextarea1">Response</label>
-                                            <textarea class="form-control" id="message" placeholder="Write text here..." rows="4">Write text here...</textarea>
+                                            <div class="form-check">
+                                              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                              <label class="form-check-label" for="exampleRadios1">
+                                                Open Question
+                                              </label>
+                                            </div>
+                                            <div class="form-check mt-1">
+                                              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                                              <label class="form-check-label" for="exampleRadios2">
+                                                Closed Question
+                                              </label>
+                                            </div>
                                         </div>
-                                        <a id="responsesubmitb" role="button" href="#" class="btn buttoncus primarycolcus text-white mt-3">Submit</a> 
+                                        <a id="responsesubmitb" role="button" href="#" class="btn buttoncus primarycolcus text-white mt-3">Submit</a>
+                                        <a id="hintbutton" role="button" href="#" class="btn buttoncus primarycolcus text-white mt-3 ml-1">Hint</a> 
                                 </div>
                             </div>
                         </div>
@@ -94,10 +104,10 @@
                         <i class="fas fa-bars"></i>
                     </button>
                   
-                    <h5 class="toolbarlabel">Transform the Question</h5>
+                    <h5 class="toolbarlabel">Identify Question Stem</h5>
                     <div class="justify-content-around d-flex">
-                        <a role="button" href="opentoclose9.html" class="btn buttoncus primarycolcus text-white">Previous</a>
-                        <a role="button" href="identifystem1.html" class="btn buttoncus primarycolcus text-white">Next</a>
+                        <a role="button" href="opentoclose10.html" class="btn buttoncus primarycolcus text-white">Previous</a>
+                        <a role="button" href="identifystem2.html" class="btn buttoncus primarycolcus text-white">Next</a>
                     </div>
               </div>
           </div>
@@ -114,5 +124,7 @@
     <!-- Script reference to your jquery code appears here -->
     <script src="../../js/jquery.js"></script>  
     <script src="../../js/feedbackresponse.js"></script>
+    <script src="../../js/hints.js"></script>
+      
   </body>
 </html>
