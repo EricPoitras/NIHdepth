@@ -17,6 +17,7 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="../../../css/stylesheet.css">
     <link rel="stylesheet" href="../../../css/rangecustom.css">
+    <link rel="stylesheet" href="../../../css/countdowntimercustom.css">
 
     <title>NIH depth</title>
   </head>
@@ -57,12 +58,18 @@
                                 <div class="form-group">
                                     <textarea class="form-control" id="ResponseTextarea" rows="3" placeholder="Write your response to the client (e.g., How did that make you feel?)."></textarea>
                                 </div>
+                                <div id="countdown"> 
+                                    <div class="countdown-label">Time Remaining: <span id='time' class="color-full">45</span> sec</div>
+                                </div>
                             </form>
                             <div class="alert alert-success invisiblecus" role="alert">
                               Thank you for submitting your response, please proceed to the next step.
                             </div>
                             <div class="alert alert-danger invisiblecus" role="alert">
                               Please submit your response to the client.
+                            </div>
+                            <div class="alert alert-info invisiblecus" role="alert">
+                              The maximum time allowed to submit a response has elapsed, please proceed to the next step.
                             </div>
                             <a id="responsesubmit" role="button" href="#" class="btn buttoncus primarycolcus float-right text-white">Submit</a>  
                         </div>
@@ -98,6 +105,7 @@
     <!-- Script reference to your jquery code appears here -->
     <script src="../../../js/jquery.js"></script>
     <script src="../../../js/videocuscontrol.js"></script> <!-- Blocks user navigation away from page -->
-    
+    <script src="../../../js/countdowntimer.js"></script> <!-- Countdown timer -->
+
   </body>
 </html>
