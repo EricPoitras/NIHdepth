@@ -24,7 +24,7 @@ CodeUtterances = {
     codeClient:function(){
         var utterance = {};
         // Eric: Changed the selector to get content of utterance from HTML element
-        utterance.text = document.getElementById("message").value;
+        utterance.text = $("#ResponseTextarea, #message").val();
         console.log(utterance.text);
         utterance.speaker="client";
         this.codeUtterance(utterance);
@@ -32,7 +32,7 @@ CodeUtterances = {
     codeTherapist:function(){
         var utterance = {};
         // Eric: Changed the selector to get content of utterance from HTML element
-        utterance.text = document.getElementById("message").value;
+        utterance.text = $("#ResponseTextarea, #message").val();
         console.log(utterance.text);
         utterance.speaker="therapist";
         this.codeUtterance(utterance);
@@ -56,8 +56,8 @@ CodeUtterances = {
         //this.renderCatCharts("chart",allseries,"Probabilities");
         //this.renderCorrectionPossibilities(utterrnn);
         // Eric: Store best guesses of each model in session storage
-        console.log(utterrnn.bestguess);
-        console.log(utterdsf.bestguess);
+        sessionStorage.setItem("utterrnn",utterrnn.bestguess);
+        sessionStorage.setItem("utterdsf",utterdsf.bestguess);
     },
     renderCorrectionPossibilities:function(utterance){
         // Eric: This function is not called anymore

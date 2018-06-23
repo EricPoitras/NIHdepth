@@ -170,10 +170,17 @@ function GetItemTrueFalseButton(){
 
 // Request response from agent and return it to deliver feedback
 function AgentResponse(){
-    //dsf = utterdsf.bestguess;
-    //nn = utterrnn.bestguess;
-    //console.log(dsf);
-    //console.log(nn);
+    // Show animated icon for processing feedback
+  setTimeout(
+  function() 
+  {
+    // Get the data from the CodeUtterances.js script
+    dsf = sessionStorage.getItem("utterrnn");
+    nn = sessionStorage.getItem("utterdsf");
+    console.log("Data.js gets: " + dsf);
+    console.log("Data.js gets: " + nn);
+  }, 2000);
+  // Compare the output against answer key to toggle feedback display
 }
 
 $(document).ready(function(){
