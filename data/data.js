@@ -37,6 +37,10 @@ var oarsanswercorrect2 = [16];
 
 var baspro, pospro, mipro, oarspro;
 
+// API classification of utterances in MI skills
+
+var dsf, nn;
+
 // Add rest of variables once the content id updated - add event listeners
 // Add function to track user progress and variables
 // Add function to post and get data from database
@@ -165,8 +169,11 @@ function GetItemTrueFalseButton(){
 }
 
 // Request response from agent and return it to deliver feedback
-function AgentResponse(query){
-    
+function AgentResponse(){
+    //dsf = utterdsf.bestguess;
+    //nn = utterrnn.bestguess;
+    //console.log(dsf);
+    //console.log(nn);
 }
 
 $(document).ready(function(){
@@ -468,6 +475,9 @@ $(document).ready(function(){
     $(".oars11submit").click(function(){
         oars[10] = GetItemResponseTextArea();
         oarspro = UpdateProgressIndicator(oars);
+        // AI Feedback on Utterance (Test 6 22 2018)
+        CodeUtterances.codeTherapist();
+        AgentResponse();
     });
     
     $(".oars12submit").click(function(){
