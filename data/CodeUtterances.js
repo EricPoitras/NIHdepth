@@ -14,7 +14,7 @@ WebConstants = {
 // Eric: Modified the currServer and currFile by adding absolute url address
 CodeUtterances = {
     linechart:null,
-    currServer: "http://sri.utah.edu/psychtest/",
+    currServer: "https://sri.utah.edu/psychtest/",
     currFile: "modeltest.jsp",
     currentData:{},
 
@@ -100,7 +100,7 @@ CodeUtterances = {
         var request = $.ajax({
             type: "POST",
             url: thisurl, //Requesting simple.xml
-            dataType: "jsonp", //Make sure that you specify the type of file you expecting (XML) - changed the data type property to jsonp to avoid bug: https://stackoverflow.com/questions/20035101/why-does-my-javascript-get-a-no-access-control-allow-origin-header-is-present
+            dataType: "json",
             data: params,
             context: context
         });
