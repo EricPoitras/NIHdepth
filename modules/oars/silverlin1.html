@@ -46,6 +46,9 @@
                 <p class="p-3 text-justify">Find the good news! Identify the client's strength in each statement and turn it into an affirmation.</p>
                   <h5 class="p-3 toolbarhighlight">Feedback</h5>
                 <div class="p-3" id="feedbackarea">
+                    <div class="align-middle text-center">
+                        <i id="loading" class="fas fa-spinner fa-pulse"></i> 
+                    </div>
                     <div class="alert alert-success" role="alert">
                       You have re-phrased the statement into an affirmation. 
                     </div>
@@ -114,6 +117,7 @@
     <!-- Script reference to your jquery code appears here -->
     <script src="../../js/jquery.js"></script>  
     <script src="../../js/feedbackresponse.js"></script>
+    <script src="../../data/CodeUtterances.js"></script> <!-- API to assess utterances -->
     <script src="../../data/data.js"></script> <!-- Store text area response -->
     
   </body>
