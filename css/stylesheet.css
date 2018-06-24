@@ -278,7 +278,7 @@ nav.navcus1 a.labelcus:hover{
 
 /* Video Control */
 
-#play-pause, #mute, #full-screen{
+#play-pause, #mute, #full-screen, #loading{
     color: #FF6632;
     font-size: 2em;
     background-color: transparent;
@@ -371,4 +371,8 @@ a:link, a:visited, a:hover, a:active{
 .visiblecus{
     display: flex !important;
 }
-    
+
+/* UI Components hidden for the purposes of animating CSS display property */
+#hintarea, .alert-success, .alert-danger, #responsedisplayarea, #loading{
+    display: none;
+}
