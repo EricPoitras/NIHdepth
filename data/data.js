@@ -28,14 +28,30 @@ var oars = [47];
 // Answer key OARS - 1. Closed; 2. Closed; 3. went off - open (google search metformin - medicaton in the past); 4. Open; 5. Closed;  6. delete; 7. open; 8. closed; 9. open; 10. open; https://docs.google.com/document/d/1QIHY4s-6Yafmh-VW40WcFctEJp6qbpIm-hCtPQlohBg/edit
 
 var oarsanswerkey1 = ["closed","closed","open","closed","open","closed","open","closed","open","open"];
+// Open and Closed Questions; items are true and false
 var oarsanswercorrect1 = [9];
 
 var oarsanswerkey2 = ["closed","open","closed","open","closed","closed","closed","open","open","open","closed","closed","open","open","open","closed","closed"];
+// Open and Closed Questions; items are true and false
 var oarsanswercorrect2 = [16];
+
+// Open and Closed Questions; items are true and false / 2 open ended items, scored as true and false
+ var oarsanswercorrect3 = [11];
+
+// Relections; items are open ended, scored as true and false
+ var oarsanswercorrect4 = [1];
+
+// Affirmations; items are open ended, scored as true and false
+ var oarsanswercorrect5 = [6];
 
 // Progress Indicators for each module - percentage completion rate
 
 var baspro, pospro, mipro, oarspro;
+var perbaspro, perpospro, permipro, peroarspro;
+
+// Percentage score of correct responses per skill
+
+var peropenclose, perreflect, peraffirm;
 
 // API classification of utterances in MI skills
 
@@ -79,6 +95,46 @@ function UpdateProgressIndicator(array){
         }
     }
     return count;
+}
+
+// Update score of correct response array
+function UpdateProgressResponseCorrect(array){
+    var count = 0;
+    for (i = 0; i < array.length; i++){
+        if(array[i] === true){
+            count++;
+        }
+    }
+    return count;
+}
+
+// Update percentage of progress and response per skill
+function UpdateProgressMetrics(){
+    // Calculate percentage of module progress
+    perbaspro = baspro/20*100;
+    perpospro = pospro/20*100;
+    permipro = mipro/6*100;
+    peroarspro = oarspro/48*100;
+    
+    // Calculate percentage of skill acquisition based on correct items
+    var affirmcount = UpdateProgressResponseCorrect(oarsanswercorrect5);
+    peraffirm = affirmcount/8*100;
+    
+    var reflectcount = UpdateProgressResponseCorrect(oarsanswercorrect4);
+    perreflect = reflectcount/2*100;
+    
+    var openclosecount = UpdateProgressResponseCorrect(oarsanswercorrect1) + UpdateProgressResponseCorrect(oarsanswercorrect2) + UpdateProgressResponseCorrect(oarsanswercorrect3);
+    
+    peropenclose = openclosecount/39*100;
+    
+    // Update local storage of each progress indicator
+    localStorage.setItem("PercentageBaseline",perbaspro);
+    localStorage.setItem("PercentagePostTreatment",perpospro);
+    localStorage.setItem("PercentageMI",permipro);
+    localStorage.setItem("PercentageOARS",peroarspro);
+    localStorage.setItem("PercentageAffirm",peraffirm);
+    localStorage.setItem("PercentageReflect",perreflect);
+    localStorage.setItem("PercentageOpenClose",peropenclose);
 }
 
 // Correct answers submitted to each assessment item
@@ -201,6 +257,23 @@ function AgentResponse(answerkey, index){
     }, 2000);
 }
 
+function CorrectOpenAnswer(answerkey, index){
+    // Get the data from the CodeUtterances.js script
+    dsf = sessionStorage.getItem("utterrnn");
+    nn = sessionStorage.getItem("utterdsf");
+    
+    // Get answer key data and compare to user response
+    var correctresponse = answerkey[index];
+  
+    if(dsf === correctresponse || nn === correctresponse){
+        // If answer is correct, then score as true
+        return true;
+    }else{
+        // If answer is incorrect, then score as false
+        return false;
+    }
+}
+
 function AgentFeedback(correct, index){    
     // Get answer key data and compare to user response
     var scoredresponse = correct[index];
@@ -231,36 +304,43 @@ $(document).ready(function(){
     $(".bas0submit").click(function(){
         bas[0] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
+        UpdateProgressMetrics();
     });
     
     $(".bas1submit").click(function(){
         bas[1] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
+        UpdateProgressMetrics();
     });
     
     $(".bas2submit").click(function(){
         bas[2] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
+        UpdateProgressMetrics();
     });
     
     $(".bas3submit").click(function(){
         bas[3] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
+        UpdateProgressMetrics();
     });
     
     $(".bas4submit").click(function(){
         bas[4] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
+        UpdateProgressMetrics();
     });
     
     $(".bas5submit").click(function(){
         bas[5] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
+        UpdateProgressMetrics();
     });
     
     $(".bas6submit").click(function(){
         bas[6] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
+        UpdateProgressMetrics();
     });
     
     $(".bas7submit").click(function(){
@@ -268,31 +348,37 @@ $(document).ready(function(){
         basjustification[0] = GetItemResponseTextArea();
         basanswercorrect1[0] = CorrectAnswer(bas, basanswerkey1, 7, 0);
         baspro = UpdateProgressIndicator(bas);
+        UpdateProgressMetrics();
     });
     
     $(".bas8submit").click(function(){
         bas[8] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
+        UpdateProgressMetrics();
     });
     
     $(".bas9submit").click(function(){
         bas[9] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
+        UpdateProgressMetrics();
     });
     
     $(".bas10submit").click(function(){
         bas[10] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
+        UpdateProgressMetrics();
     });
     
     $(".bas11submit").click(function(){
         bas[11] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
+        UpdateProgressMetrics();
     });
     
     $(".bas12submit").click(function(){
         bas[12] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
+        UpdateProgressMetrics();
     });
     
     $(".bas13submit").click(function(){
@@ -300,31 +386,37 @@ $(document).ready(function(){
         basjustification[1] = GetItemResponseTextArea();
         basanswercorrect1[1] = CorrectAnswer(bas, basanswerkey1, 13, 1);
         baspro = UpdateProgressIndicator(bas);
+        UpdateProgressMetrics();
     });
     
     $(".bas14submit").click(function(){
         bas[14] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
+        UpdateProgressMetrics();
     });
     
     $(".bas15submit").click(function(){
         bas[15] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
+        UpdateProgressMetrics();
     });
     
     $(".bas16submit").click(function(){
         bas[16] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
+        UpdateProgressMetrics();
     });
     
     $(".bas17submit").click(function(){
         bas[17] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
+        UpdateProgressMetrics();
     });
     
     $(".bas18submit").click(function(){
         bas[18] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
+        UpdateProgressMetrics();
     });
     
     $(".bas19submit").click(function(){
@@ -332,41 +424,49 @@ $(document).ready(function(){
         basjustification[2] = GetItemResponseTextArea();
         basanswercorrect1[2] = CorrectAnswer(bas, basanswerkey1, 19, 2);
         baspro = UpdateProgressIndicator(bas);
+        UpdateProgressMetrics();
     });
     
     $(".pos0submit").click(function(){
         pos[0] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
+        UpdateProgressMetrics();
     });
     
     $(".pos1submit").click(function(){
         pos[1] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
+        UpdateProgressMetrics();
     });
     
     $(".pos2submit").click(function(){
         pos[2] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
+        UpdateProgressMetrics();
     });
     
     $(".pos3submit").click(function(){
         pos[3] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
+        UpdateProgressMetrics();
     });
     
     $(".pos4submit").click(function(){
         pos[4] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
+        UpdateProgressMetrics();
     });
     
     $(".pos5submit").click(function(){
         pos[5] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
+        UpdateProgressMetrics();
     });
     
     $(".pos6submit").click(function(){
         pos[6] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
+        UpdateProgressMetrics();
     });
     
     $(".pos7submit").click(function(){
@@ -374,31 +474,37 @@ $(document).ready(function(){
         posjustification[0] = GetItemResponseTextArea();
         posanswercorrect1[0] = CorrectAnswer(pos, posanswerkey1, 7, 0);
         pospro = UpdateProgressIndicator(pos);
+        UpdateProgressMetrics();
     });
     
     $(".pos8submit").click(function(){
         pos[8] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
+        UpdateProgressMetrics();
     });
     
     $(".pos9submit").click(function(){
         pos[9] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
+        UpdateProgressMetrics();
     });
     
     $(".pos10submit").click(function(){
         pos[10] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
+        UpdateProgressMetrics();
     });
     
     $(".pos11submit").click(function(){
         pos[11] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
+        UpdateProgressMetrics();
     });
     
     $(".pos12submit").click(function(){
         pos[12] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
+        UpdateProgressMetrics();
     });
     
     $(".pos13submit").click(function(){
@@ -406,31 +512,37 @@ $(document).ready(function(){
         posjustification[1] = GetItemResponseTextArea();
         posanswercorrect1[1] = CorrectAnswer(pos, posanswerkey1, 13, 1);
         pospro = UpdateProgressIndicator(pos);
+        UpdateProgressMetrics();
     });
     
     $(".pos14submit").click(function(){
         pos[14] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
+        UpdateProgressMetrics();
     });
     
     $(".pos15submit").click(function(){
         pos[15] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
+        UpdateProgressMetrics();
     });
     
     $(".pos16submit").click(function(){
         pos[16] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
+        UpdateProgressMetrics();
     });
     
     $(".pos17submit").click(function(){
         pos[17] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
+        UpdateProgressMetrics();
     });
     
     $(".pos18submit").click(function(){
         pos[18] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
+        UpdateProgressMetrics();
     });
     
     $(".pos19submit").click(function(){
@@ -438,16 +550,19 @@ $(document).ready(function(){
         posjustification[2] = GetItemResponseTextArea();
         posanswercorrect1[2] = CorrectAnswer(pos, posanswerkey1, 19, 2);
         pospro = UpdateProgressIndicator(pos);
+        UpdateProgressMetrics();
     });
     
     $(".mi1submit").click(function(){
         [mi[0], mi[1], mi[2]] = GetItemResponseMultiTextArea();
         mipro = UpdateProgressIndicator(mi);
+        UpdateProgressMetrics();
     });
     
     $(".mi2submit").click(function(){
         [mi[3], mi[4], mi[5]] = GetItemResponseMultiTextArea();
         mipro = UpdateProgressIndicator(mi);
+        UpdateProgressMetrics();
     });
     
     $(".oars1submit").click(function(){
@@ -455,6 +570,7 @@ $(document).ready(function(){
         oarsanswercorrect1[0] = CorrectAnswer(oars, oarsanswerkey1, 0, 0);
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect1,0);
+        UpdateProgressMetrics();
     });
     
     $(".oars2submit").click(function(){
@@ -462,6 +578,7 @@ $(document).ready(function(){
         oarsanswercorrect1[1] = CorrectAnswer(oars, oarsanswerkey1, 1, 1);
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect1,1);
+        UpdateProgressMetrics();
     });
     
     $(".oars3submit").click(function(){
@@ -469,6 +586,7 @@ $(document).ready(function(){
         oarsanswercorrect1[2] = CorrectAnswer(oars, oarsanswerkey1, 2, 2);
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect1,2);
+        UpdateProgressMetrics();
     });
     
     $(".oars4submit").click(function(){
@@ -476,6 +594,7 @@ $(document).ready(function(){
         oarsanswercorrect1[3] = CorrectAnswer(oars, oarsanswerkey1, 3, 3);
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect1,3);
+        UpdateProgressMetrics();
     });
     
     $(".oars5submit").click(function(){
@@ -483,6 +602,7 @@ $(document).ready(function(){
         oarsanswercorrect1[4] = CorrectAnswer(oars, oarsanswerkey1, 4, 4);
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect1,4);
+        UpdateProgressMetrics();
     });
     
     $(".oars6submit").click(function(){
@@ -490,6 +610,7 @@ $(document).ready(function(){
         oarsanswercorrect1[5] = CorrectAnswer(oars, oarsanswerkey1, 5, 5);
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect1,5);
+        UpdateProgressMetrics();
     });
     
     $(".oars7submit").click(function(){
@@ -497,6 +618,7 @@ $(document).ready(function(){
         oarsanswercorrect1[6] = CorrectAnswer(oars, oarsanswerkey1, 6, 6);
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect1,6);
+        UpdateProgressMetrics();
     });
     
     $(".oars8submit").click(function(){
@@ -504,6 +626,7 @@ $(document).ready(function(){
         oarsanswercorrect1[7] = CorrectAnswer(oars, oarsanswerkey1, 7, 7);
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect1,7);
+        UpdateProgressMetrics();
     });
     
     $(".oars9submit").click(function(){
@@ -511,6 +634,7 @@ $(document).ready(function(){
         oarsanswercorrect1[8] = CorrectAnswer(oars, oarsanswerkey1, 8, 8);
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect1,8);
+        UpdateProgressMetrics();
     });
     
     $(".oars10submit").click(function(){
@@ -518,6 +642,7 @@ $(document).ready(function(){
         oarsanswercorrect1[9] = CorrectAnswer(oars, oarsanswerkey1, 9, 9);
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect1,9);
+        UpdateProgressMetrics();
     });
     
     $(".oars11submit").click(function(){
@@ -525,6 +650,8 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 13);
+        oarsanswercorrect3[0] = CorrectOpenAnswer(agentanswerkey, 13);
+        UpdateProgressMetrics();
     });
     
     $(".oars12submit").click(function(){
@@ -532,6 +659,8 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 13);
+        oarsanswercorrect3[1] = CorrectOpenAnswer(agentanswerkey, 13);
+        UpdateProgressMetrics();
     });
     
     $(".oars13submit").click(function(){
@@ -539,6 +668,8 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 13);
+        oarsanswercorrect3[2] = CorrectOpenAnswer(agentanswerkey, 13);
+        UpdateProgressMetrics();
     });
     
     $(".oars14submit").click(function(){
@@ -546,6 +677,8 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 13);
+        oarsanswercorrect3[3] = CorrectOpenAnswer(agentanswerkey, 13);
+        UpdateProgressMetrics();
     });
     
     $(".oars15submit").click(function(){
@@ -553,6 +686,8 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 13);
+        oarsanswercorrect3[4] = CorrectOpenAnswer(agentanswerkey, 13);
+        UpdateProgressMetrics();
     });
     
     $(".oars16submit").click(function(){
@@ -560,6 +695,8 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 13);
+        oarsanswercorrect3[5] = CorrectOpenAnswer(agentanswerkey, 13);
+        UpdateProgressMetrics();
     });
     
     $(".oars17submit").click(function(){
@@ -567,6 +704,8 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 13);
+        oarsanswercorrect3[6] = CorrectOpenAnswer(agentanswerkey, 13);
+        UpdateProgressMetrics();
     });
     
     $(".oars18submit").click(function(){
@@ -574,6 +713,8 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 13);
+        oarsanswercorrect3[7] = CorrectOpenAnswer(agentanswerkey, 13);
+        UpdateProgressMetrics();
     });
     
     $(".oars19submit").click(function(){
@@ -581,6 +722,8 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 13);
+        oarsanswercorrect3[8] = CorrectOpenAnswer(agentanswerkey, 13);
+        UpdateProgressMetrics();
     });
     
     $(".oars20submit").click(function(){
@@ -588,6 +731,8 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 13);
+        oarsanswercorrect3[9] = CorrectOpenAnswer(agentanswerkey, 13);
+        UpdateProgressMetrics();
     });
     
     $(".oars21submit").click(function(){
@@ -595,6 +740,7 @@ $(document).ready(function(){
         oarsanswercorrect2[0] = CorrectAnswer(oars, oarsanswerkey2, 20, 0);
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect2,0);
+        UpdateProgressMetrics();
     });
     
     $(".oars22submit").click(function(){
@@ -602,6 +748,7 @@ $(document).ready(function(){
         oarsanswercorrect2[1] = CorrectAnswer(oars, oarsanswerkey2, 21, 1);
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect2,1);
+        UpdateProgressMetrics();
     });
     
     $(".oars23submit").click(function(){
@@ -609,6 +756,7 @@ $(document).ready(function(){
         oarsanswercorrect2[2] = CorrectAnswer(oars, oarsanswerkey2, 22, 2);
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect2,2);
+        UpdateProgressMetrics();
     });
     
     $(".oars24submit").click(function(){
@@ -616,6 +764,7 @@ $(document).ready(function(){
         oarsanswercorrect2[3] = CorrectAnswer(oars, oarsanswerkey2, 23, 3);
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect2,3);
+        UpdateProgressMetrics();
     });
     
     $(".oars25submit").click(function(){
@@ -623,6 +772,7 @@ $(document).ready(function(){
         oarsanswercorrect2[4] = CorrectAnswer(oars, oarsanswerkey2, 24, 4);
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect2,4);
+        UpdateProgressMetrics();
     });
     
     $(".oars26submit").click(function(){
@@ -630,6 +780,7 @@ $(document).ready(function(){
         oarsanswercorrect2[5] = CorrectAnswer(oars, oarsanswerkey2, 25, 5);
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect2,5);
+        UpdateProgressMetrics();
     });
     
     $(".oars27submit").click(function(){
@@ -637,6 +788,7 @@ $(document).ready(function(){
         oarsanswercorrect2[6] = CorrectAnswer(oars, oarsanswerkey2, 26, 6);
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect2,6);
+        UpdateProgressMetrics();
     });
     
     $(".oars28submit").click(function(){
@@ -644,6 +796,7 @@ $(document).ready(function(){
         oarsanswercorrect2[7] = CorrectAnswer(oars, oarsanswerkey2, 27, 7);
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect2,7);
+        UpdateProgressMetrics();
     });
     
     $(".oars29submit").click(function(){
@@ -651,6 +804,7 @@ $(document).ready(function(){
         oarsanswercorrect2[8] = CorrectAnswer(oars, oarsanswerkey2, 28, 8);
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect2,8);
+        UpdateProgressMetrics();
     });
     
     $(".oars30submit").click(function(){
@@ -658,6 +812,7 @@ $(document).ready(function(){
         oarsanswercorrect2[9] = CorrectAnswer(oars, oarsanswerkey2, 29, 9);
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect2,9);
+        UpdateProgressMetrics();
     });
     
     $(".oars31submit").click(function(){
@@ -665,6 +820,7 @@ $(document).ready(function(){
         oarsanswercorrect2[10] = CorrectAnswer(oars, oarsanswerkey2, 30, 10);
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect2,10);
+        UpdateProgressMetrics();
     });
     
     $(".oars32submit").click(function(){
@@ -672,6 +828,7 @@ $(document).ready(function(){
         oarsanswercorrect2[11] = CorrectAnswer(oars, oarsanswerkey2, 31, 11);
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect2,11);
+        UpdateProgressMetrics();
     });
     
     $(".oars33submit").click(function(){
@@ -679,6 +836,7 @@ $(document).ready(function(){
         oarsanswercorrect2[12] = CorrectAnswer(oars, oarsanswerkey2, 32, 12);
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect2,12);
+        UpdateProgressMetrics();
     });
     
     $(".oars34submit").click(function(){
@@ -686,6 +844,7 @@ $(document).ready(function(){
         oarsanswercorrect2[13] = CorrectAnswer(oars, oarsanswerkey2, 33, 13);
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect2,13);
+        UpdateProgressMetrics();
     });
     
     $(".oars35submit").click(function(){
@@ -693,6 +852,7 @@ $(document).ready(function(){
         oarsanswercorrect2[14] = CorrectAnswer(oars, oarsanswerkey2, 34, 14);
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect2,14);
+        UpdateProgressMetrics();
     });
     
     $(".oars36submit").click(function(){
@@ -700,6 +860,7 @@ $(document).ready(function(){
         oarsanswercorrect2[15] = CorrectAnswer(oars, oarsanswerkey2, 35, 15);
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect2,15);
+        UpdateProgressMetrics();
     });
     
     $(".oars37submit").click(function(){
@@ -707,6 +868,7 @@ $(document).ready(function(){
         oarsanswercorrect2[16] = CorrectAnswer(oars, oarsanswerkey2, 36, 16);
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect2,16);
+        UpdateProgressMetrics();
     });
     
     $(".oars38submit").click(function(){
@@ -714,6 +876,8 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 13);
+        oarsanswercorrect3[10] = CorrectOpenAnswer(agentanswerkey, 13);
+        UpdateProgressMetrics();
     });
     
     $(".oars39submit").click(function(){
@@ -721,6 +885,8 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 13);
+        oarsanswercorrect3[11] = CorrectOpenAnswer(agentanswerkey, 13);
+        UpdateProgressMetrics();
     });
     
     $(".oars40submit").click(function(){
@@ -728,6 +894,8 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 3);
+        oarsanswercorrect4[0] = CorrectOpenAnswer(agentanswerkey, 3);
+        UpdateProgressMetrics();
     });
     
     $(".oars41submit").click(function(){
@@ -735,6 +903,8 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 3);
+        oarsanswercorrect4[1] = CorrectOpenAnswer(agentanswerkey, 3);
+        UpdateProgressMetrics();
     });
     
     $(".oars42submit").click(function(){
@@ -742,6 +912,8 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 11);
+        oarsanswercorrect5[0] = CorrectOpenAnswer(agentanswerkey, 11);
+        UpdateProgressMetrics();
     });
     
     $(".oars43submit").click(function(){
@@ -749,6 +921,8 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 11);
+        oarsanswercorrect5[1] = CorrectOpenAnswer(agentanswerkey, 11);
+        UpdateProgressMetrics();
     });
     
     $(".oars44submit").click(function(){
@@ -756,6 +930,8 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 11);
+        oarsanswercorrect5[2] = CorrectOpenAnswer(agentanswerkey, 11);
+        UpdateProgressMetrics();
     });
     
     $(".oars45submit").click(function(){
@@ -763,6 +939,8 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 11);
+        oarsanswercorrect5[3] = CorrectOpenAnswer(agentanswerkey, 11);
+        UpdateProgressMetrics();
     });
     
     $(".oars46submit").click(function(){
@@ -770,6 +948,8 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 11);
+        oarsanswercorrect5[4] = CorrectOpenAnswer(agentanswerkey, 11);
+        UpdateProgressMetrics();
     });
     
     $(".oars47submit").click(function(){
@@ -777,6 +957,8 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 11);
+        oarsanswercorrect5[5] = CorrectOpenAnswer(agentanswerkey, 11);
+        UpdateProgressMetrics();
     });
     
     $(".oars48submit").click(function(){
@@ -784,5 +966,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 11);
+        oarsanswercorrect5[6] = CorrectOpenAnswer(agentanswerkey, 11);
+        UpdateProgressMetrics();
     });
 });
