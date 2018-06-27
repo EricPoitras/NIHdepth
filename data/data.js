@@ -6,14 +6,14 @@ var username, password;
 // Baseline VASE-R scores: 'bas' for Baseline followed by number identifier: var bas1, bas2, bas3, bas4, bas5, bas6, bas7, bas8, bas9, bas10, bas11, bas12, bas13, bas14, bas15, bas16, bas17, bas18, bas19, bas20;
 
 var bas = [19];
-var basanswerkey1 = ["3","4","1"];
+var basanswerkey1 = ["3","4","2"];
 var basanswercorrect1 = [2];
 var basjustification = ["","",""];
 
 // Post-Treatment VASE-R scores: 'pos' for Post-Treatment followed by number identifier: var pos1, pos2, pos3, pos4, pos5, pos6, pos7, pos8, pos9, pos10, pos11, pos12, pos13, pos14, pos15, pos16, pos17, pos18, pos19, pos20;
 
 var pos = [19];
-var posanswerkey1 = ["3","4","1"];
+var posanswerkey1 = ["3","4","2"];
 var posanswercorrect1 = [2];
 var posjustification = ["","",""];
 
