@@ -33,7 +33,8 @@
                         NIH DEPTH: MI Training
                         </a>
                         <a href="../../vase-r.html" class="invisible pt-2 labelcus">&#60; Video Assessment of Simulated Encounters</a>
-                        <a href="../../../modules.html" class="pt-2 labelcus">Modules</a>
+                        <a href="../../../modules.html" class="invisible pt-2 labelcus">Modules</a>
+                        <a id="help" href="#" class="pt-2 labelcus">HELP</a>
                     </div>
                   </nav>
               </div>  
@@ -123,6 +124,30 @@
           </div>
       </div> <!-- End of Navbar --> 
       
+      <!-- Help Modal -->
+        <div class="modal fade" id="ModalHelp" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="ModalLabel">Help</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <ul>
+                    <li>Generate or identify individual responses you believe would be most helpful to the client, given what is known about him/her.</li> 
+                    <li>Responses should reflect something you might actually say to a client in their practice situation (written from 1st-person perspective).</li>
+                    <li>If the clients portrayed do not match the types of clients you typically see, still attempt to apply the principles you recognize as being helpful in creating behavior change.</li>
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn buttoncus primarycolcus" data-dismiss="modal">CLOSE</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <!--
@@ -136,5 +161,15 @@
     <!--<script src="../../../js/videocuscontrol.js"></script>  Blocks user navigation away from page -->
     <script src="../../../js/countdowntimer2.js"></script> <!-- Countdown timer -->
     <script src="../../../data/data.js"></script> <!-- Update data for learning assessment items -->
+      
+  
+       <script>
+        
+        $(document).ready(function(){
+           $("#help").click(function(){
+               $('#ModalHelp').modal("show");
+           }) 
+        });
+    </script>
   </body>
 </html>
