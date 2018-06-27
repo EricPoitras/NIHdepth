@@ -1,6 +1,6 @@
 $(document).ready(function(){
     console.log("Progress bar ready!");
-    var baselineper;
+    /*var baselineper;
     var posttreatper;
     if (localStorage.getItem("PercentageBaseline") === null || localStorage.getItem("PercentageBaseline") === "NaN") {
         baselineper = 0;    
@@ -15,7 +15,7 @@ $(document).ready(function(){
     var percentagevaser = (baselineper + posttreatper)/200;
     $("#vasercard .progress-bar").text(percentagevaser+"%");
     $("#vasercard .progress-bar").css({"width":percentagevaser+"%"});
-    $("#vasercard .progress-bar").attr("aria-valuenow",percentagevaser);
+    $("#vasercard .progress-bar").attr("aria-valuenow",percentagevaser);*/
     
     if (localStorage.getItem("PercentageMI") === null || localStorage.getItem("PercentageMI") === "NaN") {
         $("#micard .progress-bar").text("0%");
