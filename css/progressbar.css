@@ -3,9 +3,17 @@
     height: 20px;
     margin-left: 10px;
     margin-right: 10px;
+    position: absolute;
+    bottom: 10px;
+    width: 90%;
 }
 
 .progress-bar{
     background-color: #8166F9; 
     width: 0%;
 }
+
+.card{
+    position: relative;
+}
+
