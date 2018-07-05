@@ -17,6 +17,20 @@ var posanswerkey1 = ["3","4","2"];
 var posanswercorrect1 = [2];
 var posjustification = ["","",""];
 
+// Post-Treatment VASE-R scores: 'pos' for Post-Treatment followed by number identifier: var pos1, pos2, pos3, pos4, pos5, pos6, pos7, pos8, pos9, pos10, pos11, pos12, pos13, pos14, pos15, pos16, pos17, pos18, pos19, pos20;
+
+var fol1 = [19];
+var fol1answerkey1 = ["3","4","2"];
+var fol1answercorrect1 = [2];
+var fol1justification = ["","",""];
+
+// Post-Treatment VASE-R scores: 'pos' for Post-Treatment followed by number identifier: var pos1, pos2, pos3, pos4, pos5, pos6, pos7, pos8, pos9, pos10, pos11, pos12, pos13, pos14, pos15, pos16, pos17, pos18, pos19, pos20;
+
+var fol2 = [19];
+var fol2answerkey1 = ["3","4","2"];
+var fol2answercorrect1 = [2];
+var fol2justification = ["","",""];
+
 // Definition and Spirit of MI: var miconv1, miconv2, miconv3, miconv4, miconv5, miconv6;
 
 var mi = [5];
@@ -46,8 +60,8 @@ var oarsanswercorrect2 = [16];
 
 // Progress Indicators for each module - percentage completion rate
 
-var baspro, pospro, mipro, oarspro;
-var perbaspro, perpospro, permipro, peroarspro;
+var baspro, pospro, fol1pro, fol2pro, mipro, oarspro;
+var perbaspro, perpospro, perfol1pro, perfol2pro, permipro, peroarspro;
 
 // Percentage score of correct responses per skill
 
@@ -113,6 +127,8 @@ function UpdateProgressMetrics(){
     // Calculate percentage of module progress
     perbaspro = baspro/20*100;
     perpospro = pospro/20*100;
+    perfol1pro = fol1pro/20*100;
+    perfol2pro = fol2pro/20*100;
     permipro = mipro/6*100;
     peroarspro = oarspro/48*100;
     
@@ -130,6 +146,8 @@ function UpdateProgressMetrics(){
     // Update local storage of each progress indicator
     localStorage.setItem("PercentageBaseline",perbaspro);
     localStorage.setItem("PercentagePostTreatment",perpospro);
+    localStorage.setItem("PercentageFollowUp1",perfol1pro);
+    localStorage.setItem("PercentageFollowUp2",perfol2pro);
     localStorage.setItem("PercentageMI",permipro);
     localStorage.setItem("PercentageOARS",peroarspro);
     localStorage.setItem("PercentageAffirm",peraffirm);
@@ -246,7 +264,7 @@ function AgentResponse(answerkey, index){
     // Get answer key data and compare to user response
     var correctresponse = answerkey[index];
   
-    if(dsf === correctresponse || nn === correctresponse){
+    if(dsf === correctresponse){
         // If answer is correct, then show positive feedback
         $(".alert-success").fadeIn("fast");
     }else{
@@ -265,7 +283,7 @@ function CorrectOpenAnswer(answerkey, index){
     // Get answer key data and compare to user response
     var correctresponse = answerkey[index];
   
-    if(dsf === correctresponse || nn === correctresponse){
+    if(dsf === correctresponse){
         // If answer is correct, then score as true
         return true;
     }else{
@@ -301,6 +319,8 @@ $(document).ready(function(){
     });
     
     // Event listeners assessment item submission
+    
+    // Baseline VASE-R
     $(".bas0submit").click(function(){
         bas[0] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
@@ -427,6 +447,8 @@ $(document).ready(function(){
         UpdateProgressMetrics();
     });
     
+    // Post-Treatment VASE-R
+    
     $(".pos0submit").click(function(){
         pos[0] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
@@ -550,6 +572,262 @@ $(document).ready(function(){
         posjustification[2] = GetItemResponseTextArea();
         posanswercorrect1[2] = CorrectAnswer(pos, posanswerkey1, 19, 2);
         pospro = UpdateProgressIndicator(pos);
+        UpdateProgressMetrics();
+    });
+    
+    // Follow-Up 1 VASE-R
+    
+    $(".fol10submit").click(function(){
+        fol1[0] = GetItemResponseTextArea();
+        fol1pro = UpdateProgressIndicator(fol1);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol11submit").click(function(){
+        fol1[1] = GetItemResponseTextArea();
+        fol1pro = UpdateProgressIndicator(fol1);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol12submit").click(function(){
+        fol1[2] = GetItemResponseTextArea();
+        fol1pro = UpdateProgressIndicator(fol1);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol13submit").click(function(){
+        fol1[3] = GetItemResponseTextArea();
+        fol1pro = UpdateProgressIndicator(fol1);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol14submit").click(function(){
+        fol1[4] = GetItemResponseTextArea();
+        fol1pro = UpdateProgressIndicator(fol1);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol15submit").click(function(){
+        fol1[5] = GetItemResponseTextArea();
+        fol1pro = UpdateProgressIndicator(fol1);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol16submit").click(function(){
+        fol1[6] = GetItemResponseTextArea();
+        fol1pro = UpdateProgressIndicator(fol1);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol17submit").click(function(){
+        fol1[7] = GetItemRadioButton();
+        fol1justification[0] = GetItemResponseTextArea();
+        fol1answercorrect1[0] = CorrectAnswer(fol1, fol1answerkey1, 7, 0);
+        fol1pro = UpdateProgressIndicator(fol1);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol18submit").click(function(){
+        fol1[8] = GetItemResponseTextArea();
+        fol1pro = UpdateProgressIndicator(fol1);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol19submit").click(function(){
+        fol1[9] = GetItemResponseTextArea();
+        fol1pro = UpdateProgressIndicator(fol1);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol110submit").click(function(){
+        fol1[10] = GetItemResponseTextArea();
+        fol1pro = UpdateProgressIndicator(fol1);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol111submit").click(function(){
+        fol1[11] = GetItemResponseTextArea();
+        fol1pro = UpdateProgressIndicator(fol1);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol112submit").click(function(){
+        fol1[12] = GetItemResponseTextArea();
+        fol1pro = UpdateProgressIndicator(fol1);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol113submit").click(function(){
+        fol1[13] = GetItemRadioButton();
+        fol1justification[1] = GetItemResponseTextArea();
+        fol1answercorrect1[1] = CorrectAnswer(fol1, fol1answerkey1, 13, 1);
+        fol1pro = UpdateProgressIndicator(fol1);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol114submit").click(function(){
+        fol1[14] = GetItemResponseTextArea();
+        fol1pro = UpdateProgressIndicator(fol1);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol115submit").click(function(){
+        fol1[15] = GetItemResponseTextArea();
+        fol1pro = UpdateProgressIndicator(fol1);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol116submit").click(function(){
+        fol1[16] = GetItemResponseTextArea();
+        fol1pro = UpdateProgressIndicator(fol1);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol117submit").click(function(){
+        fol1[17] = GetItemResponseTextArea();
+        fol1pro = UpdateProgressIndicator(fol1);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol118submit").click(function(){
+        fol1[18] = GetItemResponseTextArea();
+        fol1pro = UpdateProgressIndicator(fol1);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol119submit").click(function(){
+        fol1[19] = GetItemRadioButton();
+        fol1justification[2] = GetItemResponseTextArea();
+        fol1answercorrect1[2] = CorrectAnswer(fol1, fol1answerkey1, 19, 2);
+        fol1pro = UpdateProgressIndicator(fol1);
+        UpdateProgressMetrics();
+    });
+    
+    // Follow-Up 2 VASE-R
+    
+    $(".fol20submit").click(function(){
+        fol2[0] = GetItemResponseTextArea();
+        fol2pro = UpdateProgressIndicator(fol2);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol21submit").click(function(){
+        fol2[1] = GetItemResponseTextArea();
+        fol2pro = UpdateProgressIndicator(fol2);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol22submit").click(function(){
+        fol2[2] = GetItemResponseTextArea();
+        fol2pro = UpdateProgressIndicator(fol2);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol23submit").click(function(){
+        fol2[3] = GetItemResponseTextArea();
+        fol2pro = UpdateProgressIndicator(fol2);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol24submit").click(function(){
+        fol2[4] = GetItemResponseTextArea();
+        fol2pro = UpdateProgressIndicator(fol2);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol25submit").click(function(){
+        fol2[5] = GetItemResponseTextArea();
+        fol2pro = UpdateProgressIndicator(fol2);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol26submit").click(function(){
+        fol2[6] = GetItemResponseTextArea();
+        fol2pro = UpdateProgressIndicator(fol2);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol27submit").click(function(){
+        fol2[7] = GetItemRadioButton();
+        fol2justification[0] = GetItemResponseTextArea();
+        fol2answercorrect1[0] = CorrectAnswer(fol2, fol2answerkey1, 7, 0);
+        fol2pro = UpdateProgressIndicator(fol2);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol28submit").click(function(){
+        fol2[8] = GetItemResponseTextArea();
+        fol2pro = UpdateProgressIndicator(fol2);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol29submit").click(function(){
+        fol2[9] = GetItemResponseTextArea();
+        fol2pro = UpdateProgressIndicator(fol2);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol210submit").click(function(){
+        fol2[10] = GetItemResponseTextArea();
+        fol2pro = UpdateProgressIndicator(fol2);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol211submit").click(function(){
+        fol2[11] = GetItemResponseTextArea();
+        fol2pro = UpdateProgressIndicator(fol2);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol212submit").click(function(){
+        fol2[12] = GetItemResponseTextArea();
+        fol2pro = UpdateProgressIndicator(fol2);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol213submit").click(function(){
+        fol2[13] = GetItemRadioButton();
+        fol2justification[1] = GetItemResponseTextArea();
+        fol2answercorrect1[1] = CorrectAnswer(fol2, fol2answerkey1, 13, 1);
+        fol2pro = UpdateProgressIndicator(fol2);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol214submit").click(function(){
+        fol2[14] = GetItemResponseTextArea();
+        fol2pro = UpdateProgressIndicator(fol2);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol215submit").click(function(){
+        fol2[15] = GetItemResponseTextArea();
+        fol2pro = UpdateProgressIndicator(fol2);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol216submit").click(function(){
+        fol2[16] = GetItemResponseTextArea();
+        fol2pro = UpdateProgressIndicator(fol2);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol217submit").click(function(){
+        fol2[17] = GetItemResponseTextArea();
+        fol2pro = UpdateProgressIndicator(fol2);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol218submit").click(function(){
+        fol2[18] = GetItemResponseTextArea();
+        fol2pro = UpdateProgressIndicator(fol2);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol219submit").click(function(){
+        fol2[19] = GetItemRadioButton();
+        fol2justification[2] = GetItemResponseTextArea();
+        fol2answercorrect1[2] = CorrectAnswer(fol2, fol2answerkey1, 19, 2);
+        fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
     });
     
