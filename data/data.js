@@ -77,7 +77,7 @@ var baspro, pospro, fol1pro, fol2pro, mipro, oarspro, tarpro;
 var perbaspro, perpospro, perfol1pro, perfol2pro, permipro, peroarspro, pertarpro;
 
 // Percentage score of correct responses per skill
-
+var affirmcount, reflectcount, openclosecount, targetcount;
 var peropenclose, perreflect, peraffirm, pertarget;
 
 // API classification of utterances in MI skills
@@ -128,7 +128,7 @@ function UpdateProgressIndicator(array){
 function UpdateProgressResponseCorrect(array){
     var count = 0;
     for (i = 0; i < array.length; i++){
-        if(array[i] === true){
+        if(array[i] === "Correct"){
             count++;
         }
     }
@@ -147,17 +147,18 @@ function UpdateProgressMetrics(){
     pertarpro = tarpro/33*100;
     
     // Calculate percentage of skill acquisition based on correct items
-    var affirmcount = UpdateProgressResponseCorrect(oarsanswercorrect5);
+    affirmcount = UpdateProgressResponseCorrect(oarsanswercorrect5);
     peraffirm = affirmcount/8*100;
     
-    var reflectcount = UpdateProgressResponseCorrect(oarsanswercorrect4) + UpdateProgressResponseCorrect(targetanswercorrect2);
+    reflectcount = UpdateProgressResponseCorrect(oarsanswercorrect4) + UpdateProgressResponseCorrect(targetanswercorrect2);
     perreflect = reflectcount/11*100;
     
-    var openclosecount = UpdateProgressResponseCorrect(oarsanswercorrect1) + UpdateProgressResponseCorrect(oarsanswercorrect2) + UpdateProgressResponseCorrect(oarsanswercorrect3);
+    openclosecount = UpdateProgressResponseCorrect(oarsanswercorrect1) + UpdateProgressResponseCorrect(oarsanswercorrect2) + UpdateProgressResponseCorrect(oarsanswercorrect3);
     peropenclose = openclosecount/39*100;
     
-    var targetcount = UpdateProgressResponseCorrect(targetanswercorrect1);
+    targetcount = UpdateProgressResponseCorrect(targetanswercorrect1);
     pertarget = targetcount/13*100;
+   
     
     // Update local storage of each progress indicator
     localStorage.setItem("PercentageBaseline",perbaspro);
@@ -176,10 +177,10 @@ function UpdateProgressMetrics(){
 // Correct answers submitted to each assessment item
 function CorrectAnswer(answer, correct, keynumber, index){
     if(answer[keynumber] === correct[index]){
-        return true;
+        return "Correct";
     }
     else{
-        return false;
+        return "Incorrect";
     }
 }
 
@@ -358,10 +359,10 @@ function CorrectOpenAnswer(answerkey, index){
         var alterncorrect2 = "reflection_complex";
         if(dsf === correctresponse || dsf === alterncorrect1 || dsf === alterncorrect2){
             // If answer is correct, then show positive feedback
-            return true;
+            return "Correct";
         }else{
             // If answer is incorrect, then show negative feedback
-            return false;
+            return "Incorrect";
         }
     }
     // Reflections, both simple and complex, are synonymous
@@ -370,18 +371,18 @@ function CorrectOpenAnswer(answerkey, index){
         var alterncorrect2 = "reflection_complex";
         if(dsf === alterncorrect1 || dsf === alterncorrect2){
             // If answer is correct, then show positive feedback
-            return true;
+            return "Correct";
         }else{
             // If answer is incorrect, then show negative feedback
-            return false;
+            return "Incorrect";
         }
     }   
     else if(dsf === correctresponse){
-        // If answer is correct, then score as true
-        return true;
+        // If answer is correct, then score as "Correct"
+        return "Correct";
     }else{
-        // If answer is incorrect, then score as false
-        return false;
+        // If answer is incorrect, then score as "Incorrect"
+        return "Incorrect";
     }
 }
 
@@ -389,7 +390,7 @@ function AgentFeedback(correct, index){
     // Get answer key data and compare to user response
     var scoredresponse = correct[index];
   
-    if(scoredresponse === true){
+    if(scoredresponse === "Correct"){
         // If answer is correct, then show positive feedback
         $(".alert-success").fadeIn("fast");
     }else{
@@ -1462,6 +1463,7 @@ $(document).ready(function(){
     $(".focus1submit").click(function(){
         target[0] = GetItemTrueFalseButton3();
         targetanswercorrect1[0] = CorrectAnswer(target, targetanswerkey1, 0, 0);
+        console.log(targetanswercorrect1[0]);
         tarpro = UpdateProgressIndicator(target);
         AgentFeedback(targetanswercorrect1,0);
         UpdateProgressMetrics();
@@ -1470,6 +1472,7 @@ $(document).ready(function(){
     $(".focus2submit").click(function(){
         target[1] = GetItemTrueFalseButton3();
         targetanswercorrect1[1] = CorrectAnswer(target, targetanswerkey1, 1, 1);
+        console.log(targetanswercorrect1[1]);
         tarpro = UpdateProgressIndicator(target);
         AgentFeedback(targetanswercorrect1,1);
         UpdateProgressMetrics();
