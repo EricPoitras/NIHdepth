@@ -62,14 +62,23 @@ var oarsanswerkey4 = ["reflection","reflection","else","reflection","else","else
 // Affirmations; items are open ended, scored as true and false
  var oarsanswercorrect6 = [6];
 
+// Focusing
+var target = [32];
+
+// Answer keys identifying target behaviors, identifying target behaviors from client speech, practice summarizing
+
+var targetanswerkey1 = ["target","else","target","target","target","else","else","target","else","else","target","target","target"];
+var targetanswercorrect1 = [12];
+var targetanswercorrect2 = [8];
+
 // Progress Indicators for each module - percentage completion rate
 
-var baspro, pospro, fol1pro, fol2pro, mipro, oarspro;
-var perbaspro, perpospro, perfol1pro, perfol2pro, permipro, peroarspro;
+var baspro, pospro, fol1pro, fol2pro, mipro, oarspro, tarpro;
+var perbaspro, perpospro, perfol1pro, perfol2pro, permipro, peroarspro, pertarpro;
 
 // Percentage score of correct responses per skill
 
-var peropenclose, perreflect, peraffirm;
+var peropenclose, perreflect, peraffirm, pertarget;
 
 // API classification of utterances in MI skills
 
@@ -135,17 +144,20 @@ function UpdateProgressMetrics(){
     perfol2pro = fol2pro/20*100;
     permipro = mipro/6*100;
     peroarspro = oarspro/58*100;
+    pertarpro = tarpro/33*100;
     
     // Calculate percentage of skill acquisition based on correct items
     var affirmcount = UpdateProgressResponseCorrect(oarsanswercorrect5);
     peraffirm = affirmcount/8*100;
     
-    var reflectcount = UpdateProgressResponseCorrect(oarsanswercorrect4);
-    perreflect = reflectcount/2*100;
+    var reflectcount = UpdateProgressResponseCorrect(oarsanswercorrect4) + UpdateProgressResponseCorrect(targetanswercorrect2);
+    perreflect = reflectcount/11*100;
     
     var openclosecount = UpdateProgressResponseCorrect(oarsanswercorrect1) + UpdateProgressResponseCorrect(oarsanswercorrect2) + UpdateProgressResponseCorrect(oarsanswercorrect3);
-    
     peropenclose = openclosecount/39*100;
+    
+    var targetcount = UpdateProgressResponseCorrect(targetanswercorrect1);
+    pertarget = targetcount/13*100;
     
     // Update local storage of each progress indicator
     localStorage.setItem("PercentageBaseline",perbaspro);
@@ -154,9 +166,11 @@ function UpdateProgressMetrics(){
     localStorage.setItem("PercentageFollowUp2",perfol2pro);
     localStorage.setItem("PercentageMI",permipro);
     localStorage.setItem("PercentageOARS",peroarspro);
+    localStorage.setItem("PercentageFocusing",pertarpro);
     localStorage.setItem("PercentageAffirm",peraffirm);
     localStorage.setItem("PercentageReflect",perreflect);
     localStorage.setItem("PercentageOpenClose",peropenclose);
+    localStorage.setItem("PercentageTarget",pertarget);
 }
 
 // Correct answers submitted to each assessment item
@@ -257,6 +271,19 @@ function GetItemTrueFalseButton2(){
     var returnval;
     if(val1 === true){
         returnval = "reflection";
+    }
+    else{
+        returnval = "else";
+    }
+    return returnval;
+}
+
+function GetItemTrueFalseButton3(){
+    var val1 = document.getElementById("radio1").checked;
+    var val2 = document.getElementById("radio2").checked;
+    var returnval;
+    if(val1 === true){
+        returnval = "target";
     }
     else{
         returnval = "else";
@@ -369,6 +396,10 @@ function AgentFeedback(correct, index){
         // If answer is incorrect, then show negative feedback
         $(".alert-danger").fadeIn("fast");
     }
+}
+
+function AgentDefault(){
+    $(".alert-success").fadeIn("fast");
 }
 
 $(document).ready(function(){
@@ -1421,6 +1452,244 @@ $(document).ready(function(){
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 11);
         oarsanswercorrect6[6] = CorrectOpenAnswer(agentanswerkey, 11);
+        UpdateProgressMetrics();
+    });
+    
+    // Focusing 
+    
+    // Identifying Target Behavior Change from a List
+    
+    $(".focus1submit").click(function(){
+        target[0] = GetItemTrueFalseButton3();
+        targetanswercorrect1[0] = CorrectAnswer(target, targetanswerkey1, 0, 0);
+        tarpro = UpdateProgressIndicator(target);
+        AgentFeedback(targetanswercorrect1,0);
+        UpdateProgressMetrics();
+    });
+    
+    $(".focus2submit").click(function(){
+        target[1] = GetItemTrueFalseButton3();
+        targetanswercorrect1[1] = CorrectAnswer(target, targetanswerkey1, 1, 1);
+        tarpro = UpdateProgressIndicator(target);
+        AgentFeedback(targetanswercorrect1,1);
+        UpdateProgressMetrics();
+    });
+    
+    $(".focus3submit").click(function(){
+        target[2] = GetItemTrueFalseButton3();
+        targetanswercorrect1[2] = CorrectAnswer(target, targetanswerkey1, 2, 2);
+        tarpro = UpdateProgressIndicator(target);
+        AgentFeedback(targetanswercorrect1,2);
+        UpdateProgressMetrics();
+    });
+    
+    $(".focus4submit").click(function(){
+        target[3] = GetItemTrueFalseButton3();
+        targetanswercorrect1[3] = CorrectAnswer(target, targetanswerkey1, 3, 3);
+        tarpro = UpdateProgressIndicator(target);
+        AgentFeedback(targetanswercorrect1,3);
+        UpdateProgressMetrics();
+    });
+    
+    $(".focus5submit").click(function(){
+        target[4] = GetItemTrueFalseButton3();
+        targetanswercorrect1[4] = CorrectAnswer(target, targetanswerkey1, 4, 4);
+        tarpro = UpdateProgressIndicator(target);
+        AgentFeedback(targetanswercorrect1,4);
+        UpdateProgressMetrics();
+    });
+    
+    $(".focus6submit").click(function(){
+        target[5] = GetItemTrueFalseButton3();
+        targetanswercorrect1[5] = CorrectAnswer(target, targetanswerkey1, 5, 5);
+        tarpro = UpdateProgressIndicator(target);
+        AgentFeedback(targetanswercorrect1,5);
+        UpdateProgressMetrics();
+    });
+    
+    $(".focus7submit").click(function(){
+        target[6] = GetItemTrueFalseButton3();
+        targetanswercorrect1[6] = CorrectAnswer(target, targetanswerkey1, 6, 6);
+        tarpro = UpdateProgressIndicator(target);
+        AgentFeedback(targetanswercorrect1,6);
+        UpdateProgressMetrics();
+    });
+    
+    $(".focus8submit").click(function(){
+        target[7] = GetItemTrueFalseButton3();
+        targetanswercorrect1[7] = CorrectAnswer(target, targetanswerkey1, 7, 7);
+        tarpro = UpdateProgressIndicator(target);
+        AgentFeedback(targetanswercorrect1,7);
+        UpdateProgressMetrics();
+    });
+    
+    $(".focus9submit").click(function(){
+        target[8] = GetItemTrueFalseButton3();
+        targetanswercorrect1[8] = CorrectAnswer(target, targetanswerkey1, 8, 8);
+        tarpro = UpdateProgressIndicator(target);
+        AgentFeedback(targetanswercorrect1,8);
+        UpdateProgressMetrics();
+    });
+    
+    $(".focus10submit").click(function(){
+        target[9] = GetItemTrueFalseButton3();
+        targetanswercorrect1[9] = CorrectAnswer(target, targetanswerkey1, 9, 9);
+        tarpro = UpdateProgressIndicator(target);
+        AgentFeedback(targetanswercorrect1,9);
+        UpdateProgressMetrics();
+    });
+    
+    $(".focus11submit").click(function(){
+        target[10] = GetItemTrueFalseButton3();
+        targetanswercorrect1[10] = CorrectAnswer(target, targetanswerkey1, 10, 10);
+        tarpro = UpdateProgressIndicator(target);
+        AgentFeedback(targetanswercorrect1,10);
+        UpdateProgressMetrics();
+    });
+    
+    $(".focus12submit").click(function(){
+        target[11] = GetItemTrueFalseButton3();
+        targetanswercorrect1[11] = CorrectAnswer(target, targetanswerkey1, 11, 11);
+        tarpro = UpdateProgressIndicator(target);
+        AgentFeedback(targetanswercorrect1,11);
+        UpdateProgressMetrics();
+    });
+    
+    $(".focus13submit").click(function(){
+        target[12] = GetItemTrueFalseButton3();
+        targetanswercorrect1[12] = CorrectAnswer(target, targetanswerkey1, 12, 12);
+        tarpro = UpdateProgressIndicator(target);
+        AgentFeedback(targetanswercorrect1,12);
+        UpdateProgressMetrics();
+    });
+    
+    $(".focus14submit").click(function(){
+        [target[13], target[14], target[15]] = GetItemResponseMultiTextArea();
+        tarpro = UpdateProgressIndicator(target);
+        AgentDefault();
+        UpdateProgressMetrics();
+    });
+    
+    $(".focus15submit").click(function(){
+        target[16] = GetItemResponseTextArea();
+        tarpro = UpdateProgressIndicator(target);
+        AgentDefault();
+        UpdateProgressMetrics();
+    });
+    
+    $(".focus16submit").click(function(){
+        [target[17], target[18], target[19]] = GetItemResponseMultiTextArea();
+        tarpro = UpdateProgressIndicator(target);
+        AgentDefault();
+        UpdateProgressMetrics();
+    });
+    
+    $(".focus17submit").click(function(){
+        target[20] = GetItemResponseTextArea();
+        tarpro = UpdateProgressIndicator(target);
+        AgentDefault();
+        UpdateProgressMetrics();
+    });
+    
+    $(".focus18asubmit").click(function(){
+        target[21] = GetItemResponseTextArea();
+        tarpro = UpdateProgressIndicator(target);
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 3);
+        targetanswercorrect2[0] = CorrectOpenAnswer(agentanswerkey, 3);
+        UpdateProgressMetrics();
+    });
+    
+    $(".focus18bsubmit").click(function(){
+        target[22] = GetItemResponseTextArea();
+        tarpro = UpdateProgressIndicator(target);
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 3);
+        targetanswercorrect2[1] = CorrectOpenAnswer(agentanswerkey, 3);
+        UpdateProgressMetrics();
+    });
+    
+    $(".focus18csubmit").click(function(){
+        target[23] = GetItemResponseTextArea();
+        tarpro = UpdateProgressIndicator(target);
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 3);
+        targetanswercorrect2[2] = CorrectOpenAnswer(agentanswerkey, 3);
+        UpdateProgressMetrics();
+    });
+    
+    $(".focus19submit").click(function(){
+        target[24] = GetItemResponseTextArea();
+        tarpro = UpdateProgressIndicator(target);
+        AgentDefault();
+        UpdateProgressMetrics();
+    });
+    
+    $(".focus20asubmit").click(function(){
+        target[25] = GetItemResponseTextArea();
+        tarpro = UpdateProgressIndicator(target);
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 3);
+        targetanswercorrect2[3] = CorrectOpenAnswer(agentanswerkey, 3);
+        UpdateProgressMetrics();
+    });
+    
+    $(".focus20bsubmit").click(function(){
+        target[26] = GetItemResponseTextArea();
+        tarpro = UpdateProgressIndicator(target);
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 3);
+        targetanswercorrect2[4] = CorrectOpenAnswer(agentanswerkey, 3);
+        UpdateProgressMetrics();
+    });
+    
+    $(".focus20csubmit").click(function(){
+        target[27] = GetItemResponseTextArea();
+        tarpro = UpdateProgressIndicator(target);
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 3);
+        targetanswercorrect2[5] = CorrectOpenAnswer(agentanswerkey, 3);
+        UpdateProgressMetrics();
+    });
+    
+    $(".focus21submit").click(function(){
+        target[28] = GetItemResponseTextArea();
+        tarpro = UpdateProgressIndicator(target);
+        AgentDefault();
+        UpdateProgressMetrics();
+    });
+    
+    $(".focus22asubmit").click(function(){
+        target[29] = GetItemResponseTextArea();
+        tarpro = UpdateProgressIndicator(target);
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 3);
+        targetanswercorrect2[6] = CorrectOpenAnswer(agentanswerkey, 3);
+        UpdateProgressMetrics();
+    });
+    
+    $(".focus22bsubmit").click(function(){
+        target[30] = GetItemResponseTextArea();
+        tarpro = UpdateProgressIndicator(target);
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 3);
+        targetanswercorrect2[7] = CorrectOpenAnswer(agentanswerkey, 3);
+        UpdateProgressMetrics();
+    });
+    
+    $(".focus22csubmit").click(function(){
+        target[31] = GetItemResponseTextArea();
+        tarpro = UpdateProgressIndicator(target);
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 3);
+        targetanswercorrect2[8] = CorrectOpenAnswer(agentanswerkey, 3);
+        UpdateProgressMetrics();
+    });
+    
+    $(".focus23submit").click(function(){
+        target[32] = GetItemResponseTextArea();
+        tarpro = UpdateProgressIndicator(target);
+        AgentDefault();
         UpdateProgressMetrics();
     });
 });
