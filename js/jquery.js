@@ -13,7 +13,7 @@ $(document).ready(function(){
     
     
     // Modules page 
-    $("#vasercard, #micard, #oarscard, #focusingcard, #evokingcard, #changecard, #planningcard, #cliniccard, #fullmicard").hover(function(){
+    $("#vasercard, #hrqcard, #mikatcard, #micard, #oarscard, #focusingcard, #evokingcard, #changecard, #planningcard, #cliniccard, #fullmicard").hover(function(){
         $(this).css("background-color", "rgb(248, 248, 248)");
     },function(){
         $(this).css("background-color", "white");
@@ -21,6 +21,14 @@ $(document).ready(function(){
     
     $("#vasercard").click(function(){
         window.open("modules/vase-r.html","_blank"); 
+    });
+    
+    $("#hrqcard").click(function(){
+        window.open("modules/hrq.html","_blank"); 
+    });
+    
+    $("#mikatcard").click(function(){
+        window.open("modules/mikat.html","_blank"); 
     });
     
     $("#micard").click(function(){
