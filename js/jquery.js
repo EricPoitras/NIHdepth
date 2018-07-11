@@ -249,4 +249,10 @@ $(document).ready(function(){
             $("#next").removeClass("disabled");
         } 
     });
+    
+    $("#responsesubmitradioform").click(function(){
+        $(".alert-success").delay("slow").removeClass("invisiblecus");
+        $(".alert-success").addClass("visiblecus");
+        $("#next").removeClass("disabled");
+    });
 });
