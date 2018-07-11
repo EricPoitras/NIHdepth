@@ -16,6 +16,7 @@
       
     <!-- Stylesheet -->
     <link rel="stylesheet" href="../../css/stylesheet.css">
+    <link rel="stylesheet" href="../../css/rangecustom.css">
 
     <title>NIH depth</title>
   </head>
@@ -43,38 +44,18 @@
               <!-- Toolbar -->
               <div class="col-3 p-0 toolbararea">
                 <h5 class="p-3 toolbarhighlight">Instructions</h5>
-                <p class="p-3 text-justify">Listen to the following clips and summarize what you have heard using reflections. You may watch the video more than once to craft the summary. When you are summarizing you are collecting the flowers from the long speech to repeat back to the client in a nice bouquet. Remember to collect the important flowers that focus on the target behavior change.</p>
-                <h5 class="p-3 toolbarhighlight">Feedback</h5>
-                <div class="p-3" id="feedbackarea">
-                    <div class="align-middle text-center">
-                        <i id="loading" class="fas fa-spinner fa-pulse"></i> 
-                    </div>
-                    <div class="alert alert-success" role="alert">Correct answers:
-                        Wearing a suit to: feel better/put a positive spin on things, get better grades on a test etc. 
-                    </div>
-                    <!--<div class="alert alert-danger" role="alert">
-                      You did not reflect this statement.
-                    </div>-->
-                </div>
+                <p class="p-3 text-justify">You have now completed the Focusing module. Before you move on to completing another module, please take the time to fill out this brief survey to provide us with some feedback on your experience.</p>
               </div>
               
               <!-- Content -->
               <div class="col contentarea">
-                     <div class="d-flex h-100 justify-content-left">
+                     <div class="d-flex flex-column h-100 justify-content-center align-items-center">
                         
-                        <div id="discussion">
+                        <div id="form-container">
+                          
+                            <!-- Insert Qualtrics Form here... -->
                             
-                            <div id="responsewritearea" class="card therapist">
-                                <div class="comment">
-                                        <div class="form-group">
-                                            <label for="FormControlTextarea1">What would you have identified as a target behavior change? Identify one.</label>
-                                            <textarea class="form-control m-2" id="message" placeholder="Write text here..." rows="4"></textarea>
-                                        </div>
-                                        <a id="responsesubmitb" role="button" href="#" class="btn buttoncus primarycolcus text-white mt-3 focus23submit">Submit</a> 
-                                </div>
-                            </div>
                         </div>
-                         
                     </div>
               </div>
           </div>          
@@ -86,10 +67,10 @@
                         <i class="fas fa-bars"></i>
                     </button>
                   
-                    <h5 class="toolbarlabel">Practice Summarizing</h5>
+                    <h5 class="toolbarlabel">Feedback</h5>
                     <div class="justify-content-around d-flex">
-                        <a role="button" href="pracsum8c.html" class="btn buttoncus primarycolcus text-white">Previous</a>
-                        <a role="button" href="feedback.html" class="btn buttoncus primarycolcus text-white">Next</a>
+                        <a role="button" href="pracsum9.html" class="btn buttoncus primarycolcus text-white">Previous</a>
+                        <a role="button" href="../focusing.html" class="btn buttoncus primarycolcus text-white">Next</a>
                     </div>
               </div>
           </div>
@@ -105,10 +86,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     <!-- Script reference to your jquery code appears here -->
     <script src="../../js/jquery.js"></script>  
-    <script src="../../js/feedbackresponse.js"></script>
-    <!--<script src="../../data/CodeUtterances.js"></script>  API to assess utterances -->
-    <script src="../../data/data.js"></script> <!-- Store textarea response -->
-
-    
+    <script src="../../js/videocuscontrol.js"></script> <!-- Blocks user navigation away from page -->
   </body>
 </html>
