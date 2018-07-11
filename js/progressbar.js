@@ -38,4 +38,15 @@ $(document).ready(function(){
         $("#oarscard .progress-bar").css({"width":percentage+"%"});
         $("#oarscard .progress-bar").attr("aria-valuenow",percentage);
     }
+    
+    if (localStorage.getItem("PercentageFocusing") === null || localStorage.getItem("PercentageFocusing") === "NaN") {
+        $("#focusingcard .progress-bar").text("0%");
+        $("#focusingcard .progress-bar").css({"width":"0%"});
+        $("#focusingcard .progress-bar").attr("aria-valuenow","0");
+    }else{
+        var percentage = localStorage.getItem("PercentageFocusing");
+        $("#focusingcard .progress-bar").text(percentage+"%");
+        $("#focusingcard .progress-bar").css({"width":percentage+"%"});
+        $("#focusingcard .progress-bar").attr("aria-valuenow",percentage);
+    }
 });
