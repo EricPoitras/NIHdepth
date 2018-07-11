@@ -161,17 +161,17 @@ function UpdateProgressMetrics(){
    
     
     // Update local storage of each progress indicator
-    localStorage.setItem("PercentageBaseline",perbaspro);
-    localStorage.setItem("PercentagePostTreatment",perpospro);
-    localStorage.setItem("PercentageFollowUp1",perfol1pro);
-    localStorage.setItem("PercentageFollowUp2",perfol2pro);
-    localStorage.setItem("PercentageMI",permipro);
-    localStorage.setItem("PercentageOARS",peroarspro);
-    localStorage.setItem("PercentageFocusing",pertarpro);
-    localStorage.setItem("PercentageAffirm",peraffirm);
-    localStorage.setItem("PercentageReflect",perreflect);
-    localStorage.setItem("PercentageOpenClose",peropenclose);
-    localStorage.setItem("PercentageTarget",pertarget);
+    localStorage.setItem("PercentageBaseline",Math.round(perbaspro));
+    localStorage.setItem("PercentagePostTreatment",Math.round(perpospro));
+    localStorage.setItem("PercentageFollowUp1",Math.round(perfol1pro));
+    localStorage.setItem("PercentageFollowUp2",Math.round(perfol2pro));
+    localStorage.setItem("PercentageMI",Math.round(permipro));
+    localStorage.setItem("PercentageOARS",Math.round(peroarspro));
+    localStorage.setItem("PercentageFocusing",Math.round(pertarpro));
+    localStorage.setItem("PercentageAffirm",Math.round(peraffirm));
+    localStorage.setItem("PercentageReflect",Math.round(perreflect));
+    localStorage.setItem("PercentageOpenClose",Math.round(peropenclose));
+    localStorage.setItem("PercentageTarget",Math.round(pertarget));
 }
 
 // Correct answers submitted to each assessment item
