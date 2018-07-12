@@ -31,6 +31,30 @@ var fol2answerkey1 = ["3","4","2"];
 var fol2answercorrect1 = [2];
 var fol2justification = ["","",""];
 
+// Baseline HRQ: bashrq1submit, bashrq2submit ... bashrq6submit
+var bashrq = [5];
+
+// Post-Treatment HRQ: poshrq1submit, poshrq2submit ... poshrq6submit
+var poshrq = [5];
+
+// Follow up 1 HRQ: fol1hrq1submit, fol1hrq2submit ... fol1hrq6submit
+var fol1hrq = [5];
+
+// Follow up 2 HRQ: fol2hrq1submit, fol2hrq2submit ... fol2hrq6submit
+var fol2hrq = [5];
+
+// Baseline MITAK: basmitak1submit, basmitak2submit, ... basmitak10submit
+var basmit = [36];
+
+// Post-Treatment MITAK: posmitak1submit, posmitak2submit, ... posmitak10submit
+var posmit = [36];
+
+// Follow-Up 1 MITAK: fol1mitak1submit, fol1mitak2submit, ... fol1mitak10submit
+var fol1mit = [36];
+
+// Follow-Up 2 MITAK: fol2mitak1submit, fol2mitak2submit, ... fol2mitak10submit
+var fol2mit = [36];
+
 // Definition and Spirit of MI: var miconv1, miconv2, miconv3, miconv4, miconv5, miconv6;
 
 var mi = [5];
@@ -73,8 +97,8 @@ var targetanswercorrect2 = [8];
 
 // Progress Indicators for each module - percentage completion rate
 
-var baspro, pospro, fol1pro, fol2pro, mipro, oarspro, tarpro;
-var perbaspro, perpospro, perfol1pro, perfol2pro, permipro, peroarspro, pertarpro;
+var baspro, pospro, fol1pro, fol2pro, bashrqpro, poshrqpro, fol1hrqpro, fol2hrqpro, basmitakpro, posmitakpro, fol1mitakpro, fol2mitakpro, mipro, oarspro, tarpro;
+var perbaspro, perpospro, perfol1pro, perfol2pro, perbashrqpro, perposhrqpro, perfol1hrqpro, perfol2hrqpro, perbasmitakpro, perposmitakpro, perfol1mitakpro, perfol2mitakpro, permipro, peroarspro, pertarpro;
 
 // Percentage score of correct responses per skill
 var affirmcount, reflectcount, openclosecount, targetcount;
@@ -142,6 +166,14 @@ function UpdateProgressMetrics(){
     perpospro = pospro/20*100;
     perfol1pro = fol1pro/20*100;
     perfol2pro = fol2pro/20*100;
+    perbashrqpro = bashrqpro/6*100;
+    perposhrqpro = poshrqpro/6*100;
+    perfol1hrqpro = fol1hrqpro/6*100;
+    perfol2hrqpro = fol2hrqpro/6*100;
+    perbasmitakpro = basmitakpro/39*100;
+    perposmitakpro = posmitakpro/39*100;
+    perfol1mitakpro = fol1mitakpro/39*100;
+    perfol2mitakpro = fol2mitakpro/39*100;
     permipro = mipro/6*100;
     peroarspro = oarspro/58*100;
     pertarpro = tarpro/33*100;
@@ -165,6 +197,14 @@ function UpdateProgressMetrics(){
     localStorage.setItem("PercentagePostTreatment",Math.round(perpospro));
     localStorage.setItem("PercentageFollowUp1",Math.round(perfol1pro));
     localStorage.setItem("PercentageFollowUp2",Math.round(perfol2pro));
+    localStorage.setItem("PercentageBaselineHRQ",Math.round(perbashrqpro));
+    localStorage.setItem("PercentagePostTreatmentHRQ",Math.round(perposhrqpro));
+    localStorage.setItem("PercentageFollowUp1HRQ",Math.round(perfol1hrqpro));
+    localStorage.setItem("PercentageFollowUp2HRQ",Math.round(perfol2hrqpro));
+    localStorage.setItem("PercentageBaselineMITAK",Math.round(perbasmitakpro));
+    localStorage.setItem("PercentagePostTreatmentMITAK",Math.round(perposmitakpro));
+    localStorage.setItem("PercentageFollowUp1MITAK",Math.round(perfol1mitakpro));
+    localStorage.setItem("PercentageFollowUp2MITAK",Math.round(perfol2mitakpro));
     localStorage.setItem("PercentageMI",Math.round(permipro));
     localStorage.setItem("PercentageOARS",Math.round(peroarspro));
     localStorage.setItem("PercentageFocusing",Math.round(pertarpro));
@@ -252,6 +292,56 @@ function GetItemRadioButton(){
     return returnval;
 }
 
+// Get item response from radio button component
+function GetItemRadioButton2(){
+    var val1 = document.getElementById("exampleRadios1").checked;
+    var val2 = document.getElementById("exampleRadios2").checked;
+    var val3 = document.getElementById("exampleRadios3").checked;
+    var val4 = document.getElementById("exampleRadios4").checked;
+    var val5 = document.getElementById("exampleRadios5").checked;
+    var returnval;
+    if(val1 === true){
+        returnval = "1";
+    }
+    else if(val2 === true){
+        returnval = "2";
+    }
+    else if(val3 === true){
+        returnval = "3";
+    }
+    else if(val4 === true){
+        returnval = "4";
+    }
+    else{
+        returnval = "5";
+    }
+    return returnval;
+}
+
+// Get item response from radio button component
+function GetItemRadioButton3(){
+    var val1 = document.getElementById("exampleRadios1").checked;
+    var val2 = document.getElementById("exampleRadios2").checked;
+    var val3 = document.getElementById("exampleRadios3").checked;
+    var val4 = document.getElementById("exampleRadios4").checked;
+    var returnval;
+    if(val1 === true){
+        returnval = "1";
+    }
+    else if(val2 === true){
+        returnval = "2";
+    }
+    else if(val3 === true){
+        returnval = "3";
+    }
+    else{
+        returnval = "4";
+    }
+    return returnval;
+}
+
+
+
 // Get item response from radio button - True/False component
 function GetItemTrueFalseButton(){
     var val1 = document.getElementById("radio1").checked;
@@ -290,6 +380,225 @@ function GetItemTrueFalseButton3(){
         returnval = "else";
     }
     return returnval;
+}
+
+// MIKAT True False Form at mikat1.html
+function GetItemTrueFalseForm(){
+    var val1 = document.getElementById("item1radio2").checked;
+    var val2 = document.getElementById("item2radio2").checked;
+    var val3 = document.getElementById("item3radio2").checked;
+    var val4 = document.getElementById("item4radio1").checked;
+    var val5 = document.getElementById("item5radio2").checked;
+    var val6 = document.getElementById("item6radio2").checked;
+    var val7 = document.getElementById("item7radio2").checked;
+    var val8 = document.getElementById("item8radio1").checked;
+    var val9 = document.getElementById("item9radio2").checked;
+    var val10 = document.getElementById("item10radio1").checked;
+    var val11 = document.getElementById("item11radio2").checked;
+    var val12 = document.getElementById("item12radio2").checked;
+    var val13 = document.getElementById("item13radio1").checked;
+    var val14 = document.getElementById("item14radio2").checked;
+    
+    var returnval1;
+    var returnval2;
+    var returnval3;
+    var returnval4;
+    var returnval5;
+    var returnval6;
+    var returnval7;
+    var returnval8;
+    var returnval9;
+    var returnval10;
+    var returnval11;
+    var returnval12;
+    var returnval13;
+    var returnval14;
+    
+    if(val1 == true){
+        returnval1 = "False (Correct)";
+    }else{
+        returnval1 = "True (Incorrect)";
+    }
+    if(val2 == true){
+        returnval2 = "False (Correct)";
+    }else{
+        returnval2 = "True (Incorrect)";
+    }
+    if(val3 == true){
+        returnval3 = "False (Correct)";
+    }else{
+        returnval3 = "True (Incorrect)";
+    }
+    if(val4 == true){
+        returnval4 = "True (Correct)";
+    }else{
+        returnval4 = "False (Incorrect)";
+    }
+    if(val5 == true){
+        returnval5 = "False (Correct)";
+    }else{
+        returnval5 = "True (Incorrect)";
+    }
+    if(val6 == true){
+        returnval6 = "False (Correct)";
+    }else{
+        returnval6 = "True (Incorrect)";
+    }
+    if(val7 == true){
+        returnval7 = "False (Correct)";
+    }else{
+        returnval7 = "True (Incorrect)";
+    }
+    if(val8 == true){
+        returnval8 = "True (Correct)";
+    }else{
+        returnval8 = "False (Incorrect)";
+    }
+    if(val9 == true){
+        returnval9 = "False (Correct)";
+    }else{
+        returnval9 = "True (Incorrect)";
+    }
+    if(val10 == true){
+        returnval10 = "True (Correct)";
+    }else{
+        returnval10 = "False (Incorrect)";
+    }
+    if(val11 == true){
+        returnval11 = "False (Correct)";
+    }else{
+        returnval11 = "True (Incorrect)";
+    }
+    if(val12 == true){
+        returnval12 = "False (Correct)";
+    }else{
+        returnval12 = "True (Incorrect)";
+    }
+    if(val13 == true){
+        returnval13 = "True (Correct)";
+    }else{
+        returnval13 = "False (Incorrect)";
+    }
+    if(val14 == true){
+        returnval14 = "False (Correct)";
+    }else{
+        returnval14 = "True (Incorrect)";
+    }
+    
+    return [returnval1, returnval2, returnval3, returnval4, returnval5, returnval6, returnval7, returnval8, returnval9, returnval10, returnval11, returnval12, returnval13, returnval14];
+}
+
+// MIKAT check list form at mikat2.html
+function GetItemTrueFalseForm2(){
+    var val1 = document.getElementById("item1check").checked;
+    var val2 = document.getElementById("item2check").checked;
+    var val3 = document.getElementById("item3check").checked;
+    var val4 = document.getElementById("item4check").checked;
+    var val5 = document.getElementById("item5check").checked;
+    var val6 = document.getElementById("item6check").checked;
+    var val7 = document.getElementById("item7check").checked;
+    var val8 = document.getElementById("item8check").checked;
+    var val9 = document.getElementById("item9check").checked;
+    var val10 = document.getElementById("item10check").checked;
+    var val11 = document.getElementById("item11check").checked;
+    var val12 = document.getElementById("item12check").checked;
+    var val13 = document.getElementById("item13check").checked;
+    var val14 = document.getElementById("item14check").checked;
+    var val15 = document.getElementById("item15check").checked;
+    
+    var returnval1;
+    var returnval2;
+    var returnval3;
+    var returnval4;
+    var returnval5;
+    var returnval6;
+    var returnval7;
+    var returnval8;
+    var returnval9;
+    var returnval10;
+    var returnval11;
+    var returnval12;
+    var returnval13;
+    var returnval14;
+    var returnval15;
+    
+    if(val1 == true){
+        returnval1 = "False (Correct)";
+    }else{
+        returnval1 = "True (Incorrect)";
+    }
+    if(val2 == true){
+        returnval2 = "False (Incorrect)";
+    }else{
+        returnval2 = "True (Correct)";
+    }
+    if(val3 == true){
+        returnval3 = "False (Correct)";
+    }else{
+        returnval3 = "True (Incorrect)";
+    }
+    if(val4 == true){
+        returnval4 = "False (Incorrect)";
+    }else{
+        returnval4 = "True (Correct)";
+    }
+    if(val5 == true){
+        returnval5 = "False (Correct)";
+    }else{
+        returnval5 = "True (Incorrect)";
+    }
+    if(val6 == true){
+        returnval6 = "False (Correct)";
+    }else{
+        returnval6 = "True (Incorrect)";
+    }
+    if(val7 == true){
+        returnval7 = "False (Correct)";
+    }else{
+        returnval7 = "True (Incorrect)";
+    }
+    if(val8 == true){
+        returnval8 = "False (Correct)";
+    }else{
+        returnval8 = "True (Incorrect)";
+    }
+    if(val9 == true){
+        returnval9 = "False (Incorrect)";
+    }else{
+        returnval9 = "True (Correct)";
+    }
+    if(val10 == true){
+        returnval10 = "False (Incorrect)";
+    }else{
+        returnval10 = "True (Correct)";
+    }
+    if(val11 == true){
+        returnval11 = "False (Correct)";
+    }else{
+        returnval11 = "True (Incorrect)";
+    }
+    if(val12 == true){
+        returnval12 = "False (Correct)";
+    }else{
+        returnval12 = "True (Incorrect)";
+    }
+    if(val13 == true){
+        returnval13 = "False (Correct)";
+    }else{
+        returnval13 = "True (Incorrect)";
+    }
+    if(val14 == true){
+        returnval14 = "False (Correct)";
+    }else{
+        returnval14 = "True (Incorrect)";
+    }
+    if(val15 == true){
+        returnval15 = "False (Incorrect)";
+    }else{
+        returnval15 = "True (Correct)";
+    }
+    
+    return [returnval1, returnval2, returnval3, returnval4, returnval5, returnval6, returnval7, returnval8, returnval9, returnval10, returnval11, returnval12, returnval13, returnval14, returnval15];
 }
 
 // Request response from agent and return it to deliver feedback
@@ -929,6 +1238,400 @@ $(document).ready(function(){
         UpdateProgressMetrics();
     });
     
+    // Baseline HRQ
+    $(".bashrq1submit").click(function(){
+        bashrq[0] = GetItemResponseTextArea();
+        bashrqpro = UpdateProgressIndicator(bashrq);
+        UpdateProgressMetrics();
+    });
+    
+    $(".bashrq2submit").click(function(){
+        bashrq[1] = GetItemResponseTextArea();
+        bashrqpro = UpdateProgressIndicator(bashrq);
+        UpdateProgressMetrics();
+    });
+    
+    $(".bashrq3submit").click(function(){
+        bashrq[2] = GetItemResponseTextArea();
+        bashrqpro = UpdateProgressIndicator(bashrq);
+        UpdateProgressMetrics();
+    });
+    
+    $(".bashrq4submit").click(function(){
+        bashrq[3] = GetItemResponseTextArea();
+        bashrqpro = UpdateProgressIndicator(bashrq);
+        UpdateProgressMetrics();
+    });
+    
+    $(".bashrq5submit").click(function(){
+        bashrq[4] = GetItemResponseTextArea();
+        bashrqpro = UpdateProgressIndicator(bashrq);
+        UpdateProgressMetrics();
+    });
+    
+    $(".bashrq6submit").click(function(){
+        bashrq[5] = GetItemResponseTextArea();
+        bashrqpro = UpdateProgressIndicator(bashrq);
+        UpdateProgressMetrics();
+    });
+    
+    // Post Treatment HRQ
+    $(".poshrq1submit").click(function(){
+        poshrq[0] = GetItemResponseTextArea();
+        poshrqpro = UpdateProgressIndicator(poshrq);
+        UpdateProgressMetrics();
+    });
+    
+    $(".poshrq2submit").click(function(){
+        poshrq[1] = GetItemResponseTextArea();
+        poshrqpro = UpdateProgressIndicator(poshrq);
+        UpdateProgressMetrics();
+    });
+    
+    $(".poshrq3submit").click(function(){
+        poshrq[2] = GetItemResponseTextArea();
+        poshrqpro = UpdateProgressIndicator(poshrq);
+        UpdateProgressMetrics();
+    });
+    
+    $(".poshrq4submit").click(function(){
+        poshrq[3] = GetItemResponseTextArea();
+        poshrqpro = UpdateProgressIndicator(poshrq);
+        UpdateProgressMetrics();
+    });
+    
+    $(".poshrq5submit").click(function(){
+        poshrq[4] = GetItemResponseTextArea();
+        poshrqpro = UpdateProgressIndicator(poshrq);
+        UpdateProgressMetrics();
+    });
+    
+    $(".poshrq6submit").click(function(){
+        poshrq[5] = GetItemResponseTextArea();
+        poshrqpro = UpdateProgressIndicator(poshrq);
+        UpdateProgressMetrics();
+    });
+    
+    // Follow up 1 HRQ
+    $(".fol1hrq1submit").click(function(){
+        fol1hrq[0] = GetItemResponseTextArea();
+        fol1hrqpro = UpdateProgressIndicator(fol1hrq);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol1hrq2submit").click(function(){
+        fol1hrq[1] = GetItemResponseTextArea();
+        fol1hrqpro = UpdateProgressIndicator(fol1hrq);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol1hrq3submit").click(function(){
+        fol1hrq[2] = GetItemResponseTextArea();
+        fol1hrqpro = UpdateProgressIndicator(fol1hrq);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol1hrq4submit").click(function(){
+        fol1hrq[3] = GetItemResponseTextArea();
+        fol1hrqpro = UpdateProgressIndicator(fol1hrq);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol1hrq5submit").click(function(){
+        fol1hrq[4] = GetItemResponseTextArea();
+        fol1hrqpro = UpdateProgressIndicator(fol1hrq);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol1hrq6submit").click(function(){
+        fol1hrq[5] = GetItemResponseTextArea();
+        fol1hrqpro = UpdateProgressIndicator(fol1hrq);
+        UpdateProgressMetrics();
+    });
+    
+    // Follow Up 2 HRQ
+    $(".fol2hrq1submit").click(function(){
+        fol2hrq[0] = GetItemResponseTextArea();
+        fol2hrqpro = UpdateProgressIndicator(fol2hrq);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol2hrq2submit").click(function(){
+        fol2hrq[1] = GetItemResponseTextArea();
+        fol2hrqpro = UpdateProgressIndicator(fol2hrq);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol2hrq3submit").click(function(){
+        fol2hrq[2] = GetItemResponseTextArea();
+        fol2hrqpro = UpdateProgressIndicator(fol2hrq);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol2hrq4submit").click(function(){
+        fol2hrq[3] = GetItemResponseTextArea();
+        fol2hrqpro = UpdateProgressIndicator(fol2hrq);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol2hrq5submit").click(function(){
+        fol2hrq[4] = GetItemResponseTextArea();
+        fol2hrqpro = UpdateProgressIndicator(fol2hrq);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol2hrq6submit").click(function(){
+        fol2hrq[5] = GetItemResponseTextArea();
+        fol2hrqpro = UpdateProgressIndicator(fol2hrq);
+        UpdateProgressMetrics();
+    });
+    
+    // Baseline MITAK
+    $(".basmikat1submit").click(function(){
+        basmit[0], basmit[1], basmit[2], basmit[3], basmit[4], basmit[5], basmit[6], basmit[7], basmit[8], basmit[9], basmit[10], basmit[11], basmit[12], basmit[13] = GetItemTrueFalseForm();
+        basmitakpro = UpdateProgressIndicator(basmit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".basmikat2submit").click(function(){
+        basmit[14], basmit[15], basmit[16], basmit[17], basmit[18], basmit[19], basmit[20], basmit[21], basmit[22], basmit[23], basmit[24], basmit[25], basmit[26], basmit[27], basmit[28] = GetItemTrueFalseForm2();
+        basmitakpro = UpdateProgressIndicator(basmit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".basmikat3submit").click(function(){
+        basmit[29] = GetItemRadioButton2();
+        basmitakpro = UpdateProgressIndicator(basmit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".basmikat4submit").click(function(){
+        basmit[30] = GetItemRadioButton2();
+        basmitakpro = UpdateProgressIndicator(basmit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".basmikat5submit").click(function(){
+        basmit[31] = GetItemRadioButton2();
+        basmitakpro = UpdateProgressIndicator(basmit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".basmikat6submit").click(function(){
+        basmit[32] = GetItemRadioButton2();
+        basmitakpro = UpdateProgressIndicator(basmit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".basmikat7submit").click(function(){
+        basmit[33] = GetItemRadioButton2();
+        basmitakpro = UpdateProgressIndicator(basmit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".basmikat8submit").click(function(){
+        basmit[34] = GetItemRadioButton2();
+        basmitakpro = UpdateProgressIndicator(basmit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".basmikat9submit").click(function(){
+        basmit[35] = GetItemRadioButton3();
+        basmitakpro = UpdateProgressIndicator(basmit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".basmikat10submit").click(function(){
+        basmit[36] = GetItemRadioButton2();
+        basmitakpro = UpdateProgressIndicator(basmit);
+        UpdateProgressMetrics();
+    });
+    
+    //Post-Treatment MITAK
+    $(".posmikat1submit").click(function(){
+        posmit[0], posmit[1], posmit[2], posmit[3], posmit[4], posmit[5], posmit[6], posmit[7], posmit[8], posmit[9], posmit[10], posmit[11], posmit[12], posmit[13] = GetItemTrueFalseForm();
+        posmitakpro = UpdateProgressIndicator(posmit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".posmikat2submit").click(function(){
+        posmit[14], posmit[15], posmit[16], posmit[17], posmit[18], posmit[19], posmit[20], posmit[21], posmit[22], posmit[23], posmit[24], posmit[25], posmit[26], posmit[27], posmit[28] = GetItemTrueFalseForm2();
+        posmitakpro = UpdateProgressIndicator(posmit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".posmikat3submit").click(function(){
+        posmit[29] = GetItemRadioButton2();
+        posmitakpro = UpdateProgressIndicator(posmit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".posmikat4submit").click(function(){
+        posmit[30] = GetItemRadioButton2();
+        posmitakpro = UpdateProgressIndicator(posmit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".posmikat5submit").click(function(){
+        posmit[31] = GetItemRadioButton2();
+        posmitakpro = UpdateProgressIndicator(posmit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".posmikat6submit").click(function(){
+        posmit[32] = GetItemRadioButton2();
+        posmitakpro = UpdateProgressIndicator(posmit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".posmikat7submit").click(function(){
+        posmit[33] = GetItemRadioButton2();
+        posmitakpro = UpdateProgressIndicator(posmit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".posmikat8submit").click(function(){
+        posmit[34] = GetItemRadioButton2();
+        posmitakpro = UpdateProgressIndicator(posmit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".posmikat9submit").click(function(){
+        posmit[35] = GetItemRadioButton2();
+        posmitakpro = UpdateProgressIndicator(posmit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".posmikat10submit").click(function(){
+        posmit[36] = GetItemRadioButton2();
+        posmitakpro = UpdateProgressIndicator(posmit);
+        UpdateProgressMetrics();
+    });
+    
+    // Follow-Up 1 MITAK
+    $(".fol1mikat1submit").click(function(){
+        fol1mit[0], fol1mit[1], fol1mit[2], fol1mit[3], fol1mit[4], fol1mit[5], fol1mit[6], fol1mit[7], fol1mit[8], fol1mit[9], fol1mit[10], fol1mit[11], fol1mit[12], fol1mit[13] = GetItemTrueFalseForm();
+        fol1mitakpro = UpdateProgressIndicator(fol1mit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol1mikat2submit").click(function(){
+        fol1mit[29] = GetItemRadioButton2();
+        fol1mitakpro = UpdateProgressIndicator(fol1mit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol1mikat3submit").click(function(){
+        fol1mit[29] = GetItemRadioButton2();
+        fol1mitakpro = UpdateProgressIndicator(fol1mit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol1mikat4submit").click(function(){
+        fol1mit[30] = GetItemRadioButton2();
+        fol1mitakpro = UpdateProgressIndicator(fol1mit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol1mikat5submit").click(function(){
+        fol1mit[31] = GetItemRadioButton2();
+        fol1mitakpro = UpdateProgressIndicator(fol1mit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol1mikat6submit").click(function(){
+        fol1mit[32] = GetItemRadioButton2();
+        fol1mitakpro = UpdateProgressIndicator(fol1mit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol1mikat7submit").click(function(){
+        fol1mit[33] = GetItemRadioButton2();
+        fol1mitakpro = UpdateProgressIndicator(fol1mit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol1mikat8submit").click(function(){
+        fol1mit[34] = GetItemRadioButton2();
+        fol1mitakpro = UpdateProgressIndicator(fol1mit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol1mikat9submit").click(function(){
+        fol1mit[35] = GetItemRadioButton2();
+        fol1mitakpro = UpdateProgressIndicator(fol1mit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol1mikat10submit").click(function(){
+        fol1mit[36] = GetItemRadioButton2();
+        fol1mitakpro = UpdateProgressIndicator(fol1mit);
+        UpdateProgressMetrics();
+    });
+    
+    // Follow-Up 2 MITAK
+    $(".fol2mikat1submit").click(function(){
+        fol2mit[0], fol2mit[1], fol2mit[2], fol2mit[3], fol2mit[4], fol2mit[5], fol2mit[6], fol2mit[7], fol2mit[8], fol2mit[9], fol2mit[10], fol2mit[11], fol2mit[12], fol2mit[13] = GetItemTrueFalseForm();
+        fol2mitakpro = UpdateProgressIndicator(fol2mit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol2mikat2submit").click(function(){
+        fol2mit[14], fol2mit[15], fol2mit[16], fol2mit[17], fol2mit[18], fol2mit[19], fol2mit[20], fol2mit[21], fol2mit[22], fol2mit[23], fol2mit[24], fol2mit[25], fol2mit[26], fol2mit[27], fol2mit[28] = GetItemTrueFalseForm2();
+        fol2mitakpro = UpdateProgressIndicator(fol2mit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol2mikat3submit").click(function(){
+        fol2mit[29] = GetItemRadioButton2();
+        fol2mitakpro = UpdateProgressIndicator(fol2mit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol2mikat4submit").click(function(){
+        fol2mit[30] = GetItemRadioButton2();
+        fol2mitakpro = UpdateProgressIndicator(fol2mit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol2mikat5submit").click(function(){
+        fol2mit[31] = GetItemRadioButton2();
+        fol2mitakpro = UpdateProgressIndicator(fol2mit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol2mikat6submit").click(function(){
+        fol2mit[32] = GetItemRadioButton2();
+        fol2mitakpro = UpdateProgressIndicator(fol2mit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol2mikat7submit").click(function(){
+        fol2mit[33] = GetItemRadioButton2();
+        fol2mitakpro = UpdateProgressIndicator(fol2mit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol2mikat8submit").click(function(){
+        fol2mit[34] = GetItemRadioButton2();
+        fol2mitakpro = UpdateProgressIndicator(fol2mit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol2mikat9submit").click(function(){
+        fol2mit[35] = GetItemRadioButton2();
+        fol2mitakpro = UpdateProgressIndicator(fol2mit);
+        UpdateProgressMetrics();
+    });
+    
+    $(".fol2mikat10submit").click(function(){
+        fol2mit[36] = GetItemRadioButton2();
+        fol2mitakpro = UpdateProgressIndicator(fol2mit);
+        UpdateProgressMetrics();
+    });
+    
+    // Motivational Interviewing Intro
+    
     $(".mi1submit").click(function(){
         [mi[0], mi[1], mi[2]] = GetItemResponseMultiTextArea();
         mipro = UpdateProgressIndicator(mi);
@@ -1481,6 +2184,7 @@ $(document).ready(function(){
     $(".focus3submit").click(function(){
         target[2] = GetItemTrueFalseButton3();
         targetanswercorrect1[2] = CorrectAnswer(target, targetanswerkey1, 2, 2);
+        console.log(targetanswercorrect1[2]);
         tarpro = UpdateProgressIndicator(target);
         AgentFeedback(targetanswercorrect1,2);
         UpdateProgressMetrics();
@@ -1489,6 +2193,7 @@ $(document).ready(function(){
     $(".focus4submit").click(function(){
         target[3] = GetItemTrueFalseButton3();
         targetanswercorrect1[3] = CorrectAnswer(target, targetanswerkey1, 3, 3);
+        console.log(targetanswercorrect1[3]);
         tarpro = UpdateProgressIndicator(target);
         AgentFeedback(targetanswercorrect1,3);
         UpdateProgressMetrics();
@@ -1497,6 +2202,7 @@ $(document).ready(function(){
     $(".focus5submit").click(function(){
         target[4] = GetItemTrueFalseButton3();
         targetanswercorrect1[4] = CorrectAnswer(target, targetanswerkey1, 4, 4);
+        console.log(targetanswercorrect1[4]);
         tarpro = UpdateProgressIndicator(target);
         AgentFeedback(targetanswercorrect1,4);
         UpdateProgressMetrics();
@@ -1505,6 +2211,7 @@ $(document).ready(function(){
     $(".focus6submit").click(function(){
         target[5] = GetItemTrueFalseButton3();
         targetanswercorrect1[5] = CorrectAnswer(target, targetanswerkey1, 5, 5);
+        console.log(targetanswercorrect1[5]);
         tarpro = UpdateProgressIndicator(target);
         AgentFeedback(targetanswercorrect1,5);
         UpdateProgressMetrics();
@@ -1513,6 +2220,7 @@ $(document).ready(function(){
     $(".focus7submit").click(function(){
         target[6] = GetItemTrueFalseButton3();
         targetanswercorrect1[6] = CorrectAnswer(target, targetanswerkey1, 6, 6);
+        console.log(targetanswercorrect1[6]);
         tarpro = UpdateProgressIndicator(target);
         AgentFeedback(targetanswercorrect1,6);
         UpdateProgressMetrics();
@@ -1521,6 +2229,7 @@ $(document).ready(function(){
     $(".focus8submit").click(function(){
         target[7] = GetItemTrueFalseButton3();
         targetanswercorrect1[7] = CorrectAnswer(target, targetanswerkey1, 7, 7);
+        console.log(targetanswercorrect1[7]);
         tarpro = UpdateProgressIndicator(target);
         AgentFeedback(targetanswercorrect1,7);
         UpdateProgressMetrics();
@@ -1529,6 +2238,7 @@ $(document).ready(function(){
     $(".focus9submit").click(function(){
         target[8] = GetItemTrueFalseButton3();
         targetanswercorrect1[8] = CorrectAnswer(target, targetanswerkey1, 8, 8);
+        console.log(targetanswercorrect1[8]);
         tarpro = UpdateProgressIndicator(target);
         AgentFeedback(targetanswercorrect1,8);
         UpdateProgressMetrics();
@@ -1537,6 +2247,7 @@ $(document).ready(function(){
     $(".focus10submit").click(function(){
         target[9] = GetItemTrueFalseButton3();
         targetanswercorrect1[9] = CorrectAnswer(target, targetanswerkey1, 9, 9);
+        console.log(targetanswercorrect1[9]);
         tarpro = UpdateProgressIndicator(target);
         AgentFeedback(targetanswercorrect1,9);
         UpdateProgressMetrics();
@@ -1545,6 +2256,7 @@ $(document).ready(function(){
     $(".focus11submit").click(function(){
         target[10] = GetItemTrueFalseButton3();
         targetanswercorrect1[10] = CorrectAnswer(target, targetanswerkey1, 10, 10);
+        console.log(targetanswercorrect1[10]);
         tarpro = UpdateProgressIndicator(target);
         AgentFeedback(targetanswercorrect1,10);
         UpdateProgressMetrics();
@@ -1553,6 +2265,7 @@ $(document).ready(function(){
     $(".focus12submit").click(function(){
         target[11] = GetItemTrueFalseButton3();
         targetanswercorrect1[11] = CorrectAnswer(target, targetanswerkey1, 11, 11);
+        console.log(targetanswercorrect1[11]);
         tarpro = UpdateProgressIndicator(target);
         AgentFeedback(targetanswercorrect1,11);
         UpdateProgressMetrics();
@@ -1561,6 +2274,7 @@ $(document).ready(function(){
     $(".focus13submit").click(function(){
         target[12] = GetItemTrueFalseButton3();
         targetanswercorrect1[12] = CorrectAnswer(target, targetanswerkey1, 12, 12);
+        console.log(targetanswercorrect1[12]);
         tarpro = UpdateProgressIndicator(target);
         AgentFeedback(targetanswercorrect1,12);
         UpdateProgressMetrics();
