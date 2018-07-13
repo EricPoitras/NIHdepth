@@ -202,7 +202,7 @@ function UpdateProgressMetrics(){
     targetcount = UpdateProgressResponseCorrect(targetanswercorrect1);
     pertarget = targetcount/13*100;
     
-    changetalkcount = UpdateProgressResponseCorrect(evokanswercorrect1) + UpdateProgressResponseCorrect(evokanswercorrect2) + UpdateProgressResponseCorrect(evokanswercorrect3) + UpdateProgressResponseCorrect(evokanswercorrect4);
+    changetalkcount = UpdateProgressResponseCorrect(evokanswercorrect1) + UpdateProgressResponseCorrect(evokanswercorrect2) + UpdateProgressResponseCorrect(evokanswerkey3) + UpdateProgressResponseCorrect(evokanswerkey4);
     perchangetalk = changetalkcount/83*100;
    
     
