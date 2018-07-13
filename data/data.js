@@ -101,8 +101,8 @@ var evokanswercorrect1 = [24];
 var evokanswercorrect2 = [24];
 var evokanswerkey1 = ["else", "change", "change", "change", "else", "change", "else", "change", "change", "else", "else", "else", "else", "change", "change", "else", "change", "change", "change", "change", "change", "else", "change", "change"];
 var evokanswerkey2 = ["N/A (Not Change Talk)", "Reasons", "Reasons", "Reasons", "N/A (Not Change Talk)", "Desire", "N/A (Not Change Talk)", "Need", "Reasons", "N/A (Not Change Talk)", "N/A (Not Change Talk)", "N/A (Not Change Talk)", "N/A (Not Change Talk)", "Need", "Reasons", "N/A (Not Change Talk)", "Desire", "Need", "Desire", "Commitment", "Taking Steps", "N/A (Not Change Talk)", "Commitment", "Desire"];
-var evokanswerkey3 = [24];
-var evokanswerkey4 = [7];
+var evokanswercorrect3 = [24];
+var evokanswercorrect4 = [7];
 
 
 // Progress Indicators for each module - percentage completion rate
@@ -202,7 +202,7 @@ function UpdateProgressMetrics(){
     targetcount = UpdateProgressResponseCorrect(targetanswercorrect1);
     pertarget = targetcount/13*100;
     
-    changetalkcount = UpdateProgressResponseCorrect(evokanswercorrect1) + UpdateProgressResponseCorrect(evokanswercorrect2) + UpdateProgressResponseCorrect(evokanswerkey3) + UpdateProgressResponseCorrect(evokanswerkey4);
+    changetalkcount = UpdateProgressResponseCorrect(evokanswercorrect1) + UpdateProgressResponseCorrect(evokanswercorrect2) + UpdateProgressResponseCorrect(evokanswercorrect3) + UpdateProgressResponseCorrect(evokanswercorrect4);
     perchangetalk = changetalkcount/83*100;
    
     
@@ -2524,7 +2524,7 @@ $(document).ready(function(){
         evok[2] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 4);
-        evokanswerkey3[0] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokanswercorrect3[0] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
     });
@@ -2537,7 +2537,7 @@ $(document).ready(function(){
         evok[5] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 4);
-        evokanswerkey3[1] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokanswercorrect3[1] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
     });
@@ -2550,7 +2550,7 @@ $(document).ready(function(){
         evok[8] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 4);
-        evokanswerkey3[2] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokanswercorrect3[2] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
     });
@@ -2563,7 +2563,7 @@ $(document).ready(function(){
         evok[11] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 4);
-        evokanswerkey3[3] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokanswercorrect3[3] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
     });
@@ -2576,7 +2576,7 @@ $(document).ready(function(){
         evok[14] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 4);
-        evokanswerkey3[4] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokanswercorrect3[4] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
     });
@@ -2589,7 +2589,7 @@ $(document).ready(function(){
         evok[17] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 4);
-        evokanswerkey3[5] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokanswercorrect3[5] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
     });
@@ -2602,7 +2602,7 @@ $(document).ready(function(){
         evok[20] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 4);
-        evokanswerkey3[6] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokanswercorrect3[6] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
     });
@@ -2615,7 +2615,7 @@ $(document).ready(function(){
         evok[23] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 4);
-        evokanswerkey3[7] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokanswercorrect3[7] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
     });
@@ -2628,7 +2628,7 @@ $(document).ready(function(){
         evok[26] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 4);
-        evokanswerkey3[8] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokanswercorrect3[8] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
     });
@@ -2641,7 +2641,7 @@ $(document).ready(function(){
         evok[29] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 4);
-        evokanswerkey3[9] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokanswercorrect3[9] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
     });
@@ -2654,7 +2654,7 @@ $(document).ready(function(){
         evok[32] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 4);
-        evokanswerkey3[10] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokanswercorrect3[10] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
     });
@@ -2667,7 +2667,7 @@ $(document).ready(function(){
         evok[35] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 4);
-        evokanswerkey3[11] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokanswercorrect3[11] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
     });
@@ -2680,7 +2680,7 @@ $(document).ready(function(){
         evok[38] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 4);
-        evokanswerkey3[12] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokanswercorrect3[12] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
     });
@@ -2693,7 +2693,7 @@ $(document).ready(function(){
         evok[41] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 4);
-        evokanswerkey3[13] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokanswercorrect3[13] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
     });
@@ -2706,7 +2706,7 @@ $(document).ready(function(){
         evok[44] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 4);
-        evokanswerkey3[14] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokanswercorrect3[14] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
     });
@@ -2719,7 +2719,7 @@ $(document).ready(function(){
         evok[47] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 4);
-        evokanswerkey3[15] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokanswercorrect3[15] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
     });
@@ -2732,7 +2732,7 @@ $(document).ready(function(){
         evok[50] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 4);
-        evokanswerkey3[16] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokanswercorrect3[16] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
     });
@@ -2745,7 +2745,7 @@ $(document).ready(function(){
         evok[53] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 4);
-        evokanswerkey3[17] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokanswercorrect3[17] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
     });
@@ -2758,7 +2758,7 @@ $(document).ready(function(){
         evok[56] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 4);
-        evokanswerkey3[18] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokanswercorrect3[18] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
     });
@@ -2771,7 +2771,7 @@ $(document).ready(function(){
         evok[59] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 4);
-        evokanswerkey3[19] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokanswercorrect3[19] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
     });
@@ -2784,7 +2784,7 @@ $(document).ready(function(){
         evok[62] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 4);
-        evokanswerkey3[21] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokanswercorrect3[21] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
     });
@@ -2797,7 +2797,7 @@ $(document).ready(function(){
         evok[65] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 4);
-        evokanswerkey3[21] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokanswercorrect3[21] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
     });
@@ -2810,7 +2810,7 @@ $(document).ready(function(){
         evok[68] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 4);
-        evokanswerkey3[22] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokanswercorrect3[22] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
     });
@@ -2823,7 +2823,7 @@ $(document).ready(function(){
         evok[71] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 4);
-        evokanswerkey3[23] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokanswercorrect3[23] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
     });
@@ -2836,7 +2836,7 @@ $(document).ready(function(){
         evok[74] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 4);
-        evokanswerkey3[24] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokanswercorrect3[24] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
     });
