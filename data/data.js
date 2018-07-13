@@ -761,9 +761,10 @@ function CorrectOpenAnswer(answerkey, index){
     // Get the data from the CodeUtterances.js script
     dsf = sessionStorage.getItem("utterrnn");
     nn = sessionStorage.getItem("utterdsf");
-    
+    console.log("dsf");
     // Get answer key data and compare to user response
     var correctresponse = answerkey[index];
+    console.log(correctresponse);
     // Affirmations are synonymous to reflection_simple and reflection_complex
     if(correctresponse === "affirm"){
         var alterncorrect1 = "reflection_simple";
@@ -2180,10 +2181,12 @@ $(document).ready(function(){
     
     $(".oars50submit").click(function(){
         oars[49] = GetItemResponseTextArea();
+        console.log(oars[49]);
         oarspro = UpdateProgressIndicator(oars);
         CodeUtterances.codeTherapist();
         AgentResponse(agentanswerkey, 3);
         oarsanswercorrect5[0] = CorrectOpenAnswer(agentanswerkey, 3);
+        console.log(oarsanswercorrect5[0]);
         UpdateProgressMetrics();
     });
     
