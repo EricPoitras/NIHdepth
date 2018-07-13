@@ -43,7 +43,8 @@
               <!-- Toolbar -->
               <div class="col-3 p-0 toolbararea">
                 <h5 class="p-3 toolbarhighlight">Instructions</h5>
-                <p class="p-3 text-justify">Review the following client statements related to the behavior change goals of  improving mood and decreasing depression by taking an antidepressant and attending therapy. Try to identify which statements you think are change talk. </p>                
+                <p class="p-3 text-justify">Review the following client statements related to the behavior change goals of  improving mood and decreasing depression by taking an antidepressant and attending therapy. Try to identify which statements you think are change talk. </p>
+                <a id="" role="button" href="#" class="btn buttoncus primarycolcus text-white m-3 evok26submit">Submit</a>
               </div>
               
               <!-- Content -->
@@ -60,7 +61,7 @@
                             <div class="card client">
                                 <div class="comment">
                                     <div class="userpic"><img src="../../assets/avatar3.png"></div>
-                                    <p class="response"><em>Client: </em>Well as I said, it calms my nerves, but I can’t go on like this forever</p>
+                                    <p class="response"><em>Client: </em><span class="segcontain">Well as I said, it calms my nerves, </span><span id="corcon1" class="segcontain">but I can’t go on like this forever</span></p>
                                 </div>
                             </div>
                             <div class="card therapist">
@@ -72,7 +73,7 @@
                             <div class="card client">
                                 <div class="comment">
                                     <div class="userpic"><img src="../../assets/avatar3.png"></div>
-                                    <p class="response"><em>Client: </em>Well I’m not an alcoholic you know but I can’t be drinking with the kids around</p>
+                                    <p class="response"><em>Client: </em><span class="segcontain">Well I’m not an alcoholic you know </span><span id="corcon2" class="segcontain">but I can’t be drinking with the kids around</span></p>
                                 </div>
                             </div>
                             <div class="card therapist">
@@ -84,7 +85,7 @@
                             <div class="card client">
                                 <div class="comment">
                                     <div class="userpic"><img src="../../assets/avatar3.png"></div>
-                                    <p class="response"><em>Client: </em>Yes, they are my No 1. priority</p>
+                                    <p class="response"><em>Client: </em>Yes, <span id="corcon3" class="segcontain">they are my No 1. priority</span></p>
                                 </div>
                             </div>
                             <div class="card therapist">
@@ -96,7 +97,7 @@
                             <div class="card client">
                                 <div class="comment">
                                     <div class="userpic"><img src="../../assets/avatar3.png"></div>
-                                    <p class="response"><em>Client: </em>No, never, I won’t neglect them, but I get like selfish and shout at them</p>
+                                    <p class="response"><em>Client: </em><span class="segcontain">No, never, I won’t neglect them, </span><span id="corcon4" class="segcontain">but I get like selfish and shout at them</span></p>
                                 </div>
                             </div>
                             <div class="card therapist">
@@ -108,7 +109,7 @@
                             <div class="card client">
                                 <div class="comment">
                                     <div class="userpic"><img src="../../assets/avatar3.png"></div>
-                                    <p class="response"><em>Client: </em>Exactly, but then I get trapped when we leave for school, I either calm my nerves with a drink or shake like a baby, and that’s not good for them either to see me like that</p>
+                                    <p class="response"><em>Client: </em><span id="corcon5" class="segcontain">Exactly,</span> <span class="segcontain">but then I get trapped when we leave for school,</span><span class="segcontain"> I either calm my nerves with a drink or shake like a baby,</span><span class="segcontain"> and that’s not good for them either to see me like that</span></p>
                                 </div>
                             </div>
                               <div class="card therapist">
@@ -120,7 +121,7 @@
                             <div class="card client">
                                 <div class="comment">
                                     <div class="userpic"><img src="../../assets/avatar3.png"></div>
-                                    <p class="response"><em>Client: </em>Well that’s why I’m here I guess, to find a way out</p>
+                                    <p class="response"><em>Client: </em><span class="segcontain">Well that’s why </span><span id="corcon6" class="segcontain">I’m here I guess, to find a way out</span></p>
                                 </div>
                             </div>
                                <div class="card therapist">
@@ -132,7 +133,7 @@
                             <div class="card client">
                                 <div class="comment">
                                     <div class="userpic"><img src="../../assets/avatar3.png"></div>
-                                    <p class="response"><em>Client: </em>To see if there is a way to get out of the house without drinking</p>
+                                    <p class="response"><em>Client: </em><span id="corcon7" class="segcontain">To see if there is a way to get out of the house without drinking</span></p>
                                 </div>
                             </div>
                                <div class="card therapist">
@@ -144,7 +145,7 @@
                             <div class="card client">
                                 <div class="comment">
                                     <div class="userpic"><img src="../../assets/avatar3.png"></div>
-                                    <p class="response"><em>Client: </em>Yes, that’s me. I’ve got to do it differently now.</p>
+                                    <p class="response"><em>Client: </em><span class="segcontain">Yes, that’s me. </span><span id="corcon8" class="segcontain">I’ve got to do it differently now.</span></p>
                                 </div>
                             </div>
                             <div class="discussionend"></div>
@@ -179,7 +180,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     <!-- Script reference to your jquery code appears here -->
-    <script src="../../js/jquery.js"></script>  
+    <script src="../../js/jquery.js"></script> 
+    <script src="../../js/highlightsegments.js"></script>
     
   </body>
 </html>
