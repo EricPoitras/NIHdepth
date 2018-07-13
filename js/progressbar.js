@@ -60,4 +60,26 @@ $(document).ready(function(){
         $("#evokingcard .progress-bar").css({"width":percentage+"%"});
         $("#evokingcard .progress-bar").attr("aria-valuenow",percentage);
     }
+    
+    if (localStorage.getItem("PercentagePlanning") === null || localStorage.getItem("PercentagePlanning") === "NaN") {
+        $("#planningcard .progress-bar").text("0%");
+        $("#planningcard .progress-bar").css({"width":"0%"});
+        $("#planningcard .progress-bar").attr("aria-valuenow","0");
+    }else{
+        var percentage = localStorage.getItem("PercentagePlanning");
+        $("#planningcard .progress-bar").text(percentage+"%");
+        $("#planningcard .progress-bar").css({"width":percentage+"%"});
+        $("#planningcard .progress-bar").attr("aria-valuenow",percentage);
+    }
+    
+    if (localStorage.getItem("PercentagePercentageFullMIPractice") === null || localStorage.getItem("PercentagePercentageFullMIPractice") === "NaN") {
+        $("#fullmicard .progress-bar").text("0%");
+        $("#fullmicard .progress-bar").css({"width":"0%"});
+        $("#fullmicard .progress-bar").attr("aria-valuenow","0");
+    }else{
+        var percentage = localStorage.getItem("PercentagePercentageFullMIPractice");
+        $("#fullmicard .progress-bar").text(percentage+"%");
+        $("#fullmicard .progress-bar").css({"width":percentage+"%"});
+        $("#fullmicard .progress-bar").attr("aria-valuenow",percentage);
+    }
 });
