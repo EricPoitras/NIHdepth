@@ -95,14 +95,24 @@ var targetanswerkey1 = ["target","else","target","target","target","else","else"
 var targetanswercorrect1 = [12];
 var targetanswercorrect2 = [8];
 
+// Evoking
+var evok = [85]; // 
+var evokanswercorrect1 = [24];
+var evokanswercorrect2 = [24];
+var evokanswerkey1 = ["else", "change", "change", "change", "else", "change", "else", "change", "change", "else", "else", "else", "else", "change", "change", "else", "change", "change", "change", "change", "change", "else", "change", "change"];
+var evokanswerkey2 = ["N/A (Not Change Talk)", "Reasons", "Reasons", "Reasons", "N/A (Not Change Talk)", "Desire", "N/A (Not Change Talk)", "Need", "Reasons", "N/A (Not Change Talk)", "N/A (Not Change Talk)", "N/A (Not Change Talk)", "N/A (Not Change Talk)", "Need", "Reasons", "N/A (Not Change Talk)", "Desire", "Need", "Desire", "Commitment", "Taking Steps", "N/A (Not Change Talk)", "Commitment", "Desire"];
+var evokanswerkey3 = [24];
+var evokanswerkey4 = [7];
+
+
 // Progress Indicators for each module - percentage completion rate
 
-var baspro, pospro, fol1pro, fol2pro, bashrqpro, poshrqpro, fol1hrqpro, fol2hrqpro, basmitakpro, posmitakpro, fol1mitakpro, fol2mitakpro, mipro, oarspro, tarpro;
-var perbaspro, perpospro, perfol1pro, perfol2pro, perbashrqpro, perposhrqpro, perfol1hrqpro, perfol2hrqpro, perbasmitakpro, perposmitakpro, perfol1mitakpro, perfol2mitakpro, permipro, peroarspro, pertarpro;
+var baspro, pospro, fol1pro, fol2pro, bashrqpro, poshrqpro, fol1hrqpro, fol2hrqpro, basmitakpro, posmitakpro, fol1mitakpro, fol2mitakpro, mipro, oarspro, tarpro, evokpro;
+var perbaspro, perpospro, perfol1pro, perfol2pro, perbashrqpro, perposhrqpro, perfol1hrqpro, perfol2hrqpro, perbasmitakpro, perposmitakpro, perfol1mitakpro, perfol2mitakpro, permipro, peroarspro, pertarpro, perevokpro;
 
 // Percentage score of correct responses per skill
-var affirmcount, reflectcount, openclosecount, targetcount;
-var peropenclose, perreflect, peraffirm, pertarget;
+var affirmcount, reflectcount, openclosecount, targetcount, changetalkcount;
+var peropenclose, perreflect, peraffirm, pertarget, perchangetalk;
 
 // API classification of utterances in MI skills
 
@@ -177,6 +187,7 @@ function UpdateProgressMetrics(){
     permipro = mipro/6*100;
     peroarspro = oarspro/58*100;
     pertarpro = tarpro/33*100;
+    perevokpro = evokpro/86*100;
     
     // Calculate percentage of skill acquisition based on correct items
     affirmcount = UpdateProgressResponseCorrect(oarsanswercorrect5);
@@ -190,6 +201,9 @@ function UpdateProgressMetrics(){
     
     targetcount = UpdateProgressResponseCorrect(targetanswercorrect1);
     pertarget = targetcount/13*100;
+    
+    changetalkcount = UpdateProgressResponseCorrect(evokanswercorrect1) + UpdateProgressResponseCorrect(evokanswercorrect2) + UpdateProgressResponseCorrect(evokanswercorrect3) + UpdateProgressResponseCorrect(evokanswercorrect4);
+    perchangetalk = changetalkcount/83*100;
    
     
     // Update local storage of each progress indicator
@@ -208,10 +222,13 @@ function UpdateProgressMetrics(){
     localStorage.setItem("PercentageMI",Math.round(permipro));
     localStorage.setItem("PercentageOARS",Math.round(peroarspro));
     localStorage.setItem("PercentageFocusing",Math.round(pertarpro));
+    localStorage.setItem("PercentageEvoking",Math.round(perevokpro));
+    
     localStorage.setItem("PercentageAffirm",Math.round(peraffirm));
     localStorage.setItem("PercentageReflect",Math.round(perreflect));
     localStorage.setItem("PercentageOpenClose",Math.round(peropenclose));
     localStorage.setItem("PercentageTarget",Math.round(pertarget));
+    localStorage.setItem("PercentageChangeTalk",Math.round(perchangetalk));
 }
 
 // Correct answers submitted to each assessment item
@@ -375,6 +392,20 @@ function GetItemTrueFalseButton3(){
     var returnval;
     if(val1 === true){
         returnval = "target";
+    }
+    else{
+        returnval = "else";
+    }
+    return returnval;
+}
+
+// Evoking true and false items
+function GetItemTrueFalseButton4(){
+    var val1 = document.getElementById("exampleRadios1").checked;
+    var val2 = document.getElementById("exampleRadios2").checked;
+    var returnval;
+    if(val1 === true){
+        returnval = "change";
     }
     else{
         returnval = "else";
@@ -599,6 +630,77 @@ function GetItemTrueFalseForm2(){
     }
     
     return [returnval1, returnval2, returnval3, returnval4, returnval5, returnval6, returnval7, returnval8, returnval9, returnval10, returnval11, returnval12, returnval13, returnval14, returnval15];
+}
+
+//Evoking get selected item in listbox
+function GetItemDropDownList(){
+    var e = document.getElementById("SelectChangeTalk");
+    var selecteditemtext = e.options[e.selectedIndex].text;
+    return selecteditemtext;
+}
+
+// Evoking get selected span containers in changetalk2
+function GetSelectedSpanContainers(){
+    var container1 = document.getElementById("corcon1");
+    var container2 = document.getElementById("corcon2");
+    var container3 = document.getElementById("corcon3");
+    var container4 = document.getElementById("corcon4");
+    var container5 = document.getElementById("corcon5");
+    var container6 = document.getElementById("corcon6");
+    var container7 = document.getElementById("corcon7");
+    var container8 = document.getElementById("corcon8");
+    
+    var returnval1;
+    var returnval2;
+    var returnval3;
+    var returnval4;
+    var returnval5;
+    var returnval6;
+    var returnval7;
+    var returnval8;
+    
+    if(container1.classList.contains("segselected") == true){
+        returnval1 = "Correct";
+    }else{
+        returnval1 = "Incorrect";
+    }
+    if(container2.classList.contains("segselected") == true){
+        returnval2 = "Correct";
+    }else{
+        returnval2 = "Incorrect";
+    }
+    if(container3.classList.contains("segselected") == true){
+        returnval3 = "Correct";
+    }else{
+        returnval3 = "Incorrect";
+    }
+    if(container4.classList.contains("segselected") == true){
+        returnval4 = "Correct";
+    }else{
+        returnval4 = "Incorrect";
+    }
+    if(container5.classList.contains("segselected") == true){
+        returnval5 = "Correct";
+    }else{
+        returnval5 = "Incorrect";
+    }
+    if(container6.classList.contains("segselected") == true){
+        returnval6 = "Correct";
+    }else{
+        returnval6 = "Incorrect";
+    }
+    if(container7.classList.contains("segselected") == true){
+        returnval7 = "Correct";
+    }else{
+        returnval7 = "Incorrect";
+    }
+    if(container8.classList.contains("segselected") == true){
+        returnval8 = "Correct";
+    }else{
+        returnval8 = "Incorrect";
+    }
+    
+    return [returnval1, returnval2, returnval3, returnval4, returnval5, returnval6, returnval7, returnval8];
 }
 
 // Request response from agent and return it to deliver feedback
@@ -2409,4 +2511,368 @@ $(document).ready(function(){
         AgentDefault();
         UpdateProgressMetrics();
     });
+    
+    // Evoking (Change Talk)
+    $(".evok1submit").click(function(){
+        evok[0] = GetItemTrueFalseButton4();
+        evokanswercorrect1[0] = CorrectAnswer(evok, evokanswerkey1, 0, 0);
+        evok[1] = GetItemDropDownList();
+        evokanswercorrect2[0] = CorrectAnswer(evok, evokanswerkey2, 1, 0);
+        evok[2] = GetItemResponseTextArea();
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 4);
+        evokanswerkey3[0] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".evok2submit").click(function(){
+        evok[3] = GetItemTrueFalseButton4();
+        evokanswercorrect1[1] = CorrectAnswer(evok, evokanswerkey1, 3, 1);
+        evok[4] = GetItemDropDownList();
+        evokanswercorrect2[1] = CorrectAnswer(evok, evokanswerkey2, 4, 1);
+        evok[5] = GetItemResponseTextArea();
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 4);
+        evokanswerkey3[1] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".evok3submit").click(function(){
+        evok[6] = GetItemTrueFalseButton4();
+        evokanswercorrect1[2] = CorrectAnswer(evok, evokanswerkey1, 6, 2);
+        evok[7] = GetItemDropDownList();
+        evokanswercorrect2[2] = CorrectAnswer(evok, evokanswerkey2, 7, 2);
+        evok[8] = GetItemResponseTextArea();
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 4);
+        evokanswerkey3[2] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".evok4submit").click(function(){
+        evok[9] = GetItemTrueFalseButton4();
+        evokanswercorrect1[3] = CorrectAnswer(evok, evokanswerkey1, 9, 3);
+        evok[10] = GetItemDropDownList();
+        evokanswercorrect2[3] = CorrectAnswer(evok, evokanswerkey2, 10, 3);
+        evok[11] = GetItemResponseTextArea();
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 4);
+        evokanswerkey3[3] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".evok5submit").click(function(){
+        evok[12] = GetItemTrueFalseButton4();
+        evokanswercorrect1[4] = CorrectAnswer(evok, evokanswerkey1, 12, 4);
+        evok[13] = GetItemDropDownList();
+        evokanswercorrect2[4] = CorrectAnswer(evok, evokanswerkey2, 13, 4);
+        evok[14] = GetItemResponseTextArea();
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 4);
+        evokanswerkey3[4] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".evok6submit").click(function(){
+        evok[15] = GetItemTrueFalseButton4();
+        evokanswercorrect1[5] = CorrectAnswer(evok, evokanswerkey1, 15, 5);
+        evok[16] = GetItemDropDownList();
+        evokanswercorrect2[5] = CorrectAnswer(evok, evokanswerkey2, 16, 5);
+        evok[17] = GetItemResponseTextArea();
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 4);
+        evokanswerkey3[5] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".evok7submit").click(function(){
+        evok[18] = GetItemTrueFalseButton4();
+        evokanswercorrect1[6] = CorrectAnswer(evok, evokanswerkey1, 18, 6);
+        evok[19] = GetItemDropDownList();
+        evokanswercorrect2[6] = CorrectAnswer(evok, evokanswerkey2, 19, 6);
+        evok[20] = GetItemResponseTextArea();
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 4);
+        evokanswerkey3[6] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".evok8submit").click(function(){
+        evok[21] = GetItemTrueFalseButton4();
+        evokanswercorrect1[7] = CorrectAnswer(evok, evokanswerkey1, 21, 7);
+        evok[22] = GetItemDropDownList();
+        evokanswercorrect2[7] = CorrectAnswer(evok, evokanswerkey2, 22, 7);
+        evok[23] = GetItemResponseTextArea();
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 4);
+        evokanswerkey3[7] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".evok9submit").click(function(){
+        evok[24] = GetItemTrueFalseButton4();
+        evokanswercorrect1[8] = CorrectAnswer(evok, evokanswerkey1, 24, 8);
+        evok[25] = GetItemDropDownList();
+        evokanswercorrect2[8] = CorrectAnswer(evok, evokanswerkey2, 25, 8);
+        evok[26] = GetItemResponseTextArea();
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 4);
+        evokanswerkey3[8] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".evok10submit").click(function(){
+        evok[27] = GetItemTrueFalseButton4();
+        evokanswercorrect1[9] = CorrectAnswer(evok, evokanswerkey1, 27, 9);
+        evok[28] = GetItemDropDownList();
+        evokanswercorrect2[9] = CorrectAnswer(evok, evokanswerkey2, 28, 9);
+        evok[29] = GetItemResponseTextArea();
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 4);
+        evokanswerkey3[9] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".evok11submit").click(function(){
+        evok[30] = GetItemTrueFalseButton4();
+        evokanswercorrect1[10] = CorrectAnswer(evok, evokanswerkey1, 30, 10);
+        evok[31] = GetItemDropDownList();
+        evokanswercorrect2[10] = CorrectAnswer(evok, evokanswerkey2, 31, 10);
+        evok[32] = GetItemResponseTextArea();
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 4);
+        evokanswerkey3[10] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".evok12submit").click(function(){
+        evok[33] = GetItemTrueFalseButton4();
+        evokanswercorrect1[11] = CorrectAnswer(evok, evokanswerkey1, 33, 11);
+        evok[34] = GetItemDropDownList();
+        evokanswercorrect2[11] = CorrectAnswer(evok, evokanswerkey2, 34, 11);
+        evok[35] = GetItemResponseTextArea();
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 4);
+        evokanswerkey3[11] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".evok13submit").click(function(){
+        evok[36] = GetItemTrueFalseButton4();
+        evokanswercorrect1[12] = CorrectAnswer(evok, evokanswerkey1, 36, 12);
+        evok[37] = GetItemDropDownList();
+        evokanswercorrect2[12] = CorrectAnswer(evok, evokanswerkey2, 37, 12);
+        evok[38] = GetItemResponseTextArea();
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 4);
+        evokanswerkey3[12] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".evok14submit").click(function(){
+        evok[39] = GetItemTrueFalseButton4();
+        evokanswercorrect1[13] = CorrectAnswer(evok, evokanswerkey1, 39, 13);
+        evok[40] = GetItemDropDownList();
+        evokanswercorrect2[13] = CorrectAnswer(evok, evokanswerkey2, 40, 13);
+        evok[41] = GetItemResponseTextArea();
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 4);
+        evokanswerkey3[13] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".evok15submit").click(function(){
+        evok[42] = GetItemTrueFalseButton4();
+        evokanswercorrect1[14] = CorrectAnswer(evok, evokanswerkey1, 42, 14);
+        evok[43] = GetItemDropDownList();
+        evokanswercorrect2[14] = CorrectAnswer(evok, evokanswerkey2, 43, 14);
+        evok[44] = GetItemResponseTextArea();
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 4);
+        evokanswerkey3[14] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".evok16submit").click(function(){
+        evok[45] = GetItemTrueFalseButton4();
+        evokanswercorrect1[15] = CorrectAnswer(evok, evokanswerkey1, 45, 15);
+        evok[46] = GetItemDropDownList();
+        evokanswercorrect2[15] = CorrectAnswer(evok, evokanswerkey2, 46, 15);
+        evok[47] = GetItemResponseTextArea();
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 4);
+        evokanswerkey3[15] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".evok17submit").click(function(){
+        evok[48] = GetItemTrueFalseButton4();
+        evokanswercorrect1[16] = CorrectAnswer(evok, evokanswerkey1, 48, 16);
+        evok[49] = GetItemDropDownList();
+        evokanswercorrect2[16] = CorrectAnswer(evok, evokanswerkey2, 49, 16);
+        evok[50] = GetItemResponseTextArea();
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 4);
+        evokanswerkey3[16] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".evok18submit").click(function(){
+        evok[51] = GetItemTrueFalseButton4();
+        evokanswercorrect1[17] = CorrectAnswer(evok, evokanswerkey1, 51, 17);
+        evok[52] = GetItemDropDownList();
+        evokanswercorrect2[17] = CorrectAnswer(evok, evokanswerkey2, 52, 17);
+        evok[53] = GetItemResponseTextArea();
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 4);
+        evokanswerkey3[17] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".evok19submit").click(function(){
+        evok[54] = GetItemTrueFalseButton4();
+        evokanswercorrect1[18] = CorrectAnswer(evok, evokanswerkey1, 54, 18);
+        evok[55] = GetItemDropDownList();
+        evokanswercorrect2[18] = CorrectAnswer(evok, evokanswerkey2, 55, 18);
+        evok[56] = GetItemResponseTextArea();
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 4);
+        evokanswerkey3[18] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".evok20submit").click(function(){
+        evok[57] = GetItemTrueFalseButton4();
+        evokanswercorrect1[19] = CorrectAnswer(evok, evokanswerkey1, 57, 19);
+        evok[58] = GetItemDropDownList();
+        evokanswercorrect2[19] = CorrectAnswer(evok, evokanswerkey2, 58, 19);
+        evok[59] = GetItemResponseTextArea();
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 4);
+        evokanswerkey3[19] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".evok21submit").click(function(){
+        evok[60] = GetItemTrueFalseButton4();
+        evokanswercorrect1[20] = CorrectAnswer(evok, evokanswerkey1, 60, 20);
+        evok[61] = GetItemDropDownList();
+        evokanswercorrect2[20] = CorrectAnswer(evok, evokanswerkey2, 61, 20);
+        evok[62] = GetItemResponseTextArea();
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 4);
+        evokanswerkey3[21] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".evok22submit").click(function(){
+        evok[63] = GetItemTrueFalseButton4();
+        evokanswercorrect1[21] = CorrectAnswer(evok, evokanswerkey1, 63, 21);
+        evok[64] = GetItemDropDownList();
+        evokanswercorrect2[21] = CorrectAnswer(evok, evokanswerkey2, 64, 21);
+        evok[65] = GetItemResponseTextArea();
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 4);
+        evokanswerkey3[21] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".evok23submit").click(function(){
+        evok[66] = GetItemTrueFalseButton4();
+        evokanswercorrect1[22] = CorrectAnswer(evok, evokanswerkey1, 66, 22);
+        evok[67] = GetItemDropDownList();
+        evokanswercorrect2[22] = CorrectAnswer(evok, evokanswerkey2, 67, 22);
+        evok[68] = GetItemResponseTextArea();
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 4);
+        evokanswerkey3[22] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".evok24submit").click(function(){
+        evok[69] = GetItemTrueFalseButton4();
+        evokanswercorrect1[23] = CorrectAnswer(evok, evokanswerkey1, 69, 23);
+        evok[70] = GetItemDropDownList();
+        evokanswercorrect2[23] = CorrectAnswer(evok, evokanswerkey2, 70, 23);
+        evok[71] = GetItemResponseTextArea();
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 4);
+        evokanswerkey3[23] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".evok25submit").click(function(){
+        evok[72] = GetItemTrueFalseButton4();
+        evokanswercorrect1[24] = CorrectAnswer(evok, evokanswerkey1, 72, 24);
+        evok[73] = GetItemDropDownList();
+        evokanswercorrect2[24] = CorrectAnswer(evok, evokanswerkey2, 73, 24);
+        evok[74] = GetItemResponseTextArea();
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 4);
+        evokanswerkey3[24] = CorrectOpenAnswer(agentanswerkey, 4);
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".evok26submit").click(function(){
+        evok[73], evok[74], evok[75], evok[76], evok[77], evok[78], evok[79], evok[80] = GetSelectedSpanContainers();
+        evokanswercorrect4[0], evokanswercorrect4[1], evokanswercorrect4[2], evokanswercorrect4[3], evokanswercorrect4[4], evokanswercorrect4[5], evokanswercorrect4[6], evokanswercorrect4[7] = GetSelectedSpanContainers();   
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".evok27submit").click(function(){
+        evok[81] = GetItemResponseTextArea();
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".evok28submit").click(function(){
+        evok[82] = GetItemResponseTextArea();
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".evok29submit").click(function(){
+        evok[83] = GetItemResponseTextArea();
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".evok30submit").click(function(){
+        evok[84] = GetItemResponseTextArea();
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".evok31submit").click(function(){
+        evok[85] = GetItemResponseTextArea();
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+   
 });
