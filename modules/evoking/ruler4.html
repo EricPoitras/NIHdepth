@@ -43,70 +43,37 @@
               <!-- Toolbar -->
               <div class="col-3 p-0 toolbararea">
                 <h5 class="p-3 toolbarhighlight">Instructions</h5>
-                <p class="p-3 text-justify">Review the following client statement related to the behavior change goal of having a more stable mood. You try to identify which statements you think are change talk. Then, respond to the change statement using EARS/OARS.</p>
+                <p class="px-3 text-justify">Now let’s apply this technique with a client who is struggling to attend couples therapy.</p>
                 
-                  <h5 class="p-3 toolbarhighlight">Feedback</h5>
                 <div class="p-3" id="feedbackarea">
                     <div class="alert alert-success" role="alert">
-                      Your selection is correct. 
-                    </div>
-                    <div class="alert alert-danger" role="alert">
-                      Your selection is incorrect.
+                        <ul>
+                            <ol>How confident are you that you can attend couples therapy on a scale of 0 to 10?</ol>
+                            <ol>Why is your number not higher?</ol>
+                            <ol>Why is your number not lower?</ol>
+                        </ul>
                     </div>
                 </div>
               </div>
               
               <!-- Content -->
               <div class="col contentarea">
-                     <div class="d-flex h-100 justify-content-left">
+                     <div class="d-flex h-100 justify-content-center align-items-center">
                         
                         <div id="discussion">
-                            <div class="card client">
-                                <div class="comment">
-                                    <div class="userpic"><img src="../../assets/avatar8.png"></div>
-                                    <p class="response"><em>Client: </em>I want my kids to have a calmer home life.</p>
-                                </div>
-                            </div>
-                            <div id="responsedisplayarea" class="card therapist">
-                                <div class="comment">
-                                    <div class="userpic"><img src="../../assets/avatar2.png"></div>
-                                    <p class="responsecounsel"><em>Counselor: </em>Answer appears here.</p>
-                                </div>
-                            </div>
-                            <div id="responsewritearea" class="card therapist">
-                                <div class="comment">
-                                        <div class="form-check">
-                                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                                      <label class="form-check-label" for="exampleRadios1">
-                                        Yes, the statement is change talk
-                                      </label>
+                            <div id="responsewritearea" class="card p-3">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="FormControlTextarea1">Let’s imagine you bring out a ruler that shows a 0-10 scale; what question would you ask to a patient using this technique? To assess their confidence in making a change, what would you say?</label>
+                                        <textarea class="form-control" id="FormControlTextarea1" rows="3"></textarea>
                                     </div>
-                                    <div class="form-check mt-1">
-                                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                                      <label class="form-check-label" for="exampleRadios2">
-                                        No, the statement is not change talk
-                                      </label>
+                                    
+                                    <div class="form-group">
+                                        <label for="FormControlTextarea1">What two follow-up questions would you ask?</label>
+                                        <textarea class="form-control" id="FormControlTextarea2" rows="3"></textarea>
                                     </div>
-                                    <div class="form-group mt-1">
-                                        <label for="SelectChangeTalk">Identify the type of change talk</label>
-                                        <select class="form-control" id="SelectChangeTalk">
-                                          <option>Desire</option>
-                                          <option>Ability</option>
-                                          <option>Reasons</option>
-                                          <option>Need</option>
-                                          <option>Commitment</option>
-                                          <option>Action</option>
-                                          <option>Taking Steps</option>
-                                          <option>N/A (Not Change Talk)</option>
-                                          <option>Don't know</option>
-                                        </select>
-                                    </div>
-                                        <div class="form-group">
-                                            <label for="FormControlTextarea1">Response</label>
-                                            <textarea class="form-control" id="message" placeholder="Write text here..." rows="4">Respond with EARS or OARS.</textarea>
-                                        </div>
-                                        <a id="responsesubmitb" role="button" href="#" class="btn buttoncus primarycolcus text-white mt-3 evok8submit">Submit</a> 
-                                </div>
+                                </form>
+                                <a id="responsesubmit" role="button" href="#" class="btn buttoncus primarycolcus text-white mt-3 evok35submit">Submit</a> 
                             </div>
                         </div>
                          
@@ -121,10 +88,10 @@
                         <i class="fas fa-bars"></i>
                     </button>
                   
-                    <h5 class="toolbarlabel">Drumming Change Talk Part 1</h5>
+                    <h5 class="toolbarlabel">Importance Ruler</h5>
                     <div class="justify-content-around d-flex">
-                        <a role="button" href="changetalk1step7.html" class="btn buttoncus primarycolcus text-white">Previous</a>
-                        <a role="button" href="changetalk1step9.html" class="btn buttoncus primarycolcus text-white">Next</a>
+                        <a role="button" href="ruler3.html" class="btn buttoncus primarycolcus text-white">Previous</a>
+                        <a role="button" href="decisionbalance.html" class="btn buttoncus primarycolcus text-white">Next</a>
                     </div>
               </div>
           </div>
@@ -139,7 +106,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     <!-- Script reference to your jquery code appears here -->
-    <script src="../../js/jquery.js"></script>  
+    <script src="../../js/jquery.js"></script>
       <script src="../../js/feedbackresponse.js"></script>
     <script src="../../data/data.js"></script>
   </body>
