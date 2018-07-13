@@ -712,8 +712,8 @@ function AgentResponse(answerkey, index){
     function() 
     {
     // Get the data from the CodeUtterances.js script
-    dsf = sessionStorage.getItem("utterrnn");
-    nn = sessionStorage.getItem("utterdsf");
+    dsf = sessionStorage.getItem("utterdsf");
+    nn = sessionStorage.getItem("utterrnn");
     
     // Hide animated icon for processing feedback
      $("#loading").fadeOut("fast");
@@ -759,8 +759,8 @@ function AgentResponse(answerkey, index){
 
 function CorrectOpenAnswer(answerkey, index){
     // Get the data from the CodeUtterances.js script
-    dsf = sessionStorage.getItem("utterrnn");
-    nn = sessionStorage.getItem("utterdsf");
+    dsf = sessionStorage.getItem("utterdsf");
+    nn = sessionStorage.getItem("utterrnn");
     console.log("dsf");
     // Get answer key data and compare to user response
     var correctresponse = answerkey[index];
