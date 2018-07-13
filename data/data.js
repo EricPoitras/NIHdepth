@@ -136,6 +136,51 @@ var agentanswerkey = ["advise_wop","facilitate","advise_wp","reflection_complex"
 function UpdateLocalStorage(){
     localStorage.username = username;
     localStorage.password = password;
+    // Main VASE-R
+    localStorage.baselinevaser = JSON.stringify(bas);
+    localStorage.postvaser = JSON.stringify(pos);
+    localStorage.follow1vaser = JSON.stringify(fol1);
+    localStorage.follow2vaser = JSON.stringify(fol2);
+    // VASE-R Multiple-Choice Items
+    localStorage.baselinevaseritem = JSON.stringify(basanswercorrect1);
+    localStorage.postvaseritem = JSON.stringify(posanswercorrect1);
+    localStorage.follow1vaseritem = JSON.stringify(fol1answercorrect1);
+    localStorage.follow2vaseritem = JSON.stringify(fol2answercorrect1);
+    // VASE-R Multiple-Choice Justification
+    localStorage.baselinevaseropen = JSON.stringify(basjustification);
+    localStorage.postvaseropen = JSON.stringify(posjustification);
+    localStorage.follow1vaseropen = JSON.stringify(fol1justification);
+    localStorage.follow2vaseropen = JSON.stringify(fol2justification);
+    // Main HRQ
+    localStorage.baselinehrq = JSON.stringify(bashrq);
+    localStorage.posthrq = JSON.stringify(poshrq);
+    localStorage.follow1hrq = JSON.stringify(fol1hrq);
+    localStorage.follow2hrq = JSON.stringify(fol2hrq);
+    // Main MITAK
+    localStorage.baselinemit = JSON.stringify(basmit);
+    localStorage.postmit = JSON.stringify(posmit);
+    localStorage.follow1mit = JSON.stringify(fol1mit);
+    localStorage.follow2mit = JSON.stringify(fol2mit);
+    // Main Modules
+    localStorage.moduleMI = JSON.stringify(mi);
+    localStorage.moduleOARS = JSON.stringify(oars);
+    localStorage.moduleFocusing = JSON.stringify(target);
+    localStorage.moduleEvoking = JSON.stringify(evok);
+    localStorage.modulePlanning = JSON.stringify(plan);
+    localStorage.moduleFullMIPractice = JSON.stringify(fullmi);
+    // Scoring Answers
+    localStorage.skillAffirm1 = JSON.stringify(oarsanswercorrect5);
+    localStorage.skillAffirm2 = JSON.stringify(oarsanswercorrect6);
+    localStorage.skillReflection1 = JSON.stringify(oarsanswercorrect4);
+    localStorage.skillReflection2 = JSON.stringify(targetanswercorrect2);
+    localStorage.skillQuestions1 = JSON.stringify(oarsanswercorrect1);
+    localStorage.skillQuestions2 = JSON.stringify(oarsanswercorrect2);
+    localStorage.skillQuestions3 = JSON.stringify(oarsanswercorrect3);
+    localStorage.skillTarget1 = JSON.stringify(targetanswercorrect1);
+    localStorage.skillChangeTalk1 = JSON.stringify(evokanswercorrect1);
+    localStorage.skillChangeTalk2 = JSON.stringify(evokanswercorrect2);
+    localStorage.skillChangeTalk3 = JSON.stringify(evokanswercorrect3);
+    localStorage.skillChangeTalk4 = JSON.stringify(evokanswercorrect4);
 }
 
 // Clear data from local storage
@@ -151,6 +196,57 @@ function GetDataFromLocalStorage(){
     if (localStorage.getItem("password") != null) {
         $(".passwordval").val(localStorage.password);
     }
+}
+
+// Refresh arrays based on data from local storage
+function RefreshFromLocalStorage(){
+    username = localStorage.username;
+    password = localStorage.password;
+    // Main VASE-R
+    bas = JSON.parse(localStorage.baselinevaser);
+    pos = JSON.parse(localStorage.postvaser);
+    fol1 = JSON.parse(localStorage.follow1vaser);
+    fol2 = JSON.parse(localStorage.follow2vaser);
+    // VASE-R Multiple-Choice Items
+    basanswercorrect1 = JSON.parse(localStorage.baselinevaseritem);
+    posanswercorrect1 = JSON.parse(localStorage.postvaseritem);
+    fol1answercorrect1 = JSON.parse(localStorage.follow1vaseritem);
+    fol2answercorrect1 = JSON.parse(localStorage.follow2vaseritem);
+    // VASE-R Multiple-Choice Justification
+    basjustification = JSON.parse(localStorage.baselinevaseropen);
+    posjustification = JSON.parse(localStorage.postvaseropen);
+    fol1justification = JSON.parse(localStorage.follow1vaseropen);
+    fol2justification = JSON.parse(localStorage.follow2vaseropen);
+    // Main HRQ
+    bashrq = JSON.parse(localStorage.baselinehrq);
+    poshrq = JSON.parse(localStorage.posthrq);
+    fol1hrq = JSON.parse(localStorage.follow1hrq);
+    fol2hrq = JSON.parse(localStorage.follow2hrq);
+    // Main MITAK
+    basmit = JSON.parse(localStorage.baselinemit);
+    posmit = JSON.parse(localStorage.postmit);
+    fol1mit = JSON.parse(localStorage.follow1mit);
+    fol2mit = JSON.parse(localStorage.follow2mit);
+    // Main Modules
+    mi = JSON.parse(localStorage.moduleMI);
+    oars = JSON.parse(localStorage.moduleOARS);
+    target = JSON.parse(localStorage.moduleFocusing);
+    evok = JSON.parse(localStorage.moduleEvoking);
+    plan = JSON.parse(localStorage.modulePlanning);
+    fullmi = JSON.parse(localStorage.moduleFullMIPractice);
+    // Scoring Answers
+    oarsanswercorrect5 = JSON.parse(localStorage.skillAffirm1);
+    oarsanswercorrect6 = JSON.parse(localStorage.skillAffirm2);
+    oarsanswercorrect4 = JSON.parse(localStorage.skillReflection1);
+    targetanswercorrect2 = JSON.parse(localStorage.skillReflection2);
+    oarsanswercorrect1 = JSON.parse(localStorage.skillQuestions1);
+    oarsanswercorrect2 = JSON.parse(localStorage.skillQuestions2);
+    oarsanswercorrect3 = JSON.parse(localStorage.skillQuestions3);
+    targetanswercorrect1 = JSON.parse(localStorage.skillTarget1);
+    evokanswercorrect1 = JSON.parse(localStorage.skillChangeTalk1);
+    evokanswercorrect2 = JSON.parse(localStorage.skillChangeTalk2);
+    evokanswercorrect3 = JSON.parse(localStorage.skillChangeTalk3);
+    evokanswercorrect4 = JSON.parse(localStorage.skillChangeTalk4);
 }
 
 // Update progress indicator for module completion
@@ -198,8 +294,8 @@ function UpdateProgressMetrics(){
     perfullmipro = fullmipro/1*100;
     
     // Calculate percentage of skill acquisition based on correct items
-    affirmcount = UpdateProgressResponseCorrect(oarsanswercorrect5);
-    peraffirm = affirmcount/8*100;
+    affirmcount = UpdateProgressResponseCorrect(oarsanswercorrect5) + UpdateProgressResponseCorrect(oarsanswercorrect6);
+    peraffirm = affirmcount/15*100;
     
     reflectcount = UpdateProgressResponseCorrect(oarsanswercorrect4) + UpdateProgressResponseCorrect(targetanswercorrect2);
     perreflect = reflectcount/11*100;
@@ -213,7 +309,6 @@ function UpdateProgressMetrics(){
     changetalkcount = UpdateProgressResponseCorrect(evokanswercorrect1) + UpdateProgressResponseCorrect(evokanswercorrect2) + UpdateProgressResponseCorrect(evokanswercorrect3) + UpdateProgressResponseCorrect(evokanswercorrect4);
     perchangetalk = changetalkcount/83*100;
    
-    
     // Update local storage of each progress indicator
     localStorage.setItem("PercentageBaseline",Math.round(perbaspro));
     localStorage.setItem("PercentagePostTreatment",Math.round(perpospro));
@@ -433,8 +528,6 @@ function GetItemRadioButton3(){
     }
     return returnval;
 }
-
-
 
 // Get item response from radio button - True/False component
 function GetItemTrueFalseButton(){
@@ -946,6 +1039,8 @@ function AgentDefault(){
 
 $(document).ready(function(){
     
+    RefreshFromLocalStorage();
+    
     // Set variable for username and password 
     $(".usernamesubmit").click(function(){
         username = $(".usernameval").val();
@@ -964,42 +1059,49 @@ $(document).ready(function(){
         bas[0] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".bas1submit").click(function(){
         bas[1] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".bas2submit").click(function(){
         bas[2] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".bas3submit").click(function(){
         bas[3] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".bas4submit").click(function(){
         bas[4] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".bas5submit").click(function(){
         bas[5] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".bas6submit").click(function(){
         bas[6] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".bas7submit").click(function(){
@@ -1008,36 +1110,42 @@ $(document).ready(function(){
         basanswercorrect1[0] = CorrectAnswer(bas, basanswerkey1, 7, 0);
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".bas8submit").click(function(){
         bas[8] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".bas9submit").click(function(){
         bas[9] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".bas10submit").click(function(){
         bas[10] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".bas11submit").click(function(){
         bas[11] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".bas12submit").click(function(){
         bas[12] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".bas13submit").click(function(){
@@ -1046,36 +1154,42 @@ $(document).ready(function(){
         basanswercorrect1[1] = CorrectAnswer(bas, basanswerkey1, 13, 1);
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".bas14submit").click(function(){
         bas[14] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".bas15submit").click(function(){
         bas[15] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".bas16submit").click(function(){
         bas[16] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".bas17submit").click(function(){
         bas[17] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".bas18submit").click(function(){
         bas[18] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".bas19submit").click(function(){
@@ -1084,6 +1198,7 @@ $(document).ready(function(){
         basanswercorrect1[2] = CorrectAnswer(bas, basanswerkey1, 19, 2);
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     // Post-Treatment VASE-R
@@ -1092,42 +1207,49 @@ $(document).ready(function(){
         pos[0] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".pos1submit").click(function(){
         pos[1] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".pos2submit").click(function(){
         pos[2] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".pos3submit").click(function(){
         pos[3] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".pos4submit").click(function(){
         pos[4] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".pos5submit").click(function(){
         pos[5] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".pos6submit").click(function(){
         pos[6] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".pos7submit").click(function(){
@@ -1136,36 +1258,42 @@ $(document).ready(function(){
         posanswercorrect1[0] = CorrectAnswer(pos, posanswerkey1, 7, 0);
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".pos8submit").click(function(){
         pos[8] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".pos9submit").click(function(){
         pos[9] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".pos10submit").click(function(){
         pos[10] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".pos11submit").click(function(){
         pos[11] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".pos12submit").click(function(){
         pos[12] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".pos13submit").click(function(){
@@ -1174,36 +1302,42 @@ $(document).ready(function(){
         posanswercorrect1[1] = CorrectAnswer(pos, posanswerkey1, 13, 1);
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".pos14submit").click(function(){
         pos[14] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".pos15submit").click(function(){
         pos[15] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".pos16submit").click(function(){
         pos[16] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".pos17submit").click(function(){
         pos[17] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".pos18submit").click(function(){
         pos[18] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".pos19submit").click(function(){
@@ -1212,6 +1346,7 @@ $(document).ready(function(){
         posanswercorrect1[2] = CorrectAnswer(pos, posanswerkey1, 19, 2);
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     // Follow-Up 1 VASE-R
@@ -1220,42 +1355,49 @@ $(document).ready(function(){
         fol1[0] = GetItemResponseTextArea();
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol11submit").click(function(){
         fol1[1] = GetItemResponseTextArea();
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol12submit").click(function(){
         fol1[2] = GetItemResponseTextArea();
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol13submit").click(function(){
         fol1[3] = GetItemResponseTextArea();
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol14submit").click(function(){
         fol1[4] = GetItemResponseTextArea();
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol15submit").click(function(){
         fol1[5] = GetItemResponseTextArea();
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol16submit").click(function(){
         fol1[6] = GetItemResponseTextArea();
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol17submit").click(function(){
@@ -1264,36 +1406,42 @@ $(document).ready(function(){
         fol1answercorrect1[0] = CorrectAnswer(fol1, fol1answerkey1, 7, 0);
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol18submit").click(function(){
         fol1[8] = GetItemResponseTextArea();
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol19submit").click(function(){
         fol1[9] = GetItemResponseTextArea();
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol110submit").click(function(){
         fol1[10] = GetItemResponseTextArea();
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol111submit").click(function(){
         fol1[11] = GetItemResponseTextArea();
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol112submit").click(function(){
         fol1[12] = GetItemResponseTextArea();
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol113submit").click(function(){
@@ -1302,36 +1450,42 @@ $(document).ready(function(){
         fol1answercorrect1[1] = CorrectAnswer(fol1, fol1answerkey1, 13, 1);
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol114submit").click(function(){
         fol1[14] = GetItemResponseTextArea();
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol115submit").click(function(){
         fol1[15] = GetItemResponseTextArea();
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol116submit").click(function(){
         fol1[16] = GetItemResponseTextArea();
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol117submit").click(function(){
         fol1[17] = GetItemResponseTextArea();
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol118submit").click(function(){
         fol1[18] = GetItemResponseTextArea();
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol119submit").click(function(){
@@ -1340,6 +1494,7 @@ $(document).ready(function(){
         fol1answercorrect1[2] = CorrectAnswer(fol1, fol1answerkey1, 19, 2);
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     // Follow-Up 2 VASE-R
@@ -1348,42 +1503,49 @@ $(document).ready(function(){
         fol2[0] = GetItemResponseTextArea();
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol21submit").click(function(){
         fol2[1] = GetItemResponseTextArea();
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol22submit").click(function(){
         fol2[2] = GetItemResponseTextArea();
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol23submit").click(function(){
         fol2[3] = GetItemResponseTextArea();
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol24submit").click(function(){
         fol2[4] = GetItemResponseTextArea();
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol25submit").click(function(){
         fol2[5] = GetItemResponseTextArea();
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol26submit").click(function(){
         fol2[6] = GetItemResponseTextArea();
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol27submit").click(function(){
@@ -1392,36 +1554,42 @@ $(document).ready(function(){
         fol2answercorrect1[0] = CorrectAnswer(fol2, fol2answerkey1, 7, 0);
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol28submit").click(function(){
         fol2[8] = GetItemResponseTextArea();
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol29submit").click(function(){
         fol2[9] = GetItemResponseTextArea();
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol210submit").click(function(){
         fol2[10] = GetItemResponseTextArea();
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol211submit").click(function(){
         fol2[11] = GetItemResponseTextArea();
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol212submit").click(function(){
         fol2[12] = GetItemResponseTextArea();
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol213submit").click(function(){
@@ -1430,36 +1598,42 @@ $(document).ready(function(){
         fol2answercorrect1[1] = CorrectAnswer(fol2, fol2answerkey1, 13, 1);
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol214submit").click(function(){
         fol2[14] = GetItemResponseTextArea();
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol215submit").click(function(){
         fol2[15] = GetItemResponseTextArea();
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol216submit").click(function(){
         fol2[16] = GetItemResponseTextArea();
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol217submit").click(function(){
         fol2[17] = GetItemResponseTextArea();
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol218submit").click(function(){
         fol2[18] = GetItemResponseTextArea();
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol219submit").click(function(){
@@ -1468,6 +1642,7 @@ $(document).ready(function(){
         fol2answercorrect1[2] = CorrectAnswer(fol2, fol2answerkey1, 19, 2);
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     // Baseline HRQ
@@ -1475,36 +1650,42 @@ $(document).ready(function(){
         bashrq[0] = GetItemResponseTextArea();
         bashrqpro = UpdateProgressIndicator(bashrq);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".bashrq2submit").click(function(){
         bashrq[1] = GetItemResponseTextArea();
         bashrqpro = UpdateProgressIndicator(bashrq);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".bashrq3submit").click(function(){
         bashrq[2] = GetItemResponseTextArea();
         bashrqpro = UpdateProgressIndicator(bashrq);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".bashrq4submit").click(function(){
         bashrq[3] = GetItemResponseTextArea();
         bashrqpro = UpdateProgressIndicator(bashrq);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".bashrq5submit").click(function(){
         bashrq[4] = GetItemResponseTextArea();
         bashrqpro = UpdateProgressIndicator(bashrq);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".bashrq6submit").click(function(){
         bashrq[5] = GetItemResponseTextArea();
         bashrqpro = UpdateProgressIndicator(bashrq);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     // Post Treatment HRQ
@@ -1512,36 +1693,42 @@ $(document).ready(function(){
         poshrq[0] = GetItemResponseTextArea();
         poshrqpro = UpdateProgressIndicator(poshrq);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".poshrq2submit").click(function(){
         poshrq[1] = GetItemResponseTextArea();
         poshrqpro = UpdateProgressIndicator(poshrq);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".poshrq3submit").click(function(){
         poshrq[2] = GetItemResponseTextArea();
         poshrqpro = UpdateProgressIndicator(poshrq);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".poshrq4submit").click(function(){
         poshrq[3] = GetItemResponseTextArea();
         poshrqpro = UpdateProgressIndicator(poshrq);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".poshrq5submit").click(function(){
         poshrq[4] = GetItemResponseTextArea();
         poshrqpro = UpdateProgressIndicator(poshrq);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".poshrq6submit").click(function(){
         poshrq[5] = GetItemResponseTextArea();
         poshrqpro = UpdateProgressIndicator(poshrq);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     // Follow up 1 HRQ
@@ -1549,36 +1736,42 @@ $(document).ready(function(){
         fol1hrq[0] = GetItemResponseTextArea();
         fol1hrqpro = UpdateProgressIndicator(fol1hrq);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol1hrq2submit").click(function(){
         fol1hrq[1] = GetItemResponseTextArea();
         fol1hrqpro = UpdateProgressIndicator(fol1hrq);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol1hrq3submit").click(function(){
         fol1hrq[2] = GetItemResponseTextArea();
         fol1hrqpro = UpdateProgressIndicator(fol1hrq);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol1hrq4submit").click(function(){
         fol1hrq[3] = GetItemResponseTextArea();
         fol1hrqpro = UpdateProgressIndicator(fol1hrq);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol1hrq5submit").click(function(){
         fol1hrq[4] = GetItemResponseTextArea();
         fol1hrqpro = UpdateProgressIndicator(fol1hrq);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol1hrq6submit").click(function(){
         fol1hrq[5] = GetItemResponseTextArea();
         fol1hrqpro = UpdateProgressIndicator(fol1hrq);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     // Follow Up 2 HRQ
@@ -1586,36 +1779,42 @@ $(document).ready(function(){
         fol2hrq[0] = GetItemResponseTextArea();
         fol2hrqpro = UpdateProgressIndicator(fol2hrq);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol2hrq2submit").click(function(){
         fol2hrq[1] = GetItemResponseTextArea();
         fol2hrqpro = UpdateProgressIndicator(fol2hrq);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol2hrq3submit").click(function(){
         fol2hrq[2] = GetItemResponseTextArea();
         fol2hrqpro = UpdateProgressIndicator(fol2hrq);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol2hrq4submit").click(function(){
         fol2hrq[3] = GetItemResponseTextArea();
         fol2hrqpro = UpdateProgressIndicator(fol2hrq);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol2hrq5submit").click(function(){
         fol2hrq[4] = GetItemResponseTextArea();
         fol2hrqpro = UpdateProgressIndicator(fol2hrq);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol2hrq6submit").click(function(){
         fol2hrq[5] = GetItemResponseTextArea();
         fol2hrqpro = UpdateProgressIndicator(fol2hrq);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     // Baseline MITAK
@@ -1623,60 +1822,70 @@ $(document).ready(function(){
         basmit[0], basmit[1], basmit[2], basmit[3], basmit[4], basmit[5], basmit[6], basmit[7], basmit[8], basmit[9], basmit[10], basmit[11], basmit[12], basmit[13] = GetItemTrueFalseForm();
         basmitakpro = UpdateProgressIndicator(basmit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".basmikat2submit").click(function(){
         basmit[14], basmit[15], basmit[16], basmit[17], basmit[18], basmit[19], basmit[20], basmit[21], basmit[22], basmit[23], basmit[24], basmit[25], basmit[26], basmit[27], basmit[28] = GetItemTrueFalseForm2();
         basmitakpro = UpdateProgressIndicator(basmit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".basmikat3submit").click(function(){
         basmit[29] = GetItemRadioButton2();
         basmitakpro = UpdateProgressIndicator(basmit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".basmikat4submit").click(function(){
         basmit[30] = GetItemRadioButton2();
         basmitakpro = UpdateProgressIndicator(basmit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".basmikat5submit").click(function(){
         basmit[31] = GetItemRadioButton2();
         basmitakpro = UpdateProgressIndicator(basmit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".basmikat6submit").click(function(){
         basmit[32] = GetItemRadioButton2();
         basmitakpro = UpdateProgressIndicator(basmit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".basmikat7submit").click(function(){
         basmit[33] = GetItemRadioButton2();
         basmitakpro = UpdateProgressIndicator(basmit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".basmikat8submit").click(function(){
         basmit[34] = GetItemRadioButton2();
         basmitakpro = UpdateProgressIndicator(basmit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".basmikat9submit").click(function(){
         basmit[35] = GetItemRadioButton3();
         basmitakpro = UpdateProgressIndicator(basmit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".basmikat10submit").click(function(){
         basmit[36] = GetItemRadioButton2();
         basmitakpro = UpdateProgressIndicator(basmit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     //Post-Treatment MITAK
@@ -1684,60 +1893,70 @@ $(document).ready(function(){
         posmit[0], posmit[1], posmit[2], posmit[3], posmit[4], posmit[5], posmit[6], posmit[7], posmit[8], posmit[9], posmit[10], posmit[11], posmit[12], posmit[13] = GetItemTrueFalseForm();
         posmitakpro = UpdateProgressIndicator(posmit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".posmikat2submit").click(function(){
         posmit[14], posmit[15], posmit[16], posmit[17], posmit[18], posmit[19], posmit[20], posmit[21], posmit[22], posmit[23], posmit[24], posmit[25], posmit[26], posmit[27], posmit[28] = GetItemTrueFalseForm2();
         posmitakpro = UpdateProgressIndicator(posmit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".posmikat3submit").click(function(){
         posmit[29] = GetItemRadioButton2();
         posmitakpro = UpdateProgressIndicator(posmit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".posmikat4submit").click(function(){
         posmit[30] = GetItemRadioButton2();
         posmitakpro = UpdateProgressIndicator(posmit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".posmikat5submit").click(function(){
         posmit[31] = GetItemRadioButton2();
         posmitakpro = UpdateProgressIndicator(posmit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".posmikat6submit").click(function(){
         posmit[32] = GetItemRadioButton2();
         posmitakpro = UpdateProgressIndicator(posmit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".posmikat7submit").click(function(){
         posmit[33] = GetItemRadioButton2();
         posmitakpro = UpdateProgressIndicator(posmit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".posmikat8submit").click(function(){
         posmit[34] = GetItemRadioButton2();
         posmitakpro = UpdateProgressIndicator(posmit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".posmikat9submit").click(function(){
         posmit[35] = GetItemRadioButton2();
         posmitakpro = UpdateProgressIndicator(posmit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".posmikat10submit").click(function(){
         posmit[36] = GetItemRadioButton2();
         posmitakpro = UpdateProgressIndicator(posmit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     // Follow-Up 1 MITAK
@@ -1745,60 +1964,70 @@ $(document).ready(function(){
         fol1mit[0], fol1mit[1], fol1mit[2], fol1mit[3], fol1mit[4], fol1mit[5], fol1mit[6], fol1mit[7], fol1mit[8], fol1mit[9], fol1mit[10], fol1mit[11], fol1mit[12], fol1mit[13] = GetItemTrueFalseForm();
         fol1mitakpro = UpdateProgressIndicator(fol1mit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol1mikat2submit").click(function(){
         fol1mit[29] = GetItemRadioButton2();
         fol1mitakpro = UpdateProgressIndicator(fol1mit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol1mikat3submit").click(function(){
         fol1mit[29] = GetItemRadioButton2();
         fol1mitakpro = UpdateProgressIndicator(fol1mit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol1mikat4submit").click(function(){
         fol1mit[30] = GetItemRadioButton2();
         fol1mitakpro = UpdateProgressIndicator(fol1mit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol1mikat5submit").click(function(){
         fol1mit[31] = GetItemRadioButton2();
         fol1mitakpro = UpdateProgressIndicator(fol1mit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol1mikat6submit").click(function(){
         fol1mit[32] = GetItemRadioButton2();
         fol1mitakpro = UpdateProgressIndicator(fol1mit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol1mikat7submit").click(function(){
         fol1mit[33] = GetItemRadioButton2();
         fol1mitakpro = UpdateProgressIndicator(fol1mit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol1mikat8submit").click(function(){
         fol1mit[34] = GetItemRadioButton2();
         fol1mitakpro = UpdateProgressIndicator(fol1mit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol1mikat9submit").click(function(){
         fol1mit[35] = GetItemRadioButton2();
         fol1mitakpro = UpdateProgressIndicator(fol1mit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol1mikat10submit").click(function(){
         fol1mit[36] = GetItemRadioButton2();
         fol1mitakpro = UpdateProgressIndicator(fol1mit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     // Follow-Up 2 MITAK
@@ -1806,60 +2035,70 @@ $(document).ready(function(){
         fol2mit[0], fol2mit[1], fol2mit[2], fol2mit[3], fol2mit[4], fol2mit[5], fol2mit[6], fol2mit[7], fol2mit[8], fol2mit[9], fol2mit[10], fol2mit[11], fol2mit[12], fol2mit[13] = GetItemTrueFalseForm();
         fol2mitakpro = UpdateProgressIndicator(fol2mit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol2mikat2submit").click(function(){
         fol2mit[14], fol2mit[15], fol2mit[16], fol2mit[17], fol2mit[18], fol2mit[19], fol2mit[20], fol2mit[21], fol2mit[22], fol2mit[23], fol2mit[24], fol2mit[25], fol2mit[26], fol2mit[27], fol2mit[28] = GetItemTrueFalseForm2();
         fol2mitakpro = UpdateProgressIndicator(fol2mit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol2mikat3submit").click(function(){
         fol2mit[29] = GetItemRadioButton2();
         fol2mitakpro = UpdateProgressIndicator(fol2mit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol2mikat4submit").click(function(){
         fol2mit[30] = GetItemRadioButton2();
         fol2mitakpro = UpdateProgressIndicator(fol2mit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol2mikat5submit").click(function(){
         fol2mit[31] = GetItemRadioButton2();
         fol2mitakpro = UpdateProgressIndicator(fol2mit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol2mikat6submit").click(function(){
         fol2mit[32] = GetItemRadioButton2();
         fol2mitakpro = UpdateProgressIndicator(fol2mit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol2mikat7submit").click(function(){
         fol2mit[33] = GetItemRadioButton2();
         fol2mitakpro = UpdateProgressIndicator(fol2mit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol2mikat8submit").click(function(){
         fol2mit[34] = GetItemRadioButton2();
         fol2mitakpro = UpdateProgressIndicator(fol2mit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol2mikat9submit").click(function(){
         fol2mit[35] = GetItemRadioButton2();
         fol2mitakpro = UpdateProgressIndicator(fol2mit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".fol2mikat10submit").click(function(){
         fol2mit[36] = GetItemRadioButton2();
         fol2mitakpro = UpdateProgressIndicator(fol2mit);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     // Motivational Interviewing Intro
@@ -1868,12 +2107,14 @@ $(document).ready(function(){
         [mi[0], mi[1], mi[2]] = GetItemResponseMultiTextArea();
         mipro = UpdateProgressIndicator(mi);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".mi2submit").click(function(){
         [mi[3], mi[4], mi[5]] = GetItemResponseMultiTextArea();
         mipro = UpdateProgressIndicator(mi);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     // Open or Close 1 to 10 
@@ -1884,6 +2125,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect1,0);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars2submit").click(function(){
@@ -1892,6 +2134,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect1,1);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars3submit").click(function(){
@@ -1900,6 +2143,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect1,2);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars4submit").click(function(){
@@ -1908,6 +2152,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect1,3);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars5submit").click(function(){
@@ -1916,6 +2161,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect1,4);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars6submit").click(function(){
@@ -1924,6 +2170,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect1,5);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars7submit").click(function(){
@@ -1932,6 +2179,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect1,6);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars8submit").click(function(){
@@ -1940,6 +2188,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect1,7);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars9submit").click(function(){
@@ -1948,6 +2197,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect1,8);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars10submit").click(function(){
@@ -1956,6 +2206,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect1,9);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     // Identify Stem 1 to 17
@@ -1966,6 +2217,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect2,0);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars12submit").click(function(){
@@ -1974,6 +2226,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect2,1);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars13submit").click(function(){
@@ -1982,6 +2235,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect2,2);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars14submit").click(function(){
@@ -1990,6 +2244,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect2,3);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars15submit").click(function(){
@@ -1998,6 +2253,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect2,4);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars16submit").click(function(){
@@ -2006,6 +2262,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect2,5);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars17submit").click(function(){
@@ -2014,6 +2271,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect2,6);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars18submit").click(function(){
@@ -2022,6 +2280,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect2,7);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars19submit").click(function(){
@@ -2030,6 +2289,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect2,8);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars20submit").click(function(){
@@ -2038,6 +2298,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect2,9);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars21submit").click(function(){
@@ -2046,6 +2307,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect2,10);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars22submit").click(function(){
@@ -2054,6 +2316,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect2,11);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars23submit").click(function(){
@@ -2062,6 +2325,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect2,12);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars24submit").click(function(){
@@ -2070,6 +2334,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect2,13);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars25submit").click(function(){
@@ -2078,6 +2343,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect2,14);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars26submit").click(function(){
@@ -2086,6 +2352,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect2,15);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars27submit").click(function(){
@@ -2094,6 +2361,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect2,16);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     // Open to Close 1 to 10
@@ -2105,6 +2373,7 @@ $(document).ready(function(){
         AgentResponse(agentanswerkey, 13);
         oarsanswercorrect3[0] = CorrectOpenAnswer(agentanswerkey, 13);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars29submit").click(function(){
@@ -2114,6 +2383,7 @@ $(document).ready(function(){
         AgentResponse(agentanswerkey, 13);
         oarsanswercorrect3[1] = CorrectOpenAnswer(agentanswerkey, 13);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars30submit").click(function(){
@@ -2123,6 +2393,7 @@ $(document).ready(function(){
         AgentResponse(agentanswerkey, 13);
         oarsanswercorrect3[2] = CorrectOpenAnswer(agentanswerkey, 13);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars31submit").click(function(){
@@ -2132,6 +2403,7 @@ $(document).ready(function(){
         AgentResponse(agentanswerkey, 13);
         oarsanswercorrect3[3] = CorrectOpenAnswer(agentanswerkey, 13);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars32submit").click(function(){
@@ -2141,6 +2413,7 @@ $(document).ready(function(){
         AgentResponse(agentanswerkey, 13);
         oarsanswercorrect3[4] = CorrectOpenAnswer(agentanswerkey, 13);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars33submit").click(function(){
@@ -2150,6 +2423,7 @@ $(document).ready(function(){
         AgentResponse(agentanswerkey, 13);
         oarsanswercorrect3[5] = CorrectOpenAnswer(agentanswerkey, 13);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars34submit").click(function(){
@@ -2159,6 +2433,7 @@ $(document).ready(function(){
         AgentResponse(agentanswerkey, 13);
         oarsanswercorrect3[6] = CorrectOpenAnswer(agentanswerkey, 13);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars35submit").click(function(){
@@ -2168,6 +2443,7 @@ $(document).ready(function(){
         AgentResponse(agentanswerkey, 13);
         oarsanswercorrect3[7] = CorrectOpenAnswer(agentanswerkey, 13);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars36submit").click(function(){
@@ -2177,6 +2453,7 @@ $(document).ready(function(){
         AgentResponse(agentanswerkey, 13);
         oarsanswercorrect3[8] = CorrectOpenAnswer(agentanswerkey, 13);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars37submit").click(function(){
@@ -2186,6 +2463,7 @@ $(document).ready(function(){
         AgentResponse(agentanswerkey, 13);
         oarsanswercorrect3[9] = CorrectOpenAnswer(agentanswerkey, 13);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     // These were deleted from a previous version
@@ -2216,6 +2494,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect4,0);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
                              
     $(".oars39submit").click(function(){
@@ -2224,6 +2503,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect4,1);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
                              
     $(".oars40submit").click(function(){
@@ -2232,6 +2512,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect4,2);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars41submit").click(function(){
@@ -2240,6 +2521,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect4,3);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars42submit").click(function(){
@@ -2248,6 +2530,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect4,4);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
                              
     $(".oars43submit").click(function(){
@@ -2256,6 +2539,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect4,5);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
                              
     $(".oars44submit").click(function(){
@@ -2264,6 +2548,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect4,6);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars45submit").click(function(){
@@ -2272,6 +2557,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect4,7);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars46submit").click(function(){
@@ -2280,6 +2566,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect4,8);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
                              
     $(".oars47submit").click(function(){
@@ -2288,6 +2575,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect4,9);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
                              
     $(".oars48submit").click(function(){
@@ -2296,6 +2584,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect4,10);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars49submit").click(function(){
@@ -2304,6 +2593,7 @@ $(document).ready(function(){
         oarspro = UpdateProgressIndicator(oars);
         AgentFeedback(oarsanswercorrect4,11);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     // Create stem 1 and 2
@@ -2317,6 +2607,7 @@ $(document).ready(function(){
         oarsanswercorrect5[0] = CorrectOpenAnswer(agentanswerkey, 3);
         console.log(oarsanswercorrect5[0]);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars51submit").click(function(){
@@ -2326,6 +2617,7 @@ $(document).ready(function(){
         AgentResponse(agentanswerkey, 3);
         oarsanswercorrect5[1] = CorrectOpenAnswer(agentanswerkey, 3);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     // Silver Lining
@@ -2337,6 +2629,7 @@ $(document).ready(function(){
         AgentResponse(agentanswerkey, 11);
         oarsanswercorrect6[0] = CorrectOpenAnswer(agentanswerkey, 11);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars53submit").click(function(){
@@ -2346,6 +2639,7 @@ $(document).ready(function(){
         AgentResponse(agentanswerkey, 11);
         oarsanswercorrect6[1] = CorrectOpenAnswer(agentanswerkey, 11);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars54submit").click(function(){
@@ -2355,6 +2649,7 @@ $(document).ready(function(){
         AgentResponse(agentanswerkey, 11);
         oarsanswercorrect6[2] = CorrectOpenAnswer(agentanswerkey, 11);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars55submit").click(function(){
@@ -2364,6 +2659,7 @@ $(document).ready(function(){
         AgentResponse(agentanswerkey, 11);
         oarsanswercorrect6[3] = CorrectOpenAnswer(agentanswerkey, 11);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars56submit").click(function(){
@@ -2373,6 +2669,7 @@ $(document).ready(function(){
         AgentResponse(agentanswerkey, 11);
         oarsanswercorrect6[4] = CorrectOpenAnswer(agentanswerkey, 11);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars57submit").click(function(){
@@ -2382,6 +2679,7 @@ $(document).ready(function(){
         AgentResponse(agentanswerkey, 11);
         oarsanswercorrect6[5] = CorrectOpenAnswer(agentanswerkey, 11);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".oars58submit").click(function(){
@@ -2391,6 +2689,7 @@ $(document).ready(function(){
         AgentResponse(agentanswerkey, 11);
         oarsanswercorrect6[6] = CorrectOpenAnswer(agentanswerkey, 11);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     // Focusing 
@@ -2404,6 +2703,7 @@ $(document).ready(function(){
         tarpro = UpdateProgressIndicator(target);
         AgentFeedback(targetanswercorrect1,0);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".focus2submit").click(function(){
@@ -2413,6 +2713,7 @@ $(document).ready(function(){
         tarpro = UpdateProgressIndicator(target);
         AgentFeedback(targetanswercorrect1,1);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".focus3submit").click(function(){
@@ -2422,6 +2723,7 @@ $(document).ready(function(){
         tarpro = UpdateProgressIndicator(target);
         AgentFeedback(targetanswercorrect1,2);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".focus4submit").click(function(){
@@ -2431,6 +2733,7 @@ $(document).ready(function(){
         tarpro = UpdateProgressIndicator(target);
         AgentFeedback(targetanswercorrect1,3);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".focus5submit").click(function(){
@@ -2440,6 +2743,7 @@ $(document).ready(function(){
         tarpro = UpdateProgressIndicator(target);
         AgentFeedback(targetanswercorrect1,4);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".focus6submit").click(function(){
@@ -2449,6 +2753,7 @@ $(document).ready(function(){
         tarpro = UpdateProgressIndicator(target);
         AgentFeedback(targetanswercorrect1,5);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".focus7submit").click(function(){
@@ -2458,6 +2763,7 @@ $(document).ready(function(){
         tarpro = UpdateProgressIndicator(target);
         AgentFeedback(targetanswercorrect1,6);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".focus8submit").click(function(){
@@ -2467,6 +2773,7 @@ $(document).ready(function(){
         tarpro = UpdateProgressIndicator(target);
         AgentFeedback(targetanswercorrect1,7);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".focus9submit").click(function(){
@@ -2476,6 +2783,7 @@ $(document).ready(function(){
         tarpro = UpdateProgressIndicator(target);
         AgentFeedback(targetanswercorrect1,8);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".focus10submit").click(function(){
@@ -2485,6 +2793,7 @@ $(document).ready(function(){
         tarpro = UpdateProgressIndicator(target);
         AgentFeedback(targetanswercorrect1,9);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".focus11submit").click(function(){
@@ -2494,6 +2803,7 @@ $(document).ready(function(){
         tarpro = UpdateProgressIndicator(target);
         AgentFeedback(targetanswercorrect1,10);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".focus12submit").click(function(){
@@ -2503,6 +2813,7 @@ $(document).ready(function(){
         tarpro = UpdateProgressIndicator(target);
         AgentFeedback(targetanswercorrect1,11);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".focus13submit").click(function(){
@@ -2512,6 +2823,7 @@ $(document).ready(function(){
         tarpro = UpdateProgressIndicator(target);
         AgentFeedback(targetanswercorrect1,12);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".focus14submit").click(function(){
@@ -2519,6 +2831,7 @@ $(document).ready(function(){
         tarpro = UpdateProgressIndicator(target);
         AgentDefault();
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".focus15submit").click(function(){
@@ -2526,6 +2839,7 @@ $(document).ready(function(){
         tarpro = UpdateProgressIndicator(target);
         AgentDefault();
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".focus16submit").click(function(){
@@ -2533,6 +2847,7 @@ $(document).ready(function(){
         tarpro = UpdateProgressIndicator(target);
         AgentDefault();
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".focus17submit").click(function(){
@@ -2540,6 +2855,7 @@ $(document).ready(function(){
         tarpro = UpdateProgressIndicator(target);
         AgentDefault();
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".focus18asubmit").click(function(){
@@ -2549,6 +2865,7 @@ $(document).ready(function(){
         AgentResponse(agentanswerkey, 3);
         targetanswercorrect2[0] = CorrectOpenAnswer(agentanswerkey, 3);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".focus18bsubmit").click(function(){
@@ -2558,6 +2875,7 @@ $(document).ready(function(){
         AgentResponse(agentanswerkey, 3);
         targetanswercorrect2[1] = CorrectOpenAnswer(agentanswerkey, 3);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".focus18csubmit").click(function(){
@@ -2567,6 +2885,7 @@ $(document).ready(function(){
         AgentResponse(agentanswerkey, 3);
         targetanswercorrect2[2] = CorrectOpenAnswer(agentanswerkey, 3);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".focus19submit").click(function(){
@@ -2574,6 +2893,7 @@ $(document).ready(function(){
         tarpro = UpdateProgressIndicator(target);
         AgentDefault();
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".focus20asubmit").click(function(){
@@ -2583,6 +2903,7 @@ $(document).ready(function(){
         AgentResponse(agentanswerkey, 3);
         targetanswercorrect2[3] = CorrectOpenAnswer(agentanswerkey, 3);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".focus20bsubmit").click(function(){
@@ -2592,6 +2913,7 @@ $(document).ready(function(){
         AgentResponse(agentanswerkey, 3);
         targetanswercorrect2[4] = CorrectOpenAnswer(agentanswerkey, 3);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".focus20csubmit").click(function(){
@@ -2601,6 +2923,7 @@ $(document).ready(function(){
         AgentResponse(agentanswerkey, 3);
         targetanswercorrect2[5] = CorrectOpenAnswer(agentanswerkey, 3);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".focus21submit").click(function(){
@@ -2608,6 +2931,7 @@ $(document).ready(function(){
         tarpro = UpdateProgressIndicator(target);
         AgentDefault();
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".focus22asubmit").click(function(){
@@ -2617,6 +2941,7 @@ $(document).ready(function(){
         AgentResponse(agentanswerkey, 3);
         targetanswercorrect2[6] = CorrectOpenAnswer(agentanswerkey, 3);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".focus22bsubmit").click(function(){
@@ -2626,6 +2951,7 @@ $(document).ready(function(){
         AgentResponse(agentanswerkey, 3);
         targetanswercorrect2[7] = CorrectOpenAnswer(agentanswerkey, 3);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".focus22csubmit").click(function(){
@@ -2635,6 +2961,7 @@ $(document).ready(function(){
         AgentResponse(agentanswerkey, 3);
         targetanswercorrect2[8] = CorrectOpenAnswer(agentanswerkey, 3);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".focus23submit").click(function(){
@@ -2642,6 +2969,7 @@ $(document).ready(function(){
         tarpro = UpdateProgressIndicator(target);
         AgentDefault();
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     // Evoking (Change Talk)
@@ -2656,6 +2984,7 @@ $(document).ready(function(){
         evokanswercorrect3[0] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".evok2submit").click(function(){
@@ -2669,6 +2998,7 @@ $(document).ready(function(){
         evokanswercorrect3[1] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".evok3submit").click(function(){
@@ -2682,6 +3012,7 @@ $(document).ready(function(){
         evokanswercorrect3[2] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".evok4submit").click(function(){
@@ -2695,6 +3026,7 @@ $(document).ready(function(){
         evokanswercorrect3[3] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".evok5submit").click(function(){
@@ -2708,6 +3040,7 @@ $(document).ready(function(){
         evokanswercorrect3[4] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".evok6submit").click(function(){
@@ -2721,6 +3054,7 @@ $(document).ready(function(){
         evokanswercorrect3[5] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".evok7submit").click(function(){
@@ -2734,6 +3068,7 @@ $(document).ready(function(){
         evokanswercorrect3[6] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".evok8submit").click(function(){
@@ -2747,6 +3082,7 @@ $(document).ready(function(){
         evokanswercorrect3[7] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".evok9submit").click(function(){
@@ -2760,6 +3096,7 @@ $(document).ready(function(){
         evokanswercorrect3[8] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".evok10submit").click(function(){
@@ -2773,6 +3110,7 @@ $(document).ready(function(){
         evokanswercorrect3[9] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".evok11submit").click(function(){
@@ -2786,6 +3124,7 @@ $(document).ready(function(){
         evokanswercorrect3[10] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".evok12submit").click(function(){
@@ -2799,6 +3138,7 @@ $(document).ready(function(){
         evokanswercorrect3[11] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".evok13submit").click(function(){
@@ -2812,6 +3152,7 @@ $(document).ready(function(){
         evokanswercorrect3[12] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".evok14submit").click(function(){
@@ -2825,6 +3166,7 @@ $(document).ready(function(){
         evokanswercorrect3[13] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".evok15submit").click(function(){
@@ -2838,6 +3180,7 @@ $(document).ready(function(){
         evokanswercorrect3[14] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".evok16submit").click(function(){
@@ -2851,6 +3194,7 @@ $(document).ready(function(){
         evokanswercorrect3[15] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".evok17submit").click(function(){
@@ -2864,6 +3208,7 @@ $(document).ready(function(){
         evokanswercorrect3[16] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".evok18submit").click(function(){
@@ -2877,6 +3222,7 @@ $(document).ready(function(){
         evokanswercorrect3[17] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".evok19submit").click(function(){
@@ -2890,6 +3236,7 @@ $(document).ready(function(){
         evokanswercorrect3[18] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".evok20submit").click(function(){
@@ -2903,6 +3250,7 @@ $(document).ready(function(){
         evokanswercorrect3[19] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".evok21submit").click(function(){
@@ -2916,6 +3264,7 @@ $(document).ready(function(){
         evokanswercorrect3[21] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".evok22submit").click(function(){
@@ -2929,6 +3278,7 @@ $(document).ready(function(){
         evokanswercorrect3[21] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".evok23submit").click(function(){
@@ -2942,6 +3292,7 @@ $(document).ready(function(){
         evokanswercorrect3[22] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".evok24submit").click(function(){
@@ -2955,6 +3306,7 @@ $(document).ready(function(){
         evokanswercorrect3[23] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".evok25submit").click(function(){
@@ -2968,6 +3320,7 @@ $(document).ready(function(){
         evokanswercorrect3[24] = CorrectOpenAnswer(agentanswerkey, 4);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".evok26submit").click(function(){
@@ -2975,36 +3328,42 @@ $(document).ready(function(){
         evokanswercorrect4[0], evokanswercorrect4[1], evokanswercorrect4[2], evokanswercorrect4[3], evokanswercorrect4[4], evokanswercorrect4[5], evokanswercorrect4[6], evokanswercorrect4[7] = GetSelectedSpanContainers();   
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".evok27submit").click(function(){
         evok[81] = GetItemResponseTextArea();
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".evok28submit").click(function(){
         evok[82] = GetItemResponseTextArea();
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".evok29submit").click(function(){
         evok[83] = GetItemResponseTextArea();
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".evok30submit").click(function(){
         evok[84] = GetItemResponseTextArea();
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".evok31submit").click(function(){
         evok[85] = GetItemResponseTextArea();
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".evok32submit").click(function(){
@@ -3013,6 +3372,7 @@ $(document).ready(function(){
         AgentDefault();
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".evok33submit").click(function(){
@@ -3021,6 +3381,7 @@ $(document).ready(function(){
         AgentDefault();
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".evok34submit").click(function(){
@@ -3028,6 +3389,7 @@ $(document).ready(function(){
         AgentDefault();
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".evok35submit").click(function(){
@@ -3035,6 +3397,7 @@ $(document).ready(function(){
         AgentDefault();
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".menu1submit").click(function(){
@@ -3042,6 +3405,7 @@ $(document).ready(function(){
         AgentDefault();
         planpro = UpdateProgressIndicator(plan);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
         
     $(".menu2submit").click(function(){
@@ -3049,6 +3413,7 @@ $(document).ready(function(){
         AgentDefault();
         planpro = UpdateProgressIndicator(plan);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
         
     $(".menu3submit").click(function(){
@@ -3056,6 +3421,7 @@ $(document).ready(function(){
         AgentDefault();
         planpro = UpdateProgressIndicator(plan);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".menu4submit").click(function(){
@@ -3063,6 +3429,7 @@ $(document).ready(function(){
         AgentDefault();
         planpro = UpdateProgressIndicator(plan);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
         
     $(".menu5submit").click(function(){
@@ -3070,6 +3437,7 @@ $(document).ready(function(){
         AgentDefault();
         planpro = UpdateProgressIndicator(plan);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     $(".menu6submit").click(function(){
@@ -3077,6 +3445,7 @@ $(document).ready(function(){
         AgentDefault();
         planpro = UpdateProgressIndicator(plan);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
         
     $(".menu7submit").click(function(){
@@ -3084,6 +3453,7 @@ $(document).ready(function(){
         AgentDefault();
         planpro = UpdateProgressIndicator(plan);
         UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
     
     // Full MI Practice
@@ -3091,6 +3461,7 @@ $(document).ready(function(){
        fullmi[0] = "N/A";
        fullmipro = UpdateProgressIndicator(fullmi);
        UpdateProgressMetrics();
+       UpdateLocalStorage();
     });
    
 });
