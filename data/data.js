@@ -107,11 +107,14 @@ var evokanswercorrect4 = [7];
 // Planning
 var plan = [10];
 
+// Full MI Practice
+var fullmi = [0];
+
 
 // Progress Indicators for each module - percentage completion rate
 
-var baspro, pospro, fol1pro, fol2pro, bashrqpro, poshrqpro, fol1hrqpro, fol2hrqpro, basmitakpro, posmitakpro, fol1mitakpro, fol2mitakpro, mipro, oarspro, tarpro, evokpro, planpro;
-var perbaspro, perpospro, perfol1pro, perfol2pro, perbashrqpro, perposhrqpro, perfol1hrqpro, perfol2hrqpro, perbasmitakpro, perposmitakpro, perfol1mitakpro, perfol2mitakpro, permipro, peroarspro, pertarpro, perevokpro, perplanpro;
+var baspro, pospro, fol1pro, fol2pro, bashrqpro, poshrqpro, fol1hrqpro, fol2hrqpro, basmitakpro, posmitakpro, fol1mitakpro, fol2mitakpro, mipro, oarspro, tarpro, evokpro, planpro, fullmipro;
+var perbaspro, perpospro, perfol1pro, perfol2pro, perbashrqpro, perposhrqpro, perfol1hrqpro, perfol2hrqpro, perbasmitakpro, perposmitakpro, perfol1mitakpro, perfol2mitakpro, permipro, peroarspro, pertarpro, perevokpro, perplanpro, perfullmipro;
 
 // Percentage score of correct responses per skill
 var affirmcount, reflectcount, openclosecount, targetcount, changetalkcount;
@@ -192,6 +195,7 @@ function UpdateProgressMetrics(){
     pertarpro = tarpro/33*100;
     perevokpro = evokpro/96*100;
     perplanpro = planpro/11*100;
+    perfullmipro = fullmipro/1*100;
     
     // Calculate percentage of skill acquisition based on correct items
     affirmcount = UpdateProgressResponseCorrect(oarsanswercorrect5);
@@ -228,6 +232,7 @@ function UpdateProgressMetrics(){
     localStorage.setItem("PercentageFocusing",Math.round(pertarpro));
     localStorage.setItem("PercentageEvoking",Math.round(perevokpro));
     localStorage.setItem("PercentagePlanning",Math.round(perplanpro));
+    localStorage.setItem("PercentageFullMIPractice",Math.round(perfullmipro));
     
     localStorage.setItem("PercentageAffirm",Math.round(peraffirm));
     localStorage.setItem("PercentageReflect",Math.round(perreflect));
@@ -3079,6 +3084,13 @@ $(document).ready(function(){
         AgentDefault();
         planpro = UpdateProgressIndicator(plan);
         UpdateProgressMetrics();
+    });
+    
+    // Full MI Practice
+    $(".fullmi1submit").click(function(){
+       fullmi[0] = "N/A";
+       fullmipro = UpdateProgressIndicator(fullmi);
+       UpdateProgressMetrics();
     });
    
 });
