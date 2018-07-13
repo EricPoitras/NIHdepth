@@ -104,11 +104,14 @@ var evokanswerkey2 = ["N/A (Not Change Talk)", "Reasons", "Reasons", "Reasons", 
 var evokanswercorrect3 = [24];
 var evokanswercorrect4 = [7];
 
+// Planning
+var plan = [10];
+
 
 // Progress Indicators for each module - percentage completion rate
 
-var baspro, pospro, fol1pro, fol2pro, bashrqpro, poshrqpro, fol1hrqpro, fol2hrqpro, basmitakpro, posmitakpro, fol1mitakpro, fol2mitakpro, mipro, oarspro, tarpro, evokpro;
-var perbaspro, perpospro, perfol1pro, perfol2pro, perbashrqpro, perposhrqpro, perfol1hrqpro, perfol2hrqpro, perbasmitakpro, perposmitakpro, perfol1mitakpro, perfol2mitakpro, permipro, peroarspro, pertarpro, perevokpro;
+var baspro, pospro, fol1pro, fol2pro, bashrqpro, poshrqpro, fol1hrqpro, fol2hrqpro, basmitakpro, posmitakpro, fol1mitakpro, fol2mitakpro, mipro, oarspro, tarpro, evokpro, planpro;
+var perbaspro, perpospro, perfol1pro, perfol2pro, perbashrqpro, perposhrqpro, perfol1hrqpro, perfol2hrqpro, perbasmitakpro, perposmitakpro, perfol1mitakpro, perfol2mitakpro, permipro, peroarspro, pertarpro, perevokpro, perplanpro;
 
 // Percentage score of correct responses per skill
 var affirmcount, reflectcount, openclosecount, targetcount, changetalkcount;
@@ -188,6 +191,7 @@ function UpdateProgressMetrics(){
     peroarspro = oarspro/58*100;
     pertarpro = tarpro/33*100;
     perevokpro = evokpro/96*100;
+    perplanpro = planpro/11*100;
     
     // Calculate percentage of skill acquisition based on correct items
     affirmcount = UpdateProgressResponseCorrect(oarsanswercorrect5);
@@ -223,6 +227,7 @@ function UpdateProgressMetrics(){
     localStorage.setItem("PercentageOARS",Math.round(peroarspro));
     localStorage.setItem("PercentageFocusing",Math.round(pertarpro));
     localStorage.setItem("PercentageEvoking",Math.round(perevokpro));
+    localStorage.setItem("PercentagePlanning",Math.round(perplanpro));
     
     localStorage.setItem("PercentageAffirm",Math.round(peraffirm));
     localStorage.setItem("PercentageReflect",Math.round(perreflect));
@@ -301,6 +306,53 @@ function GetItemResponseMultiTextArea2(){
         returnval2 = val2;
     }
     return [returnval1,returnval2];
+}
+
+function GetItemResponseMultiTextArea3(){
+    var val1 = $("#mtext").val();
+    var val2 = $("#etext").val();
+    var val3 = $("#ntext").val();
+    var val4 = $("#utext").val();
+    var val5 = $("#stext").val();
+    
+    var returnval1;
+    var returnval2;
+    var returnval3;
+    var returnval4;
+    var returnval5;
+    
+    if(val1 === null){
+        returnval1 = "N/A";
+    }
+    else{
+        returnval1 = val1;
+    }
+    if(val2 === null){
+        returnval2 = "N/A";
+    }
+    else{
+        returnval2 = val2;
+    }
+    if(val3 === null){
+        returnval3 = "N/A";
+    }
+    else{
+        returnval3 = val3;
+    }
+    if(val4 === null){
+        returnval4 = "N/A";
+    }
+    else{
+        returnval4 = val4;
+    }
+    if(val5 === null){
+        returnval5 = "N/A";
+    }
+    else{
+        returnval5 = val5;
+    }
+    
+    return [returnval1, returnval2, returnval3, returnval4, returnval5];
 }
 
 // Get item response from radio button component
@@ -2977,6 +3029,55 @@ $(document).ready(function(){
         evok[94], evok[95] = GetItemResponseMultiTextArea2();
         AgentDefault();
         evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".menu1submit").click(function(){
+        plan[0], plan[1], plan[2], plan[3], plan[4] = GetItemResponseMultiTextArea3(); 
+        AgentDefault();
+        planpro = UpdateProgressIndicator(plan);
+        UpdateProgressMetrics();
+    });
+        
+    $(".menu2submit").click(function(){
+        plan[5] = GetItemResponseTextArea();
+        AgentDefault();
+        planpro = UpdateProgressIndicator(plan);
+        UpdateProgressMetrics();
+    });
+        
+    $(".menu3submit").click(function(){
+        plan[6] = GetItemResponseTextArea();
+        AgentDefault();
+        planpro = UpdateProgressIndicator(plan);
+        UpdateProgressMetrics();
+    });
+    
+    $(".menu4submit").click(function(){
+        plan[7] = GetItemResponseTextArea();
+        AgentDefault();
+        planpro = UpdateProgressIndicator(plan);
+        UpdateProgressMetrics();
+    });
+        
+    $(".menu5submit").click(function(){
+        plan[8] = GetItemResponseTextArea(); 
+        AgentDefault();
+        planpro = UpdateProgressIndicator(plan);
+        UpdateProgressMetrics();
+    });
+    
+    $(".menu6submit").click(function(){
+        plan[9] = GetItemResponseTextArea(); 
+        AgentDefault();
+        planpro = UpdateProgressIndicator(plan);
+        UpdateProgressMetrics();
+    });
+        
+    $(".menu7submit").click(function(){
+        plan[10] = GetItemResponseTextArea(); 
+        AgentDefault();
+        planpro = UpdateProgressIndicator(plan);
         UpdateProgressMetrics();
     });
    
