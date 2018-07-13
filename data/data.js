@@ -96,7 +96,7 @@ var targetanswercorrect1 = [12];
 var targetanswercorrect2 = [8];
 
 // Evoking
-var evok = [85]; // 
+var evok = [95]; // 
 var evokanswercorrect1 = [24];
 var evokanswercorrect2 = [24];
 var evokanswerkey1 = ["else", "change", "change", "change", "else", "change", "else", "change", "change", "else", "else", "else", "else", "change", "change", "else", "change", "change", "change", "change", "change", "else", "change", "change"];
@@ -187,7 +187,7 @@ function UpdateProgressMetrics(){
     permipro = mipro/6*100;
     peroarspro = oarspro/58*100;
     pertarpro = tarpro/33*100;
-    perevokpro = evokpro/86*100;
+    perevokpro = evokpro/96*100;
     
     // Calculate percentage of skill acquisition based on correct items
     affirmcount = UpdateProgressResponseCorrect(oarsanswercorrect5);
@@ -281,6 +281,26 @@ function GetItemResponseMultiTextArea(){
         returnval3 = val3;
     }
     return [returnval1,returnval2,returnval3];
+}
+
+function GetItemResponseMultiTextArea2(){
+    var val1 = $("#FormControlTextarea1").val();
+    var val2 = $("#FormControlTextarea2").val();
+    var returnval1;
+    var returnval2;
+    if(val1 === null){
+        returnval1 = "N/A";
+    }
+    else{
+        returnval1 = val1;
+    }
+    if(val2 === null){
+        returnval2 = "N/A";
+    }
+    else{
+        returnval2 = val2;
+    }
+    return [returnval1,returnval2];
 }
 
 // Get item response from radio button component
@@ -411,6 +431,58 @@ function GetItemTrueFalseButton4(){
         returnval = "else";
     }
     return returnval;
+}
+
+function GetInlineRadioForm(){
+    var val1 = document.getElementById("inlineRadio0").checked;
+    var val2 = document.getElementById("inlineRadio1").checked;
+    var val3 = document.getElementById("inlineRadio2").checked;
+    var val4 = document.getElementById("inlineRadio3").checked;
+    var val5 = document.getElementById("inlineRadio4").checked;
+    var val6 = document.getElementById("inlineRadio5").checked;
+    var val7 = document.getElementById("inlineRadio6").checked;
+    var val8 = document.getElementById("inlineRadio7").checked;
+    var val9 = document.getElementById("inlineRadio8").checked;
+    var val10 = document.getElementById("inlineRadio9").checked;
+    var val11 = document.getElementById("inlineRadio10").checked;
+    
+    var returnval1;
+    
+    if(val1 == true){
+        returnval1 = "0";
+    }
+    else if(val2 == true){
+        returnval1 = "1";
+    }
+    else if(val3 == true){
+        returnval1 = "2";
+    }
+    else if(val4 == true){
+        returnval1 = "3";
+    }
+    else if(val5 == true){
+        returnval1 = "4";
+    }
+    else if(val6 == true){
+        returnval1 = "5";
+    }
+    else if(val7 == true){
+        returnval1 = "6";
+    }
+    else if(val8 == true){
+        returnval1 = "7";
+    }
+    else if(val9 == true){
+        returnval1 = "8";
+    }
+    else if(val10 == true){
+        returnval1 = "9";
+    }
+    else{
+        returnval1 = "10";
+    }
+    
+    return returnval1;
 }
 
 // MIKAT True False Form at mikat1.html
@@ -2874,6 +2946,36 @@ $(document).ready(function(){
     
     $(".evok31submit").click(function(){
         evok[85] = GetItemResponseTextArea();
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".evok32submit").click(function(){
+        evok[86], evok[87] = GetItemResponseMultiTextArea2();
+        evok[88] = GetInlineRadioForm();
+        AgentDefault();
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".evok33submit").click(function(){
+        evok[89], evok[90] = GetItemResponseMultiTextArea2();
+        evok[91] = GetInlineRadioForm();
+        AgentDefault();
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".evok34submit").click(function(){
+        evok[92], evok[93] = GetItemResponseMultiTextArea2();
+        AgentDefault();
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+    });
+    
+    $(".evok35submit").click(function(){
+        evok[94], evok[95] = GetItemResponseMultiTextArea2();
+        AgentDefault();
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
     });
