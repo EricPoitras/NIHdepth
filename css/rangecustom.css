@@ -34,11 +34,11 @@ input[type=range]::-ms-track {
 input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  border: 1px solid #FF6632;
+  border: 1px solid #db1836;
   height: 18px;
   width: 8px;
   border-radius: 5px;
-  background: #FF6632;
+  background: #db1836;
   cursor: pointer;
   margin-top: -7px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /* Add cool effects to your sliders! */
@@ -50,18 +50,18 @@ input[type=range]::-moz-range-thumb {
   -webkit-appearance: none;
   appearance: none;
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  border: 1px solid #FF6632;
+  border: 1px solid #db1836;
   height: 18px;
   width: 8px;
   border-radius: 5px;
-  background: #FF6632;
+  background: #db1836;
   cursor: pointer;
 }
 
 /* All the same stuff for IE */
 input[type=range]::-ms-thumb {
   /*box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  border: 1px solid #FF6632;
+  border: 1px solid #db1836;
   height: 18px;
   width: 8px;
   border-radius: 5px;
@@ -77,13 +77,13 @@ input[type=range]::-webkit-slider-runnable-track {
   height: 8.4px;
   cursor: pointer;
   /*box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;*/
-  background: #FF6632;
+  background: #db1836;
   border-radius: 1.3px;
   border: 0.2px solid #010101;
 }
 
 input[type=range]:focus::-webkit-slider-runnable-track {
-  background: #FF6632;
+  background: #db1836;
 }
 
 input[type=range]::-moz-range-track {
@@ -92,7 +92,7 @@ input[type=range]::-moz-range-track {
   height: 8.4px;
   cursor: pointer;
   /*box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;*/
-  background: #FF6632;
+  background: #db1836;
   border-radius: 1.3px;
   border: 0.2px solid #010101;
 }
@@ -101,23 +101,23 @@ input[type=range]::-ms-track {
   height: 8.4px;
   cursor: pointer;
   /*box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;*/
-  background: #FF6632 !important;
+  background: #db1836 !important;
   border-radius: 1.3px;
-  border: 0.2px solid #FF6632;
+  border: 0.2px solid #db1836;
 }
 
 input[type=range]::-ms-fill-lower {
-  background: #FF6632 !important;
-  border: 0.2px solid #FF6632;
+  background: #db1836 !important;
+  border: 0.2px solid #db1836;
 }
 input[type=range]:focus::-ms-fill-lower {
-  background: #FF6632 !important;
+  background: #db1836 !important;
 }
 input[type=range]::-ms-fill-upper {
-  background: #FF6632 !important;
-  border: 0.2px solid #FF6632;
+  background: #db1836 !important;
+  border: 0.2px solid #db1836;
 }
 input[type=range]:focus::-ms-fill-upper {
-  background: #FF6632 !important;
+  background: #db1836 !important;
 }
 
