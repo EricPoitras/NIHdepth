@@ -134,53 +134,82 @@ var agentanswerkey = ["advise_wop","facilitate","advise_wp","reflection_complex"
 
 // Update data in local storage
 function UpdateLocalStorage(){
-    localStorage.username = username;
-    localStorage.password = password;
-    // Main VASE-R
-    localStorage.baselinevaser = JSON.stringify(bas);
-    localStorage.postvaser = JSON.stringify(pos);
-    localStorage.follow1vaser = JSON.stringify(fol1);
-    localStorage.follow2vaser = JSON.stringify(fol2);
-    // VASE-R Multiple-Choice Items
-    localStorage.baselinevaseritem = JSON.stringify(basanswercorrect1);
-    localStorage.postvaseritem = JSON.stringify(posanswercorrect1);
-    localStorage.follow1vaseritem = JSON.stringify(fol1answercorrect1);
-    localStorage.follow2vaseritem = JSON.stringify(fol2answercorrect1);
-    // VASE-R Multiple-Choice Justification
-    localStorage.baselinevaseropen = JSON.stringify(basjustification);
-    localStorage.postvaseropen = JSON.stringify(posjustification);
-    localStorage.follow1vaseropen = JSON.stringify(fol1justification);
-    localStorage.follow2vaseropen = JSON.stringify(fol2justification);
-    // Main HRQ
-    localStorage.baselinehrq = JSON.stringify(bashrq);
-    localStorage.posthrq = JSON.stringify(poshrq);
-    localStorage.follow1hrq = JSON.stringify(fol1hrq);
-    localStorage.follow2hrq = JSON.stringify(fol2hrq);
-    // Main MITAK
-    localStorage.baselinemit = JSON.stringify(basmit);
-    localStorage.postmit = JSON.stringify(posmit);
-    localStorage.follow1mit = JSON.stringify(fol1mit);
-    localStorage.follow2mit = JSON.stringify(fol2mit);
-    // Main Modules
-    localStorage.moduleMI = JSON.stringify(mi);
-    localStorage.moduleOARS = JSON.stringify(oars);
-    localStorage.moduleFocusing = JSON.stringify(target);
-    localStorage.moduleEvoking = JSON.stringify(evok);
-    localStorage.modulePlanning = JSON.stringify(plan);
-    localStorage.moduleFullMIPractice = JSON.stringify(fullmi);
-    // Scoring Answers
-    localStorage.skillAffirm1 = JSON.stringify(oarsanswercorrect5);
-    localStorage.skillAffirm2 = JSON.stringify(oarsanswercorrect6);
-    localStorage.skillReflection1 = JSON.stringify(oarsanswercorrect4);
-    localStorage.skillReflection2 = JSON.stringify(targetanswercorrect2);
-    localStorage.skillQuestions1 = JSON.stringify(oarsanswercorrect1);
-    localStorage.skillQuestions2 = JSON.stringify(oarsanswercorrect2);
-    localStorage.skillQuestions3 = JSON.stringify(oarsanswercorrect3);
-    localStorage.skillTarget1 = JSON.stringify(targetanswercorrect1);
-    localStorage.skillChangeTalk1 = JSON.stringify(evokanswercorrect1);
-    localStorage.skillChangeTalk2 = JSON.stringify(evokanswercorrect2);
-    localStorage.skillChangeTalk3 = JSON.stringify(evokanswercorrect3);
-    localStorage.skillChangeTalk4 = JSON.stringify(evokanswercorrect4);
+    try{
+        localStorage.username = username;
+        localStorage.password = password;
+        // Main VASE-R
+        localStorage.baselinevaser = JSON.stringify(bas);
+        localStorage.postvaser = JSON.stringify(pos);
+        localStorage.follow1vaser = JSON.stringify(fol1);
+        localStorage.follow2vaser = JSON.stringify(fol2);
+        // VASE-R Multiple-Choice Items
+        localStorage.baselinevaseritem = JSON.stringify(basanswercorrect1);
+        localStorage.postvaseritem = JSON.stringify(posanswercorrect1);
+        localStorage.follow1vaseritem = JSON.stringify(fol1answercorrect1);
+        localStorage.follow2vaseritem = JSON.stringify(fol2answercorrect1);
+        // VASE-R Multiple-Choice Justification
+        localStorage.baselinevaseropen = JSON.stringify(basjustification);
+        localStorage.postvaseropen = JSON.stringify(posjustification);
+        localStorage.follow1vaseropen = JSON.stringify(fol1justification);
+        localStorage.follow2vaseropen = JSON.stringify(fol2justification);
+        // Main HRQ
+        localStorage.baselinehrq = JSON.stringify(bashrq);
+        localStorage.posthrq = JSON.stringify(poshrq);
+        localStorage.follow1hrq = JSON.stringify(fol1hrq);
+        localStorage.follow2hrq = JSON.stringify(fol2hrq);
+        // Main MITAK
+        localStorage.baselinemit = JSON.stringify(basmit);
+        localStorage.postmit = JSON.stringify(posmit);
+        localStorage.follow1mit = JSON.stringify(fol1mit);
+        localStorage.follow2mit = JSON.stringify(fol2mit);
+        // Main Modules
+        localStorage.moduleMI = JSON.stringify(mi);
+        localStorage.moduleOARS = JSON.stringify(oars);
+        localStorage.moduleFocusing = JSON.stringify(target);
+        localStorage.moduleEvoking = JSON.stringify(evok);
+        localStorage.modulePlanning = JSON.stringify(plan);
+        localStorage.moduleFullMIPractice = JSON.stringify(fullmi);
+        // Scoring Answers
+        localStorage.skillAffirm1 = JSON.stringify(oarsanswercorrect5);
+        localStorage.skillAffirm2 = JSON.stringify(oarsanswercorrect6);
+        localStorage.skillReflection1 = JSON.stringify(oarsanswercorrect4);
+        localStorage.skillReflection2 = JSON.stringify(targetanswercorrect2);
+        localStorage.skillQuestions1 = JSON.stringify(oarsanswercorrect1);
+        localStorage.skillQuestions2 = JSON.stringify(oarsanswercorrect2);
+        localStorage.skillQuestions3 = JSON.stringify(oarsanswercorrect3);
+        localStorage.skillTarget1 = JSON.stringify(targetanswercorrect1);
+        localStorage.skillChangeTalk1 = JSON.stringify(evokanswercorrect1);
+        localStorage.skillChangeTalk2 = JSON.stringify(evokanswercorrect2);
+        localStorage.skillChangeTalk3 = JSON.stringify(evokanswercorrect3);
+        localStorage.skillChangeTalk4 = JSON.stringify(evokanswercorrect4);
+        // Update local storage of each progress indicator
+        localStorage.setItem("PercentageBaseline",Math.round(perbaspro));
+        localStorage.setItem("PercentagePostTreatment",Math.round(perpospro));
+        localStorage.setItem("PercentageFollowUp1",Math.round(perfol1pro));
+        localStorage.setItem("PercentageFollowUp2",Math.round(perfol2pro));
+        localStorage.setItem("PercentageBaselineHRQ",Math.round(perbashrqpro));
+        localStorage.setItem("PercentagePostTreatmentHRQ",Math.round(perposhrqpro));
+        localStorage.setItem("PercentageFollowUp1HRQ",Math.round(perfol1hrqpro));
+        localStorage.setItem("PercentageFollowUp2HRQ",Math.round(perfol2hrqpro));
+        localStorage.setItem("PercentageBaselineMITAK",Math.round(perbasmitakpro));
+        localStorage.setItem("PercentagePostTreatmentMITAK",Math.round(perposmitakpro));
+        localStorage.setItem("PercentageFollowUp1MITAK",Math.round(perfol1mitakpro));
+        localStorage.setItem("PercentageFollowUp2MITAK",Math.round(perfol2mitakpro));
+        localStorage.setItem("PercentageMI",Math.round(permipro));
+        localStorage.setItem("PercentageOARS",Math.round(peroarspro));
+        localStorage.setItem("PercentageFocusing",Math.round(pertarpro));
+        localStorage.setItem("PercentageEvoking",Math.round(perevokpro));
+        localStorage.setItem("PercentagePlanning",Math.round(perplanpro));
+        localStorage.setItem("PercentageFullMIPractice",Math.round(perfullmipro));
+
+        localStorage.setItem("PercentageAffirm",Math.round(peraffirm));
+        localStorage.setItem("PercentageReflect",Math.round(perreflect));
+        localStorage.setItem("PercentageOpenClose",Math.round(peropenclose));
+        localStorage.setItem("PercentageTarget",Math.round(pertarget));
+        localStorage.setItem("PercentageChangeTalk",Math.round(perchangetalk));
+    }catch(err){
+        console.log(err.message);
+    }
 }
 
 // Clear data from local storage
@@ -200,7 +229,8 @@ function GetDataFromLocalStorage(){
 
 // Refresh arrays based on data from local storage
 function RefreshFromLocalStorage(){
-    username = localStorage.username;
+    try{
+        username = localStorage.username;
     password = localStorage.password;
     // Main VASE-R
     bas = JSON.parse(localStorage.baselinevaser);
@@ -247,6 +277,35 @@ function RefreshFromLocalStorage(){
     evokanswercorrect2 = JSON.parse(localStorage.skillChangeTalk2);
     evokanswercorrect3 = JSON.parse(localStorage.skillChangeTalk3);
     evokanswercorrect4 = JSON.parse(localStorage.skillChangeTalk4);
+    // Set Progress Indicators
+    perbaspro = parseInt(localStorage.PercentageBaseline);
+    perpospro = parseInt(localStorage.PercentagePostTreatment);
+    perfol1pro = parseInt(localStorage.PercentageFollowUp1);
+    perfol2pro = parseInt(localStorage.PercentageFollowUp2);
+    perbashrqpro = parseInt(localStorage.PercentageBaselineHRQ);
+    perposhrqpro = parseInt(localStorage.PercentagePostTreatmentHRQ);
+    perfol1hrqpro = parseInt(localStorage.PercentageFollowUp1HRQ);
+    perfol2hrqpro = parseInt(localStorage.PercentageFollowUp2HRQ);
+    perbasmitakpro = parseInt(localStorage.PercentageBaselineMITAK);
+    perposmitakpro = parseInt(localStorage.PercentagePostTreatmentMITAK);
+    perfol1mitakpro = parseInt(localStorage.PercentageFollowUp1MITAK);
+    perfol2mitakpro = parseInt(localStorage.PercentageFollowUp2MITAK);
+    permipro = parseInt(localStorage.PercentageMI);
+    peroarspro = parseInt(localStorage.PercentageOARS);
+    pertarpro = parseInt(localStorage.PercentageFocusing);
+    perevokpro = parseInt(localStorage.PercentageEvoking);
+    perplanpro = parseInt(localStorage.PercentagePlanning);
+    perfullmipro = parseInt(localStorage.PercentageFullMIPractice)
+    // Set Percentage of Item Correct Aligned with Skills
+    peraffirm = parseInt(localStorage.PercentageAffirm);
+    perreflect = parseInt(localStorage.PercentageReflect);
+    peropenclose = parseInt(localStorage.PercentageOpenClose);
+    pertarget = parseInt(localStorage.PercentageTarget);
+    perchangetalk = parseInt(localStorage.PercentageChangeTalk);
+    
+    }catch(err){
+        console.log(err.message);
+    } 
 }
 
 // Update progress indicator for module completion
@@ -309,31 +368,6 @@ function UpdateProgressMetrics(){
     changetalkcount = UpdateProgressResponseCorrect(evokanswercorrect1) + UpdateProgressResponseCorrect(evokanswercorrect2) + UpdateProgressResponseCorrect(evokanswercorrect3) + UpdateProgressResponseCorrect(evokanswercorrect4);
     perchangetalk = changetalkcount/83*100;
    
-    // Update local storage of each progress indicator
-    localStorage.setItem("PercentageBaseline",Math.round(perbaspro));
-    localStorage.setItem("PercentagePostTreatment",Math.round(perpospro));
-    localStorage.setItem("PercentageFollowUp1",Math.round(perfol1pro));
-    localStorage.setItem("PercentageFollowUp2",Math.round(perfol2pro));
-    localStorage.setItem("PercentageBaselineHRQ",Math.round(perbashrqpro));
-    localStorage.setItem("PercentagePostTreatmentHRQ",Math.round(perposhrqpro));
-    localStorage.setItem("PercentageFollowUp1HRQ",Math.round(perfol1hrqpro));
-    localStorage.setItem("PercentageFollowUp2HRQ",Math.round(perfol2hrqpro));
-    localStorage.setItem("PercentageBaselineMITAK",Math.round(perbasmitakpro));
-    localStorage.setItem("PercentagePostTreatmentMITAK",Math.round(perposmitakpro));
-    localStorage.setItem("PercentageFollowUp1MITAK",Math.round(perfol1mitakpro));
-    localStorage.setItem("PercentageFollowUp2MITAK",Math.round(perfol2mitakpro));
-    localStorage.setItem("PercentageMI",Math.round(permipro));
-    localStorage.setItem("PercentageOARS",Math.round(peroarspro));
-    localStorage.setItem("PercentageFocusing",Math.round(pertarpro));
-    localStorage.setItem("PercentageEvoking",Math.round(perevokpro));
-    localStorage.setItem("PercentagePlanning",Math.round(perplanpro));
-    localStorage.setItem("PercentageFullMIPractice",Math.round(perfullmipro));
-    
-    localStorage.setItem("PercentageAffirm",Math.round(peraffirm));
-    localStorage.setItem("PercentageReflect",Math.round(perreflect));
-    localStorage.setItem("PercentageOpenClose",Math.round(peropenclose));
-    localStorage.setItem("PercentageTarget",Math.round(pertarget));
-    localStorage.setItem("PercentageChangeTalk",Math.round(perchangetalk));
 }
 
 // Correct answers submitted to each assessment item
