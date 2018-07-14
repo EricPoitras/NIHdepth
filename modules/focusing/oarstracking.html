@@ -16,6 +16,25 @@
       
     <!-- Stylesheet -->
     <link rel="stylesheet" href="../../css/stylesheet.css">
+    
+    <style>
+        .card{
+            padding: 25px;
+        }
+        i{
+            float: left;
+            margin: 5px;
+            font-size: 18pt;
+            color: #db1836;
+        }
+        i:hover{
+            color: #5B0A17;
+        }
+        .d-flex span{
+            font-size: 16pt;
+            padding-left: 10px;
+        }
+    </style>
 
     <title>NIH depth</title>
   </head>
@@ -43,38 +62,42 @@
               <!-- Toolbar -->
               <div class="col-3 p-0 toolbararea">
                 <h5 class="p-3 toolbarhighlight">Instructions</h5>
-                <p class="p-3 text-justify">Listen to the following clips and summarize what you have heard using reflections. You may watch the video more than once to craft the summary. When you are summarizing you are collecting the flowers from the long speech to repeat back to the client in a nice bouquet. Remember to collect the important flowers that focus on the target behavior change.</p>
-                <h5 class="p-3 toolbarhighlight">Feedback</h5>
-                <div class="p-3" id="feedbackarea">
-                    <div class="align-middle text-center">
-                        <i id="loading" class="fas fa-spinner fa-pulse"></i> 
-                    </div>
-                    <div class="alert alert-success" role="alert">Correct answers:
-                        Wearing a suit to: feel better/put a positive spin on things, get better grades on a test etc. 
-                    </div>
-                    <!--<div class="alert alert-danger" role="alert">
-                      You did not reflect this statement.
-                    </div>-->
-                </div>
+                <p class="p-3 text-justify">Using the sheet in your workbook, make a mark each time you hear Bill Miller utilize any OARS skills, that is: open ended questions, affirmations, reflections and summaries. Only code the counselors speech. You can ignore anything that is not an OARS skill. That means do not code phrases like “uh-huh” or “yeah” or “right”, times when the counselor offers information or opinions, or times when there are closed ended questions or any other type of statement. You will notice that Bill uses reflections that are often short, but complex in that they are continuing on the sentence for the patient and going beyond what is said. Count both simple and complex reflections.  You may pause the video as needed.  When you are done tallying please enter your final numbers here.</p>
               </div>
               
               <!-- Content -->
               <div class="col contentarea">
-                     <div class="d-flex h-100 justify-content-left">
+                     <div class="d-flex flex-column h-100 justify-content-center align-items-center">
                         
-                        <div id="discussion">
-                            
-                            <div id="responsewritearea" class="card therapist">
-                                <div class="comment">
-                                        <div class="form-group">
-                                            <label for="FormControlTextarea1">What would you have identified as a target behavior change? Identify one.</label>
-                                            <textarea class="form-control m-2" id="message" placeholder="Write text here..." rows="4"></textarea>
-                                        </div>
-                                        <a id="responsesubmitb" role="button" href="#" class="btn buttoncus primarycolcus text-white mt-3 focus23submit">Submit</a> 
+                        <div id="video-container">
+                          <!-- Video -->
+                          <iframe width="560" height="315" src="https://www.youtube.com/embed/RATt7HehP5Q" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        </div>
+                         
+                        <div class="card">
+                            <div class="d-flex flex-column">
+                                <div>
+                                    <span>Open-Ended Questions: </span><span id="valueopen">0</span>
+                                    <i id="upopen" class="fas fa-thumbs-up"></i>
+                                    <i id="downopen" class="fas fa-thumbs-down"></i>
+                                </div>
+                                <div>
+                                    <span>Affirmations: </span><span id="valueaffirm">0</span>
+                                    <i id="upaffirm" class="fas fa-thumbs-up"></i>
+                                    <i id="downaffirm" class="fas fa-thumbs-down"></i>
+                                </div>
+                                <div>
+                                    <span>Reflections: </span><span id="valuereflect">0</span>
+                                    <i id="upreflect" class="fas fa-thumbs-up"></i>
+                                    <i id="downreflect" class="fas fa-thumbs-down"></i>
+                                </div>
+                                <div>
+                                    <span>Summaries: </span><span id="valuesum">0</span>
+                                    <i id="upsum" class="fas fa-thumbs-up"></i>
+                                    <i id="downsum" class="fas fa-thumbs-down"></i>
                                 </div>
                             </div>
                         </div>
-                         
                     </div>
               </div>
           </div>          
@@ -86,10 +109,10 @@
                         <i class="fas fa-bars"></i>
                     </button>
                   
-                    <h5 class="toolbarlabel">Practice Summarizing</h5>
+                    <h5 class="toolbarlabel">OARS Tracking</h5>
                     <div class="justify-content-around d-flex">
-                        <a role="button" href="pracsum8c.html" class="btn buttoncus primarycolcus text-white">Previous</a>
-                        <a role="button" href="oarstracking.html" class="btn buttoncus primarycolcus text-white">Next</a>
+                        <a role="button" href="pracsum9.html" class="btn buttoncus primarycolcus text-white">Previous</a>
+                        <a role="button" href="feedback.html" class="btn buttoncus primarycolcus text-white">Next</a>
                     </div>
               </div>
           </div>
@@ -105,10 +128,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     <!-- Script reference to your jquery code appears here -->
     <script src="../../js/jquery.js"></script>  
-    <script src="../../js/feedbackresponse.js"></script>
-    <!--<script src="../../data/CodeUtterances.js"></script>  API to assess utterances -->
-    <script src="../../data/data.js"></script> <!-- Store textarea response -->
-
+    <script src="../../js/taly.js"></script>
     
   </body>
 </html>
