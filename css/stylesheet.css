@@ -1,7 +1,20 @@
-/* Typography */
+
+/*
+Color Palette
+
+
+SUNSHINE #F7B733
+
+
+Orange #FF6632      VERMILLION #FC4A1A             #b42a75, #db1836
+Purple #8166F9     FRESH #4ABDAC                #16a9c9
+White #F8F8F8   CLEAN #DFDCE3
+*/
+
+/* Typography used to be Barlow */
 
 .fontcus{
-    font-family: 'Barlow', sans-serif;
+    font-family: 'Helvetica', sans-serif;
 }
 
 .displaycus{
@@ -38,16 +51,16 @@
 /* Color Palette */
 
 .primarycolcus{
-    background-color: #FF6632;
+    background-color: #db1836;
     color: white;
 }
 
 .secondarycolcus{
-    color: #8166F9;
+    color: #16a9c9;
 }
 
 .tertiarycolcus{
-    color: #F8F8F8;
+    color: #DFDCE3;
 }
 
 /* Navigation Bar */
@@ -66,7 +79,7 @@ nav.navcus1 a.labelcus{
 }
 
 nav.navcus1 a.labelcus:hover{
-    border-bottom: 7px solid #FF6632;
+    border-bottom: 7px solid #db1836;
 }
 
 /* Landing Page */
@@ -147,7 +160,7 @@ nav.navcus1 a.labelcus:hover{
 /* Modules page */
 
 .modulecusarea{
-    background-color: #8166F9;
+    background-color: #16a9c9;
 }
 
 .modulepage{
@@ -185,7 +198,7 @@ nav.navcus1 a.labelcus:hover{
     margin-top: 15px;
     margin-top: 15px;
     padding-top: 15px;
-    color: #8166F9;
+    color: #16a9c9;
 }
 
 .activecus, .activecus2{
@@ -195,7 +208,7 @@ nav.navcus1 a.labelcus:hover{
 /* Sub-Page of Modules */
 .modulehighlight{
     color: white;
-    background-color: #8166F9;
+    background-color: #16a9c9;
 }
 
 .modulepage .list-group-item{
@@ -250,9 +263,9 @@ nav.navcus1 a.labelcus:hover{
     bottom: 12px;
     left: 15px;
     font-size: 1.5em;
-    color: #FF6632;
+    color: #db1836;
     background-color: white;
-    border: 2px solid #FF6632;
+    border: 2px solid #db1836;
     padding-top: 3px;
     padding-left: 10px;
     padding-right: 10px;
@@ -264,12 +277,12 @@ nav.navcus1 a.labelcus:hover{
     position: fixed;
     bottom: 12px;
     left: 70px;
-    color: #FF6632;
+    color: #db1836;
 }
 
 .modulestep .toolbarhighlight{
     background-color: rgb(220,220,220);
-    color: #FF6632;
+    color: #db1836;
 }
 
 #responsearea{
@@ -279,7 +292,7 @@ nav.navcus1 a.labelcus:hover{
 /* Video Control */
 
 #play-pause, #mute, #full-screen, #loading{
-    color: #FF6632;
+    color: #db1836;
     font-size: 2em;
     background-color: transparent;
     border: 0px solid transparent;
@@ -287,8 +300,8 @@ nav.navcus1 a.labelcus:hover{
 }
 
 /*#seek-bar, #volume-bar{
-    color: #FF6632;
-    background-color: #FF6632;
+    color: #db1836;
+    background-color: #db1836;
 }*/
 
 /* Avatar Talk Turn */
@@ -351,12 +364,12 @@ nav.navcus1 a.labelcus:hover{
 
 /* Override BS4 Sheet */
 .form-control:focus{
-    border-color: #FF6632;
+    border-color: #db1836;
     box-shadow: none;    
 }
 
 .btn:focus, .btn:active {
-    box-shadow: 0 0 0 3px #FF663240;
+    box-shadow: 0 0 0 3px #db183640;
 }
 
 a:link, a:visited, a:hover, a:active{
