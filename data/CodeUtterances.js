@@ -128,7 +128,7 @@ CodeUtterances = {
         innerdiv.innerHTML="<p>"+text+"</p>";
         var mypopup = $("#alertpopup");
         mypopup.popup( "open" );*/
-        alert(text);
+        console.log(text);
     },
     formatDate:function(date){
         if(date==null)return "";
