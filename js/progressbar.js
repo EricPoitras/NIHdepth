@@ -72,12 +72,12 @@ $(document).ready(function(){
         $("#planningcard .progress-bar").attr("aria-valuenow",percentage);
     }
     
-    if (localStorage.getItem("PercentagePercentageFullMIPractice") === null || localStorage.getItem("PercentagePercentageFullMIPractice") === "NaN") {
+    if (localStorage.getItem("PercentageFullMIPractice") === null || localStorage.getItem("PercentageFullMIPractice") === "NaN") {
         $("#fullmicard .progress-bar").text("0%");
         $("#fullmicard .progress-bar").css({"width":"0%"});
         $("#fullmicard .progress-bar").attr("aria-valuenow","0");
     }else{
-        var percentage = localStorage.getItem("PercentagePercentageFullMIPractice");
+        var percentage = localStorage.getItem("PercentageFullMIPractice");
         $("#fullmicard .progress-bar").text(percentage+"%");
         $("#fullmicard .progress-bar").css({"width":percentage+"%"});
         $("#fullmicard .progress-bar").attr("aria-valuenow",percentage);
