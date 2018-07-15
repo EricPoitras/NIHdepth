@@ -847,77 +847,77 @@ function GetItemTrueFalseForm2(){
     var returnval14;
     var returnval15;
     
-    if(val1 == true){
+    if(val1 == false){
         returnval1 = "False (Correct)";
     }else{
         returnval1 = "True (Incorrect)";
     }
-    if(val2 == true){
+    if(val2 == false){
         returnval2 = "False (Incorrect)";
     }else{
         returnval2 = "True (Correct)";
     }
-    if(val3 == true){
+    if(val3 == false){
         returnval3 = "False (Correct)";
     }else{
         returnval3 = "True (Incorrect)";
     }
-    if(val4 == true){
+    if(val4 == false){
         returnval4 = "False (Incorrect)";
     }else{
         returnval4 = "True (Correct)";
     }
-    if(val5 == true){
+    if(val5 == false){
         returnval5 = "False (Correct)";
     }else{
         returnval5 = "True (Incorrect)";
     }
-    if(val6 == true){
+    if(val6 == false){
         returnval6 = "False (Correct)";
     }else{
         returnval6 = "True (Incorrect)";
     }
-    if(val7 == true){
+    if(val7 == false){
         returnval7 = "False (Correct)";
     }else{
         returnval7 = "True (Incorrect)";
     }
-    if(val8 == true){
+    if(val8 == false){
         returnval8 = "False (Correct)";
     }else{
         returnval8 = "True (Incorrect)";
     }
-    if(val9 == true){
+    if(val9 == false){
         returnval9 = "False (Incorrect)";
     }else{
         returnval9 = "True (Correct)";
     }
-    if(val10 == true){
+    if(val10 == false){
         returnval10 = "False (Incorrect)";
     }else{
         returnval10 = "True (Correct)";
     }
-    if(val11 == true){
+    if(val11 == false){
         returnval11 = "False (Correct)";
     }else{
         returnval11 = "True (Incorrect)";
     }
-    if(val12 == true){
+    if(val12 == false){
         returnval12 = "False (Correct)";
     }else{
         returnval12 = "True (Incorrect)";
     }
-    if(val13 == true){
+    if(val13 == false){
         returnval13 = "False (Correct)";
     }else{
         returnval13 = "True (Incorrect)";
     }
-    if(val14 == true){
+    if(val14 == false){
         returnval14 = "False (Correct)";
     }else{
         returnval14 = "True (Incorrect)";
     }
-    if(val15 == true){
+    if(val15 == false){
         returnval15 = "False (Incorrect)";
     }else{
         returnval15 = "True (Correct)";
@@ -1901,7 +1901,7 @@ $(document).ready(function(){
     
     $(".basmikat2submit").click(function(){
         //basmit[14], basmit[15], basmit[16], basmit[17], basmit[18], basmit[19], basmit[20], basmit[21], basmit[22], basmit[23], basmit[24], basmit[25], basmit[26], basmit[27], basmit[28] = GetItemTrueFalseForm2();
-        basmit = basmit.concat(GetItemTrueFalseForm2());
+        basmit = basmit.slice(0,14).concat(GetItemTrueFalseForm2());
         
         basmitakpro = UpdateProgressIndicator(basmit);
         UpdateProgressMetrics();
@@ -1975,7 +1975,7 @@ $(document).ready(function(){
     
     $(".posmikat2submit").click(function(){
         //posmit[14], posmit[15], posmit[16], posmit[17], posmit[18], posmit[19], posmit[20], posmit[21], posmit[22], posmit[23], posmit[24], posmit[25], posmit[26], posmit[27], posmit[28] = GetItemTrueFalseForm2();
-        posmit = posmit.concat(GetItemTrueFalseForm2());
+        posmit = posmit.slice(0,14).concat(GetItemTrueFalseForm2());
         posmitakpro = UpdateProgressIndicator(posmit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -2047,7 +2047,7 @@ $(document).ready(function(){
     });
     
     $(".fol1mikat2submit").click(function(){
-        fol1mit = fol1mit.concat(GetItemTrueFalseForm2());
+        fol1mit = fol1mit.slice(0,14).concat(GetItemTrueFalseForm2());
         fol1mitakpro = UpdateProgressIndicator(fol1mit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -2120,7 +2120,7 @@ $(document).ready(function(){
     
     $(".fol2mikat2submit").click(function(){
         //fol2mit[14], fol2mit[15], fol2mit[16], fol2mit[17], fol2mit[18], fol2mit[19], fol2mit[20], fol2mit[21], fol2mit[22], fol2mit[23], fol2mit[24], fol2mit[25], fol2mit[26], fol2mit[27], fol2mit[28] = GetItemTrueFalseForm2();
-        fol2mit = fol2mit.concat(GetItemTrueFalseForm2());
+        fol2mit = fol2mit.slice(0,14).concat(GetItemTrueFalseForm2());
         fol2mitakpro = UpdateProgressIndicator(fol2mit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -3406,9 +3406,9 @@ $(document).ready(function(){
     
     $(".evok26submit").click(function(){
         //evok[73], evok[74], evok[75], evok[76], evok[77], evok[78], evok[79], evok[80] = GetSelectedSpanContainers();
-        evok = evok.concat(GetSelectedSpanContainers());
+        evok = evok.slice(0,75).concat(GetSelectedSpanContainers());
         //evokanswercorrect4[0], evokanswercorrect4[1], evokanswercorrect4[2], evokanswercorrect4[3], evokanswercorrect4[4], evokanswercorrect4[5], evokanswercorrect4[6], evokanswercorrect4[7] = GetSelectedSpanContainers();
-        evokanswercorrect4 = evokanswercorrect4.concat(GetSelectedSpanContainers());
+        evokanswercorrect4 = GetSelectedSpanContainers().slice();
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -3451,7 +3451,7 @@ $(document).ready(function(){
     
     $(".evok32submit").click(function(){
         //evok[86], evok[87] = GetItemResponseMultiTextArea2();
-        evok = evok.concat(GetItemResponseMultiTextArea2());
+        evok = evok.slice(0,86).concat(GetItemResponseMultiTextArea2());
         evok[88] = GetInlineRadioForm();
         AgentDefault();
         evokpro = UpdateProgressIndicator(evok);
@@ -3461,7 +3461,7 @@ $(document).ready(function(){
     
     $(".evok33submit").click(function(){
         //evok[89], evok[90] = GetItemResponseMultiTextArea2();
-        evok = evok.concat(GetItemResponseMultiTextArea2());
+        evok = evok.slice(0,89).concat(GetItemResponseMultiTextArea2());
         evok[91] = GetInlineRadioForm();
         AgentDefault();
         evokpro = UpdateProgressIndicator(evok);
@@ -3471,7 +3471,7 @@ $(document).ready(function(){
     
     $(".evok34submit").click(function(){
         //evok[92], evok[93] = GetItemResponseMultiTextArea2();
-        evok = evok.concat(GetItemResponseMultiTextArea2());
+        evok = evok.slice(0,92).concat(GetItemResponseMultiTextArea2());
         AgentDefault();
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
@@ -3480,7 +3480,7 @@ $(document).ready(function(){
     
     $(".evok35submit").click(function(){
         //evok[94], evok[95] = GetItemResponseMultiTextArea2();
-        evok = evok.concat(GetItemResponseMultiTextArea2());
+        evok = evok.slice(0,94).concat(GetItemResponseMultiTextArea2());
         AgentDefault();
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
