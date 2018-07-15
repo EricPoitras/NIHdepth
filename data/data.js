@@ -341,10 +341,10 @@ function UpdateProgressMetrics(){
     perposhrqpro = poshrqpro/6*100;
     perfol1hrqpro = fol1hrqpro/6*100;
     perfol2hrqpro = fol2hrqpro/6*100;
-    perbasmitakpro = basmitakpro/39*100;
-    perposmitakpro = posmitakpro/39*100;
-    perfol1mitakpro = fol1mitakpro/39*100;
-    perfol2mitakpro = fol2mitakpro/39*100;
+    perbasmitakpro = basmitakpro/37*100;
+    perposmitakpro = posmitakpro/37*100;
+    perfol1mitakpro = fol1mitakpro/37*100;
+    perfol2mitakpro = fol2mitakpro/37*100;
     permipro = mipro/6*100;
     peroarspro = oarspro/58*100;
     pertarpro = tarpro/33*100;
@@ -1853,14 +1853,18 @@ $(document).ready(function(){
     
     // Baseline MITAK
     $(".basmikat1submit").click(function(){
-        basmit[0], basmit[1], basmit[2], basmit[3], basmit[4], basmit[5], basmit[6], basmit[7], basmit[8], basmit[9], basmit[10], basmit[11], basmit[12], basmit[13] = GetItemTrueFalseForm();
+        //basmit[0], basmit[1], basmit[2], basmit[3], basmit[4], basmit[5], basmit[6], basmit[7], basmit[8], basmit[9], basmit[10], basmit[11], basmit[12], basmit[13] = GetItemTrueFalseForm();
+        basmit = GetItemTrueFalseForm().slice();
+        
         basmitakpro = UpdateProgressIndicator(basmit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
     
     $(".basmikat2submit").click(function(){
-        basmit[14], basmit[15], basmit[16], basmit[17], basmit[18], basmit[19], basmit[20], basmit[21], basmit[22], basmit[23], basmit[24], basmit[25], basmit[26], basmit[27], basmit[28] = GetItemTrueFalseForm2();
+        //basmit[14], basmit[15], basmit[16], basmit[17], basmit[18], basmit[19], basmit[20], basmit[21], basmit[22], basmit[23], basmit[24], basmit[25], basmit[26], basmit[27], basmit[28] = GetItemTrueFalseForm2();
+        basmit = basmit.concat(GetItemTrueFalseForm2());
+        
         basmitakpro = UpdateProgressIndicator(basmit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -1924,14 +1928,16 @@ $(document).ready(function(){
     
     //Post-Treatment MITAK
     $(".posmikat1submit").click(function(){
-        posmit[0], posmit[1], posmit[2], posmit[3], posmit[4], posmit[5], posmit[6], posmit[7], posmit[8], posmit[9], posmit[10], posmit[11], posmit[12], posmit[13] = GetItemTrueFalseForm();
+        //posmit[0], posmit[1], posmit[2], posmit[3], posmit[4], posmit[5], posmit[6], posmit[7], posmit[8], posmit[9], posmit[10], posmit[11], posmit[12], posmit[13] = GetItemTrueFalseForm();
+        posmit = GetItemTrueFalseForm().slice();
         posmitakpro = UpdateProgressIndicator(posmit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
     
     $(".posmikat2submit").click(function(){
-        posmit[14], posmit[15], posmit[16], posmit[17], posmit[18], posmit[19], posmit[20], posmit[21], posmit[22], posmit[23], posmit[24], posmit[25], posmit[26], posmit[27], posmit[28] = GetItemTrueFalseForm2();
+        //posmit[14], posmit[15], posmit[16], posmit[17], posmit[18], posmit[19], posmit[20], posmit[21], posmit[22], posmit[23], posmit[24], posmit[25], posmit[26], posmit[27], posmit[28] = GetItemTrueFalseForm2();
+        posmit = posmit.concat(GetItemTrueFalseForm2());
         posmitakpro = UpdateProgressIndicator(posmit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -1980,7 +1986,7 @@ $(document).ready(function(){
     });
     
     $(".posmikat9submit").click(function(){
-        posmit[35] = GetItemRadioButton2();
+        posmit[35] = GetItemRadioButton3();
         posmitakpro = UpdateProgressIndicator(posmit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -1995,14 +2001,15 @@ $(document).ready(function(){
     
     // Follow-Up 1 MITAK
     $(".fol1mikat1submit").click(function(){
-        fol1mit[0], fol1mit[1], fol1mit[2], fol1mit[3], fol1mit[4], fol1mit[5], fol1mit[6], fol1mit[7], fol1mit[8], fol1mit[9], fol1mit[10], fol1mit[11], fol1mit[12], fol1mit[13] = GetItemTrueFalseForm();
+        //fol1mit[0], fol1mit[1], fol1mit[2], fol1mit[3], fol1mit[4], fol1mit[5], fol1mit[6], fol1mit[7], fol1mit[8], fol1mit[9], fol1mit[10], fol1mit[11], fol1mit[12], fol1mit[13] = GetItemTrueFalseForm();
+        fol1mit = GetItemTrueFalseForm().slice();
         fol1mitakpro = UpdateProgressIndicator(fol1mit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
     
     $(".fol1mikat2submit").click(function(){
-        fol1mit[29] = GetItemRadioButton2();
+        fol1mit = fol1mit.concat(GetItemTrueFalseForm2());
         fol1mitakpro = UpdateProgressIndicator(fol1mit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -2051,7 +2058,7 @@ $(document).ready(function(){
     });
     
     $(".fol1mikat9submit").click(function(){
-        fol1mit[35] = GetItemRadioButton2();
+        fol1mit[35] = GetItemRadioButton3();
         fol1mitakpro = UpdateProgressIndicator(fol1mit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -2066,14 +2073,16 @@ $(document).ready(function(){
     
     // Follow-Up 2 MITAK
     $(".fol2mikat1submit").click(function(){
-        fol2mit[0], fol2mit[1], fol2mit[2], fol2mit[3], fol2mit[4], fol2mit[5], fol2mit[6], fol2mit[7], fol2mit[8], fol2mit[9], fol2mit[10], fol2mit[11], fol2mit[12], fol2mit[13] = GetItemTrueFalseForm();
+        //fol2mit[0], fol2mit[1], fol2mit[2], fol2mit[3], fol2mit[4], fol2mit[5], fol2mit[6], fol2mit[7], fol2mit[8], fol2mit[9], fol2mit[10], fol2mit[11], fol2mit[12], fol2mit[13] = GetItemTrueFalseForm();
+        fol2mit = GetItemTrueFalseForm().slice();
         fol2mitakpro = UpdateProgressIndicator(fol2mit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
     
     $(".fol2mikat2submit").click(function(){
-        fol2mit[14], fol2mit[15], fol2mit[16], fol2mit[17], fol2mit[18], fol2mit[19], fol2mit[20], fol2mit[21], fol2mit[22], fol2mit[23], fol2mit[24], fol2mit[25], fol2mit[26], fol2mit[27], fol2mit[28] = GetItemTrueFalseForm2();
+        //fol2mit[14], fol2mit[15], fol2mit[16], fol2mit[17], fol2mit[18], fol2mit[19], fol2mit[20], fol2mit[21], fol2mit[22], fol2mit[23], fol2mit[24], fol2mit[25], fol2mit[26], fol2mit[27], fol2mit[28] = GetItemTrueFalseForm2();
+        fol2mit = fol2mit.concat(GetItemTrueFalseForm2());
         fol2mitakpro = UpdateProgressIndicator(fol2mit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -2122,7 +2131,7 @@ $(document).ready(function(){
     });
     
     $(".fol2mikat9submit").click(function(){
-        fol2mit[35] = GetItemRadioButton2();
+        fol2mit[35] = GetItemRadioButton3();
         fol2mitakpro = UpdateProgressIndicator(fol2mit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
