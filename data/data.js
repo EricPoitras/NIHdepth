@@ -3405,8 +3405,10 @@ $(document).ready(function(){
     });
     
     $(".evok26submit").click(function(){
-        evok[73], evok[74], evok[75], evok[76], evok[77], evok[78], evok[79], evok[80] = GetSelectedSpanContainers();
-        evokanswercorrect4[0], evokanswercorrect4[1], evokanswercorrect4[2], evokanswercorrect4[3], evokanswercorrect4[4], evokanswercorrect4[5], evokanswercorrect4[6], evokanswercorrect4[7] = GetSelectedSpanContainers();   
+        //evok[73], evok[74], evok[75], evok[76], evok[77], evok[78], evok[79], evok[80] = GetSelectedSpanContainers();
+        evok = evok.concat(GetSelectedSpanContainers());
+        //evokanswercorrect4[0], evokanswercorrect4[1], evokanswercorrect4[2], evokanswercorrect4[3], evokanswercorrect4[4], evokanswercorrect4[5], evokanswercorrect4[6], evokanswercorrect4[7] = GetSelectedSpanContainers();
+        evokanswercorrect4 = evokanswercorrect4.concat(GetSelectedSpanContainers());
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -3448,7 +3450,8 @@ $(document).ready(function(){
     });
     
     $(".evok32submit").click(function(){
-        evok[86], evok[87] = GetItemResponseMultiTextArea2();
+        //evok[86], evok[87] = GetItemResponseMultiTextArea2();
+        evok = evok.concat(GetItemResponseMultiTextArea2());
         evok[88] = GetInlineRadioForm();
         AgentDefault();
         evokpro = UpdateProgressIndicator(evok);
@@ -3457,7 +3460,8 @@ $(document).ready(function(){
     });
     
     $(".evok33submit").click(function(){
-        evok[89], evok[90] = GetItemResponseMultiTextArea2();
+        //evok[89], evok[90] = GetItemResponseMultiTextArea2();
+        evok = evok.concat(GetItemResponseMultiTextArea2());
         evok[91] = GetInlineRadioForm();
         AgentDefault();
         evokpro = UpdateProgressIndicator(evok);
@@ -3466,7 +3470,8 @@ $(document).ready(function(){
     });
     
     $(".evok34submit").click(function(){
-        evok[92], evok[93] = GetItemResponseMultiTextArea2();
+        //evok[92], evok[93] = GetItemResponseMultiTextArea2();
+        evok = evok.concat(GetItemResponseMultiTextArea2());
         AgentDefault();
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
@@ -3474,7 +3479,8 @@ $(document).ready(function(){
     });
     
     $(".evok35submit").click(function(){
-        evok[94], evok[95] = GetItemResponseMultiTextArea2();
+        //evok[94], evok[95] = GetItemResponseMultiTextArea2();
+        evok = evok.concat(GetItemResponseMultiTextArea2());
         AgentDefault();
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
@@ -3482,7 +3488,8 @@ $(document).ready(function(){
     });
     
     $(".menu1submit").click(function(){
-        plan[0], plan[1], plan[2], plan[3], plan[4] = GetItemResponseMultiTextArea3(); 
+        //plan[0], plan[1], plan[2], plan[3], plan[4] = GetItemResponseMultiTextArea3();
+        plan = GetItemResponseMultiTextArea3().slice();
         AgentDefault();
         planpro = UpdateProgressIndicator(plan);
         UpdateProgressMetrics();
