@@ -201,7 +201,26 @@ function UpdateLocalStorage(){
         localStorage.setItem("PercentageEvoking",Math.round(perevokpro));
         localStorage.setItem("PercentagePlanning",Math.round(perplanpro));
         localStorage.setItem("PercentageFullMIPractice",Math.round(perfullmipro));
-
+        // Update local storage of each count progress indicator
+        localStorage.setItem("CountBaseline",Math.round(baspro));
+        localStorage.setItem("CountPostTreatment",Math.round(pospro));
+        localStorage.setItem("CountFollowUp1",Math.round(fol1pro));
+        localStorage.setItem("CountFollowUp2",Math.round(fol2pro));
+        localStorage.setItem("CountBaselineHRQ",Math.round(bashrqpro));
+        localStorage.setItem("CountPostTreatmentHRQ",Math.round(poshrqpro));
+        localStorage.setItem("CountFollowUp1HRQ",Math.round(fol1hrqpro));
+        localStorage.setItem("CountFollowUp2HRQ",Math.round(fol2hrqpro));
+        localStorage.setItem("CountBaselineMITAK",Math.round(basmitakpro));
+        localStorage.setItem("CountPostTreatmentMITAK",Math.round(posmitakpro));
+        localStorage.setItem("CountFollowUp1MITAK",Math.round(fol1mitakpro));
+        localStorage.setItem("CountFollowUp2MITAK",Math.round(fol2mitakpro));
+        localStorage.setItem("CountMI",Math.round(mipro));
+        localStorage.setItem("CountOARS",Math.round(oarspro));
+        localStorage.setItem("CountFocusing",Math.round(tarpro));
+        localStorage.setItem("CountEvoking",Math.round(evokpro));
+        localStorage.setItem("CountPlanning",Math.round(planpro));
+        localStorage.setItem("CountFullMIPractice",Math.round(fullmipro));
+        
         localStorage.setItem("PercentageAffirm",Math.round(peraffirm));
         localStorage.setItem("PercentageReflect",Math.round(perreflect));
         localStorage.setItem("PercentageOpenClose",Math.round(peropenclose));
@@ -295,7 +314,26 @@ function RefreshFromLocalStorage(){
     pertarpro = parseInt(localStorage.PercentageFocusing);
     perevokpro = parseInt(localStorage.PercentageEvoking);
     perplanpro = parseInt(localStorage.PercentagePlanning);
-    perfullmipro = parseInt(localStorage.PercentageFullMIPractice)
+    perfullmipro = parseInt(localStorage.PercentageFullMIPractice);
+    // Set Count for Progress Indicators
+    baspro = parseInt(localStorage.CountBaseline);
+    pospro = parseInt(localStorage.CountPostTreatment);
+    fol1pro = parseInt(localStorage.CountFollowUp1);
+    fol2pro = parseInt(localStorage.CountFollowUp2);
+    bashrqpro = parseInt(localStorage.CountBaselineHRQ);
+    poshrqpro = parseInt(localStorage.CountPostTreatmentHRQ);
+    fol1hrqpro = parseInt(localStorage.CountFollowUp1HRQ);
+    fol2hrqpro = parseInt(localStorage.CountFollowUp2HRQ);
+    basmitakpro = parseInt(localStorage.CountBaselineMITAK);
+    posmitakpro = parseInt(localStorage.CountPostTreatmentMITAK);
+    fol1mitakpro = parseInt(localStorage.CountFollowUp1MITAK);
+    fol2mitakpro = parseInt(localStorage.CountFollowUp2MITAK);
+    mipro = parseInt(localStorage.CountMI);
+    oarspro = parseInt(localStorage.CountOARS);
+    tarpro = parseInt(localStorage.CountFocusing);
+    evokpro = parseInt(localStorage.CountEvoking);
+    planpro = parseInt(localStorage.CountPlanning);
+    fullmipro = parseInt(localStorage.CountFullMIPractice);
     // Set Percentage of Item Correct Aligned with Skills
     peraffirm = parseInt(localStorage.PercentageAffirm);
     perreflect = parseInt(localStorage.PercentageReflect);
