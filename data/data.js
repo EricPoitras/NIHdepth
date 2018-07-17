@@ -103,6 +103,7 @@ var evokanswerkey1 = ["else", "change", "change", "change", "else", "change", "e
 var evokanswerkey2 = ["N/A (Not Change Talk)", "Reasons", "Reasons", "Reasons", "N/A (Not Change Talk)", "Desire", "N/A (Not Change Talk)", "Need", "Reasons", "N/A (Not Change Talk)", "N/A (Not Change Talk)", "N/A (Not Change Talk)", "N/A (Not Change Talk)", "Need", "Reasons", "N/A (Not Change Talk)", "Desire", "Need", "Desire", "Commitment", "Taking Steps", "N/A (Not Change Talk)", "Commitment", "Desire"];
 var evokanswercorrect3 = [24];
 var evokanswercorrect4 = [7];
+var evokanswercorrect5 = [4];
 
 // Planning
 var plan = [10];
@@ -182,6 +183,7 @@ function UpdateLocalStorage(){
         localStorage.skillChangeTalk2 = JSON.stringify(evokanswercorrect2);
         localStorage.skillChangeTalk3 = JSON.stringify(evokanswercorrect3);
         localStorage.skillChangeTalk4 = JSON.stringify(evokanswercorrect4);
+        localStorage.skillChangeTalk5 = JSON.stringify(evokanswercorrect5);
         // Update local storage of each progress indicator
         localStorage.setItem("PercentageBaseline",Math.round(perbaspro));
         localStorage.setItem("PercentagePostTreatment",Math.round(perpospro));
@@ -296,6 +298,7 @@ function RefreshFromLocalStorage(){
     evokanswercorrect2 = JSON.parse(localStorage.skillChangeTalk2);
     evokanswercorrect3 = JSON.parse(localStorage.skillChangeTalk3);
     evokanswercorrect4 = JSON.parse(localStorage.skillChangeTalk4);
+    evokanswercorrect5 = JSON.parse(localStorage.skillChangeTalk5);
     // Set Progress Indicators
     perbaspro = parseInt(localStorage.PercentageBaseline);
     perpospro = parseInt(localStorage.PercentagePostTreatment);
@@ -403,8 +406,8 @@ function UpdateProgressMetrics(){
     targetcount = UpdateProgressResponseCorrect(targetanswercorrect1);
     pertarget = targetcount/13*100;
     
-    changetalkcount = UpdateProgressResponseCorrect(evokanswercorrect1) + UpdateProgressResponseCorrect(evokanswercorrect2) + UpdateProgressResponseCorrect(evokanswercorrect3) + UpdateProgressResponseCorrect(evokanswercorrect4);
-    perchangetalk = changetalkcount/83*100;
+    changetalkcount = UpdateProgressResponseCorrect(evokanswercorrect1) + UpdateProgressResponseCorrect(evokanswercorrect2) + UpdateProgressResponseCorrect(evokanswercorrect3) + UpdateProgressResponseCorrect(evokanswercorrect4) + UpdateProgressResponseCorrect(evokanswercorrect5);
+    perchangetalk = changetalkcount/88*100;
    
 }
 
@@ -3435,6 +3438,9 @@ $(document).ready(function(){
     $(".evok27submit").click(function(){
         evok[81] = GetItemResponseTextArea();
         evokpro = UpdateProgressIndicator(evok);
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 4);
+        evokanswercorrect5[0] = CorrectOpenAnswer(agentanswerkey, 4);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
@@ -3442,6 +3448,9 @@ $(document).ready(function(){
     $(".evok28submit").click(function(){
         evok[82] = GetItemResponseTextArea();
         evokpro = UpdateProgressIndicator(evok);
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 4);
+        evokanswercorrect5[1] = CorrectOpenAnswer(agentanswerkey, 4);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
@@ -3449,6 +3458,9 @@ $(document).ready(function(){
     $(".evok29submit").click(function(){
         evok[83] = GetItemResponseTextArea();
         evokpro = UpdateProgressIndicator(evok);
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 4);
+        evokanswercorrect5[2] = CorrectOpenAnswer(agentanswerkey, 4);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
@@ -3456,6 +3468,9 @@ $(document).ready(function(){
     $(".evok30submit").click(function(){
         evok[84] = GetItemResponseTextArea();
         evokpro = UpdateProgressIndicator(evok);
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 4);
+        evokanswercorrect5[3] = CorrectOpenAnswer(agentanswerkey, 4);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
@@ -3463,6 +3478,9 @@ $(document).ready(function(){
     $(".evok31submit").click(function(){
         evok[85] = GetItemResponseTextArea();
         evokpro = UpdateProgressIndicator(evok);
+        CodeUtterances.codeTherapist();
+        AgentResponse(agentanswerkey, 4);
+        evokanswercorrect5[4] = CorrectOpenAnswer(agentanswerkey, 4);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
