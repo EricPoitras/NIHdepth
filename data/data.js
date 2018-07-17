@@ -96,7 +96,7 @@ var targetanswercorrect1 = [12];
 var targetanswercorrect2 = [8];
 
 // Evoking
-var evok = [95]; // 
+var evok = [99]; // 
 var evokanswercorrect1 = [24];
 var evokanswercorrect2 = [24];
 var evokanswerkey1 = ["else", "change", "change", "change", "else", "change", "else", "change", "change", "else", "else", "else", "else", "change", "change", "else", "change", "change", "change", "change", "change", "else", "change", "change"];
@@ -389,7 +389,7 @@ function UpdateProgressMetrics(){
     permipro = mipro/6*100;
     peroarspro = oarspro/58*100;
     pertarpro = tarpro/33*100;
-    perevokpro = evokpro/96*100;
+    perevokpro = evokpro/100*100;
     perplanpro = planpro/11*100;
     perfullmipro = fullmipro/1*100;
     
@@ -528,6 +528,42 @@ function GetItemResponseMultiTextArea3(){
     }
     
     return [returnval1, returnval2, returnval3, returnval4, returnval5];
+}
+
+// Get item response from multiple textarea 
+function GetItemResponseMultiTextArea4(){
+    var val1 = $("#FormControlTextarea1").val();
+    var val2 = $("#FormControlTextarea2").val();
+    var val3 = $("#FormControlTextarea3").val();
+    var val4 = $("#FormControlTextarea4").val();
+    var returnval1;
+    var returnval2;
+    var returnval3;
+    var returnval4;
+    if(val1 === null){
+        returnval1 = "N/A";
+    }
+    else{
+        returnval1 = val1;
+    }
+    if(val2 === null){
+        returnval2 = "N/A";
+    }
+    else{
+        returnval2 = val2;
+    }
+    if(val3 === null){
+        returnval3 = "N/A";
+    }
+    else{
+        returnval3 = val3;
+    }
+    if(val4 === null){
+        returnval4 = "N/A";
+    }else{
+        returnval4 = val4;
+    }
+    return [returnval1,returnval2,returnval3,returnval4];
 }
 
 // Get item response from radio button component
@@ -3517,6 +3553,14 @@ $(document).ready(function(){
     $(".evok35submit").click(function(){
         //evok[94], evok[95] = GetItemResponseMultiTextArea2();
         evok = evok.slice(0,94).concat(GetItemResponseMultiTextArea2());
+        AgentDefault();
+        evokpro = UpdateProgressIndicator(evok);
+        UpdateProgressMetrics();
+        UpdateLocalStorage();
+    });
+    
+    $(".evok36submit").click(function(){
+        evok = evok.slice(0,96).concat(GetItemResponseMultiTextArea4());
         AgentDefault();
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
