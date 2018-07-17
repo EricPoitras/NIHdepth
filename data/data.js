@@ -87,7 +87,7 @@ var oarsanswerkey4 = ["reflection","reflection","else","reflection","else","else
  var oarsanswercorrect6 = [6];
 
 // Focusing
-var target = [32];
+var target = [36];
 
 // Answer keys identifying target behaviors, identifying target behaviors from client speech, practice summarizing
 
@@ -995,6 +995,16 @@ function GetSelectedSpanContainers(){
     }
     
     return [returnval1, returnval2, returnval3, returnval4, returnval5, returnval6, returnval7, returnval8];
+}
+
+// OARS Tracking
+function GetValueSpanContainers(){
+    var returnval1 = $("#valueopen").val();
+    var returnval2 = $("#valueaffirm").val();
+    var returnval3 = $("#valuereflect").val();
+    var returnval4 = $("#valuesum").val();
+    
+    return [returnval1, returnval2, returnval3, returnval4];
 }
 
 // Request response from agent and return it to deliver feedback
@@ -3047,6 +3057,14 @@ $(document).ready(function(){
     
     $(".focus23submit").click(function(){
         target[32] = GetItemResponseTextArea();
+        tarpro = UpdateProgressIndicator(target);
+        AgentDefault();
+        UpdateProgressMetrics();
+        UpdateLocalStorage();
+    });
+    
+    $(".focus24submit").click(function(){
+        target = target.slice(0,33).concat(GetValueSpanContainers());
         tarpro = UpdateProgressIndicator(target);
         AgentDefault();
         UpdateProgressMetrics();
