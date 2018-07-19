@@ -399,6 +399,24 @@ a:link, a:visited, a:hover, a:active{
     margin-bottom: 5px;
 }
 
+#reportarea{
+    position: relative;
+    height: 40px;
+    margin-bottom: 5px;
+}
+
+.fa-flag{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    color: #db1836;
+    border: 2px solid #db1836;
+    border-radius: 50%;
+    font-size: 15px;
+    padding: 7px;
+    cursor: pointer;
+}
+
 /* UI Components hidden for the purposes of animating CSS display property */
 #hintarea, .alert-success, .alert-danger, #responsedisplayarea, #loading{
     display: none;
