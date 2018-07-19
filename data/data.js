@@ -2263,6 +2263,7 @@ $(document).ready(function(){
     $(".mi1submit").click(function(){
         [mi[0], mi[1], mi[2]] = GetItemResponseMultiTextArea();
         mipro = UpdateProgressIndicator(mi);
+        AgentDefault();
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
@@ -2270,6 +2271,7 @@ $(document).ready(function(){
     $(".mi2submit").click(function(){
         [mi[3], mi[4], mi[5]] = GetItemResponseMultiTextArea();
         mipro = UpdateProgressIndicator(mi);
+        AgentDefault();
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
