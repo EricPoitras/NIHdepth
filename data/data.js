@@ -1086,7 +1086,7 @@ function AgentResponse(answerkey, index){
             // If answer is incorrect, then show negative feedback
             $(".alert-danger").fadeIn("fast");
         }
-    }   
+    } 
     else if(dsf === correctresponse){
         // If answer is correct, then show positive feedback
         $(".alert-success").fadeIn("fast");
@@ -3118,8 +3118,8 @@ $(document).ready(function(){
         evokanswercorrect2[0] = CorrectAnswer(evok, evokanswerkey2, 1, 0);
         evok[2] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
-        AgentResponse(agentanswerkey, 4);
-        evokanswercorrect3[0] = CorrectOpenAnswer(agentanswerkey, 4);
+        AgentResponse(agentanswerkey, 3);
+        evokanswercorrect3[0] = CorrectOpenAnswer(agentanswerkey, 3);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -3132,8 +3132,8 @@ $(document).ready(function(){
         evokanswercorrect2[1] = CorrectAnswer(evok, evokanswerkey2, 4, 1);
         evok[5] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
-        AgentResponse(agentanswerkey, 4);
-        evokanswercorrect3[1] = CorrectOpenAnswer(agentanswerkey, 4);
+        AgentResponse(agentanswerkey, 3);
+        evokanswercorrect3[1] = CorrectOpenAnswer(agentanswerkey, 3);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -3146,8 +3146,8 @@ $(document).ready(function(){
         evokanswercorrect2[2] = CorrectAnswer(evok, evokanswerkey2, 7, 2);
         evok[8] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
-        AgentResponse(agentanswerkey, 4);
-        evokanswercorrect3[2] = CorrectOpenAnswer(agentanswerkey, 4);
+        AgentResponse(agentanswerkey, 3);
+        evokanswercorrect3[2] = CorrectOpenAnswer(agentanswerkey, 3);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -3160,8 +3160,8 @@ $(document).ready(function(){
         evokanswercorrect2[3] = CorrectAnswer(evok, evokanswerkey2, 10, 3);
         evok[11] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
-        AgentResponse(agentanswerkey, 4);
-        evokanswercorrect3[3] = CorrectOpenAnswer(agentanswerkey, 4);
+        AgentResponse(agentanswerkey, 3);
+        evokanswercorrect3[3] = CorrectOpenAnswer(agentanswerkey, 3);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -3174,8 +3174,8 @@ $(document).ready(function(){
         evokanswercorrect2[4] = CorrectAnswer(evok, evokanswerkey2, 13, 4);
         evok[14] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
-        AgentResponse(agentanswerkey, 4);
-        evokanswercorrect3[4] = CorrectOpenAnswer(agentanswerkey, 4);
+        AgentResponse(agentanswerkey, 3);
+        evokanswercorrect3[4] = CorrectOpenAnswer(agentanswerkey, 3);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -3188,8 +3188,8 @@ $(document).ready(function(){
         evokanswercorrect2[5] = CorrectAnswer(evok, evokanswerkey2, 16, 5);
         evok[17] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
-        AgentResponse(agentanswerkey, 4);
-        evokanswercorrect3[5] = CorrectOpenAnswer(agentanswerkey, 4);
+        AgentResponse(agentanswerkey, 3);
+        evokanswercorrect3[5] = CorrectOpenAnswer(agentanswerkey, 3);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -3202,8 +3202,8 @@ $(document).ready(function(){
         evokanswercorrect2[6] = CorrectAnswer(evok, evokanswerkey2, 19, 6);
         evok[20] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
-        AgentResponse(agentanswerkey, 4);
-        evokanswercorrect3[6] = CorrectOpenAnswer(agentanswerkey, 4);
+        AgentResponse(agentanswerkey, 3);
+        evokanswercorrect3[6] = CorrectOpenAnswer(agentanswerkey, 3);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -3216,8 +3216,8 @@ $(document).ready(function(){
         evokanswercorrect2[7] = CorrectAnswer(evok, evokanswerkey2, 22, 7);
         evok[23] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
-        AgentResponse(agentanswerkey, 4);
-        evokanswercorrect3[7] = CorrectOpenAnswer(agentanswerkey, 4);
+        AgentResponse(agentanswerkey, 3);
+        evokanswercorrect3[7] = CorrectOpenAnswer(agentanswerkey, 3);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -3230,8 +3230,8 @@ $(document).ready(function(){
         evokanswercorrect2[8] = CorrectAnswer(evok, evokanswerkey2, 25, 8);
         evok[26] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
-        AgentResponse(agentanswerkey, 4);
-        evokanswercorrect3[8] = CorrectOpenAnswer(agentanswerkey, 4);
+        AgentResponse(agentanswerkey, 3);
+        evokanswercorrect3[8] = CorrectOpenAnswer(agentanswerkey, 3);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -3244,8 +3244,8 @@ $(document).ready(function(){
         evokanswercorrect2[9] = CorrectAnswer(evok, evokanswerkey2, 28, 9);
         evok[29] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
-        AgentResponse(agentanswerkey, 4);
-        evokanswercorrect3[9] = CorrectOpenAnswer(agentanswerkey, 4);
+        AgentResponse(agentanswerkey, 3);
+        evokanswercorrect3[9] = CorrectOpenAnswer(agentanswerkey, 3);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -3258,8 +3258,8 @@ $(document).ready(function(){
         evokanswercorrect2[10] = CorrectAnswer(evok, evokanswerkey2, 31, 10);
         evok[32] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
-        AgentResponse(agentanswerkey, 4);
-        evokanswercorrect3[10] = CorrectOpenAnswer(agentanswerkey, 4);
+        AgentResponse(agentanswerkey, 3);
+        evokanswercorrect3[10] = CorrectOpenAnswer(agentanswerkey, 3);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -3272,8 +3272,8 @@ $(document).ready(function(){
         evokanswercorrect2[11] = CorrectAnswer(evok, evokanswerkey2, 34, 11);
         evok[35] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
-        AgentResponse(agentanswerkey, 4);
-        evokanswercorrect3[11] = CorrectOpenAnswer(agentanswerkey, 4);
+        AgentResponse(agentanswerkey, 3);
+        evokanswercorrect3[11] = CorrectOpenAnswer(agentanswerkey, 3);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -3286,8 +3286,8 @@ $(document).ready(function(){
         evokanswercorrect2[12] = CorrectAnswer(evok, evokanswerkey2, 37, 12);
         evok[38] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
-        AgentResponse(agentanswerkey, 4);
-        evokanswercorrect3[12] = CorrectOpenAnswer(agentanswerkey, 4);
+        AgentResponse(agentanswerkey, 3);
+        evokanswercorrect3[12] = CorrectOpenAnswer(agentanswerkey, 3);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -3300,8 +3300,8 @@ $(document).ready(function(){
         evokanswercorrect2[13] = CorrectAnswer(evok, evokanswerkey2, 40, 13);
         evok[41] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
-        AgentResponse(agentanswerkey, 4);
-        evokanswercorrect3[13] = CorrectOpenAnswer(agentanswerkey, 4);
+        AgentResponse(agentanswerkey, 3);
+        evokanswercorrect3[13] = CorrectOpenAnswer(agentanswerkey, 3);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -3314,8 +3314,8 @@ $(document).ready(function(){
         evokanswercorrect2[14] = CorrectAnswer(evok, evokanswerkey2, 43, 14);
         evok[44] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
-        AgentResponse(agentanswerkey, 4);
-        evokanswercorrect3[14] = CorrectOpenAnswer(agentanswerkey, 4);
+        AgentResponse(agentanswerkey, 3);
+        evokanswercorrect3[14] = CorrectOpenAnswer(agentanswerkey, 3);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -3328,8 +3328,8 @@ $(document).ready(function(){
         evokanswercorrect2[15] = CorrectAnswer(evok, evokanswerkey2, 46, 15);
         evok[47] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
-        AgentResponse(agentanswerkey, 4);
-        evokanswercorrect3[15] = CorrectOpenAnswer(agentanswerkey, 4);
+        AgentResponse(agentanswerkey, 3);
+        evokanswercorrect3[15] = CorrectOpenAnswer(agentanswerkey, 3);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -3342,8 +3342,8 @@ $(document).ready(function(){
         evokanswercorrect2[16] = CorrectAnswer(evok, evokanswerkey2, 49, 16);
         evok[50] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
-        AgentResponse(agentanswerkey, 4);
-        evokanswercorrect3[16] = CorrectOpenAnswer(agentanswerkey, 4);
+        AgentResponse(agentanswerkey, 3);
+        evokanswercorrect3[16] = CorrectOpenAnswer(agentanswerkey, 3);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -3356,8 +3356,8 @@ $(document).ready(function(){
         evokanswercorrect2[17] = CorrectAnswer(evok, evokanswerkey2, 52, 17);
         evok[53] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
-        AgentResponse(agentanswerkey, 4);
-        evokanswercorrect3[17] = CorrectOpenAnswer(agentanswerkey, 4);
+        AgentResponse(agentanswerkey, 3);
+        evokanswercorrect3[17] = CorrectOpenAnswer(agentanswerkey, 3);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -3370,8 +3370,8 @@ $(document).ready(function(){
         evokanswercorrect2[18] = CorrectAnswer(evok, evokanswerkey2, 55, 18);
         evok[56] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
-        AgentResponse(agentanswerkey, 4);
-        evokanswercorrect3[18] = CorrectOpenAnswer(agentanswerkey, 4);
+        AgentResponse(agentanswerkey, 3);
+        evokanswercorrect3[18] = CorrectOpenAnswer(agentanswerkey, 3);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -3384,8 +3384,8 @@ $(document).ready(function(){
         evokanswercorrect2[19] = CorrectAnswer(evok, evokanswerkey2, 58, 19);
         evok[59] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
-        AgentResponse(agentanswerkey, 4);
-        evokanswercorrect3[19] = CorrectOpenAnswer(agentanswerkey, 4);
+        AgentResponse(agentanswerkey, 3);
+        evokanswercorrect3[19] = CorrectOpenAnswer(agentanswerkey, 3);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -3398,8 +3398,8 @@ $(document).ready(function(){
         evokanswercorrect2[20] = CorrectAnswer(evok, evokanswerkey2, 61, 20);
         evok[62] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
-        AgentResponse(agentanswerkey, 4);
-        evokanswercorrect3[21] = CorrectOpenAnswer(agentanswerkey, 4);
+        AgentResponse(agentanswerkey, 3);
+        evokanswercorrect3[21] = CorrectOpenAnswer(agentanswerkey, 3);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -3412,8 +3412,8 @@ $(document).ready(function(){
         evokanswercorrect2[21] = CorrectAnswer(evok, evokanswerkey2, 64, 21);
         evok[65] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
-        AgentResponse(agentanswerkey, 4);
-        evokanswercorrect3[21] = CorrectOpenAnswer(agentanswerkey, 4);
+        AgentResponse(agentanswerkey, 3);
+        evokanswercorrect3[21] = CorrectOpenAnswer(agentanswerkey, 3);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -3426,8 +3426,8 @@ $(document).ready(function(){
         evokanswercorrect2[22] = CorrectAnswer(evok, evokanswerkey2, 67, 22);
         evok[68] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
-        AgentResponse(agentanswerkey, 4);
-        evokanswercorrect3[22] = CorrectOpenAnswer(agentanswerkey, 4);
+        AgentResponse(agentanswerkey, 3);
+        evokanswercorrect3[22] = CorrectOpenAnswer(agentanswerkey, 3);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -3440,8 +3440,8 @@ $(document).ready(function(){
         evokanswercorrect2[23] = CorrectAnswer(evok, evokanswerkey2, 70, 23);
         evok[71] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
-        AgentResponse(agentanswerkey, 4);
-        evokanswercorrect3[23] = CorrectOpenAnswer(agentanswerkey, 4);
+        AgentResponse(agentanswerkey, 3);
+        evokanswercorrect3[23] = CorrectOpenAnswer(agentanswerkey, 3);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -3454,8 +3454,8 @@ $(document).ready(function(){
         evokanswercorrect2[24] = CorrectAnswer(evok, evokanswerkey2, 73, 24);
         evok[74] = GetItemResponseTextArea();
         CodeUtterances.codeTherapist();
-        AgentResponse(agentanswerkey, 4);
-        evokanswercorrect3[24] = CorrectOpenAnswer(agentanswerkey, 4);
+        AgentResponse(agentanswerkey, 3);
+        evokanswercorrect3[24] = CorrectOpenAnswer(agentanswerkey, 3);
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -3475,8 +3475,8 @@ $(document).ready(function(){
         evok[81] = GetItemResponseTextArea();
         evokpro = UpdateProgressIndicator(evok);
         CodeUtterances.codeTherapist();
-        AgentResponse(agentanswerkey, 4);
-        evokanswercorrect5[0] = CorrectOpenAnswer(agentanswerkey, 4);
+        AgentResponse(agentanswerkey, 3);
+        evokanswercorrect5[0] = CorrectOpenAnswer(agentanswerkey, 3);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
@@ -3485,8 +3485,8 @@ $(document).ready(function(){
         evok[82] = GetItemResponseTextArea();
         evokpro = UpdateProgressIndicator(evok);
         CodeUtterances.codeTherapist();
-        AgentResponse(agentanswerkey, 4);
-        evokanswercorrect5[1] = CorrectOpenAnswer(agentanswerkey, 4);
+        AgentResponse(agentanswerkey, 3);
+        evokanswercorrect5[1] = CorrectOpenAnswer(agentanswerkey, 3);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
@@ -3495,8 +3495,8 @@ $(document).ready(function(){
         evok[83] = GetItemResponseTextArea();
         evokpro = UpdateProgressIndicator(evok);
         CodeUtterances.codeTherapist();
-        AgentResponse(agentanswerkey, 4);
-        evokanswercorrect5[2] = CorrectOpenAnswer(agentanswerkey, 4);
+        AgentResponse(agentanswerkey, 3);
+        evokanswercorrect5[2] = CorrectOpenAnswer(agentanswerkey, 3);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
@@ -3505,8 +3505,8 @@ $(document).ready(function(){
         evok[84] = GetItemResponseTextArea();
         evokpro = UpdateProgressIndicator(evok);
         CodeUtterances.codeTherapist();
-        AgentResponse(agentanswerkey, 4);
-        evokanswercorrect5[3] = CorrectOpenAnswer(agentanswerkey, 4);
+        AgentResponse(agentanswerkey, 3);
+        evokanswercorrect5[3] = CorrectOpenAnswer(agentanswerkey, 3);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
@@ -3515,8 +3515,8 @@ $(document).ready(function(){
         evok[85] = GetItemResponseTextArea();
         evokpro = UpdateProgressIndicator(evok);
         CodeUtterances.codeTherapist();
-        AgentResponse(agentanswerkey, 4);
-        evokanswercorrect5[4] = CorrectOpenAnswer(agentanswerkey, 4);
+        AgentResponse(agentanswerkey, 3);
+        evokanswercorrect5[4] = CorrectOpenAnswer(agentanswerkey, 3);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
