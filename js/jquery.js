@@ -255,4 +255,14 @@ $(document).ready(function(){
         $(".alert-success").addClass("visiblecus");
         $("#next").removeClass("disabled");
     });
+    
+    $(".fa-flag").click(function(){
+        $(this).tooltip('hide');
+        $(this).parent("#reportarea").empty();
+        $("#reportarea").html("<div class='alert alert-info' role='alert'>Issue reported - thank you.</div>");
+    });
 });
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
