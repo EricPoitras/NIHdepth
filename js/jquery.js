@@ -13,7 +13,7 @@ $(document).ready(function(){
     
     
     // Modules page 
-    $("#vasercard, #hrqcard, #mikatcard, #micard, #oarscard, #focusingcard, #evokingcard, #changecard, #planningcard, #cliniccard, #fullmicard").hover(function(){
+    $("#vasercard, #hrqcard, #mikatcard, #orientationcard, #micard, #oarscard, #focusingcard, #evokingcard, #changecard, #planningcard, #cliniccard, #fullmicard").hover(function(){
         $(this).css("background-color", "rgb(248, 248, 248)");
     },function(){
         $(this).css("background-color", "white");
@@ -29,6 +29,10 @@ $(document).ready(function(){
     
     $("#mikatcard").click(function(){
         window.open("modules/mikat.html","_self"); 
+    });
+    
+    $("#orientationcard").click(function(){
+        window.open("modules/mi/orientation.html","_self"); 
     });
     
     $("#micard").click(function(){
