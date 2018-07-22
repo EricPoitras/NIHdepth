@@ -20,47 +20,47 @@ $(document).ready(function(){
     });
     
     $("#vasercard").click(function(){
-        window.open("modules/vase-r.html","_blank"); 
+        window.open("modules/vase-r.html","_self"); 
     });
     
     $("#hrqcard").click(function(){
-        window.open("modules/hrq.html","_blank"); 
+        window.open("modules/hrq.html","_self"); 
     });
     
     $("#mikatcard").click(function(){
-        window.open("modules/mikat.html","_blank"); 
+        window.open("modules/mikat.html","_self"); 
     });
     
     $("#micard").click(function(){
-        window.open("modules/mi.html","_blank"); 
+        window.open("modules/mi.html","_self"); 
     });
     
     $("#oarscard").click(function(){
-        window.open("modules/oars.html","_blank"); 
+        window.open("modules/oars.html","_self"); 
     });
     
     $("#focusingcard").click(function(){
-        window.open("modules/focusing.html","_blank"); 
+        window.open("modules/focusing.html","_self"); 
     });
     
     $("#evokingcard").click(function(){
-        window.open("modules/evoking.html","_blank"); 
+        window.open("modules/evoking.html","_self"); 
     });
     
      $("#changecard").click(function(){
-        window.open("modules/changetalk.html","_blank"); 
+        window.open("modules/changetalk.html","_self"); 
     });
     
      $("#planningcard").click(function(){
-        window.open("modules/planning.html","_blank"); 
+        window.open("modules/planning.html","_self"); 
     });
     
      $("#cliniccard").click(function(){
-        window.open("modules/clinic.html","_blank"); 
+        window.open("modules/clinic.html","_self"); 
     });
     
      $("#fullmicard").click(function(){
-        window.open("modules/mipractice.html","_blank"); 
+        window.open("modules/mipractice.html","_self"); 
     });
     
     // Sub-module page
