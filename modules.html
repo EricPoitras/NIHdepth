@@ -228,9 +228,11 @@
         <script src="data/logdata.js"></script>
       
     <script>
-        $('#Modal').modal("show");
-        
         $(document).ready(function(){
+            if(sessionStorage.Instructions != "show"){
+                $('#Modal').modal("show");
+                sessionStorage.setItem("Instructions","show");
+            }
            $("#help").click(function(){
                $('#ModalHelp').modal("show");
            }) 
