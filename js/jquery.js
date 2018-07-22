@@ -32,7 +32,7 @@ $(document).ready(function(){
     });
     
     $("#orientationcard").click(function(){
-        window.open("modules/mi/orientation.html","_self"); 
+        window.open("modules/orientation/orientation.html","_self"); 
     });
     
     $("#micard").click(function(){
