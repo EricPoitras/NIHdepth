@@ -175,6 +175,7 @@ nav.navcus1 a.labelcus:hover{
     margin-top: 15px;
     margin-bottom: 15px;
     height: 100%;
+    cursor: pointer;
 }
 
 .modulescard .card img{

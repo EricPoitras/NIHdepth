@@ -94,7 +94,13 @@ function datalogger(categorylabel, eventlabel){
         event: eventlabel
     };
     
-    localStorage.sessionlog = JSON.stringify(newitem);
+    //localStorage.sessionlog = JSON.stringify(newitem);
+
+    if(serverintegration ){
+        //ep.getFunctionAsObjectJSON(8803,{'jsondata':JSON.stringify(newitem)},function(json){
+            //console.log("Sent Log Data to Server");
+         //   })
+    }
 }
 
 // Event Handlers

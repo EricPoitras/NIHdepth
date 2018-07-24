@@ -1,4 +1,36 @@
-//Main variables to store and retrieve (learning outcomes and user identifier)
+
+
+$(document).ready(function(){
+    //don't do any of this if it hasn't loaded to ep user functions
+    if(ep){
+        ep.currFile="/projects/NIHdepth/functions.jsp";
+        ep.loadLoginHtml();
+        ep.startLoginChecker();
+        epui.showLoginPopUp=false;
+        epui.showUserBox=false;
+
+
+        ep.onAuth = function(){
+            ep.updateUserData();
+            RefreshFromLocalStorage(addEventListeners);
+
+
+        }
+        serverintegration=true;
+        console.log("EP Integration Enabled")
+
+    }else{
+        console.log("EP Integration Disabled")
+    }
+
+
+
+
+
+});
+
+
+var serverintegration = false;
 
 //Username and Password Login
 var username, password;
@@ -136,99 +168,123 @@ var agentcustomanswerkey = ["OARS"];
 
 // Update data in local storage
 function UpdateLocalStorage(){
+    var storageObject = {};
+    storageObject.setItem = function(key,value){
+        storageObject[key]=value;
+    }
+    if(!serverintegration ){
+        //just reference this local storage
+        storageObject=localStorage
+    }
+    
+    
+    
     try{
-        localStorage.username = username;
-        localStorage.password = password;
+        storageObject.notempty = "notempty";
+        storageObject.username = username;
+        storageObject.password = password;
         // Main VASE-R
-        localStorage.baselinevaser = JSON.stringify(bas);
-        localStorage.postvaser = JSON.stringify(pos);
-        localStorage.follow1vaser = JSON.stringify(fol1);
-        localStorage.follow2vaser = JSON.stringify(fol2);
+        storageObject.baselinevaser = JSON.stringify(bas);
+        storageObject.postvaser = JSON.stringify(pos);
+        storageObject.follow1vaser = JSON.stringify(fol1);
+        storageObject.follow2vaser = JSON.stringify(fol2);
         // VASE-R Multiple-Choice Items
-        localStorage.baselinevaseritem = JSON.stringify(basanswercorrect1);
-        localStorage.postvaseritem = JSON.stringify(posanswercorrect1);
-        localStorage.follow1vaseritem = JSON.stringify(fol1answercorrect1);
-        localStorage.follow2vaseritem = JSON.stringify(fol2answercorrect1);
+        storageObject.baselinevaseritem = JSON.stringify(basanswercorrect1);
+        storageObject.postvaseritem = JSON.stringify(posanswercorrect1);
+        storageObject.follow1vaseritem = JSON.stringify(fol1answercorrect1);
+        storageObject.follow2vaseritem = JSON.stringify(fol2answercorrect1);
         // VASE-R Multiple-Choice Justification
-        localStorage.baselinevaseropen = JSON.stringify(basjustification);
-        localStorage.postvaseropen = JSON.stringify(posjustification);
-        localStorage.follow1vaseropen = JSON.stringify(fol1justification);
-        localStorage.follow2vaseropen = JSON.stringify(fol2justification);
+        storageObject.baselinevaseropen = JSON.stringify(basjustification);
+        storageObject.postvaseropen = JSON.stringify(posjustification);
+        storageObject.follow1vaseropen = JSON.stringify(fol1justification);
+        storageObject.follow2vaseropen = JSON.stringify(fol2justification);
         // Main HRQ
-        localStorage.baselinehrq = JSON.stringify(bashrq);
-        localStorage.posthrq = JSON.stringify(poshrq);
-        localStorage.follow1hrq = JSON.stringify(fol1hrq);
-        localStorage.follow2hrq = JSON.stringify(fol2hrq);
+        storageObject.baselinehrq = JSON.stringify(bashrq);
+        storageObject.posthrq = JSON.stringify(poshrq);
+        storageObject.follow1hrq = JSON.stringify(fol1hrq);
+        storageObject.follow2hrq = JSON.stringify(fol2hrq);
         // Main MITAK
-        localStorage.baselinemit = JSON.stringify(basmit);
-        localStorage.postmit = JSON.stringify(posmit);
-        localStorage.follow1mit = JSON.stringify(fol1mit);
-        localStorage.follow2mit = JSON.stringify(fol2mit);
+        storageObject.baselinemit = JSON.stringify(basmit);
+        storageObject.postmit = JSON.stringify(posmit);
+        storageObject.follow1mit = JSON.stringify(fol1mit);
+        storageObject.follow2mit = JSON.stringify(fol2mit);
         // Main Modules
-        localStorage.moduleMI = JSON.stringify(mi);
-        localStorage.moduleOARS = JSON.stringify(oars);
-        localStorage.moduleFocusing = JSON.stringify(target);
-        localStorage.moduleEvoking = JSON.stringify(evok);
-        localStorage.modulePlanning = JSON.stringify(plan);
-        localStorage.moduleFullMIPractice = JSON.stringify(fullmi);
+        storageObject.moduleMI = JSON.stringify(mi);
+        storageObject.moduleOARS = JSON.stringify(oars);
+        storageObject.moduleFocusing = JSON.stringify(target);
+        storageObject.moduleEvoking = JSON.stringify(evok);
+        storageObject.modulePlanning = JSON.stringify(plan);
+        storageObject.moduleFullMIPractice = JSON.stringify(fullmi);
         // Scoring Answers
-        localStorage.skillAffirm1 = JSON.stringify(oarsanswercorrect5);
-        localStorage.skillAffirm2 = JSON.stringify(oarsanswercorrect6);
-        localStorage.skillReflection1 = JSON.stringify(oarsanswercorrect4);
-        localStorage.skillReflection2 = JSON.stringify(targetanswercorrect2);
-        localStorage.skillQuestions1 = JSON.stringify(oarsanswercorrect1);
-        localStorage.skillQuestions2 = JSON.stringify(oarsanswercorrect2);
-        localStorage.skillQuestions3 = JSON.stringify(oarsanswercorrect3);
-        localStorage.skillTarget1 = JSON.stringify(targetanswercorrect1);
-        localStorage.skillChangeTalk1 = JSON.stringify(evokanswercorrect1);
-        localStorage.skillChangeTalk2 = JSON.stringify(evokanswercorrect2);
-        localStorage.skillChangeTalk3 = JSON.stringify(evokanswercorrect3);
-        localStorage.skillChangeTalk4 = JSON.stringify(evokanswercorrect4);
-        localStorage.skillChangeTalk5 = JSON.stringify(evokanswercorrect5);
+        storageObject.skillAffirm1 = JSON.stringify(oarsanswercorrect5);
+        storageObject.skillAffirm2 = JSON.stringify(oarsanswercorrect6);
+        storageObject.skillReflection1 = JSON.stringify(oarsanswercorrect4);
+        storageObject.skillReflection2 = JSON.stringify(targetanswercorrect2);
+        storageObject.skillQuestions1 = JSON.stringify(oarsanswercorrect1);
+        storageObject.skillQuestions2 = JSON.stringify(oarsanswercorrect2);
+        storageObject.skillQuestions3 = JSON.stringify(oarsanswercorrect3);
+        storageObject.skillTarget1 = JSON.stringify(targetanswercorrect1);
+        storageObject.skillChangeTalk1 = JSON.stringify(evokanswercorrect1);
+        storageObject.skillChangeTalk2 = JSON.stringify(evokanswercorrect2);
+        storageObject.skillChangeTalk3 = JSON.stringify(evokanswercorrect3);
+        storageObject.skillChangeTalk4 = JSON.stringify(evokanswercorrect4);
+        storageObject.skillChangeTalk5 = JSON.stringify(evokanswercorrect5);
         // Update local storage of each progress indicator
-        localStorage.setItem("PercentageBaseline",Math.round(perbaspro));
-        localStorage.setItem("PercentagePostTreatment",Math.round(perpospro));
-        localStorage.setItem("PercentageFollowUp1",Math.round(perfol1pro));
-        localStorage.setItem("PercentageFollowUp2",Math.round(perfol2pro));
-        localStorage.setItem("PercentageBaselineHRQ",Math.round(perbashrqpro));
-        localStorage.setItem("PercentagePostTreatmentHRQ",Math.round(perposhrqpro));
-        localStorage.setItem("PercentageFollowUp1HRQ",Math.round(perfol1hrqpro));
-        localStorage.setItem("PercentageFollowUp2HRQ",Math.round(perfol2hrqpro));
-        localStorage.setItem("PercentageBaselineMITAK",Math.round(perbasmitakpro));
-        localStorage.setItem("PercentagePostTreatmentMITAK",Math.round(perposmitakpro));
-        localStorage.setItem("PercentageFollowUp1MITAK",Math.round(perfol1mitakpro));
-        localStorage.setItem("PercentageFollowUp2MITAK",Math.round(perfol2mitakpro));
-        localStorage.setItem("PercentageMI",Math.round(permipro));
-        localStorage.setItem("PercentageOARS",Math.round(peroarspro));
-        localStorage.setItem("PercentageFocusing",Math.round(pertarpro));
-        localStorage.setItem("PercentageEvoking",Math.round(perevokpro));
-        localStorage.setItem("PercentagePlanning",Math.round(perplanpro));
-        localStorage.setItem("PercentageFullMIPractice",Math.round(perfullmipro));
+        storageObject.setItem("PercentageBaseline",Math.round(perbaspro));
+        storageObject.setItem("PercentagePostTreatment",Math.round(perpospro));
+        storageObject.setItem("PercentageFollowUp1",Math.round(perfol1pro));
+        storageObject.setItem("PercentageFollowUp2",Math.round(perfol2pro));
+        storageObject.setItem("PercentageBaselineHRQ",Math.round(perbashrqpro));
+        storageObject.setItem("PercentagePostTreatmentHRQ",Math.round(perposhrqpro));
+        storageObject.setItem("PercentageFollowUp1HRQ",Math.round(perfol1hrqpro));
+        storageObject.setItem("PercentageFollowUp2HRQ",Math.round(perfol2hrqpro));
+        storageObject.setItem("PercentageBaselineMITAK",Math.round(perbasmitakpro));
+        storageObject.setItem("PercentagePostTreatmentMITAK",Math.round(perposmitakpro));
+        storageObject.setItem("PercentageFollowUp1MITAK",Math.round(perfol1mitakpro));
+        storageObject.setItem("PercentageFollowUp2MITAK",Math.round(perfol2mitakpro));
+        storageObject.setItem("PercentageMI",Math.round(permipro));
+        storageObject.setItem("PercentageOARS",Math.round(peroarspro));
+        storageObject.setItem("PercentageFocusing",Math.round(pertarpro));
+        storageObject.setItem("PercentageEvoking",Math.round(perevokpro));
+        storageObject.setItem("PercentagePlanning",Math.round(perplanpro));
+        storageObject.setItem("PercentageFullMIPractice",Math.round(perfullmipro));
         // Update local storage of each count progress indicator
-        localStorage.setItem("CountBaseline",Math.round(baspro));
-        localStorage.setItem("CountPostTreatment",Math.round(pospro));
-        localStorage.setItem("CountFollowUp1",Math.round(fol1pro));
-        localStorage.setItem("CountFollowUp2",Math.round(fol2pro));
-        localStorage.setItem("CountBaselineHRQ",Math.round(bashrqpro));
-        localStorage.setItem("CountPostTreatmentHRQ",Math.round(poshrqpro));
-        localStorage.setItem("CountFollowUp1HRQ",Math.round(fol1hrqpro));
-        localStorage.setItem("CountFollowUp2HRQ",Math.round(fol2hrqpro));
-        localStorage.setItem("CountBaselineMITAK",Math.round(basmitakpro));
-        localStorage.setItem("CountPostTreatmentMITAK",Math.round(posmitakpro));
-        localStorage.setItem("CountFollowUp1MITAK",Math.round(fol1mitakpro));
-        localStorage.setItem("CountFollowUp2MITAK",Math.round(fol2mitakpro));
-        localStorage.setItem("CountMI",Math.round(mipro));
-        localStorage.setItem("CountOARS",Math.round(oarspro));
-        localStorage.setItem("CountFocusing",Math.round(tarpro));
-        localStorage.setItem("CountEvoking",Math.round(evokpro));
-        localStorage.setItem("CountPlanning",Math.round(planpro));
-        localStorage.setItem("CountFullMIPractice",Math.round(fullmipro));
+        storageObject.setItem("CountBaseline",Math.round(baspro));
+        storageObject.setItem("CountPostTreatment",Math.round(pospro));
+        storageObject.setItem("CountFollowUp1",Math.round(fol1pro));
+        storageObject.setItem("CountFollowUp2",Math.round(fol2pro));
+        storageObject.setItem("CountBaselineHRQ",Math.round(bashrqpro));
+        storageObject.setItem("CountPostTreatmentHRQ",Math.round(poshrqpro));
+        storageObject.setItem("CountFollowUp1HRQ",Math.round(fol1hrqpro));
+        storageObject.setItem("CountFollowUp2HRQ",Math.round(fol2hrqpro));
+        storageObject.setItem("CountBaselineMITAK",Math.round(basmitakpro));
+        storageObject.setItem("CountPostTreatmentMITAK",Math.round(posmitakpro));
+        storageObject.setItem("CountFollowUp1MITAK",Math.round(fol1mitakpro));
+        storageObject.setItem("CountFollowUp2MITAK",Math.round(fol2mitakpro));
+        storageObject.setItem("CountMI",Math.round(mipro));
+        storageObject.setItem("CountOARS",Math.round(oarspro));
+        storageObject.setItem("CountFocusing",Math.round(tarpro));
+        storageObject.setItem("CountEvoking",Math.round(evokpro));
+        storageObject.setItem("CountPlanning",Math.round(planpro));
+        storageObject.setItem("CountFullMIPractice",Math.round(fullmipro));
         
-        localStorage.setItem("PercentageAffirm",Math.round(peraffirm));
-        localStorage.setItem("PercentageReflect",Math.round(perreflect));
-        localStorage.setItem("PercentageOpenClose",Math.round(peropenclose));
-        localStorage.setItem("PercentageTarget",Math.round(pertarget));
-        localStorage.setItem("PercentageChangeTalk",Math.round(perchangetalk));
+        storageObject.setItem("PercentageAffirm",Math.round(peraffirm));
+        storageObject.setItem("PercentageReflect",Math.round(perreflect));
+        storageObject.setItem("PercentageOpenClose",Math.round(peropenclose));
+        storageObject.setItem("PercentageTarget",Math.round(pertarget));
+        storageObject.setItem("PercentageChangeTalk",Math.round(perchangetalk));
+
+
+
+        //send to server if we are integrated
+        if(serverintegration ){
+            ep.getFunctionAsObjectJSON(8801,{'jsondata':JSON.stringify(storageObject)},function(json){
+                console.log("Sent Data to Server");})
+        }
+
+
+
+
     }catch(err){
         console.log(err.message);
     }
@@ -236,119 +292,162 @@ function UpdateLocalStorage(){
 
 // Clear data from local storage
 function ClearLocalStorage(){
-    localStorage.clear();
+    storageObject.clear();
 }
 
 // Get data from local storage
 function GetDataFromLocalStorage(){
-    if (localStorage.getItem("username") != null) {
-        $(".usernameval").val(localStorage.username);
+    /*if (storageObject.getItem("username") != null) {
+        $(".usernameval").val(storageObject.username);
     }
-    if (localStorage.getItem("password") != null) {
-        $(".passwordval").val(localStorage.password);
-    }
+    if (storageObject.getItem("password") != null) {
+        $(".passwordval").val(storageObject.password);
+    }*/
 }
 
 // Refresh arrays based on data from local storage
-function RefreshFromLocalStorage(){
+//call function on complete
+function RefreshFromLocalStorage(oncomplete){
+    if(!serverintegration ){
+        //just reference this local storage
+        parseStorageData(localStorage);
+        if(oncomplete!=null)oncomplete();
+    }else{
+        ep.getFunctionAsObjectJSON(8802,{},function(json){
+            //only go here if this isn't empty
+            if(json.hasOwnProperty("notempty"))parseStorageData(json);
+            if(oncomplete!=null)oncomplete();
+        });
+
+
+
+    }
+
+
+
+
+}
+
+
+function parseStorageData(storageObject){
+    console.log("Parsing Storage Data");
+
+
+
+
+
     try{
-        username = localStorage.username;
-    password = localStorage.password;
-    // Main VASE-R
-    bas = JSON.parse(localStorage.baselinevaser);
-    pos = JSON.parse(localStorage.postvaser);
-    fol1 = JSON.parse(localStorage.follow1vaser);
-    fol2 = JSON.parse(localStorage.follow2vaser);
-    // VASE-R Multiple-Choice Items
-    basanswercorrect1 = JSON.parse(localStorage.baselinevaseritem);
-    posanswercorrect1 = JSON.parse(localStorage.postvaseritem);
-    fol1answercorrect1 = JSON.parse(localStorage.follow1vaseritem);
-    fol2answercorrect1 = JSON.parse(localStorage.follow2vaseritem);
-    // VASE-R Multiple-Choice Justification
-    basjustification = JSON.parse(localStorage.baselinevaseropen);
-    posjustification = JSON.parse(localStorage.postvaseropen);
-    fol1justification = JSON.parse(localStorage.follow1vaseropen);
-    fol2justification = JSON.parse(localStorage.follow2vaseropen);
-    // Main HRQ
-    bashrq = JSON.parse(localStorage.baselinehrq);
-    poshrq = JSON.parse(localStorage.posthrq);
-    fol1hrq = JSON.parse(localStorage.follow1hrq);
-    fol2hrq = JSON.parse(localStorage.follow2hrq);
-    // Main MITAK
-    basmit = JSON.parse(localStorage.baselinemit);
-    posmit = JSON.parse(localStorage.postmit);
-    fol1mit = JSON.parse(localStorage.follow1mit);
-    fol2mit = JSON.parse(localStorage.follow2mit);
-    // Main Modules
-    mi = JSON.parse(localStorage.moduleMI);
-    oars = JSON.parse(localStorage.moduleOARS);
-    target = JSON.parse(localStorage.moduleFocusing);
-    evok = JSON.parse(localStorage.moduleEvoking);
-    plan = JSON.parse(localStorage.modulePlanning);
-    fullmi = JSON.parse(localStorage.moduleFullMIPractice);
-    // Scoring Answers
-    oarsanswercorrect5 = JSON.parse(localStorage.skillAffirm1);
-    oarsanswercorrect6 = JSON.parse(localStorage.skillAffirm2);
-    oarsanswercorrect4 = JSON.parse(localStorage.skillReflection1);
-    targetanswercorrect2 = JSON.parse(localStorage.skillReflection2);
-    oarsanswercorrect1 = JSON.parse(localStorage.skillQuestions1);
-    oarsanswercorrect2 = JSON.parse(localStorage.skillQuestions2);
-    oarsanswercorrect3 = JSON.parse(localStorage.skillQuestions3);
-    targetanswercorrect1 = JSON.parse(localStorage.skillTarget1);
-    evokanswercorrect1 = JSON.parse(localStorage.skillChangeTalk1);
-    evokanswercorrect2 = JSON.parse(localStorage.skillChangeTalk2);
-    evokanswercorrect3 = JSON.parse(localStorage.skillChangeTalk3);
-    evokanswercorrect4 = JSON.parse(localStorage.skillChangeTalk4);
-    evokanswercorrect5 = JSON.parse(localStorage.skillChangeTalk5);
-    // Set Progress Indicators
-    perbaspro = parseInt(localStorage.PercentageBaseline);
-    perpospro = parseInt(localStorage.PercentagePostTreatment);
-    perfol1pro = parseInt(localStorage.PercentageFollowUp1);
-    perfol2pro = parseInt(localStorage.PercentageFollowUp2);
-    perbashrqpro = parseInt(localStorage.PercentageBaselineHRQ);
-    perposhrqpro = parseInt(localStorage.PercentagePostTreatmentHRQ);
-    perfol1hrqpro = parseInt(localStorage.PercentageFollowUp1HRQ);
-    perfol2hrqpro = parseInt(localStorage.PercentageFollowUp2HRQ);
-    perbasmitakpro = parseInt(localStorage.PercentageBaselineMITAK);
-    perposmitakpro = parseInt(localStorage.PercentagePostTreatmentMITAK);
-    perfol1mitakpro = parseInt(localStorage.PercentageFollowUp1MITAK);
-    perfol2mitakpro = parseInt(localStorage.PercentageFollowUp2MITAK);
-    permipro = parseInt(localStorage.PercentageMI);
-    peroarspro = parseInt(localStorage.PercentageOARS);
-    pertarpro = parseInt(localStorage.PercentageFocusing);
-    perevokpro = parseInt(localStorage.PercentageEvoking);
-    perplanpro = parseInt(localStorage.PercentagePlanning);
-    perfullmipro = parseInt(localStorage.PercentageFullMIPractice);
-    // Set Count for Progress Indicators
-    baspro = parseInt(localStorage.CountBaseline);
-    pospro = parseInt(localStorage.CountPostTreatment);
-    fol1pro = parseInt(localStorage.CountFollowUp1);
-    fol2pro = parseInt(localStorage.CountFollowUp2);
-    bashrqpro = parseInt(localStorage.CountBaselineHRQ);
-    poshrqpro = parseInt(localStorage.CountPostTreatmentHRQ);
-    fol1hrqpro = parseInt(localStorage.CountFollowUp1HRQ);
-    fol2hrqpro = parseInt(localStorage.CountFollowUp2HRQ);
-    basmitakpro = parseInt(localStorage.CountBaselineMITAK);
-    posmitakpro = parseInt(localStorage.CountPostTreatmentMITAK);
-    fol1mitakpro = parseInt(localStorage.CountFollowUp1MITAK);
-    fol2mitakpro = parseInt(localStorage.CountFollowUp2MITAK);
-    mipro = parseInt(localStorage.CountMI);
-    oarspro = parseInt(localStorage.CountOARS);
-    tarpro = parseInt(localStorage.CountFocusing);
-    evokpro = parseInt(localStorage.CountEvoking);
-    planpro = parseInt(localStorage.CountPlanning);
-    fullmipro = parseInt(localStorage.CountFullMIPractice);
-    // Set Percentage of Item Correct Aligned with Skills
-    peraffirm = parseInt(localStorage.PercentageAffirm);
-    perreflect = parseInt(localStorage.PercentageReflect);
-    peropenclose = parseInt(localStorage.PercentageOpenClose);
-    pertarget = parseInt(localStorage.PercentageTarget);
-    perchangetalk = parseInt(localStorage.PercentageChangeTalk);
-    
+        //do something with username
+        
+
+        // Main VASE-R
+        bas = JSON.parse(storageObject.baselinevaser);
+        pos = JSON.parse(storageObject.postvaser);
+        fol1 = JSON.parse(storageObject.follow1vaser);
+        fol2 = JSON.parse(storageObject.follow2vaser);
+        // VASE-R Multiple-Choice Items
+        basanswercorrect1 = JSON.parse(storageObject.baselinevaseritem);
+        posanswercorrect1 = JSON.parse(storageObject.postvaseritem);
+        fol1answercorrect1 = JSON.parse(storageObject.follow1vaseritem);
+        fol2answercorrect1 = JSON.parse(storageObject.follow2vaseritem);
+        // VASE-R Multiple-Choice Justification
+        basjustification = JSON.parse(storageObject.baselinevaseropen);
+        posjustification = JSON.parse(storageObject.postvaseropen);
+        fol1justification = JSON.parse(storageObject.follow1vaseropen);
+        fol2justification = JSON.parse(storageObject.follow2vaseropen);
+        // Main HRQ
+        bashrq = JSON.parse(storageObject.baselinehrq);
+        poshrq = JSON.parse(storageObject.posthrq);
+        fol1hrq = JSON.parse(storageObject.follow1hrq);
+        fol2hrq = JSON.parse(storageObject.follow2hrq);
+        // Main MITAK
+        basmit = JSON.parse(storageObject.baselinemit);
+        posmit = JSON.parse(storageObject.postmit);
+        fol1mit = JSON.parse(storageObject.follow1mit);
+        fol2mit = JSON.parse(storageObject.follow2mit);
+        // Main Modules
+        mi = JSON.parse(storageObject.moduleMI);
+        oars = JSON.parse(storageObject.moduleOARS);
+        target = JSON.parse(storageObject.moduleFocusing);
+        evok = JSON.parse(storageObject.moduleEvoking);
+        plan = JSON.parse(storageObject.modulePlanning);
+        fullmi = JSON.parse(storageObject.moduleFullMIPractice);
+        // Scoring Answers
+        oarsanswercorrect5 = JSON.parse(storageObject.skillAffirm1);
+        oarsanswercorrect6 = JSON.parse(storageObject.skillAffirm2);
+        oarsanswercorrect4 = JSON.parse(storageObject.skillReflection1);
+        targetanswercorrect2 = JSON.parse(storageObject.skillReflection2);
+        oarsanswercorrect1 = JSON.parse(storageObject.skillQuestions1);
+        oarsanswercorrect2 = JSON.parse(storageObject.skillQuestions2);
+        oarsanswercorrect3 = JSON.parse(storageObject.skillQuestions3);
+        targetanswercorrect1 = JSON.parse(storageObject.skillTarget1);
+        evokanswercorrect1 = JSON.parse(storageObject.skillChangeTalk1);
+        evokanswercorrect2 = JSON.parse(storageObject.skillChangeTalk2);
+        evokanswercorrect3 = JSON.parse(storageObject.skillChangeTalk3);
+        evokanswercorrect4 = JSON.parse(storageObject.skillChangeTalk4);
+        evokanswercorrect5 = JSON.parse(storageObject.skillChangeTalk5);
+        // Set Progress Indicators
+        perbaspro = parseInt(storageObject.PercentageBaseline);
+        perpospro = parseInt(storageObject.PercentagePostTreatment);
+        perfol1pro = parseInt(storageObject.PercentageFollowUp1);
+        perfol2pro = parseInt(storageObject.PercentageFollowUp2);
+        perbashrqpro = parseInt(storageObject.PercentageBaselineHRQ);
+        perposhrqpro = parseInt(storageObject.PercentagePostTreatmentHRQ);
+        perfol1hrqpro = parseInt(storageObject.PercentageFollowUp1HRQ);
+        perfol2hrqpro = parseInt(storageObject.PercentageFollowUp2HRQ);
+        perbasmitakpro = parseInt(storageObject.PercentageBaselineMITAK);
+        perposmitakpro = parseInt(storageObject.PercentagePostTreatmentMITAK);
+        perfol1mitakpro = parseInt(storageObject.PercentageFollowUp1MITAK);
+        perfol2mitakpro = parseInt(storageObject.PercentageFollowUp2MITAK);
+        permipro = parseInt(storageObject.PercentageMI);
+        peroarspro = parseInt(storageObject.PercentageOARS);
+        pertarpro = parseInt(storageObject.PercentageFocusing);
+        perevokpro = parseInt(storageObject.PercentageEvoking);
+        perplanpro = parseInt(storageObject.PercentagePlanning);
+        perfullmipro = parseInt(storageObject.PercentageFullMIPractice);
+        // Set Count for Progress Indicators
+        baspro = parseInt(storageObject.CountBaseline);
+        pospro = parseInt(storageObject.CountPostTreatment);
+        fol1pro = parseInt(storageObject.CountFollowUp1);
+        fol2pro = parseInt(storageObject.CountFollowUp2);
+        bashrqpro = parseInt(storageObject.CountBaselineHRQ);
+        poshrqpro = parseInt(storageObject.CountPostTreatmentHRQ);
+        fol1hrqpro = parseInt(storageObject.CountFollowUp1HRQ);
+        fol2hrqpro = parseInt(storageObject.CountFollowUp2HRQ);
+        basmitakpro = parseInt(storageObject.CountBaselineMITAK);
+        posmitakpro = parseInt(storageObject.CountPostTreatmentMITAK);
+        fol1mitakpro = parseInt(storageObject.CountFollowUp1MITAK);
+        fol2mitakpro = parseInt(storageObject.CountFollowUp2MITAK);
+        mipro = parseInt(storageObject.CountMI);
+        oarspro = parseInt(storageObject.CountOARS);
+        tarpro = parseInt(storageObject.CountFocusing);
+        evokpro = parseInt(storageObject.CountEvoking);
+        planpro = parseInt(storageObject.CountPlanning);
+        fullmipro = parseInt(storageObject.CountFullMIPractice);
+        // Set Percentage of Item Correct Aligned with Skills
+        peraffirm = parseInt(storageObject.PercentageAffirm);
+        perreflect = parseInt(storageObject.PercentageReflect);
+        peropenclose = parseInt(storageObject.PercentageOpenClose);
+        pertarget = parseInt(storageObject.PercentageTarget);
+        perchangetalk = parseInt(storageObject.PercentageChangeTalk);
+
     }catch(err){
         console.log(err.message);
-    } 
+    }
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
 
 // Update progress indicator for module completion
 function UpdateProgressIndicator(array){
@@ -1185,23 +1284,22 @@ function AgentDefault(){
     $(".alert-success").fadeIn("fast");
 }
 
-$(document).ready(function(){
-    
-    RefreshFromLocalStorage();
-    
-    // Set variable for username and password 
+
+
+function addEventListeners(){
+    // Set variable for username and password
     $(".usernamesubmit").click(function(){
         username = $(".usernameval").val();
         UpdateLocalStorage();
     });
-    
+
     $(".passwordsubmit").click(function(){
         password = $(".passwordval").val();
         UpdateLocalStorage();
     });
-    
+
     // Event listeners assessment item submission
-    
+
     // Baseline VASE-R
     $(".bas0submit").click(function(){
         bas[0] = GetItemResponseTextArea();
@@ -1209,49 +1307,49 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".bas1submit").click(function(){
         bas[1] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".bas2submit").click(function(){
         bas[2] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".bas3submit").click(function(){
         bas[3] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".bas4submit").click(function(){
         bas[4] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".bas5submit").click(function(){
         bas[5] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".bas6submit").click(function(){
         bas[6] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".bas7submit").click(function(){
         bas[7] = GetItemRadioButton();
         basjustification[0] = GetItemResponseTextArea();
@@ -1260,42 +1358,42 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".bas8submit").click(function(){
         bas[8] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".bas9submit").click(function(){
         bas[9] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".bas10submit").click(function(){
         bas[10] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".bas11submit").click(function(){
         bas[11] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".bas12submit").click(function(){
         bas[12] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".bas13submit").click(function(){
         bas[13] = GetItemRadioButton();
         basjustification[1] = GetItemResponseTextArea();
@@ -1304,42 +1402,42 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".bas14submit").click(function(){
         bas[14] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".bas15submit").click(function(){
         bas[15] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".bas16submit").click(function(){
         bas[16] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".bas17submit").click(function(){
         bas[17] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".bas18submit").click(function(){
         bas[18] = GetItemResponseTextArea();
         baspro = UpdateProgressIndicator(bas);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".bas19submit").click(function(){
         bas[19] = GetItemRadioButton();
         basjustification[2] = GetItemResponseTextArea();
@@ -1348,58 +1446,58 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     // Post-Treatment VASE-R
-    
+
     $(".pos0submit").click(function(){
         pos[0] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".pos1submit").click(function(){
         pos[1] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".pos2submit").click(function(){
         pos[2] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".pos3submit").click(function(){
         pos[3] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".pos4submit").click(function(){
         pos[4] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".pos5submit").click(function(){
         pos[5] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".pos6submit").click(function(){
         pos[6] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".pos7submit").click(function(){
         pos[7] = GetItemRadioButton();
         posjustification[0] = GetItemResponseTextArea();
@@ -1408,42 +1506,42 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".pos8submit").click(function(){
         pos[8] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".pos9submit").click(function(){
         pos[9] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".pos10submit").click(function(){
         pos[10] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".pos11submit").click(function(){
         pos[11] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".pos12submit").click(function(){
         pos[12] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".pos13submit").click(function(){
         pos[13] = GetItemRadioButton();
         posjustification[1] = GetItemResponseTextArea();
@@ -1452,42 +1550,42 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".pos14submit").click(function(){
         pos[14] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".pos15submit").click(function(){
         pos[15] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".pos16submit").click(function(){
         pos[16] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".pos17submit").click(function(){
         pos[17] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".pos18submit").click(function(){
         pos[18] = GetItemResponseTextArea();
         pospro = UpdateProgressIndicator(pos);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".pos19submit").click(function(){
         pos[19] = GetItemRadioButton();
         posjustification[2] = GetItemResponseTextArea();
@@ -1496,58 +1594,58 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     // Follow-Up 1 VASE-R
-    
+
     $(".fol10submit").click(function(){
         fol1[0] = GetItemResponseTextArea();
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol11submit").click(function(){
         fol1[1] = GetItemResponseTextArea();
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol12submit").click(function(){
         fol1[2] = GetItemResponseTextArea();
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol13submit").click(function(){
         fol1[3] = GetItemResponseTextArea();
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol14submit").click(function(){
         fol1[4] = GetItemResponseTextArea();
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol15submit").click(function(){
         fol1[5] = GetItemResponseTextArea();
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol16submit").click(function(){
         fol1[6] = GetItemResponseTextArea();
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol17submit").click(function(){
         fol1[7] = GetItemRadioButton();
         fol1justification[0] = GetItemResponseTextArea();
@@ -1556,42 +1654,42 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol18submit").click(function(){
         fol1[8] = GetItemResponseTextArea();
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol19submit").click(function(){
         fol1[9] = GetItemResponseTextArea();
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol110submit").click(function(){
         fol1[10] = GetItemResponseTextArea();
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol111submit").click(function(){
         fol1[11] = GetItemResponseTextArea();
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol112submit").click(function(){
         fol1[12] = GetItemResponseTextArea();
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol113submit").click(function(){
         fol1[13] = GetItemRadioButton();
         fol1justification[1] = GetItemResponseTextArea();
@@ -1600,42 +1698,42 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol114submit").click(function(){
         fol1[14] = GetItemResponseTextArea();
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol115submit").click(function(){
         fol1[15] = GetItemResponseTextArea();
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol116submit").click(function(){
         fol1[16] = GetItemResponseTextArea();
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol117submit").click(function(){
         fol1[17] = GetItemResponseTextArea();
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol118submit").click(function(){
         fol1[18] = GetItemResponseTextArea();
         fol1pro = UpdateProgressIndicator(fol1);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol119submit").click(function(){
         fol1[19] = GetItemRadioButton();
         fol1justification[2] = GetItemResponseTextArea();
@@ -1644,58 +1742,58 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     // Follow-Up 2 VASE-R
-    
+
     $(".fol20submit").click(function(){
         fol2[0] = GetItemResponseTextArea();
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol21submit").click(function(){
         fol2[1] = GetItemResponseTextArea();
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol22submit").click(function(){
         fol2[2] = GetItemResponseTextArea();
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol23submit").click(function(){
         fol2[3] = GetItemResponseTextArea();
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol24submit").click(function(){
         fol2[4] = GetItemResponseTextArea();
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol25submit").click(function(){
         fol2[5] = GetItemResponseTextArea();
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol26submit").click(function(){
         fol2[6] = GetItemResponseTextArea();
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol27submit").click(function(){
         fol2[7] = GetItemRadioButton();
         fol2justification[0] = GetItemResponseTextArea();
@@ -1704,42 +1802,42 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol28submit").click(function(){
         fol2[8] = GetItemResponseTextArea();
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol29submit").click(function(){
         fol2[9] = GetItemResponseTextArea();
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol210submit").click(function(){
         fol2[10] = GetItemResponseTextArea();
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol211submit").click(function(){
         fol2[11] = GetItemResponseTextArea();
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol212submit").click(function(){
         fol2[12] = GetItemResponseTextArea();
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol213submit").click(function(){
         fol2[13] = GetItemRadioButton();
         fol2justification[1] = GetItemResponseTextArea();
@@ -1748,42 +1846,42 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol214submit").click(function(){
         fol2[14] = GetItemResponseTextArea();
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol215submit").click(function(){
         fol2[15] = GetItemResponseTextArea();
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol216submit").click(function(){
         fol2[16] = GetItemResponseTextArea();
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol217submit").click(function(){
         fol2[17] = GetItemResponseTextArea();
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol218submit").click(function(){
         fol2[18] = GetItemResponseTextArea();
         fol2pro = UpdateProgressIndicator(fol2);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol219submit").click(function(){
         fol2[19] = GetItemRadioButton();
         fol2justification[2] = GetItemResponseTextArea();
@@ -1792,7 +1890,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     // Baseline HRQ
     $(".bashrq1submit").click(function(){
         bashrq[0] = GetItemResponseTextArea();
@@ -1800,42 +1898,42 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".bashrq2submit").click(function(){
         bashrq[1] = GetItemResponseTextArea();
         bashrqpro = UpdateProgressIndicator(bashrq);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".bashrq3submit").click(function(){
         bashrq[2] = GetItemResponseTextArea();
         bashrqpro = UpdateProgressIndicator(bashrq);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".bashrq4submit").click(function(){
         bashrq[3] = GetItemResponseTextArea();
         bashrqpro = UpdateProgressIndicator(bashrq);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".bashrq5submit").click(function(){
         bashrq[4] = GetItemResponseTextArea();
         bashrqpro = UpdateProgressIndicator(bashrq);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".bashrq6submit").click(function(){
         bashrq[5] = GetItemResponseTextArea();
         bashrqpro = UpdateProgressIndicator(bashrq);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     // Post Treatment HRQ
     $(".poshrq1submit").click(function(){
         poshrq[0] = GetItemResponseTextArea();
@@ -1843,42 +1941,42 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".poshrq2submit").click(function(){
         poshrq[1] = GetItemResponseTextArea();
         poshrqpro = UpdateProgressIndicator(poshrq);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".poshrq3submit").click(function(){
         poshrq[2] = GetItemResponseTextArea();
         poshrqpro = UpdateProgressIndicator(poshrq);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".poshrq4submit").click(function(){
         poshrq[3] = GetItemResponseTextArea();
         poshrqpro = UpdateProgressIndicator(poshrq);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".poshrq5submit").click(function(){
         poshrq[4] = GetItemResponseTextArea();
         poshrqpro = UpdateProgressIndicator(poshrq);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".poshrq6submit").click(function(){
         poshrq[5] = GetItemResponseTextArea();
         poshrqpro = UpdateProgressIndicator(poshrq);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     // Follow up 1 HRQ
     $(".fol1hrq1submit").click(function(){
         fol1hrq[0] = GetItemResponseTextArea();
@@ -1886,42 +1984,42 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol1hrq2submit").click(function(){
         fol1hrq[1] = GetItemResponseTextArea();
         fol1hrqpro = UpdateProgressIndicator(fol1hrq);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol1hrq3submit").click(function(){
         fol1hrq[2] = GetItemResponseTextArea();
         fol1hrqpro = UpdateProgressIndicator(fol1hrq);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol1hrq4submit").click(function(){
         fol1hrq[3] = GetItemResponseTextArea();
         fol1hrqpro = UpdateProgressIndicator(fol1hrq);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol1hrq5submit").click(function(){
         fol1hrq[4] = GetItemResponseTextArea();
         fol1hrqpro = UpdateProgressIndicator(fol1hrq);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol1hrq6submit").click(function(){
         fol1hrq[5] = GetItemResponseTextArea();
         fol1hrqpro = UpdateProgressIndicator(fol1hrq);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     // Follow Up 2 HRQ
     $(".fol2hrq1submit").click(function(){
         fol2hrq[0] = GetItemResponseTextArea();
@@ -1929,117 +2027,117 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol2hrq2submit").click(function(){
         fol2hrq[1] = GetItemResponseTextArea();
         fol2hrqpro = UpdateProgressIndicator(fol2hrq);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol2hrq3submit").click(function(){
         fol2hrq[2] = GetItemResponseTextArea();
         fol2hrqpro = UpdateProgressIndicator(fol2hrq);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol2hrq4submit").click(function(){
         fol2hrq[3] = GetItemResponseTextArea();
         fol2hrqpro = UpdateProgressIndicator(fol2hrq);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol2hrq5submit").click(function(){
         fol2hrq[4] = GetItemResponseTextArea();
         fol2hrqpro = UpdateProgressIndicator(fol2hrq);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol2hrq6submit").click(function(){
         fol2hrq[5] = GetItemResponseTextArea();
         fol2hrqpro = UpdateProgressIndicator(fol2hrq);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     // Baseline MITAK
     $(".basmikat1submit").click(function(){
         //basmit[0], basmit[1], basmit[2], basmit[3], basmit[4], basmit[5], basmit[6], basmit[7], basmit[8], basmit[9], basmit[10], basmit[11], basmit[12], basmit[13] = GetItemTrueFalseForm();
         basmit = GetItemTrueFalseForm().slice();
-        
+
         basmitakpro = UpdateProgressIndicator(basmit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".basmikat2submit").click(function(){
         //basmit[14], basmit[15], basmit[16], basmit[17], basmit[18], basmit[19], basmit[20], basmit[21], basmit[22], basmit[23], basmit[24], basmit[25], basmit[26], basmit[27], basmit[28] = GetItemTrueFalseForm2();
         basmit = basmit.slice(0,14).concat(GetItemTrueFalseForm2());
-        
+
         basmitakpro = UpdateProgressIndicator(basmit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".basmikat3submit").click(function(){
         basmit[29] = GetItemRadioButton2();
         basmitakpro = UpdateProgressIndicator(basmit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".basmikat4submit").click(function(){
         basmit[30] = GetItemRadioButton2();
         basmitakpro = UpdateProgressIndicator(basmit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".basmikat5submit").click(function(){
         basmit[31] = GetItemRadioButton2();
         basmitakpro = UpdateProgressIndicator(basmit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".basmikat6submit").click(function(){
         basmit[32] = GetItemRadioButton2();
         basmitakpro = UpdateProgressIndicator(basmit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".basmikat7submit").click(function(){
         basmit[33] = GetItemRadioButton2();
         basmitakpro = UpdateProgressIndicator(basmit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".basmikat8submit").click(function(){
         basmit[34] = GetItemRadioButton2();
         basmitakpro = UpdateProgressIndicator(basmit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".basmikat9submit").click(function(){
         basmit[35] = GetItemRadioButton3();
         basmitakpro = UpdateProgressIndicator(basmit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".basmikat10submit").click(function(){
         basmit[36] = GetItemRadioButton2();
         basmitakpro = UpdateProgressIndicator(basmit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     //Post-Treatment MITAK
     $(".posmikat1submit").click(function(){
         //posmit[0], posmit[1], posmit[2], posmit[3], posmit[4], posmit[5], posmit[6], posmit[7], posmit[8], posmit[9], posmit[10], posmit[11], posmit[12], posmit[13] = GetItemTrueFalseForm();
@@ -2048,7 +2146,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".posmikat2submit").click(function(){
         //posmit[14], posmit[15], posmit[16], posmit[17], posmit[18], posmit[19], posmit[20], posmit[21], posmit[22], posmit[23], posmit[24], posmit[25], posmit[26], posmit[27], posmit[28] = GetItemTrueFalseForm2();
         posmit = posmit.slice(0,14).concat(GetItemTrueFalseForm2());
@@ -2056,63 +2154,63 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".posmikat3submit").click(function(){
         posmit[29] = GetItemRadioButton2();
         posmitakpro = UpdateProgressIndicator(posmit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".posmikat4submit").click(function(){
         posmit[30] = GetItemRadioButton2();
         posmitakpro = UpdateProgressIndicator(posmit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".posmikat5submit").click(function(){
         posmit[31] = GetItemRadioButton2();
         posmitakpro = UpdateProgressIndicator(posmit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".posmikat6submit").click(function(){
         posmit[32] = GetItemRadioButton2();
         posmitakpro = UpdateProgressIndicator(posmit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".posmikat7submit").click(function(){
         posmit[33] = GetItemRadioButton2();
         posmitakpro = UpdateProgressIndicator(posmit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".posmikat8submit").click(function(){
         posmit[34] = GetItemRadioButton2();
         posmitakpro = UpdateProgressIndicator(posmit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".posmikat9submit").click(function(){
         posmit[35] = GetItemRadioButton3();
         posmitakpro = UpdateProgressIndicator(posmit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".posmikat10submit").click(function(){
         posmit[36] = GetItemRadioButton2();
         posmitakpro = UpdateProgressIndicator(posmit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     // Follow-Up 1 MITAK
     $(".fol1mikat1submit").click(function(){
         //fol1mit[0], fol1mit[1], fol1mit[2], fol1mit[3], fol1mit[4], fol1mit[5], fol1mit[6], fol1mit[7], fol1mit[8], fol1mit[9], fol1mit[10], fol1mit[11], fol1mit[12], fol1mit[13] = GetItemTrueFalseForm();
@@ -2121,70 +2219,70 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol1mikat2submit").click(function(){
         fol1mit = fol1mit.slice(0,14).concat(GetItemTrueFalseForm2());
         fol1mitakpro = UpdateProgressIndicator(fol1mit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol1mikat3submit").click(function(){
         fol1mit[29] = GetItemRadioButton2();
         fol1mitakpro = UpdateProgressIndicator(fol1mit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol1mikat4submit").click(function(){
         fol1mit[30] = GetItemRadioButton2();
         fol1mitakpro = UpdateProgressIndicator(fol1mit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol1mikat5submit").click(function(){
         fol1mit[31] = GetItemRadioButton2();
         fol1mitakpro = UpdateProgressIndicator(fol1mit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol1mikat6submit").click(function(){
         fol1mit[32] = GetItemRadioButton2();
         fol1mitakpro = UpdateProgressIndicator(fol1mit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol1mikat7submit").click(function(){
         fol1mit[33] = GetItemRadioButton2();
         fol1mitakpro = UpdateProgressIndicator(fol1mit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol1mikat8submit").click(function(){
         fol1mit[34] = GetItemRadioButton2();
         fol1mitakpro = UpdateProgressIndicator(fol1mit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol1mikat9submit").click(function(){
         fol1mit[35] = GetItemRadioButton3();
         fol1mitakpro = UpdateProgressIndicator(fol1mit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol1mikat10submit").click(function(){
         fol1mit[36] = GetItemRadioButton2();
         fol1mitakpro = UpdateProgressIndicator(fol1mit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     // Follow-Up 2 MITAK
     $(".fol2mikat1submit").click(function(){
         //fol2mit[0], fol2mit[1], fol2mit[2], fol2mit[3], fol2mit[4], fol2mit[5], fol2mit[6], fol2mit[7], fol2mit[8], fol2mit[9], fol2mit[10], fol2mit[11], fol2mit[12], fol2mit[13] = GetItemTrueFalseForm();
@@ -2193,7 +2291,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol2mikat2submit").click(function(){
         //fol2mit[14], fol2mit[15], fol2mit[16], fol2mit[17], fol2mit[18], fol2mit[19], fol2mit[20], fol2mit[21], fol2mit[22], fol2mit[23], fol2mit[24], fol2mit[25], fol2mit[26], fol2mit[27], fol2mit[28] = GetItemTrueFalseForm2();
         fol2mit = fol2mit.slice(0,14).concat(GetItemTrueFalseForm2());
@@ -2201,65 +2299,65 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol2mikat3submit").click(function(){
         fol2mit[29] = GetItemRadioButton2();
         fol2mitakpro = UpdateProgressIndicator(fol2mit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol2mikat4submit").click(function(){
         fol2mit[30] = GetItemRadioButton2();
         fol2mitakpro = UpdateProgressIndicator(fol2mit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol2mikat5submit").click(function(){
         fol2mit[31] = GetItemRadioButton2();
         fol2mitakpro = UpdateProgressIndicator(fol2mit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol2mikat6submit").click(function(){
         fol2mit[32] = GetItemRadioButton2();
         fol2mitakpro = UpdateProgressIndicator(fol2mit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol2mikat7submit").click(function(){
         fol2mit[33] = GetItemRadioButton2();
         fol2mitakpro = UpdateProgressIndicator(fol2mit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol2mikat8submit").click(function(){
         fol2mit[34] = GetItemRadioButton2();
         fol2mitakpro = UpdateProgressIndicator(fol2mit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol2mikat9submit").click(function(){
         fol2mit[35] = GetItemRadioButton3();
         fol2mitakpro = UpdateProgressIndicator(fol2mit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".fol2mikat10submit").click(function(){
         fol2mit[36] = GetItemRadioButton2();
         fol2mitakpro = UpdateProgressIndicator(fol2mit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     // Motivational Interviewing Intro
-    
+
     $(".mi1submit").click(function(){
         [mi[0], mi[1], mi[2]] = GetItemResponseMultiTextArea();
         mipro = UpdateProgressIndicator(mi);
@@ -2267,7 +2365,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".mi2submit").click(function(){
         [mi[3], mi[4], mi[5]] = GetItemResponseMultiTextArea();
         mipro = UpdateProgressIndicator(mi);
@@ -2275,9 +2373,9 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
-    // Open or Close 1 to 10 
-    
+
+    // Open or Close 1 to 10
+
     $(".oars1submit").click(function(){
         oars[0] = GetItemTrueFalseButton();
         oarsanswercorrect1[0] = CorrectAnswer(oars, oarsanswerkey1, 0, 0);
@@ -2286,7 +2384,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars2submit").click(function(){
         oars[1] = GetItemTrueFalseButton();
         oarsanswercorrect1[1] = CorrectAnswer(oars, oarsanswerkey1, 1, 1);
@@ -2295,7 +2393,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars3submit").click(function(){
         oars[2] = GetItemTrueFalseButton();
         oarsanswercorrect1[2] = CorrectAnswer(oars, oarsanswerkey1, 2, 2);
@@ -2304,7 +2402,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars4submit").click(function(){
         oars[3] = GetItemTrueFalseButton();
         oarsanswercorrect1[3] = CorrectAnswer(oars, oarsanswerkey1, 3, 3);
@@ -2313,7 +2411,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars5submit").click(function(){
         oars[4] = GetItemTrueFalseButton();
         oarsanswercorrect1[4] = CorrectAnswer(oars, oarsanswerkey1, 4, 4);
@@ -2322,7 +2420,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars6submit").click(function(){
         oars[5] = GetItemTrueFalseButton();
         oarsanswercorrect1[5] = CorrectAnswer(oars, oarsanswerkey1, 5, 5);
@@ -2331,7 +2429,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars7submit").click(function(){
         oars[6] = GetItemTrueFalseButton();
         oarsanswercorrect1[6] = CorrectAnswer(oars, oarsanswerkey1, 6, 6);
@@ -2340,7 +2438,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars8submit").click(function(){
         oars[7] = GetItemTrueFalseButton();
         oarsanswercorrect1[7] = CorrectAnswer(oars, oarsanswerkey1, 7, 7);
@@ -2349,7 +2447,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars9submit").click(function(){
         oars[8] = GetItemTrueFalseButton();
         oarsanswercorrect1[8] = CorrectAnswer(oars, oarsanswerkey1, 8, 8);
@@ -2358,7 +2456,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars10submit").click(function(){
         oars[9] = GetItemTrueFalseButton();
         oarsanswercorrect1[9] = CorrectAnswer(oars, oarsanswerkey1, 9, 9);
@@ -2367,9 +2465,9 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     // Identify Stem 1 to 17
-    
+
     $(".oars11submit").click(function(){
         oars[10] = GetItemTrueFalseButton();
         oarsanswercorrect2[0] = CorrectAnswer(oars, oarsanswerkey2, 10, 0);
@@ -2378,7 +2476,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars12submit").click(function(){
         oars[11] = GetItemTrueFalseButton();
         oarsanswercorrect2[1] = CorrectAnswer(oars, oarsanswerkey2, 11, 1);
@@ -2387,7 +2485,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars13submit").click(function(){
         oars[12] = GetItemTrueFalseButton();
         oarsanswercorrect2[2] = CorrectAnswer(oars, oarsanswerkey2, 12, 2);
@@ -2396,7 +2494,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars14submit").click(function(){
         oars[13] = GetItemTrueFalseButton();
         oarsanswercorrect2[3] = CorrectAnswer(oars, oarsanswerkey2, 13, 3);
@@ -2405,7 +2503,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars15submit").click(function(){
         oars[14] = GetItemTrueFalseButton();
         oarsanswercorrect2[4] = CorrectAnswer(oars, oarsanswerkey2, 14, 4);
@@ -2414,7 +2512,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars16submit").click(function(){
         oars[15] = GetItemTrueFalseButton();
         oarsanswercorrect2[5] = CorrectAnswer(oars, oarsanswerkey2, 15, 5);
@@ -2423,7 +2521,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars17submit").click(function(){
         oars[16] = GetItemTrueFalseButton();
         oarsanswercorrect2[6] = CorrectAnswer(oars, oarsanswerkey2, 16, 6);
@@ -2432,7 +2530,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars18submit").click(function(){
         oars[17] = GetItemTrueFalseButton();
         oarsanswercorrect2[7] = CorrectAnswer(oars, oarsanswerkey2, 17, 7);
@@ -2441,7 +2539,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars19submit").click(function(){
         oars[18] = GetItemTrueFalseButton();
         oarsanswercorrect2[8] = CorrectAnswer(oars, oarsanswerkey2, 18, 8);
@@ -2450,7 +2548,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars20submit").click(function(){
         oars[19] = GetItemTrueFalseButton();
         oarsanswercorrect2[9] = CorrectAnswer(oars, oarsanswerkey2, 19, 9);
@@ -2459,7 +2557,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars21submit").click(function(){
         oars[20] = GetItemTrueFalseButton();
         oarsanswercorrect2[10] = CorrectAnswer(oars, oarsanswerkey2, 20, 10);
@@ -2468,7 +2566,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars22submit").click(function(){
         oars[21] = GetItemTrueFalseButton();
         oarsanswercorrect2[11] = CorrectAnswer(oars, oarsanswerkey2, 21, 11);
@@ -2477,7 +2575,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars23submit").click(function(){
         oars[22] = GetItemTrueFalseButton();
         oarsanswercorrect2[12] = CorrectAnswer(oars, oarsanswerkey2, 22, 12);
@@ -2486,7 +2584,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars24submit").click(function(){
         oars[23] = GetItemTrueFalseButton();
         oarsanswercorrect2[13] = CorrectAnswer(oars, oarsanswerkey2, 23, 13);
@@ -2495,7 +2593,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars25submit").click(function(){
         oars[24] = GetItemTrueFalseButton();
         oarsanswercorrect2[14] = CorrectAnswer(oars, oarsanswerkey2, 24, 14);
@@ -2504,7 +2602,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars26submit").click(function(){
         oars[25] = GetItemTrueFalseButton();
         oarsanswercorrect2[15] = CorrectAnswer(oars, oarsanswerkey2, 25, 15);
@@ -2513,7 +2611,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars27submit").click(function(){
         oars[26] = GetItemTrueFalseButton();
         oarsanswercorrect2[16] = CorrectAnswer(oars, oarsanswerkey2, 26, 16);
@@ -2522,9 +2620,9 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     // Open to Close 1 to 10
-    
+
     $(".oars28submit").click(function(){
         oars[27] = GetItemResponseTextArea();
         oarspro = UpdateProgressIndicator(oars);
@@ -2534,7 +2632,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars29submit").click(function(){
         oars[28] = GetItemResponseTextArea();
         oarspro = UpdateProgressIndicator(oars);
@@ -2544,7 +2642,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars30submit").click(function(){
         oars[29] = GetItemResponseTextArea();
         oarspro = UpdateProgressIndicator(oars);
@@ -2554,7 +2652,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars31submit").click(function(){
         oars[30] = GetItemResponseTextArea();
         oarspro = UpdateProgressIndicator(oars);
@@ -2564,7 +2662,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars32submit").click(function(){
         oars[31] = GetItemResponseTextArea();
         oarspro = UpdateProgressIndicator(oars);
@@ -2574,7 +2672,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars33submit").click(function(){
         oars[32] = GetItemResponseTextArea();
         oarspro = UpdateProgressIndicator(oars);
@@ -2584,7 +2682,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars34submit").click(function(){
         oars[33] = GetItemResponseTextArea();
         oarspro = UpdateProgressIndicator(oars);
@@ -2594,7 +2692,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars35submit").click(function(){
         oars[34] = GetItemResponseTextArea();
         oarspro = UpdateProgressIndicator(oars);
@@ -2604,7 +2702,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars36submit").click(function(){
         oars[35] = GetItemResponseTextArea();
         oarspro = UpdateProgressIndicator(oars);
@@ -2614,7 +2712,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars37submit").click(function(){
         oars[36] = GetItemResponseTextArea();
         oarspro = UpdateProgressIndicator(oars);
@@ -2624,7 +2722,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     // These were deleted from a previous version
     /*
     $(".oars38submit").click(function(){
@@ -2635,7 +2733,7 @@ $(document).ready(function(){
         oarsanswercorrect3[10] = CorrectOpenAnswer(agentanswerkey, 13);
         UpdateProgressMetrics();
     });
-    
+
     $(".oars39submit").click(function(){
         oars[38] = GetItemResponseTextArea();
         oarspro = UpdateProgressIndicator(oars);
@@ -2644,9 +2742,9 @@ $(document).ready(function(){
         oarsanswercorrect3[11] = CorrectOpenAnswer(agentanswerkey, 13);
         UpdateProgressMetrics();
     });*/
-    
+
     // Identify Reflections 1 to 12
-    
+
     $(".oars38submit").click(function(){
         oars[37] = GetItemTrueFalseButton2();
         oarsanswercorrect4[0] = CorrectAnswer(oars, oarsanswerkey4, 37, 0);
@@ -2655,7 +2753,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-                             
+
     $(".oars39submit").click(function(){
         oars[38] = GetItemTrueFalseButton2();
         oarsanswercorrect4[1] = CorrectAnswer(oars, oarsanswerkey4, 38, 1);
@@ -2664,7 +2762,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-                             
+
     $(".oars40submit").click(function(){
         oars[39] = GetItemTrueFalseButton2();
         oarsanswercorrect4[2] = CorrectAnswer(oars, oarsanswerkey4, 39, 2);
@@ -2673,7 +2771,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars41submit").click(function(){
         oars[40] = GetItemTrueFalseButton2();
         oarsanswercorrect4[3] = CorrectAnswer(oars, oarsanswerkey4, 40, 3);
@@ -2682,7 +2780,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars42submit").click(function(){
         oars[41] = GetItemTrueFalseButton2();
         oarsanswercorrect4[4] = CorrectAnswer(oars, oarsanswerkey4, 41, 4);
@@ -2691,7 +2789,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-                             
+
     $(".oars43submit").click(function(){
         oars[42] = GetItemTrueFalseButton2();
         oarsanswercorrect4[5] = CorrectAnswer(oars, oarsanswerkey4, 42, 5);
@@ -2700,7 +2798,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-                             
+
     $(".oars44submit").click(function(){
         oars[43] = GetItemTrueFalseButton2();
         oarsanswercorrect4[6] = CorrectAnswer(oars, oarsanswerkey4, 43, 6);
@@ -2709,7 +2807,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars45submit").click(function(){
         oars[44] = GetItemTrueFalseButton2();
         oarsanswercorrect4[7] = CorrectAnswer(oars, oarsanswerkey4, 44, 7);
@@ -2718,7 +2816,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars46submit").click(function(){
         oars[45] = GetItemTrueFalseButton2();
         oarsanswercorrect4[8] = CorrectAnswer(oars, oarsanswerkey4, 45, 8);
@@ -2727,7 +2825,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-                             
+
     $(".oars47submit").click(function(){
         oars[46] = GetItemTrueFalseButton2();
         oarsanswercorrect4[9] = CorrectAnswer(oars, oarsanswerkey4, 46, 9);
@@ -2736,7 +2834,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-                             
+
     $(".oars48submit").click(function(){
         oars[47] = GetItemTrueFalseButton2();
         oarsanswercorrect4[10] = CorrectAnswer(oars, oarsanswerkey4, 47, 10);
@@ -2745,7 +2843,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars49submit").click(function(){
         oars[48] = GetItemTrueFalseButton2();
         oarsanswercorrect4[11] = CorrectAnswer(oars, oarsanswerkey4, 48, 11);
@@ -2754,9 +2852,9 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     // Create stem 1 and 2
-    
+
     $(".oars50submit").click(function(){
         oars[49] = GetItemResponseTextArea();
         console.log(oars[49]);
@@ -2768,7 +2866,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars51submit").click(function(){
         oars[50] = GetItemResponseTextArea();
         oarspro = UpdateProgressIndicator(oars);
@@ -2778,9 +2876,9 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     // Silver Lining
-    
+
     $(".oars52submit").click(function(){
         oars[51] = GetItemResponseTextArea();
         oarspro = UpdateProgressIndicator(oars);
@@ -2790,7 +2888,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars53submit").click(function(){
         oars[52] = GetItemResponseTextArea();
         oarspro = UpdateProgressIndicator(oars);
@@ -2800,7 +2898,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars54submit").click(function(){
         oars[53] = GetItemResponseTextArea();
         oarspro = UpdateProgressIndicator(oars);
@@ -2810,7 +2908,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars55submit").click(function(){
         oars[54] = GetItemResponseTextArea();
         oarspro = UpdateProgressIndicator(oars);
@@ -2820,7 +2918,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars56submit").click(function(){
         oars[55] = GetItemResponseTextArea();
         oarspro = UpdateProgressIndicator(oars);
@@ -2830,7 +2928,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars57submit").click(function(){
         oars[56] = GetItemResponseTextArea();
         oarspro = UpdateProgressIndicator(oars);
@@ -2840,7 +2938,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".oars58submit").click(function(){
         oars[57] = GetItemResponseTextArea();
         oarspro = UpdateProgressIndicator(oars);
@@ -2850,11 +2948,11 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
-    // Focusing 
-    
+
+    // Focusing
+
     // Identifying Target Behavior Change from a List
-    
+
     $(".focus1submit").click(function(){
         target[0] = GetItemTrueFalseButton3();
         targetanswercorrect1[0] = CorrectAnswer(target, targetanswerkey1, 0, 0);
@@ -2864,7 +2962,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".focus2submit").click(function(){
         target[1] = GetItemTrueFalseButton3();
         targetanswercorrect1[1] = CorrectAnswer(target, targetanswerkey1, 1, 1);
@@ -2874,7 +2972,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".focus3submit").click(function(){
         target[2] = GetItemTrueFalseButton3();
         targetanswercorrect1[2] = CorrectAnswer(target, targetanswerkey1, 2, 2);
@@ -2884,7 +2982,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".focus4submit").click(function(){
         target[3] = GetItemTrueFalseButton3();
         targetanswercorrect1[3] = CorrectAnswer(target, targetanswerkey1, 3, 3);
@@ -2894,7 +2992,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".focus5submit").click(function(){
         target[4] = GetItemTrueFalseButton3();
         targetanswercorrect1[4] = CorrectAnswer(target, targetanswerkey1, 4, 4);
@@ -2904,7 +3002,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".focus6submit").click(function(){
         target[5] = GetItemTrueFalseButton3();
         targetanswercorrect1[5] = CorrectAnswer(target, targetanswerkey1, 5, 5);
@@ -2914,7 +3012,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".focus7submit").click(function(){
         target[6] = GetItemTrueFalseButton3();
         targetanswercorrect1[6] = CorrectAnswer(target, targetanswerkey1, 6, 6);
@@ -2924,7 +3022,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".focus8submit").click(function(){
         target[7] = GetItemTrueFalseButton3();
         targetanswercorrect1[7] = CorrectAnswer(target, targetanswerkey1, 7, 7);
@@ -2934,7 +3032,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".focus9submit").click(function(){
         target[8] = GetItemTrueFalseButton3();
         targetanswercorrect1[8] = CorrectAnswer(target, targetanswerkey1, 8, 8);
@@ -2944,7 +3042,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".focus10submit").click(function(){
         target[9] = GetItemTrueFalseButton3();
         targetanswercorrect1[9] = CorrectAnswer(target, targetanswerkey1, 9, 9);
@@ -2954,7 +3052,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".focus11submit").click(function(){
         target[10] = GetItemTrueFalseButton3();
         targetanswercorrect1[10] = CorrectAnswer(target, targetanswerkey1, 10, 10);
@@ -2964,7 +3062,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".focus12submit").click(function(){
         target[11] = GetItemTrueFalseButton3();
         targetanswercorrect1[11] = CorrectAnswer(target, targetanswerkey1, 11, 11);
@@ -2974,7 +3072,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".focus13submit").click(function(){
         target[12] = GetItemTrueFalseButton3();
         targetanswercorrect1[12] = CorrectAnswer(target, targetanswerkey1, 12, 12);
@@ -2984,7 +3082,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".focus14submit").click(function(){
         [target[13], target[14], target[15]] = GetItemResponseMultiTextArea();
         tarpro = UpdateProgressIndicator(target);
@@ -2992,7 +3090,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".focus15submit").click(function(){
         target[16] = GetItemResponseTextArea();
         tarpro = UpdateProgressIndicator(target);
@@ -3000,7 +3098,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".focus16submit").click(function(){
         [target[17], target[18], target[19]] = GetItemResponseMultiTextArea();
         tarpro = UpdateProgressIndicator(target);
@@ -3008,7 +3106,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".focus17submit").click(function(){
         target[20] = GetItemResponseTextArea();
         tarpro = UpdateProgressIndicator(target);
@@ -3016,7 +3114,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".focus18asubmit").click(function(){
         target[21] = GetItemResponseTextArea();
         tarpro = UpdateProgressIndicator(target);
@@ -3026,7 +3124,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".focus18bsubmit").click(function(){
         target[22] = GetItemResponseTextArea();
         tarpro = UpdateProgressIndicator(target);
@@ -3036,7 +3134,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".focus18csubmit").click(function(){
         target[23] = GetItemResponseTextArea();
         tarpro = UpdateProgressIndicator(target);
@@ -3046,7 +3144,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".focus19submit").click(function(){
         target[24] = GetItemResponseTextArea();
         tarpro = UpdateProgressIndicator(target);
@@ -3054,7 +3152,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".focus20asubmit").click(function(){
         target[25] = GetItemResponseTextArea();
         tarpro = UpdateProgressIndicator(target);
@@ -3064,7 +3162,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".focus20bsubmit").click(function(){
         target[26] = GetItemResponseTextArea();
         tarpro = UpdateProgressIndicator(target);
@@ -3074,7 +3172,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".focus20csubmit").click(function(){
         target[27] = GetItemResponseTextArea();
         tarpro = UpdateProgressIndicator(target);
@@ -3084,7 +3182,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".focus21submit").click(function(){
         target[28] = GetItemResponseTextArea();
         tarpro = UpdateProgressIndicator(target);
@@ -3092,7 +3190,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".focus22asubmit").click(function(){
         target[29] = GetItemResponseTextArea();
         tarpro = UpdateProgressIndicator(target);
@@ -3102,7 +3200,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".focus22bsubmit").click(function(){
         target[30] = GetItemResponseTextArea();
         tarpro = UpdateProgressIndicator(target);
@@ -3112,7 +3210,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".focus22csubmit").click(function(){
         target[31] = GetItemResponseTextArea();
         tarpro = UpdateProgressIndicator(target);
@@ -3122,7 +3220,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".focus23submit").click(function(){
         target[32] = GetItemResponseTextArea();
         tarpro = UpdateProgressIndicator(target);
@@ -3130,7 +3228,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".focus24submit").click(function(){
         target = target.slice(0,33).concat(GetValueSpanContainers());
         tarpro = UpdateProgressIndicator(target);
@@ -3138,7 +3236,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     // Evoking (Change Talk)
     $(".evok1submit").click(function(){
         evok[0] = GetItemTrueFalseButton4();
@@ -3153,7 +3251,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok2submit").click(function(){
         evok[3] = GetItemTrueFalseButton4();
         evokanswercorrect1[1] = CorrectAnswer(evok, evokanswerkey1, 3, 1);
@@ -3167,7 +3265,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok3submit").click(function(){
         evok[6] = GetItemTrueFalseButton4();
         evokanswercorrect1[2] = CorrectAnswer(evok, evokanswerkey1, 6, 2);
@@ -3181,7 +3279,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok4submit").click(function(){
         evok[9] = GetItemTrueFalseButton4();
         evokanswercorrect1[3] = CorrectAnswer(evok, evokanswerkey1, 9, 3);
@@ -3195,7 +3293,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok5submit").click(function(){
         evok[12] = GetItemTrueFalseButton4();
         evokanswercorrect1[4] = CorrectAnswer(evok, evokanswerkey1, 12, 4);
@@ -3209,7 +3307,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok6submit").click(function(){
         evok[15] = GetItemTrueFalseButton4();
         evokanswercorrect1[5] = CorrectAnswer(evok, evokanswerkey1, 15, 5);
@@ -3223,7 +3321,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok7submit").click(function(){
         evok[18] = GetItemTrueFalseButton4();
         evokanswercorrect1[6] = CorrectAnswer(evok, evokanswerkey1, 18, 6);
@@ -3237,7 +3335,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok8submit").click(function(){
         evok[21] = GetItemTrueFalseButton4();
         evokanswercorrect1[7] = CorrectAnswer(evok, evokanswerkey1, 21, 7);
@@ -3251,7 +3349,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok9submit").click(function(){
         evok[24] = GetItemTrueFalseButton4();
         evokanswercorrect1[8] = CorrectAnswer(evok, evokanswerkey1, 24, 8);
@@ -3265,7 +3363,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok10submit").click(function(){
         evok[27] = GetItemTrueFalseButton4();
         evokanswercorrect1[9] = CorrectAnswer(evok, evokanswerkey1, 27, 9);
@@ -3279,7 +3377,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok11submit").click(function(){
         evok[30] = GetItemTrueFalseButton4();
         evokanswercorrect1[10] = CorrectAnswer(evok, evokanswerkey1, 30, 10);
@@ -3293,7 +3391,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok12submit").click(function(){
         evok[33] = GetItemTrueFalseButton4();
         evokanswercorrect1[11] = CorrectAnswer(evok, evokanswerkey1, 33, 11);
@@ -3307,7 +3405,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok13submit").click(function(){
         evok[36] = GetItemTrueFalseButton4();
         evokanswercorrect1[12] = CorrectAnswer(evok, evokanswerkey1, 36, 12);
@@ -3321,7 +3419,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok14submit").click(function(){
         evok[39] = GetItemTrueFalseButton4();
         evokanswercorrect1[13] = CorrectAnswer(evok, evokanswerkey1, 39, 13);
@@ -3335,7 +3433,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok15submit").click(function(){
         evok[42] = GetItemTrueFalseButton4();
         evokanswercorrect1[14] = CorrectAnswer(evok, evokanswerkey1, 42, 14);
@@ -3349,7 +3447,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok16submit").click(function(){
         evok[45] = GetItemTrueFalseButton4();
         evokanswercorrect1[15] = CorrectAnswer(evok, evokanswerkey1, 45, 15);
@@ -3363,7 +3461,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok17submit").click(function(){
         evok[48] = GetItemTrueFalseButton4();
         evokanswercorrect1[16] = CorrectAnswer(evok, evokanswerkey1, 48, 16);
@@ -3377,7 +3475,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok18submit").click(function(){
         evok[51] = GetItemTrueFalseButton4();
         evokanswercorrect1[17] = CorrectAnswer(evok, evokanswerkey1, 51, 17);
@@ -3391,7 +3489,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok19submit").click(function(){
         evok[54] = GetItemTrueFalseButton4();
         evokanswercorrect1[18] = CorrectAnswer(evok, evokanswerkey1, 54, 18);
@@ -3405,7 +3503,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok20submit").click(function(){
         evok[57] = GetItemTrueFalseButton4();
         evokanswercorrect1[19] = CorrectAnswer(evok, evokanswerkey1, 57, 19);
@@ -3419,7 +3517,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok21submit").click(function(){
         evok[60] = GetItemTrueFalseButton4();
         evokanswercorrect1[20] = CorrectAnswer(evok, evokanswerkey1, 60, 20);
@@ -3433,7 +3531,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok22submit").click(function(){
         evok[63] = GetItemTrueFalseButton4();
         evokanswercorrect1[21] = CorrectAnswer(evok, evokanswerkey1, 63, 21);
@@ -3447,7 +3545,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok23submit").click(function(){
         evok[66] = GetItemTrueFalseButton4();
         evokanswercorrect1[22] = CorrectAnswer(evok, evokanswerkey1, 66, 22);
@@ -3461,7 +3559,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok24submit").click(function(){
         evok[69] = GetItemTrueFalseButton4();
         evokanswercorrect1[23] = CorrectAnswer(evok, evokanswerkey1, 69, 23);
@@ -3475,7 +3573,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok25submit").click(function(){
         evok[72] = GetItemTrueFalseButton4();
         evokanswercorrect1[24] = CorrectAnswer(evok, evokanswerkey1, 72, 24);
@@ -3489,7 +3587,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok26submit").click(function(){
         //evok[73], evok[74], evok[75], evok[76], evok[77], evok[78], evok[79], evok[80] = GetSelectedSpanContainers();
         evok = evok.slice(0,75).concat(GetSelectedSpanContainers());
@@ -3499,7 +3597,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok27submit").click(function(){
         evok[81] = GetItemResponseTextArea();
         evokpro = UpdateProgressIndicator(evok);
@@ -3509,7 +3607,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok28submit").click(function(){
         evok[82] = GetItemResponseTextArea();
         evokpro = UpdateProgressIndicator(evok);
@@ -3519,7 +3617,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok29submit").click(function(){
         evok[83] = GetItemResponseTextArea();
         evokpro = UpdateProgressIndicator(evok);
@@ -3529,7 +3627,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok30submit").click(function(){
         evok[84] = GetItemResponseTextArea();
         evokpro = UpdateProgressIndicator(evok);
@@ -3539,7 +3637,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok31submit").click(function(){
         evok[85] = GetItemResponseTextArea();
         evokpro = UpdateProgressIndicator(evok);
@@ -3549,7 +3647,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok32submit").click(function(){
         //evok[86], evok[87] = GetItemResponseMultiTextArea2();
         evok = evok.slice(0,86).concat(GetItemResponseMultiTextArea2());
@@ -3559,7 +3657,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok33submit").click(function(){
         //evok[89], evok[90] = GetItemResponseMultiTextArea2();
         evok = evok.slice(0,89).concat(GetItemResponseMultiTextArea2());
@@ -3569,7 +3667,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok34submit").click(function(){
         //evok[92], evok[93] = GetItemResponseMultiTextArea2();
         evok = evok.slice(0,92).concat(GetItemResponseMultiTextArea2());
@@ -3578,7 +3676,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok35submit").click(function(){
         //evok[94], evok[95] = GetItemResponseMultiTextArea2();
         evok = evok.slice(0,94).concat(GetItemResponseMultiTextArea2());
@@ -3587,7 +3685,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".evok36submit").click(function(){
         evok = evok.slice(0,96).concat(GetItemResponseMultiTextArea4());
         AgentDefault();
@@ -3595,7 +3693,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".menu1submit").click(function(){
         //plan[0], plan[1], plan[2], plan[3], plan[4] = GetItemResponseMultiTextArea3();
         plan = GetItemResponseMultiTextArea3().slice();
@@ -3604,7 +3702,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-        
+
     $(".menu2submit").click(function(){
         plan[5] = GetItemResponseTextArea();
         AgentDefault();
@@ -3612,7 +3710,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-        
+
     $(".menu3submit").click(function(){
         plan[6] = GetItemResponseTextArea();
         AgentDefault();
@@ -3620,7 +3718,7 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".menu4submit").click(function(){
         plan[7] = GetItemResponseTextArea();
         AgentDefault();
@@ -3628,37 +3726,37 @@ $(document).ready(function(){
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-        
+
     $(".menu5submit").click(function(){
-        plan[8] = GetItemResponseTextArea(); 
+        plan[8] = GetItemResponseTextArea();
         AgentDefault();
         planpro = UpdateProgressIndicator(plan);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     $(".menu6submit").click(function(){
-        plan[9] = GetItemResponseTextArea(); 
+        plan[9] = GetItemResponseTextArea();
         AgentDefault();
         planpro = UpdateProgressIndicator(plan);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-        
+
     $(".menu7submit").click(function(){
-        plan[10] = GetItemResponseTextArea(); 
+        plan[10] = GetItemResponseTextArea();
         AgentDefault();
         planpro = UpdateProgressIndicator(plan);
         UpdateProgressMetrics();
         UpdateLocalStorage();
     });
-    
+
     // Full MI Practice
     $(".fullmi1submit").click(function(){
-       fullmi[0] = "N/A";
-       fullmipro = UpdateProgressIndicator(fullmi);
-       UpdateProgressMetrics();
-       UpdateLocalStorage();
+        fullmi[0] = "N/A";
+        fullmipro = UpdateProgressIndicator(fullmi);
+        UpdateProgressMetrics();
+        UpdateLocalStorage();
     });
-   
-});
+
+}
