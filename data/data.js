@@ -2,7 +2,7 @@
 
 $(document).ready(function(){
     //don't do any of this if it hasn't loaded to ep user functions
-    if(ep){
+    if(typeof ep !== 'undefined'){
         ep.currFile="/projects/NIHdepth/functions.jsp";
         ep.loadLoginHtml();
         ep.startLoginChecker();
