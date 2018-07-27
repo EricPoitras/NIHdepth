@@ -21,6 +21,7 @@ $(document).ready(function(){
 
     }else{
         console.log("EP Integration Disabled")
+	addEventListeners();
     }
 
 
