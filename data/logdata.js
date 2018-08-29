@@ -96,10 +96,10 @@ function datalogger(categorylabel, eventlabel){
     
     //localStorage.sessionlog = JSON.stringify(newitem);
 
-    if(serverintegration ){
-        //ep.getFunctionAsObjectJSON(8803,{'jsondata':JSON.stringify(newitem)},function(json){
-            //console.log("Sent Log Data to Server");
-         //   })
+    if(typeof serverintegration !== 'undefined' && serverintegration){
+        ep.getFunctionAsObjectJSON(8803,{'jsondata':JSON.stringify(newitem)},function(json){
+            console.log("Sent Log Data to Server");
+            })
     }
 }
 

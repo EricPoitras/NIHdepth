@@ -4,6 +4,7 @@ $(document).ready(function(){
     //don't do any of this if it hasn't loaded to ep user functions
     if(typeof ep !== 'undefined'){
         ep.currFile="/projects/NIHdepth/functions.jsp";
+        ep.loginRedirect= "/bypass/ucc/";
         ep.loadLoginHtml();
         ep.startLoginChecker();
         epui.showLoginPopUp=false;
@@ -21,7 +22,7 @@ $(document).ready(function(){
 
     }else{
         console.log("EP Integration Disabled")
-	addEventListeners();
+	    addEventListeners();
     }
 
 

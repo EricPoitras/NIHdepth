@@ -13,6 +13,21 @@ White #F8F8F8   CLEAN #DFDCE3
 
 /* Typography used to be Barlow */
 
+#video-controls .value{
+    display:none;
+}
+
+
+#video{
+    width: 900px !important;
+    height: 600px !important;
+}
+
+.p-3 {
+    font-size:22px;
+    text-align: left !important;
+}
+
 .fontcus{
     font-family: 'Helvetica', sans-serif;
 }
