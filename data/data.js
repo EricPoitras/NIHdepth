@@ -668,6 +668,23 @@ function GetItemResponseMultiTextArea4(){
     return [returnval1,returnval2,returnval3,returnval4];
 }
 
+function Validation(data){
+    if(data === "N/A"){
+        // Validation Negative - show message to user to submit response
+        $("#validationnegative").delay("slow").removeClass("invisiblecus");
+        $("#validationnegative").addClass("visiblecus");
+    }else{
+        // Validation Positive - show message to user to proceed to next step
+        $("#validationpositive").delay("slow").removeClass("invisiblecus");
+        $("#validationpositive").addClass("visiblecus");
+        // Hide the validation negative message
+        $("#validationnegative").removeClass("visiblecus");
+        $("#validationnegative").addClass("invisiblecus");
+        //Enable the next button
+        $("#next").removeClass("disabled");
+    }
+}
+
 // Get item response from radio button component
 function GetItemRadioButton(){
     var val1 = document.getElementById("radio1").checked;
@@ -688,8 +705,10 @@ function GetItemRadioButton(){
     else if(val4 === true){
         returnval = "4";
     }
-    else{
+    else if(val5 === true){
         returnval = "5";
+    }else{
+        returnval = "N/A";
     }
     return returnval;
 }
@@ -714,9 +733,12 @@ function GetItemRadioButton2(){
     else if(val4 === true){
         returnval = "4";
     }
-    else{
+    else if(val5 === true){
         returnval = "5";
+    }else{
+        returnval = "N/A"
     }
+    Validation(returnval);
     return returnval;
 }
 
