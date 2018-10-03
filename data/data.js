@@ -758,9 +758,12 @@ function GetItemRadioButton3(){
     else if(val3 === true){
         returnval = "3";
     }
-    else{
+    else if(val4 === true){
         returnval = "4";
+    }else{
+        returnval = "N/A"
     }
+    Validation(returnval);
     return returnval;
 }
 
