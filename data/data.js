@@ -824,9 +824,12 @@ function GetItemTrueFalseButton4(){
     if(val1 === true){
         returnval = "change";
     }
-    else{
+    else if(val2 === true){
         returnval = "else";
+    }else{
+        returnval = "N/A";
     }
+    // Validation(returnval); - Validation is currently done on text entries
     return returnval;
 }
 
@@ -899,6 +902,21 @@ function GetItemTrueFalseForm(){
     var val13 = document.getElementById("item13radio1").checked;
     var val14 = document.getElementById("item14radio2").checked;
     
+    var val1b = document.getElementById("item1radio1").checked;
+    var val2b = document.getElementById("item2radio1").checked;
+    var val3b = document.getElementById("item3radio1").checked;
+    var val4b = document.getElementById("item4radio2").checked;
+    var val5b = document.getElementById("item5radio1").checked;
+    var val6b = document.getElementById("item6radio1").checked;
+    var val7b = document.getElementById("item7radio1").checked;
+    var val8b = document.getElementById("item8radio2").checked;
+    var val9b = document.getElementById("item9radio1").checked;
+    var val10b = document.getElementById("item10radio2").checked;
+    var val11b = document.getElementById("item11radio1").checked;
+    var val12b = document.getElementById("item12radio1").checked;
+    var val13b = document.getElementById("item13radio2").checked;
+    var val14b = document.getElementById("item14radio1").checked;
+    
     var returnval1;
     var returnval2;
     var returnval3;
@@ -914,72 +932,127 @@ function GetItemTrueFalseForm(){
     var returnval13;
     var returnval14;
     
-    if(val1 == true){
+    if(val1 == false && val1b == false){
+        returnval1 = "N/A";
+    }
+    else if(val1 == true){
         returnval1 = "False (Correct)";
     }else{
         returnval1 = "True (Incorrect)";
     }
-    if(val2 == true){
+    
+    if(val2 == false && val2b == false){
+        returnval2 = "N/A";
+    }
+    else if(val2 == true){
         returnval2 = "False (Correct)";
     }else{
         returnval2 = "True (Incorrect)";
     }
-    if(val3 == true){
+    
+    if(val3 == false && val3b == false){
+        returnval3 = "N/A";
+    }
+    else if(val3 == true){
         returnval3 = "False (Correct)";
     }else{
         returnval3 = "True (Incorrect)";
     }
-    if(val4 == true){
+    
+    if(val4 == false && val4b == false){
+        returnval4 = "N/A";
+    }
+    else if(val4 == true){
         returnval4 = "True (Correct)";
     }else{
         returnval4 = "False (Incorrect)";
     }
-    if(val5 == true){
+    
+    if(val5 == false && val5b == false){
+        returnval5 = "N/A";
+    }
+    else if(val5 == true){
         returnval5 = "False (Correct)";
     }else{
         returnval5 = "True (Incorrect)";
     }
-    if(val6 == true){
+    
+    if(val6 == false && val6b == false){
+        returnval6 = "N/A";
+    }
+    else if(val6 == true){
         returnval6 = "False (Correct)";
     }else{
         returnval6 = "True (Incorrect)";
     }
-    if(val7 == true){
+    
+    if(val7 == false && val7b == false){
+        returnval7 = "N/A";
+    }
+    else if(val7 == true){
         returnval7 = "False (Correct)";
     }else{
         returnval7 = "True (Incorrect)";
     }
-    if(val8 == true){
+    
+    if(val8 == false && val8b == false){
+        returnval8 = "N/A";
+    }
+    else if(val8 == true){
         returnval8 = "True (Correct)";
     }else{
         returnval8 = "False (Incorrect)";
     }
-    if(val9 == true){
+    
+    if(val9 == false && val9b == false){
+        returnval9 = "N/A";
+    }
+    else if(val9 == true){
         returnval9 = "False (Correct)";
     }else{
         returnval9 = "True (Incorrect)";
     }
-    if(val10 == true){
+    
+    if(val10 == false && val10b == false){
+        returnval10 = "N/A";
+    }
+    else if(val10 == true){
         returnval10 = "True (Correct)";
     }else{
         returnval10 = "False (Incorrect)";
     }
-    if(val11 == true){
+    
+    if(val11 == false && val11b == false){
+        returnval11 = "N/A";
+    }
+    else if(val11 == true){
         returnval11 = "False (Correct)";
     }else{
         returnval11 = "True (Incorrect)";
     }
-    if(val12 == true){
+    
+    if(val12 == false && val12b == false){
+        returnval12 = "N/A";
+    }
+    else if(val12 == true){
         returnval12 = "False (Correct)";
     }else{
         returnval12 = "True (Incorrect)";
     }
-    if(val13 == true){
+    
+    if(val13 == false && val13b == false){
+        returnval13 = "N/A";
+    }
+    else if(val13 == true){
         returnval13 = "True (Correct)";
     }else{
         returnval13 = "False (Incorrect)";
     }
-    if(val14 == true){
+    
+    if(val14 == false && val14b == false){
+        returnval14 = "N/A";
+    }
+    else if(val14 == true){
         returnval14 = "False (Correct)";
     }else{
         returnval14 = "True (Incorrect)";
@@ -2111,10 +2184,15 @@ function addEventListeners(){
     $(".basmikat1submit").click(function(){
         //basmit[0], basmit[1], basmit[2], basmit[3], basmit[4], basmit[5], basmit[6], basmit[7], basmit[8], basmit[9], basmit[10], basmit[11], basmit[12], basmit[13] = GetItemTrueFalseForm();
         basmit = GetItemTrueFalseForm().slice();
+        if(basmit[0]=="N/A" || basmit[1]=="N/A" || basmit[2]=="N/A" || basmit[3]=="N/A" || basmit[4]=="N/A" || basmit[5]=="N/A" || basmit[6]=="N/A" || basmit[7]=="N/A" || basmit[8]=="N/A" || basmit[9]=="N/A" || basmit[10]=="N/A" || basmit[11]=="N/A" || basmit[12]=="N/A" || basmit[13]=="N/A"){
+            ValidationNegative();
+        }else{
+            ValidationPositive();
 
         basmitakpro = UpdateProgressIndicator(basmit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
+        }
     });
 
     $(".basmikat2submit").click(function(){
@@ -2186,9 +2264,15 @@ function addEventListeners(){
     $(".posmikat1submit").click(function(){
         //posmit[0], posmit[1], posmit[2], posmit[3], posmit[4], posmit[5], posmit[6], posmit[7], posmit[8], posmit[9], posmit[10], posmit[11], posmit[12], posmit[13] = GetItemTrueFalseForm();
         posmit = GetItemTrueFalseForm().slice();
+        if(posmit[0]=="N/A" || posmit[1]=="N/A" || posmit[2]=="N/A" || posmit[3]=="N/A" || posmit[4]=="N/A" || posmit[5]=="N/A" || posmit[6]=="N/A" || posmit[7]=="N/A" || posmit[8]=="N/A" || posmit[9]=="N/A" || posmit[10]=="N/A" || posmit[11]=="N/A" || posmit[12]=="N/A" || posmit[13]=="N/A"){
+            ValidationNegative();
+        }else{
+            ValidationPositive();
+
         posmitakpro = UpdateProgressIndicator(posmit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
+        }
     });
 
     $(".posmikat2submit").click(function(){
@@ -2259,9 +2343,14 @@ function addEventListeners(){
     $(".fol1mikat1submit").click(function(){
         //fol1mit[0], fol1mit[1], fol1mit[2], fol1mit[3], fol1mit[4], fol1mit[5], fol1mit[6], fol1mit[7], fol1mit[8], fol1mit[9], fol1mit[10], fol1mit[11], fol1mit[12], fol1mit[13] = GetItemTrueFalseForm();
         fol1mit = GetItemTrueFalseForm().slice();
+        if(fol1mit[0]=="N/A" || fol1mit[1]=="N/A" || fol1mit[2]=="N/A" || fol1mit[3]=="N/A" || fol1mit[4]=="N/A" || fol1mit[5]=="N/A" || fol1mit[6]=="N/A" || fol1mit[7]=="N/A" || fol1mit[8]=="N/A" || fol1mit[9]=="N/A" || fol1mit[10]=="N/A" || fol1mit[11]=="N/A" || fol1mit[12]=="N/A" || fol1mit[13]=="N/A"){
+            ValidationNegative();
+        }else{
+            ValidationPositive();
         fol1mitakpro = UpdateProgressIndicator(fol1mit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
+        }
     });
 
     $(".fol1mikat2submit").click(function(){
@@ -2331,9 +2420,14 @@ function addEventListeners(){
     $(".fol2mikat1submit").click(function(){
         //fol2mit[0], fol2mit[1], fol2mit[2], fol2mit[3], fol2mit[4], fol2mit[5], fol2mit[6], fol2mit[7], fol2mit[8], fol2mit[9], fol2mit[10], fol2mit[11], fol2mit[12], fol2mit[13] = GetItemTrueFalseForm();
         fol2mit = GetItemTrueFalseForm().slice();
+        if(fol2mit[0]=="N/A" || fol2mit[1]=="N/A" || fol2mit[2]=="N/A" || fol2mit[3]=="N/A" || fol2mit[4]=="N/A" || fol2mit[5]=="N/A" || fol2mit[6]=="N/A" || fol2mit[7]=="N/A" || fol2mit[8]=="N/A" || fol2mit[9]=="N/A" || fol2mit[10]=="N/A" || fol2mit[11]=="N/A" || fol2mit[12]=="N/A" || fol2mit[13]=="N/A"){
+            ValidationNegative();
+        }else{
+            ValidationPositive();
         fol2mitakpro = UpdateProgressIndicator(fol2mit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
+        }
     });
 
     $(".fol2mikat2submit").click(function(){
