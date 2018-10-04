@@ -791,9 +791,12 @@ function GetItemTrueFalseButton2(){
     if(val1 === true){
         returnval = "reflection";
     }
-    else{
+    else if(val2 === true){
         returnval = "else";
+    }else{
+        returnval = "N/A";
     }
+    Validation(returnval);
     return returnval;
 }
 
@@ -2924,134 +2927,162 @@ function addEventListeners(){
         
     });
 
-    // These were deleted from a previous version
-    /*
-    $(".oars38submit").click(function(){
-        oars[37] = GetItemResponseTextArea();
-        oarspro = UpdateProgressIndicator(oars);
-        CodeUtterances.codeTherapist();
-        AgentResponse(agentanswerkey, 13);
-        oarsanswercorrect3[10] = CorrectOpenAnswer(agentanswerkey, 13);
-        UpdateProgressMetrics();
-    });
-
-    $(".oars39submit").click(function(){
-        oars[38] = GetItemResponseTextArea();
-        oarspro = UpdateProgressIndicator(oars);
-        CodeUtterances.codeTherapist();
-        AgentResponse(agentanswerkey, 13);
-        oarsanswercorrect3[11] = CorrectOpenAnswer(agentanswerkey, 13);
-        UpdateProgressMetrics();
-    });*/
-
     // Identify Reflections 1 to 12
 
     $(".oars38submit").click(function(){
         oars[37] = GetItemTrueFalseButton2();
-        oarsanswercorrect4[0] = CorrectAnswer(oars, oarsanswerkey4, 37, 0);
-        oarspro = UpdateProgressIndicator(oars);
-        AgentFeedback(oarsanswercorrect4,0);
-        UpdateProgressMetrics();
-        UpdateLocalStorage();
+        if(oars[37]=="N/A"){
+            
+        }else{
+            oarsanswercorrect4[0] = CorrectAnswer(oars, oarsanswerkey4, 37, 0);
+            oarspro = UpdateProgressIndicator(oars);
+            AgentFeedback(oarsanswercorrect4,0);
+            UpdateProgressMetrics();
+            UpdateLocalStorage();
+        }
     });
 
     $(".oars39submit").click(function(){
         oars[38] = GetItemTrueFalseButton2();
-        oarsanswercorrect4[1] = CorrectAnswer(oars, oarsanswerkey4, 38, 1);
-        oarspro = UpdateProgressIndicator(oars);
-        AgentFeedback(oarsanswercorrect4,1);
-        UpdateProgressMetrics();
-        UpdateLocalStorage();
+        if(oars[38]=="N/A"){
+            
+        }else{
+            oarsanswercorrect4[1] = CorrectAnswer(oars, oarsanswerkey4, 38, 1);
+            oarspro = UpdateProgressIndicator(oars);
+            AgentFeedback(oarsanswercorrect4,1);
+            UpdateProgressMetrics();
+            UpdateLocalStorage();
+        }
     });
 
     $(".oars40submit").click(function(){
         oars[39] = GetItemTrueFalseButton2();
-        oarsanswercorrect4[2] = CorrectAnswer(oars, oarsanswerkey4, 39, 2);
-        oarspro = UpdateProgressIndicator(oars);
-        AgentFeedback(oarsanswercorrect4,2);
-        UpdateProgressMetrics();
-        UpdateLocalStorage();
+        if(oars[39]=="N/A"){
+            
+        }else{
+            oarsanswercorrect4[2] = CorrectAnswer(oars, oarsanswerkey4, 39, 2);
+            oarspro = UpdateProgressIndicator(oars);
+            AgentFeedback(oarsanswercorrect4,2);
+            UpdateProgressMetrics();
+            UpdateLocalStorage();
+        }
     });
 
     $(".oars41submit").click(function(){
         oars[40] = GetItemTrueFalseButton2();
-        oarsanswercorrect4[3] = CorrectAnswer(oars, oarsanswerkey4, 40, 3);
-        oarspro = UpdateProgressIndicator(oars);
-        AgentFeedback(oarsanswercorrect4,3);
-        UpdateProgressMetrics();
-        UpdateLocalStorage();
+        if(oars[40]=="N/A"){
+            
+        }else{
+            oarsanswercorrect4[3] = CorrectAnswer(oars, oarsanswerkey4, 40, 3);
+            oarspro = UpdateProgressIndicator(oars);
+            AgentFeedback(oarsanswercorrect4,3);
+            UpdateProgressMetrics();
+            UpdateLocalStorage();
+        }
     });
 
     $(".oars42submit").click(function(){
         oars[41] = GetItemTrueFalseButton2();
-        oarsanswercorrect4[4] = CorrectAnswer(oars, oarsanswerkey4, 41, 4);
-        oarspro = UpdateProgressIndicator(oars);
-        AgentFeedback(oarsanswercorrect4,4);
-        UpdateProgressMetrics();
-        UpdateLocalStorage();
+        if(oars[41]=="N/A"){
+            
+        }else{
+            oarsanswercorrect4[4] = CorrectAnswer(oars, oarsanswerkey4, 41, 4);
+            oarspro = UpdateProgressIndicator(oars);
+            AgentFeedback(oarsanswercorrect4,4);
+            UpdateProgressMetrics();
+            UpdateLocalStorage();
+        }
     });
 
     $(".oars43submit").click(function(){
         oars[42] = GetItemTrueFalseButton2();
-        oarsanswercorrect4[5] = CorrectAnswer(oars, oarsanswerkey4, 42, 5);
-        oarspro = UpdateProgressIndicator(oars);
-        AgentFeedback(oarsanswercorrect4,5);
-        UpdateProgressMetrics();
-        UpdateLocalStorage();
+        if(oars[42]=="N/A"){
+            
+        }else{
+            oarsanswercorrect4[5] = CorrectAnswer(oars, oarsanswerkey4, 42, 5);
+            oarspro = UpdateProgressIndicator(oars);
+            AgentFeedback(oarsanswercorrect4,5);
+            UpdateProgressMetrics();
+            UpdateLocalStorage();
+        }
     });
 
     $(".oars44submit").click(function(){
         oars[43] = GetItemTrueFalseButton2();
-        oarsanswercorrect4[6] = CorrectAnswer(oars, oarsanswerkey4, 43, 6);
-        oarspro = UpdateProgressIndicator(oars);
-        AgentFeedback(oarsanswercorrect4,6);
-        UpdateProgressMetrics();
-        UpdateLocalStorage();
+        if(oars[43]=="N/A"){
+            
+        }else{
+            oarsanswercorrect4[6] = CorrectAnswer(oars, oarsanswerkey4, 43, 6);
+            oarspro = UpdateProgressIndicator(oars);
+            AgentFeedback(oarsanswercorrect4,6);
+            UpdateProgressMetrics();
+            UpdateLocalStorage();
+        }
     });
 
     $(".oars45submit").click(function(){
         oars[44] = GetItemTrueFalseButton2();
-        oarsanswercorrect4[7] = CorrectAnswer(oars, oarsanswerkey4, 44, 7);
-        oarspro = UpdateProgressIndicator(oars);
-        AgentFeedback(oarsanswercorrect4,7);
-        UpdateProgressMetrics();
-        UpdateLocalStorage();
+        if(oars[44]=="N/A"){
+            
+        }else{
+            oarsanswercorrect4[7] = CorrectAnswer(oars, oarsanswerkey4, 44, 7);
+            oarspro = UpdateProgressIndicator(oars);
+            AgentFeedback(oarsanswercorrect4,7);
+            UpdateProgressMetrics();
+            UpdateLocalStorage();
+        }
     });
 
     $(".oars46submit").click(function(){
         oars[45] = GetItemTrueFalseButton2();
-        oarsanswercorrect4[8] = CorrectAnswer(oars, oarsanswerkey4, 45, 8);
-        oarspro = UpdateProgressIndicator(oars);
-        AgentFeedback(oarsanswercorrect4,8);
-        UpdateProgressMetrics();
-        UpdateLocalStorage();
+        if(oars[45]=="N/A"){
+            
+        }else{
+            oarsanswercorrect4[8] = CorrectAnswer(oars, oarsanswerkey4, 45, 8);
+            oarspro = UpdateProgressIndicator(oars);
+            AgentFeedback(oarsanswercorrect4,8);
+            UpdateProgressMetrics();
+            UpdateLocalStorage();
+        }
     });
 
     $(".oars47submit").click(function(){
         oars[46] = GetItemTrueFalseButton2();
-        oarsanswercorrect4[9] = CorrectAnswer(oars, oarsanswerkey4, 46, 9);
-        oarspro = UpdateProgressIndicator(oars);
-        AgentFeedback(oarsanswercorrect4,9);
-        UpdateProgressMetrics();
-        UpdateLocalStorage();
+        if(oars[46]=="N/A"){
+            
+        }else{
+            oarsanswercorrect4[9] = CorrectAnswer(oars, oarsanswerkey4, 46, 9);
+            oarspro = UpdateProgressIndicator(oars);
+            AgentFeedback(oarsanswercorrect4,9);
+            UpdateProgressMetrics();
+            UpdateLocalStorage();   
+        }
     });
 
     $(".oars48submit").click(function(){
         oars[47] = GetItemTrueFalseButton2();
-        oarsanswercorrect4[10] = CorrectAnswer(oars, oarsanswerkey4, 47, 10);
-        oarspro = UpdateProgressIndicator(oars);
-        AgentFeedback(oarsanswercorrect4,10);
-        UpdateProgressMetrics();
-        UpdateLocalStorage();
+        if(oars[47]=="N/A"){
+            
+        }else{
+            oarsanswercorrect4[10] = CorrectAnswer(oars, oarsanswerkey4, 47, 10);
+            oarspro = UpdateProgressIndicator(oars);
+            AgentFeedback(oarsanswercorrect4,10);
+            UpdateProgressMetrics();
+            UpdateLocalStorage();
+        }  
     });
 
     $(".oars49submit").click(function(){
         oars[48] = GetItemTrueFalseButton2();
-        oarsanswercorrect4[11] = CorrectAnswer(oars, oarsanswerkey4, 48, 11);
-        oarspro = UpdateProgressIndicator(oars);
-        AgentFeedback(oarsanswercorrect4,11);
-        UpdateProgressMetrics();
-        UpdateLocalStorage();
+        if(oars[48]=="N/A"){
+            
+        }else{
+            oarsanswercorrect4[11] = CorrectAnswer(oars, oarsanswerkey4, 48, 11);
+            oarspro = UpdateProgressIndicator(oars);
+            AgentFeedback(oarsanswercorrect4,11);
+            UpdateProgressMetrics();
+            UpdateLocalStorage();
+        }
     });
 
     // Create stem 1 and 2
