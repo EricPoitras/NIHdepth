@@ -13,7 +13,7 @@ $(document).ready(function(){
     
     
     // Modules page 
-    $("#vasercard, #hrqcard, #mikatcard, #orientationcard, #micard, #oarscard, #focusingcard, #evokingcard, #changecard, #planningcard, #cliniccard, #fullmicard").hover(function(){
+    $("#vasercard, #hrqcard, #mikatcard, #orientationcard, #micard, #oarscard, #focusingcard, #evokingcard, #changecard, #planningcard, #cliniccard, #fullmicard, #intromicard").hover(function(){
         $(this).css("background-color", "rgb(248, 248, 248)");
     },function(){
         $(this).css("background-color", "white");
@@ -33,6 +33,10 @@ $(document).ready(function(){
     
     $("#orientationcard").click(function(){
         window.open("modules/orientation/orientation.html","_self"); 
+    });
+    
+    $("#intromicard").click(function(){
+        window.open("modules/orientation/intromi.html","_self"); 
     });
     
     $("#micard").click(function(){
