@@ -685,6 +685,10 @@ function Validation(data){
     }
 }
 
+function ValidationTextbox(){
+    $("#next").removeClass("disabled");
+}
+
 // Get item response from radio button component
 function GetItemRadioButton(){
     var val1 = document.getElementById("radio1").checked;
@@ -2505,7 +2509,8 @@ function addEventListeners(){
             mipro = UpdateProgressIndicator(mi);
             AgentDefault();
             UpdateProgressMetrics();
-            UpdateLocalStorage(); 
+            UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -2519,6 +2524,7 @@ function addEventListeners(){
             AgentDefault();
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -2885,12 +2891,14 @@ function addEventListeners(){
             //ValidationNegative handled through feedbackresponse.js
         }else{
             //ValidationPositive handled through feedbackresponse.js
+            
             oarspro = UpdateProgressIndicator(oars);
             CodeUtterances.codeTherapist();
             AgentResponse(agentanswerkey, 13);
             oarsanswercorrect3[0] = CorrectOpenAnswer(agentanswerkey, 13);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -2906,6 +2914,7 @@ function addEventListeners(){
             oarsanswercorrect3[1] = CorrectOpenAnswer(agentanswerkey, 13);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -2920,6 +2929,7 @@ function addEventListeners(){
             oarsanswercorrect3[2] = CorrectOpenAnswer(agentanswerkey, 13);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
         
     });
@@ -2935,6 +2945,7 @@ function addEventListeners(){
             oarsanswercorrect3[3] = CorrectOpenAnswer(agentanswerkey, 13);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -2949,6 +2960,7 @@ function addEventListeners(){
             oarsanswercorrect3[4] = CorrectOpenAnswer(agentanswerkey, 13);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -2963,6 +2975,7 @@ function addEventListeners(){
             oarsanswercorrect3[5] = CorrectOpenAnswer(agentanswerkey, 13);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
         
     });
@@ -2978,6 +2991,7 @@ function addEventListeners(){
             oarsanswercorrect3[6] = CorrectOpenAnswer(agentanswerkey, 13);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -2992,6 +3006,7 @@ function addEventListeners(){
             oarsanswercorrect3[7] = CorrectOpenAnswer(agentanswerkey, 13);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -3006,6 +3021,7 @@ function addEventListeners(){
             oarsanswercorrect3[8] = CorrectOpenAnswer(agentanswerkey, 13);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -3020,6 +3036,7 @@ function addEventListeners(){
             oarsanswercorrect3[9] = CorrectOpenAnswer(agentanswerkey, 13);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
         
     });
@@ -3197,6 +3214,7 @@ function addEventListeners(){
             console.log(oarsanswercorrect5[0]);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -3211,6 +3229,7 @@ function addEventListeners(){
             oarsanswercorrect5[1] = CorrectOpenAnswer(agentanswerkey, 3);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
         
     });
@@ -3228,6 +3247,7 @@ function addEventListeners(){
             oarsanswercorrect6[0] = CorrectOpenAnswer(agentanswerkey, 11);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -3242,6 +3262,7 @@ function addEventListeners(){
             oarsanswercorrect6[1] = CorrectOpenAnswer(agentanswerkey, 11);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -3256,6 +3277,7 @@ function addEventListeners(){
             oarsanswercorrect6[2] = CorrectOpenAnswer(agentanswerkey, 11);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -3270,6 +3292,7 @@ function addEventListeners(){
             oarsanswercorrect6[3] = CorrectOpenAnswer(agentanswerkey, 11);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -3284,6 +3307,7 @@ function addEventListeners(){
             oarsanswercorrect6[4] = CorrectOpenAnswer(agentanswerkey, 11);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -3298,6 +3322,7 @@ function addEventListeners(){
             oarsanswercorrect6[5] = CorrectOpenAnswer(agentanswerkey, 11);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -3312,6 +3337,7 @@ function addEventListeners(){
             oarsanswercorrect6[6] = CorrectOpenAnswer(agentanswerkey, 11);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
