@@ -43,7 +43,7 @@
               <!-- Toolbar -->
               <div class="col-3 p-0 toolbararea">
                 <h5 class="p-3 toolbarhighlight">Instructions</h5>
-                <p class="p-3 text-justify">Listen to the following clips and summarize what you have heard using reflections. You may watch the video more than once to craft the summary. When you are summarizing you are collecting the flowers from the long speech to repeat back to the client in a nice bouquet. Remember to collect the important flowers that focus on the target behavior change.</p>
+                <p class="p-3 text-justify">Listen to the following clips and <strong>summarize what you have heard using reflections.</strong><br><br>You may watch the video more than once to craft the summary. When you are summarizing you are collecting the flowers from the long speech to repeat back to the client in a nice bouquet. Remember to collect the important flowers that focus on the target behavior change.</p>
                 <h5 class="p-3 toolbarhighlight">Feedback</h5>
                 <div class="p-3" id="feedbackarea">
                     <div id="reportarea">
@@ -53,10 +53,10 @@
                         <i id="loading" class="fas fa-spinner fa-pulse"></i> 
                     </div>
                     <div class="alert alert-success" role="alert">
-                      Good summary, you used reflections!
+                      Our computer model thinks this was a summary! Nice work. Of course, its just a machine, so click on the flag above if you think we made an error.
                     </div>
                     <div class="alert alert-danger" role="alert">
-                      This wasn’t a complete summary; try to include a bit more.
+                      Our computer does not think this statement was a summary. Bummer. Of course, it's just a machine, so click on the flag above if you think we made an error.
                     </div>
                 </div>
               </div>
@@ -76,7 +76,7 @@
                             <div id="responsewritearea" class="card therapist">
                                 <div class="comment">
                                         <div class="form-group">
-                                            <label for="FormControlTextarea1">You’re about to summarize a total of three points or in other words complete a three sentence summary; insert one reflection that is a part of your summary on this page. Hit Next and insert the next reflection.  </label>
+                                            <label for="FormControlTextarea1">You have listened to the video. Please summarize what the speaker said in 3 sentences. Include the first of the summary below, and click submit. After submitting, you will be prompted to end the next two sentences.  </label>
                                             <textarea class="form-control m-2" id="message" placeholder="Write text here..." rows="4"></textarea>
                                         </div>
                                         <div id="validationmessage" class="alert alert-danger invisiblecus" role="alert">
@@ -101,7 +101,7 @@
                     <h5 class="toolbarlabel">Practice Summarizing</h5>
                     <div class="justify-content-around d-flex">
                         <a role="button" href="pracsum4.html" class="btn buttoncus primarycolcus text-white">Previous</a>
-                        <a role="button" href="pracsum5b.html" class="btn buttoncus primarycolcus text-white">Next</a>
+                        <a id="next" role="button" href="pracsum5b.html" class="disabled btn buttoncus primarycolcus text-white">Next</a>
                     </div>
               </div>
           </div>
@@ -117,7 +117,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     <!-- Script reference to your jquery code appears here -->
     <script src="../../js/jquery.js"></script>  
-    <script src="../../js/feedbackresponse.js"></script>
+    <!--<script src="../../js/feedbackresponse.js"></script>-->
     <script src="../../data/CodeUtterances.js"></script>  
     <script src="../../data/data.js"></script> <!-- Store textarea response -->
       <script src="../../data/logdata.js"></script>
