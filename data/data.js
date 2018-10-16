@@ -3537,6 +3537,7 @@ function addEventListeners(){
             AgentDefault();
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
         
     });
@@ -3551,6 +3552,7 @@ function addEventListeners(){
             AgentDefault();
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -3564,6 +3566,7 @@ function addEventListeners(){
             AgentDefault();
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -3577,48 +3580,55 @@ function addEventListeners(){
             AgentDefault();
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
     $(".focus18asubmit").click(function(){
         target[21] = GetItemResponseTextArea();
         if(target[21]==""){
-            
+            ValidationNegative();
         }else{
+            ValidationPositive();
             tarpro = UpdateProgressIndicator(target);
             CodeUtterances.codeTherapist();
             AgentResponse(agentanswerkey, 3);
             targetanswercorrect2[0] = CorrectOpenAnswer(agentanswerkey, 3);
             UpdateProgressMetrics();
-            UpdateLocalStorage(); 
+            UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
     $(".focus18bsubmit").click(function(){
         target[22] = GetItemResponseTextArea();
         if(target[22]==""){
-            
+            ValidationNegative();
         }else{
+            ValidationPositive();
             tarpro = UpdateProgressIndicator(target);
             CodeUtterances.codeTherapist();
             AgentResponse(agentanswerkey, 3);
             targetanswercorrect2[1] = CorrectOpenAnswer(agentanswerkey, 3);
             UpdateProgressMetrics();
-            UpdateLocalStorage();   
+            UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
     $(".focus18csubmit").click(function(){
         target[23] = GetItemResponseTextArea();
         if(target[23]==""){
-            
+            ValidationNegative();
         }else{
+            ValidationPositive();
             tarpro = UpdateProgressIndicator(target);
             CodeUtterances.codeTherapist();
             AgentResponse(agentanswerkey, 3);
             targetanswercorrect2[2] = CorrectOpenAnswer(agentanswerkey, 3);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -3632,48 +3642,55 @@ function addEventListeners(){
             AgentDefault();
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
     $(".focus20asubmit").click(function(){
         target[25] = GetItemResponseTextArea();
         if(target[25]==""){
-            
+            ValidationNegative();
         }else{
+            ValidationPositive();
             tarpro = UpdateProgressIndicator(target);
             CodeUtterances.codeTherapist();
             AgentResponse(agentanswerkey, 3);
             targetanswercorrect2[3] = CorrectOpenAnswer(agentanswerkey, 3);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
     $(".focus20bsubmit").click(function(){
         target[26] = GetItemResponseTextArea();
         if(target[26]==""){
-            
+            ValidationNegative();
         }else{
+            ValidationPositive();
             tarpro = UpdateProgressIndicator(target);
             CodeUtterances.codeTherapist();
             AgentResponse(agentanswerkey, 3);
             targetanswercorrect2[4] = CorrectOpenAnswer(agentanswerkey, 3);
             UpdateProgressMetrics();
-            UpdateLocalStorage();   
+            UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
     $(".focus20csubmit").click(function(){
         target[27] = GetItemResponseTextArea();
         if(target[27]==""){
-            
+            ValidationNegative();
         }else{
+            ValidationPositive();
             tarpro = UpdateProgressIndicator(target);
             CodeUtterances.codeTherapist();
             AgentResponse(agentanswerkey, 3);
             targetanswercorrect2[5] = CorrectOpenAnswer(agentanswerkey, 3);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -3687,48 +3704,55 @@ function addEventListeners(){
             AgentDefault();
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
     $(".focus22asubmit").click(function(){
         target[29] = GetItemResponseTextArea();
         if(target[29]==""){
-            
+            ValidationNegative();
         }else{
+            ValidationPositive();
             tarpro = UpdateProgressIndicator(target);
             CodeUtterances.codeTherapist();
             AgentResponse(agentanswerkey, 3);
             targetanswercorrect2[6] = CorrectOpenAnswer(agentanswerkey, 3);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+             ValidationTextbox();
         }
     });
 
     $(".focus22bsubmit").click(function(){
         target[30] = GetItemResponseTextArea();
         if(target[30]==""){
-            
+            ValidationNegative();
         }else{
+            ValidationPositive();
             tarpro = UpdateProgressIndicator(target);
             CodeUtterances.codeTherapist();
             AgentResponse(agentanswerkey, 3);
             targetanswercorrect2[7] = CorrectOpenAnswer(agentanswerkey, 3);
             UpdateProgressMetrics();
             UpdateLocalStorage();   
+             ValidationTextbox();
         }
     });
 
     $(".focus22csubmit").click(function(){
         target[31] = GetItemResponseTextArea();
         if(target[31]==""){
-            
+            ValidationNegative();
         }else{
+            ValidationPositive();
             tarpro = UpdateProgressIndicator(target);
             CodeUtterances.codeTherapist();
             AgentResponse(agentanswerkey, 3);
             targetanswercorrect2[8] = CorrectOpenAnswer(agentanswerkey, 3);
             UpdateProgressMetrics();
-            UpdateLocalStorage();   
+            UpdateLocalStorage();  
+             ValidationTextbox();
         }
     });
 
@@ -3742,6 +3766,7 @@ function addEventListeners(){
             AgentDefault();
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
