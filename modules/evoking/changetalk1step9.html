@@ -43,7 +43,7 @@
               <!-- Toolbar -->
               <div class="col-3 p-0 toolbararea">
                 <h5 class="p-3 toolbarhighlight">Instructions</h5>
-                <p class="p-3 text-justify">Review the following client statement related to the behavior change goal of having a more stable mood. You try to identify which statements you think are change talk. Then, respond to the change statement using EARS/OARS.</p>
+                <p class="p-3 text-justify">Review the following client statement related to the behavior change goal of having a more stable mood.<br><br>First try to identify which statements you think are change talk, and if necessary classify the type of change talk.<br><br>Then, respond to the change statement using EARS/OARS.</p>
                 
                   <h5 class="p-3 toolbarhighlight">Feedback</h5>
                 <div class="p-3" id="feedbackarea">
@@ -55,10 +55,10 @@
                     </div>
 
                     <div class="alert alert-success" role="alert">
-                      Your selection is correct. 
+                        Our computer model thinks this was a OARS/EARS statement! Nice work. Of course, it’s just a machine, so click on the flag above if you think we made an error.                    
                     </div>
                     <div class="alert alert-danger" role="alert">
-                      Your selection is incorrect.
+                      Our computer does not think this statement was an OARS/EARS statement. Bummer. Of course, it’s just a machine, so click on the flag above if you think we made an error.
                     </div>
                 </div>
               </div>
@@ -82,7 +82,7 @@
                             </div>
                             <div id="responsewritearea" class="card therapist">
                                 <div class="comment">
-                                        <div class="form-check">
+                                        <div class="form-check mt-1">
                                       <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
                                       <label class="form-check-label" for="exampleRadios1">
                                         Yes, the statement is change talk
@@ -94,7 +94,7 @@
                                         No, the statement is not change talk
                                       </label>
                                     </div>
-                                    <div class="form-group mt-1">
+                                    <div class="form-group mt-3">
                                         <label for="SelectChangeTalk">Identify the type of change talk</label>
                                         <select class="form-control" id="SelectChangeTalk">
                                           <option>Desire</option>
@@ -108,8 +108,8 @@
                                           <option>Don't know</option>
                                         </select>
                                     </div>
-                                        <div class="form-group">
-                                            <label for="FormControlTextarea1">Response</label>
+                                        <div class="form-group mt-3">
+                                            <label for="FormControlTextarea1">Please write a response to the client</label>
                                             <textarea class="form-control" id="message" placeholder="Respond with EARS or OARS..." rows="4"></textarea>
                                         </div>
                                         <div id="validationmessage" class="alert alert-danger invisiblecus" role="alert">
@@ -134,7 +134,7 @@
                     <h5 class="toolbarlabel">Drumming Change Talk Part 1</h5>
                     <div class="justify-content-around d-flex">
                         <a role="button" href="changetalk1step8.html" class="btn buttoncus primarycolcus text-white">Previous</a>
-                        <a role="button" href="changetalk1step10.html" class="btn buttoncus primarycolcus text-white">Next</a>
+                        <a id="next" role="button" href="changetalk1step10.html" class="disabled btn buttoncus primarycolcus text-white">Next</a>
                     </div>
               </div>
           </div>
