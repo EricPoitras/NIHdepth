@@ -3794,6 +3794,7 @@ function addEventListeners(){
             evokpro = UpdateProgressIndicator(evok);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -3812,6 +3813,7 @@ function addEventListeners(){
             evokpro = UpdateProgressIndicator(evok);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -3830,6 +3832,7 @@ function addEventListeners(){
             evokpro = UpdateProgressIndicator(evok);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -3848,6 +3851,7 @@ function addEventListeners(){
             evokpro = UpdateProgressIndicator(evok);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -3866,6 +3870,7 @@ function addEventListeners(){
             evokpro = UpdateProgressIndicator(evok);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -3884,6 +3889,7 @@ function addEventListeners(){
             evokpro = UpdateProgressIndicator(evok);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -3902,6 +3908,7 @@ function addEventListeners(){
             evokpro = UpdateProgressIndicator(evok);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -3920,6 +3927,7 @@ function addEventListeners(){
             evokpro = UpdateProgressIndicator(evok);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -3938,6 +3946,7 @@ function addEventListeners(){
             evokpro = UpdateProgressIndicator(evok);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -3956,6 +3965,7 @@ function addEventListeners(){
             evokpro = UpdateProgressIndicator(evok);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -3974,6 +3984,7 @@ function addEventListeners(){
             evokpro = UpdateProgressIndicator(evok);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -3992,6 +4003,7 @@ function addEventListeners(){
             evokpro = UpdateProgressIndicator(evok);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -4010,6 +4022,7 @@ function addEventListeners(){
             evokpro = UpdateProgressIndicator(evok);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -4028,6 +4041,7 @@ function addEventListeners(){
             evokpro = UpdateProgressIndicator(evok);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -4046,6 +4060,7 @@ function addEventListeners(){
             evokpro = UpdateProgressIndicator(evok);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -4064,6 +4079,7 @@ function addEventListeners(){
             evokpro = UpdateProgressIndicator(evok);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -4082,6 +4098,7 @@ function addEventListeners(){
             evokpro = UpdateProgressIndicator(evok);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -4100,6 +4117,7 @@ function addEventListeners(){
             evokpro = UpdateProgressIndicator(evok);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -4118,6 +4136,7 @@ function addEventListeners(){
             evokpro = UpdateProgressIndicator(evok);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -4136,6 +4155,7 @@ function addEventListeners(){
             evokpro = UpdateProgressIndicator(evok);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -4154,6 +4174,7 @@ function addEventListeners(){
             evokpro = UpdateProgressIndicator(evok);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -4172,6 +4193,7 @@ function addEventListeners(){
             evokpro = UpdateProgressIndicator(evok);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -4190,6 +4212,7 @@ function addEventListeners(){
             evokpro = UpdateProgressIndicator(evok);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -4208,6 +4231,7 @@ function addEventListeners(){
             evokpro = UpdateProgressIndicator(evok);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -4226,6 +4250,7 @@ function addEventListeners(){
             evokpro = UpdateProgressIndicator(evok);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -4237,6 +4262,8 @@ function addEventListeners(){
         evokpro = UpdateProgressIndicator(evok);
         UpdateProgressMetrics();
         UpdateLocalStorage();
+        ValidationTextbox(); 
+        AgentDefault();
     });
 
     $(".evok27submit").click(function(){
@@ -4250,6 +4277,7 @@ function addEventListeners(){
             evokanswercorrect5[0] = CorrectOpenAnswer(agentanswerkey, 3);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -4264,6 +4292,7 @@ function addEventListeners(){
             evokanswercorrect5[1] = CorrectOpenAnswer(agentanswerkey, 3);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -4278,6 +4307,7 @@ function addEventListeners(){
             evokanswercorrect5[2] = CorrectOpenAnswer(agentanswerkey, 3);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -4292,6 +4322,7 @@ function addEventListeners(){
             evokanswercorrect5[3] = CorrectOpenAnswer(agentanswerkey, 3);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
@@ -4306,6 +4337,7 @@ function addEventListeners(){
             evokanswercorrect5[4] = CorrectOpenAnswer(agentanswerkey, 3);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            ValidationTextbox();
         }
     });
 
