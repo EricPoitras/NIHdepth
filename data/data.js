@@ -4418,6 +4418,7 @@ function addEventListeners(){
             planpro = UpdateProgressIndicator(plan);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+             ValidationTextbox();
         }
     });
 
@@ -4431,6 +4432,7 @@ function addEventListeners(){
             planpro = UpdateProgressIndicator(plan);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+             ValidationTextbox();
         }
     });
 
@@ -4444,6 +4446,7 @@ function addEventListeners(){
             planpro = UpdateProgressIndicator(plan);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+             ValidationTextbox();
         }
     });
 
@@ -4457,6 +4460,7 @@ function addEventListeners(){
             planpro = UpdateProgressIndicator(plan);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+             ValidationTextbox();
         }
     });
 
@@ -4470,6 +4474,7 @@ function addEventListeners(){
             planpro = UpdateProgressIndicator(plan);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+             ValidationTextbox();
         }
     });
 
@@ -4483,6 +4488,7 @@ function addEventListeners(){
             planpro = UpdateProgressIndicator(plan);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+             ValidationTextbox();
         }
     });
 
@@ -4496,6 +4502,7 @@ function addEventListeners(){
             planpro = UpdateProgressIndicator(plan);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+             ValidationTextbox();
         }
     });
 
