@@ -125,7 +125,7 @@ var target = [36];
 
 // Answer keys identifying target behaviors, identifying target behaviors from client speech, practice summarizing
 
-var targetanswerkey1 = ["target","else","target","target","target","else","else","target","else","else","target","target","target"];
+var targetanswerkey1 = ["target","target","target","target","target","else","target","target","else","else","target","target","target"];
 var targetanswercorrect1 = [12];
 var targetanswercorrect2 = [8];
 
