@@ -17,7 +17,6 @@ White #F8F8F8   CLEAN #DFDCE3
     display:none;
 }
 
-
 #video{
     width: 900px !important;
     height: 600px !important;
@@ -29,6 +28,10 @@ White #F8F8F8   CLEAN #DFDCE3
 }
 
 div.toolbararea .p-3{
+    font-size: 1.1rem !important;
+}
+
+div.contentarea .alert{
     font-size: 1.1rem !important;
 }
 
@@ -348,6 +351,7 @@ nav.navcus1 a.labelcus:hover{
 .contentarea #discussion{
     margin-bottom: 50px;
     height: 80vh;
+    width: 800px;
 }
 
 .contentarea #discussion .client{
@@ -444,4 +448,9 @@ a:link, a:visited, a:hover, a:active{
 /* UI Components hidden for the purposes of animating CSS display property */
 #hintarea, .alert-success, .alert-danger, #responsedisplayarea, #loading{
     display: none;
+}
+
+/* Username submit login page */
+.landingpage a.usernamesubmit{
+    color: white !important;
 }
