@@ -32,7 +32,7 @@
                         NIH DEPTH: MI Training
                         </a>
                         <a href="modules.html" class="float-right pt-2 ml-3 labelcus">Modules</a>
-                        <a id="help" href="#" class="float-right pt-2 mr-3 labelcus">Help</a>
+                        <a id="help" href="#" class="float-right pt-2 mr-3 labelcus" data-toggle='modal' data-target="#ModalHelp">Help</a>
                     </div>
                   </nav>
               </div>  
@@ -211,7 +211,7 @@
       </div>
       
       <!-- Welcome Modal -->
-        <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true" data-backdrop="show">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -270,13 +270,16 @@
 
       <script>
         $(document).ready(function(){
+            
             if(sessionStorage.Instructions != "show"){
-                $('#Modal').modal("show");
+                $('#Modal').modal();
                 sessionStorage.setItem("Instructions","show");
             }
-           $("#help").click(function(){
-               $('#ModalHelp').modal("show");
-           }) 
+            
+           /*$("#help").click(function(){
+               alert("help");
+               $('#ModalHelp').modal('show');
+           });*/ 
         });
     </script>
     
