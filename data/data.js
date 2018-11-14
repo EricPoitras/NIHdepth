@@ -2192,7 +2192,7 @@ function addEventListeners(){
             ValidationNegative();
         }else{
             ValidationPositive();
-
+            ValidationTextbox();
         basmitakpro = UpdateProgressIndicator(basmit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -2272,7 +2272,7 @@ function addEventListeners(){
             ValidationNegative();
         }else{
             ValidationPositive();
-
+            ValidationTextbox();
         posmitakpro = UpdateProgressIndicator(posmit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -2351,6 +2351,7 @@ function addEventListeners(){
             ValidationNegative();
         }else{
             ValidationPositive();
+            ValidationTextbox();
         fol1mitakpro = UpdateProgressIndicator(fol1mit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
@@ -2428,6 +2429,7 @@ function addEventListeners(){
             ValidationNegative();
         }else{
             ValidationPositive();
+            ValidationTextbox();
         fol2mitakpro = UpdateProgressIndicator(fol2mit);
         UpdateProgressMetrics();
         UpdateLocalStorage();
