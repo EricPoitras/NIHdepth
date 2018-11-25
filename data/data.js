@@ -4348,13 +4348,14 @@ function addEventListeners(){
         evok = evok.slice(0,86).concat(GetItemResponseMultiTextArea2());
         evok[88] = GetInlineRadioForm();
         if(evok[86]=="" || evok[87]==""){
-            ValidationNegative();
+            //ValidationNegative();
         }else{
-            ValidationPositive();
-            AgentDefault();
+            //ValidationPositive();
             evokpro = UpdateProgressIndicator(evok);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            AgentDefault();
+            ValidationTextbox();
         }
     });
 
@@ -4363,13 +4364,14 @@ function addEventListeners(){
         evok = evok.slice(0,89).concat(GetItemResponseMultiTextArea2());
         evok[91] = GetInlineRadioForm();
         if(evok[89]=="" || evok[90]==""){
-            ValidationNegative();
+            //ValidationNegative();
         }else{
-            ValidationPositive();
-            AgentDefault();
+            //ValidationPositive();
             evokpro = UpdateProgressIndicator(evok);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            AgentDefault();
+            ValidationTextbox();
         }
     });
 
@@ -4377,13 +4379,14 @@ function addEventListeners(){
         //evok[92], evok[93] = GetItemResponseMultiTextArea2();
         evok = evok.slice(0,92).concat(GetItemResponseMultiTextArea2());
         if(evok[92]=="" || evok[93]==""){
-            ValidationNegative();
+            //ValidationNegative();
         }else{
-            ValidationPositive();
-            AgentDefault();
+            //ValidationPositive();
             evokpro = UpdateProgressIndicator(evok);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            AgentDefault();
+            ValidationTextbox();
         }
     });
 
@@ -4391,13 +4394,14 @@ function addEventListeners(){
         //evok[94], evok[95] = GetItemResponseMultiTextArea2();
         evok = evok.slice(0,94).concat(GetItemResponseMultiTextArea2());
         if(evok[94]=="" || evok[95]==""){
-            ValidationNegative();
+            //ValidationNegative();
         }else{
-            ValidationPositive();
-            AgentDefault();
+            //ValidationPositive();
             evokpro = UpdateProgressIndicator(evok);
             UpdateProgressMetrics();
             UpdateLocalStorage();
+            AgentDefault();
+            ValidationTextbox();
         }
     });
 
