@@ -11,6 +11,11 @@ Purple #8166F9     FRESH #4ABDAC                #16a9c9
 White #F8F8F8   CLEAN #DFDCE3
 */
 
+
+#login_box{
+    display:none;
+}
+
 /* Typography used to be Barlow */
 
 #video-controls .value{

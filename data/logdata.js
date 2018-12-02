@@ -91,8 +91,8 @@ function datalogger(categorylabel, eventlabel){
         pagexoffset: pagexoffset,
         pageyoffset: pageyoffset,
         category: categorylabel,
-        event: eventlabel,
-        qualifier: qualifierlabel
+        event: eventlabel
+
     };
     
     //localStorage.sessionlog = JSON.stringify(newitem);
